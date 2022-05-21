@@ -1,3 +1,3 @@
-import "./styles.css";
-import "./styles.scss";
+import "./scss/stress.scss";
+
 console.log("hello world!");

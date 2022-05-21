@@ -1,3 +1,5 @@
+'use strict';
+
 const webpack = require('webpack');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -5,93 +7,130 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const SemverWebpackPlugin = require('semver-extended-webpack-plugin');
 
-const config = {
-    mode: "development", // "production" | "development" | "none"
-    entry: {
-        index: "./src/index.js"
-    },
+//console.log(webpack)
+
+module.exports = {
+    mode: 'development', // "production" | "development" | "none"
+    entry: './src/index.js',
     output: {
-        path: path.resolve(__dirname, "dist"),
-        filename: "[name].bundle.js",
-        chunkFilename: "[id].[name].bundle.js",
-        publicPath: "auto",
-        //clean: true
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'static/js/[name].bundle.js',
+        clean: true,
     },
     module: {
         rules: [
             {
+                test: /\.html$/,
+                use: 'html-loader',
+            },
+            {
                 test: /\.js$/,
-                use: "babel-loader",
-                exclude: /node_modules/
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            [
+                                '@babel/preset-env',
+                                {
+                                    modules: false
+                                },
+                            ],
+                        ],
+                    },
+                },
             },
             {
                 test: /\.css$/,
                 use: [
-                    "style-loader",
+                    'style-loader',
                     {
-                        loader: "css-loader",
+                        loader: 'css-loader',
                         options: {
                             importLoaders: 1
                         }
                     },
-                    "postcss-loader"
-                ]
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    require('autoprefixer')
+                                ],
+                            },
+                        },
+                    },
+                ],
             },
             {
-                test: /\.(sass|scss)$/,
+                test: /\.(scss|sass)$/,
                 use: [
-                    "style-loader",
-                    "css-loader",
-                    "sass-loader"
-                ]
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ],
             },
-            {
+            /*{
                 test: /\.svg$/,
-                use: "file-loader"
+                use: 'file-loader'
             },
             {
                 test: /\.png$/,
                 use: [
                     {
-                        loader: "url-loader",
+                        loader: 'url-loader',
                         options: {
-                            mimetype: "image/png"
-                        }
-                    }
-                ]
-            }
-        ]
+                            mimetype: 'image/png'
+                        },
+                    },
+                ],
+            },*/
+            {
+                test: /\.(jpe?g|gif|png|svg)$/i,
+                //type: 'asset/resource',
+                //use: 'file-loader',
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: `[name].[ext]`,
+                            outputPath: "static/media",
+                            publicPath: "public",
+                        },
+                    },
+                ],
+            },
+        ],
     },
     plugins: [
-        //new webpack.HotModuleReplacementPlugin(),
-        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Development',
-            filename: "index.html",
-            template: "./public/index.html"
-        }),
-        new SemverWebpackPlugin({
-            files: [path.resolve(__dirname, "package.json")],
-            incArgs: ["patch"],
-            console: true,
-            buildDate: true
+            title: "Development",
+            filename: 'index.html',
+            template: './public/index.html'
         }),
         new CopyWebpackPlugin({
             patterns: [
                 //{from: "public/*.ico", to: "[name][ext]"}
+                {from: 'public/**/*'}
             ],
         }),
+        new SemverWebpackPlugin({
+            files: [path.resolve(__dirname, 'package.json')],
+            incArgs: ["patch"],
+            console: true,
+            buildDate: true
+        }),
+        new CleanWebpackPlugin(),
     ],
     devServer: {
         static: {
-            directory: path.join(__dirname, "dist")
+            directory: path.join(__dirname, 'dist')
         },
+        /*watchOptions: {
+            ignored: /node_modules/,
+        },*/
         port: 9000,
-        historyApiFallback: true,
         compress: true,
-        https: false,
-        hot: true
-    }
+        hot: true,
+    },
 };
-
-module.exports = config;
