@@ -1,13 +1,10 @@
 'use strict';
 
-const webpack = require('webpack');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+//const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const SemverWebpackPlugin = require('semver-extended-webpack-plugin');
-
-//console.log(webpack)
 
 module.exports = {
     mode: 'development', // "production" | "development" | "none"
@@ -24,7 +21,7 @@ module.exports = {
                 use: 'html-loader',
             },
             {
-                test: /\.js$/,
+                test: /\.m?js$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -36,6 +33,10 @@ module.exports = {
                                     modules: false
                                 },
                             ],
+                        ],
+                        plugins: [
+                            '@babel/plugin-proposal-class-properties',
+                            '@babel/plugin-syntax-dynamic-import',
                         ],
                     },
                 },
@@ -70,32 +71,21 @@ module.exports = {
                     'sass-loader'
                 ],
             },
-            /*{
-                test: /\.svg$/,
+            {
+                test: /\.(woff(2)?|eot|ttf|otf|svg)$/,
+                type: 'asset/inline',
                 use: 'file-loader'
             },
             {
-                test: /\.png$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            mimetype: 'image/png'
-                        },
-                    },
-                ],
-            },*/
-            {
-                test: /\.(jpe?g|gif|png|svg)$/i,
-                //type: 'asset/resource',
-                //use: 'file-loader',
+                test: /\.(?:ico|gif|png|jpe?g)$/i,
+                type: 'asset/resource',
                 use: [
                     {
                         loader: "file-loader",
                         options: {
-                            name: `[name].[ext]`,
-                            outputPath: "static/media",
-                            publicPath: "public",
+                            name: '[name].[ext]',
+                            outputPath: 'static/media',
+                            publicPath: 'public',
                         },
                     },
                 ],
@@ -103,16 +93,25 @@ module.exports = {
         ],
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            title: "Development",
-            filename: 'index.html',
-            template: './public/index.html'
-        }),
+        //new CleanWebpackPlugin(),
         new CopyWebpackPlugin({
             patterns: [
-                //{from: "public/*.ico", to: "[name][ext]"}
-                {from: 'public/**/*'}
+                {
+                    from: path.resolve(__dirname, 'public'),
+                    globOptions: {
+                        ignore: [
+                            '**/*.DS_Store',
+                            '**/*.html',
+                        ],
+                    },
+                    noErrorOnMissing: true,
+                },
             ],
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Development',
+            filename: 'index.html',
+            template: './public/template.html'
         }),
         new SemverWebpackPlugin({
             files: [path.resolve(__dirname, 'package.json')],
@@ -120,15 +119,11 @@ module.exports = {
             console: true,
             buildDate: true
         }),
-        new CleanWebpackPlugin(),
     ],
     devServer: {
         static: {
             directory: path.join(__dirname, 'dist')
         },
-        /*watchOptions: {
-            ignored: /node_modules/,
-        },*/
         port: 9000,
         compress: true,
         hot: true,

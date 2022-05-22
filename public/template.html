@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
+    <meta content="ie=edge" http-equiv="x-ua-compatible"/>
     <meta content="application/json" http-equiv="Content-Type"/>
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta content="#000000" name="theme-color"/>
@@ -12,11 +13,11 @@
     <link href="static/media/logo192x192.png" rel="apple-touch-icon"/>
     <link href="favicon.ico" rel="icon"/>
     <link href="manifest.json" rel="manifest"/>
-    <title>Stress</title>
+    <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
 <noscript>You need to enable JavaScript to run this app.</noscript>
 <div id="root"></div>
-<h1>Stress</h1>
+<H1><%= htmlWebpackPlugin.options.title %></H1>
 </body>
 </html>
