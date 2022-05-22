@@ -18,7 +18,7 @@ module.exports = merge(common, {
     module: {
         rules: [
             {
-                test: /\.(sass|scss|css)$/,
+                test: /\.(sa|sc|c)ss$/,
                 use: [
                     'style-loader',
                     {
@@ -26,20 +26,25 @@ module.exports = merge(common, {
                         options: {
                             importLoaders: 1,
                             sourceMap: true,
-                            modules: false
+                            modules: false,
                         },
                     },
                     {
                         loader: 'postcss-loader',
                         options: {
-                            sourceMap: true
-                        }
+                            sourceMap: true,
+                            postcssOptions: {
+                                plugins: [
+                                    require('autoprefixer')
+                                ],
+                            },
+                        },
                     },
                     {
                         loader: 'sass-loader',
                         options: {
                             sourceMap: true
-                        }
+                        },
                     },
                 ],
             },

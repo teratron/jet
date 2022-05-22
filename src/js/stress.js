@@ -1,6 +1,6 @@
 export const stress = () => `Web Framework`
 
-function component() {
+export function component() {
     const element = document.createElement('pre');
 
     element.innerHTML = [

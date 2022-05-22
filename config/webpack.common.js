@@ -2,7 +2,7 @@
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const paths = require('./paths')
+const paths = require('./paths');
 
 module.exports = {
     entry: paths.src + '/index.js',
@@ -74,4 +74,4 @@ module.exports = {
             assets: paths.public,
         },
     },
-}
+};

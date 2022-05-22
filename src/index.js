@@ -1,6 +1,9 @@
 'use strict';
 
-import {stress} from "./js/stress";
+import {component, stress} from "./js/stress";
 import "./scss/stress.scss";
 
-console.log(stress);
+//const root = document.getElementById('root');
+//root.appendChild(component);
+
+console.log(stress, component);
