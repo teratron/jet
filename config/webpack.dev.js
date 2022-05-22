@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
-const {merge} = require('webpack-merge');
-const common = require('./webpack.common');
-const paths = require('./paths');
+const { merge } = require('webpack-merge')
+const common = require('./webpack.common')
+const paths = require('./paths')
 
-module.exports = merge(common, {
+module.exports = merge(common, { // TODO:
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
@@ -13,7 +13,7 @@ module.exports = merge(common, {
         historyApiFallback: true,
         compress: true,
         open: true,
-        hot: true,
+        hot: true
     },
     module: {
         rules: [
@@ -25,29 +25,22 @@ module.exports = merge(common, {
                         loader: 'css-loader',
                         options: {
                             importLoaders: 1,
-                            sourceMap: true,
-                            modules: false,
-                        },
+                            modules: false
+                        }
                     },
                     {
                         loader: 'postcss-loader',
                         options: {
-                            sourceMap: true,
                             postcssOptions: {
                                 plugins: [
-                                    require('autoprefixer')
-                                ],
-                            },
-                        },
+                                    'autoprefixer'
+                                ]
+                            }
+                        }
                     },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: true
-                        },
-                    },
-                ],
-            },
-        ],
-    },
-});
+                    'sass-loader'
+                ]
+            }
+        ]
+    }
+})

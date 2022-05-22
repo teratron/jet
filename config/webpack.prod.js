@@ -1,13 +1,12 @@
-'use strict';
+'use strict'
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const SemverWebpackPlugin = require('semver-extended-webpack-plugin');
-const {merge} = require('webpack-merge');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const SemverWebpackPlugin = require('semver-extended-webpack-plugin')
+const { merge } = require('webpack-merge')
+const common = require('./webpack.common')
+const paths = require('./paths')
 
-const common = require('./webpack.common');
-const paths = require('./paths');
-
-module.exports = merge(common, {
+module.exports = merge(common, { // TODO:
     mode: 'production',
     devtool: 'source-map',
     output: {
@@ -22,23 +21,24 @@ module.exports = merge(common, {
                     {
                         loader: 'css-loader',
                         options: {
-                            importLoaders: 2
-                        },
+                            importLoaders: 2,
+                            modules: false
+                        }
                     },
                     {
                         loader: 'postcss-loader',
                         options: {
                             postcssOptions: {
                                 plugins: [
-                                    require('autoprefixer')
-                                ],
-                            },
+                                    'autoprefixer'
+                                ]
+                            }
                         }
                     },
-                    'sass-loader',
-                ],
-            },
-        ],
+                    'sass-loader'
+                ]
+            }
+        ]
     },
     plugins: [
         new MiniCssExtractPlugin({
@@ -49,11 +49,11 @@ module.exports = merge(common, {
             incArgs: ['patch'],
             console: true,
             buildDate: true
-        }),
+        })
     ],
     performance: {
         hints: false,
         maxEntrypointSize: 512000,
-        maxAssetSize: 512000,
-    },
-});
+        maxAssetSize: 512000
+    }
+})

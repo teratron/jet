@@ -1,10 +1,9 @@
-'use strict';
+'use strict'
 
-const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-//const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const SemverWebpackPlugin = require('semver-extended-webpack-plugin');
+const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const SemverWebpackPlugin = require('semver-extended-webpack-plugin')
 
 module.exports = {
     mode: 'development', // "production" | "development" | "none"
@@ -12,13 +11,13 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'static/js/[name].bundle.js',
-        clean: true,
+        clean: true
     },
     module: {
         rules: [
             {
                 test: /\.html$/,
-                use: 'html-loader',
+                use: 'html-loader'
             },
             {
                 test: /\.m?js$/,
@@ -31,15 +30,15 @@ module.exports = {
                                 '@babel/preset-env',
                                 {
                                     modules: false
-                                },
-                            ],
+                                }
+                            ]
                         ],
                         plugins: [
                             '@babel/plugin-proposal-class-properties',
-                            '@babel/plugin-syntax-dynamic-import',
-                        ],
-                    },
-                },
+                            '@babel/plugin-syntax-dynamic-import'
+                        ]
+                    }
+                }
             },
             {
                 test: /\.css$/,
@@ -56,12 +55,12 @@ module.exports = {
                         options: {
                             postcssOptions: {
                                 plugins: [
-                                    require('autoprefixer')
-                                ],
-                            },
-                        },
-                    },
-                ],
+                                    'autoprefixer'
+                                ]
+                            }
+                        }
+                    }
+                ]
             },
             {
                 test: /\.(scss|sass)$/,
@@ -69,7 +68,7 @@ module.exports = {
                     'style-loader',
                     'css-loader',
                     'sass-loader'
-                ],
+                ]
             },
             {
                 test: /\.(woff(2)?|eot|ttf|otf|svg)$/,
@@ -85,12 +84,12 @@ module.exports = {
                         options: {
                             name: '[name].[ext]',
                             outputPath: 'static/media',
-                            publicPath: 'public',
-                        },
-                    },
-                ],
-            },
-        ],
+                            publicPath: 'public'
+                        }
+                    }
+                ]
+            }
+        ]
     },
     plugins: [
         //new CleanWebpackPlugin(),
@@ -101,12 +100,12 @@ module.exports = {
                     globOptions: {
                         ignore: [
                             '**/*.DS_Store',
-                            '**/*.html',
-                        ],
+                            '**/*.html'
+                        ]
                     },
-                    noErrorOnMissing: true,
-                },
-            ],
+                    noErrorOnMissing: true
+                }
+            ]
         }),
         new HtmlWebpackPlugin({
             title: 'Development',
@@ -118,7 +117,7 @@ module.exports = {
             incArgs: ["patch"],
             console: true,
             buildDate: true
-        }),
+        })
     ],
     devServer: {
         static: {
@@ -126,6 +125,6 @@ module.exports = {
         },
         port: 9000,
         compress: true,
-        hot: true,
-    },
-};
+        hot: true
+    }
+}

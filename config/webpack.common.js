@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const paths = require('./paths');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const paths = require('./paths')
 
 module.exports = {
     entry: paths.src + '/index.js',
@@ -10,7 +10,7 @@ module.exports = {
         path: paths.build,
         filename: 'static/js/[name].bundle.js',
         publicPath: '',
-        clean: true,
+        clean: true
     },
     module: {
         rules: [
@@ -25,53 +25,52 @@ module.exports = {
                                 '@babel/preset-env',
                                 {
                                     modules: false
-                                },
-                            ],
+                                }
+                            ]
                         ],
                         plugins: [
-                            '@babel/plugin-proposal-class-properties',
-                            '@babel/plugin-syntax-dynamic-import',
-                        ],
-                    },
-                },
+                            '@babel/plugin-proposal-class-properties'
+                        ]
+                    }
+                }
             },
             {
                 test: /\.(?:ico|gif|png|jpe?g)$/i,
-                type: 'asset/resource',
+                type: 'asset/resource'
             },
             {
                 test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
-                type: 'asset/inline',
-            },
-        ],
+                type: 'asset/inline'
+            }
+        ]
     },
     plugins: [
-        new CopyWebpackPlugin({
+        new CopyWebpackPlugin({ // TODO:
             patterns: [
                 {
                     from: paths.public,
                     globOptions: {
                         ignore: [
                             '**/*.DS_Store',
-                            '**/*.html',
-                        ],
+                            '**/*.html'
+                        ]
                     },
-                    noErrorOnMissing: true,
-                },
-            ],
+                    noErrorOnMissing: true
+                }
+            ]
         }),
         new HtmlWebpackPlugin({
             title: 'Stress',
             template: paths.public + '/template.html',
-            filename: 'index.html',
-        }),
+            filename: 'index.html'
+        })
     ],
-    resolve: {
+    resolve: { // TODO:
         modules: [paths.src, 'node_modules'],
         extensions: ['.js', '.jsx', '.json'],
         alias: {
             '@': paths.src,
-            assets: paths.public,
-        },
-    },
-};
+            assets: paths.public
+        }
+    }
+}
