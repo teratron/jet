@@ -1,6 +1,6 @@
 {
     "name": "stress",
-    "version": "0.0.172",
+    "version": "0.0.183",
     "description": "Web Framework",
     "main": "src/index.js",
     "keywords": [
@@ -60,5 +60,5 @@
             "last 1 safari version"
         ]
     },
-    "buildDate": "2022-05-22T21:59:57.386Z"
+    "buildDate": "2022-05-23T06:42:56.887Z"
 }

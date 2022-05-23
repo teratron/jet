@@ -1,12 +1,14 @@
+'use strict'
+
 export const stress = () => `Web Framework`
 
 export function component() {
-    const element = document.createElement('pre');
+    const element = document.createElement('pre')
 
     element.innerHTML = [
         'Hello webpack!',
         '5 cubed is equal to ' + 5
-    ].join('\n\n');
+    ].join('\n\n')
 
     return element;
 }

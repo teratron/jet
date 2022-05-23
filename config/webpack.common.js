@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const paths = require('./paths')
 
-module.exports = {
+module.exports = (loader) => ({
     entry: paths.src + '/index.js',
     output: {
         path: paths.build,
@@ -35,6 +35,30 @@ module.exports = {
                 }
             },
             {
+                test: /\.(sa|sc|c)ss$/,
+                use: [
+                    loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1,
+                            modules: false
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    'autoprefixer'
+                                ]
+                            }
+                        }
+                    },
+                    'sass-loader'
+                ]
+            },
+            {
                 test: /\.(?:ico|gif|png|jpe?g)$/i,
                 type: 'asset/resource'
             },
@@ -45,7 +69,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new CopyWebpackPlugin({ // TODO:
+        new CopyWebpackPlugin({
             patterns: [
                 {
                     from: paths.public,
@@ -64,13 +88,5 @@ module.exports = {
             template: paths.public + '/template.html',
             filename: 'index.html'
         })
-    ],
-    resolve: { // TODO:
-        modules: [paths.src, 'node_modules'],
-        extensions: ['.js', '.jsx', '.json'],
-        alias: {
-            '@': paths.src,
-            assets: paths.public
-        }
-    }
-}
+    ]
+})
