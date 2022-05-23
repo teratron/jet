@@ -4,7 +4,7 @@ const { merge } = require('webpack-merge')
 const common = require('./webpack.common')
 const paths = require('./paths')
 
-module.exports = merge(common('style-loader'), {
+module.exports = merge(common({ styleLoader: 'style-loader' }), {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {

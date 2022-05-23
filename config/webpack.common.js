@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const paths = require('./paths')
 
-module.exports = (loader) => ({
+module.exports = (params) => ({
     entry: paths.src + '/index.js',
     output: {
         path: paths.build,
@@ -37,7 +37,7 @@ module.exports = (loader) => ({
             {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
-                    loader,
+                    params.styleLoader,
                     {
                         loader: 'css-loader',
                         options: {
@@ -50,7 +50,8 @@ module.exports = (loader) => ({
                         options: {
                             postcssOptions: {
                                 plugins: [
-                                    'autoprefixer'
+                                    'autoprefixer',
+                                    'postcss-preset-env'
                                 ]
                             }
                         }
@@ -63,7 +64,15 @@ module.exports = (loader) => ({
                 type: 'asset/resource'
             },
             {
-                test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+                test: /\.(woff(2)?|eot|ttf|otf)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'static/fonts/[name].[hash][ext]',
+                    publicPath: '../../'
+                }
+            },
+            {
+                test: /\.svg$/,
                 type: 'asset/inline'
             }
         ]
@@ -87,6 +96,19 @@ module.exports = (loader) => ({
             title: 'Stress',
             template: paths.public + '/template.html',
             filename: 'index.html'
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Stress App',
+            template: paths.public + '/template.html',
+            filename: 'app.html'
         })
-    ]
+    ],
+    resolve: {
+        modules: [paths.src, 'node_modules'],
+        extensions: ['.js', '.jsx', '.json', '.css'],
+        alias: {
+            '@': paths.src,
+            assets: paths.public
+        }
+    }
 })
