@@ -6,15 +6,17 @@ const { merge } = require('webpack-merge')
 const common = require('./webpack.common')
 const paths = require('./paths')
 
-module.exports = merge(common({ styleLoader: MiniCssExtractPlugin.loader }), {
+const config = merge(common({ styleLoader: MiniCssExtractPlugin.loader }), {
     mode: 'production',
     devtool: 'source-map',
     output: {
-        filename: 'static/js/[name].[contenthash].bundle.js'
+        filename: 'static/js/[name].[contenthash].bundle.js',
+        chunkFilename: 'static/js/[name].[id].js'
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'static/css/[name].[contenthash].bundle.css'
+            filename: 'static/css/[name].[contenthash].bundle.css',
+            chunkFilename: 'static/css/[name].[id].css'
         }),
         new SemverWebpackPlugin({
             files: [paths.root + '/package.json'],
@@ -28,4 +30,8 @@ module.exports = merge(common({ styleLoader: MiniCssExtractPlugin.loader }), {
         maxEntrypointSize: 512000,
         maxAssetSize: 512000
     }
+})
+
+module.exports = new Promise((resolve) => {
+    resolve(config)
 })
