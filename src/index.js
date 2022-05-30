@@ -1,9 +1,9 @@
 'use strict'
 
-import { component, stress } from "./js/stress"
-import "./scss/stress.scss"
+import { component, jet } from "./js/jet"
+import "./scss/jet.scss"
 
 //const root = document.getElementById('root');
 //root.appendChild(component);
 
-console.log(stress, component)
+console.log(jet, component)

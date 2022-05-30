@@ -1,6 +1,6 @@
 'use strict'
 
-export const stress = () => `Web Framework`
+export const jet = () => `Web Framework`
 
 export function component() {
     const element = document.createElement('pre')

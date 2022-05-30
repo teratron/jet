@@ -1,5 +1,5 @@
 {
-    "name": "stress",
+    "name": "jet",
     "version": "0.0.186",
     "description": "Web Framework",
     "main": "src/index.js",
@@ -15,12 +15,12 @@
     "license": "ISC",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/teratron/stress.git"
+        "url": "git+https://github.com/teratron/jet.git"
     },
     "bugs": {
-        "url": "https://github.com/teratron/stress/issues"
+        "url": "https://github.com/teratron/jet/issues"
     },
-    "homepage": "https://github.com/teratron/stress#readme",
+    "homepage": "https://github.com/teratron/jet#readme",
     "devDependencies": {
         "@babel/core": "^7.18.0",
         "@babel/plugin-proposal-class-properties": "^7.17.12",
