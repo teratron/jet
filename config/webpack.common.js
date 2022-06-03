@@ -54,7 +54,7 @@ module.exports = props => {
                                 postcssOptions: {
                                     plugins: [
                                         //'autoprefixer',
-                                        //'postcss-preset-env'
+                                        'postcss-preset-env'
                                     ]
                                 }
                             }
@@ -62,7 +62,7 @@ module.exports = props => {
                         'sass-loader'
                     ]
                 },
-                /*{
+                {
                     test: /\.(hbs|handlebars)$/i,
                     exclude: /node_modules/,
                     loader: 'handlebars-loader',
@@ -71,12 +71,13 @@ module.exports = props => {
                             paths.src + '/templates/helpers'
                         ],
                         partialDirs: [
+                            paths.src + '/templates',
                             paths.src + '/templates/partials',
                             paths.src + '/templates/pages',
                             paths.src + '/templates/layouts'
                         ]
                     }
-                },*/
+                },
                 {
                     test: /\.(svg|gif|png|jpe?g)$/i,
                     type: 'asset/resource',
@@ -96,18 +97,6 @@ module.exports = props => {
         plugins: [
             new CopyWebpackPlugin({
                 patterns: [
-                    /*{
-                        from: `${PATHS.src}/${PATHS.assets}img`,
-                        to: `${PATHS.assets}img`
-                    },
-                    {
-                        from: `${PATHS.src}/${PATHS.assets}fonts`,
-                        to: `${PATHS.assets}fonts`
-                    },
-                    {
-                        from: `${PATHS.src}/static`,
-                        to: ''
-                    },*/
                     {
                         from: paths.public,
                         globOptions: {
@@ -121,8 +110,7 @@ module.exports = props => {
                 ]
             }),
             new HtmlWebpackPlugin({
-                title: 'Bookings',
-                template: paths.public + '/template.html',
+                template: paths.src + '/templates/pages/index.js',
                 filename: 'index.html',
                 inject: 'body',
                 minify: false

@@ -1,6 +1,4 @@
 'use strict'
 
-import "./scss/jet.scss"
-
-//const root = document.getElementById('root');
-//root.appendChild(component);
+import './static/js/jet'
+import './static/scss/jet.scss'

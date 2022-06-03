@@ -1,0 +1,91 @@
+//**********************************************************
+// Variables
+//----------------------------------------------------------
+//
+//**********************************************************
+@use "sass:math";
+
+$version: "0.0.0";
+
+$media: "../media";
+$fonts: "../fonts";
+$font-family: "sans-serif";
+
+$unit: 1em; // 16px
+$unit_half: math.round(calc($unit/2));
+$px: 1px;
+
+$layout_column: 12;
+$layout_width: $layout_column*$unit; // + (@layout_column - 1)*@layout_gap
+
+@debug $layout_width;
+
+
+/*
+@layout_gap:            @unit*2;
+@layout_gap_half:       round(@layout_gap/2);
+@layout_column_width:   @layout_gap*6; // without gap
+@layout_column:         12;
+
+@layout_width:          @layout_column*@layout_column_width;// + (@layout_column - 1)*@layout_gap
+@layout_width_min:      320px;
+@header_height:         @unit*6;
+@footer_height:         @unit*8;
+*/
+
+
+//*** Layout ***//
+$grid: 16;
+$grid-gap: 20px;
+$grid-width: 120px;
+
+$layout-width: 1360px;
+$layout-width-min: 360px;
+
+$header-height: 80px;
+$footer-height: auto;
+
+$navbar-width: 260px;
+$navbar-width-min: 80px;
+
+$sidebar-width: 0;
+$sidebar-width-min: 0;
+
+
+
+
+
+
+// Layout
+$html-font-size: 1em; // 16px
+
+
+:root {
+    /* Layout */
+    --html-font-size: .5em; // 8px
+
+    --app-layout-padding: 7rem;
+    --app-header-height: 96px;
+    --app-footer-height: 220px;
+
+    --app-navbar-height: 11rem;
+    --app-tab-height: 8.5rem;
+
+    /* Z-index */
+    --zindex-body: 1;
+    --zindex-app: 10;
+    --zindex-main: 20;
+    --zindex-content: 30;
+    --zindex-sidebar: 40;
+    --zindex-header: 50;
+    --zindex-footer: 60;
+    --zindex-dropdown: 1000;
+    --zindex-sticky: 2000;
+    --zindex-fixed: 3000;
+    --zindex-modal-backdrop: 4000;
+    --zindex-offcanvas: 5000;
+    --zindex-modal: 6000;
+    --zindex-popover: 7000;
+    --zindex-tooltip: 8000;
+    --zindex-debug: 10000;
+}
