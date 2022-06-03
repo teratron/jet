@@ -1,12 +1,5 @@
 
-$layout: 32px;
-
-body {
-    background-color: darkseagreen;
-    display: flex;
-    flex-direction: column
-}
-
-::placeholder {
-    color: gray;
-}
+@import "variables";
+@import "layout";
+@import "app";
+@import "themes/default";

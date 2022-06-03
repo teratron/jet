@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const paths = require('./paths')
 
-module.exports = (props) => {
+module.exports = props => {
     return {
         entry: {
             main: paths.src + '/index.js'
@@ -17,8 +17,7 @@ module.exports = (props) => {
         module: {
             rules: [
                 {
-                    test: /\.m?js$/,
-                    include: paths.src,
+                    test: /\.m?js$/i,
                     exclude: /node_modules/,
                     use: {
                         loader: 'babel-loader',
@@ -27,8 +26,7 @@ module.exports = (props) => {
                                 [
                                     '@babel/preset-env',
                                     {
-                                        targets: 'defaults',
-                                        modules: false
+                                        targets: 'defaults'
                                     }
                                 ]
                             ],
@@ -40,8 +38,7 @@ module.exports = (props) => {
                     }
                 },
                 {
-                    test: /\.(sa|sc|c)ss$/,
-                    include: paths.src,
+                    test: /\.(sa|sc|c)ss$/i,
                     exclude: /node_modules/,
                     use: [
                         props.styleLoader,
@@ -56,8 +53,8 @@ module.exports = (props) => {
                             options: {
                                 postcssOptions: {
                                     plugins: [
-                                        'autoprefixer',
-                                        'postcss-preset-env'
+                                        //'autoprefixer',
+                                        //'postcss-preset-env'
                                     ]
                                 }
                             }
@@ -65,6 +62,21 @@ module.exports = (props) => {
                         'sass-loader'
                     ]
                 },
+                /*{
+                    test: /\.(hbs|handlebars)$/i,
+                    exclude: /node_modules/,
+                    loader: 'handlebars-loader',
+                    options: {
+                        helperDirs: [
+                            paths.src + '/templates/helpers'
+                        ],
+                        partialDirs: [
+                            paths.src + '/templates/partials',
+                            paths.src + '/templates/pages',
+                            paths.src + '/templates/layouts'
+                        ]
+                    }
+                },*/
                 {
                     test: /\.(svg|gif|png|jpe?g)$/i,
                     type: 'asset/resource',
@@ -112,36 +124,10 @@ module.exports = (props) => {
                 title: 'Bookings',
                 template: paths.public + '/template.html',
                 filename: 'index.html',
-                inject: true,
+                inject: 'body',
                 minify: false
-            }),
-            new HtmlWebpackPlugin({
-                title: 'Bookings2',
-                template: paths.public + '/template.html',
-                filename: 'app.html',
-                inject: true
             })
-            /*...require('fs')
-                .readdirSync(paths.src)
-                .filter(fileName => fileName.endsWith('.html'))
-                .map(page => new HtmlWebpackPlugin({
-                        template: paths.src + `/${page}`,
-                        filename: `./${page}`
-                    })
-                )*/
         ],
-        optimization: {
-            splitChunks: {
-                cacheGroups: {
-                    vendor: {
-                        name: 'vendors',
-                        test: /node_modules/,
-                        chunks: 'all',
-                        enforce: true
-                    }
-                }
-            }
-        },
         resolve: {
             modules: [paths.src, 'node_modules'],
             extensions: ['.js', '.jsx', '.json', '.css', '.scss', '.sass'],
@@ -153,4 +139,3 @@ module.exports = (props) => {
         }
     }
 }
-

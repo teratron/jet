@@ -1,0 +1,69 @@
+
+%grid {
+    display: grid;
+}
+
+.row {
+    @extend %grid;
+    grid-auto-flow: column;
+    align-items: start;
+
+    > * {
+        @extend %grid;
+        outline: 2px solid red;
+    }
+
+    > .head {
+        justify-items: start;
+    }
+
+    > .body {
+        justify-items: center;
+    }
+
+    > .foot {
+        justify-items: end;
+    }
+}
+
+.col {
+    @extend %grid;
+    grid-auto-flow: row;
+
+    > * {
+        //@extend %grid;
+        outline: 2px solid green;
+    }
+}
+
+.bar {
+    @extend .row;
+    align-items: center;
+
+    > * {
+        //@extend %grid;
+        align-items: center;
+    }
+}
+
+.list {
+    //@include list;
+    @extend .col;
+    //grid-auto-rows: max-content;
+
+    > * {
+        outline: 2px solid blue;
+        //height: 50px;
+    }
+
+    > * {
+        @extend .bar;
+    }
+}
+
+/*
+.head,
+.body,
+.foot {
+    @extend %grid;
+}*/

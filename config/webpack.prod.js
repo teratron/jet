@@ -2,21 +2,19 @@
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const SemverWebpackPlugin = require('semver-extended-webpack-plugin')
-const { merge } = require('webpack-merge')
+const {merge} = require('webpack-merge')
 const common = require('./webpack.common')
 const paths = require('./paths')
 
-const config = merge(common({ styleLoader: MiniCssExtractPlugin.loader }), {
+const config = merge(common({styleLoader: MiniCssExtractPlugin.loader}), {
     mode: 'production',
     devtool: 'source-map',
     output: {
-        filename: 'static/js/[name].[contenthash].bundle.js',
-        chunkFilename: 'static/js/[name].[id].js'
+        filename: 'static/js/[name].[contenthash].bundle.js'
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'static/css/[name].[contenthash].bundle.css',
-            chunkFilename: 'static/css/[name].[id].css'
+            filename: 'static/css/[name].[contenthash].bundle.css'
         }),
         new SemverWebpackPlugin({
             files: [paths.root + '/package.json'],
@@ -32,6 +30,6 @@ const config = merge(common({ styleLoader: MiniCssExtractPlugin.loader }), {
     }
 })
 
-module.exports = new Promise((resolve) => {
+module.exports = new Promise(resolve => {
     resolve(config)
 })
