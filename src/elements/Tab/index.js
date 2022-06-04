@@ -1,3 +1,4 @@
+
 class TabElement extends HTMLElement {
     connectedCallback() {
         this.listener = this.showTab.bind(this);

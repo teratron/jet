@@ -1,4 +1,3 @@
-
 %grid {
     display: grid;
 }
@@ -10,7 +9,7 @@
 
     > * {
         @extend %grid;
-        outline: 2px solid red;
+        //outline: 2px solid red;
     }
 
     > .head {
@@ -30,10 +29,10 @@
     @extend %grid;
     grid-auto-flow: row;
 
-    > * {
+    /*>* {
         //@extend %grid;
-        outline: 2px solid green;
-    }
+        //outline: 2px solid green;
+    }*/
 }
 
 .bar {
@@ -51,19 +50,54 @@
     @extend .col;
     //grid-auto-rows: max-content;
 
-    > * {
-        outline: 2px solid blue;
+    /*>* {
+        //outline: 2px solid blue;
         //height: 50px;
-    }
+    }*/
 
     > * {
         @extend .bar;
     }
 }
 
-/*
-.head,
-.body,
-.foot {
+// Layout 12 columns
+.layout-3-9 {
     @extend %grid;
+    grid-template-columns: 3fr 9fr;
+}
+
+.layout-4-8 {
+    @extend %grid;
+    grid-template-columns: 4fr 8fr;
+}
+
+.layout-6-6,
+.layout-6x2 {
+    @extend %grid;
+    grid-template-columns: repeat(2, 6fr);
+}
+
+.layout-2-8-2 {
+    @extend %grid;
+    grid-template-columns: 2fr 8fr 2fr;
+}
+
+.layout-3-8-3 {
+    @extend %grid;
+    grid-template-columns: 3fr 6fr 3fr;
+}
+
+.layout-4x3 {
+    @extend %grid;
+    grid-template-columns: repeat(3, 4fr);
+}
+
+.layout-3x4 {
+    @extend %grid;
+    grid-template-columns: repeat(4, 3fr);
+}
+
+/*
+@for  {
+
 }*/

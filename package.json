@@ -1,6 +1,6 @@
 {
   "name": "jet",
-  "version": "0.0.187",
+  "version": "0.0.192",
   "description": "Web Framework",
   "main": "src/index.js",
   "keywords": [
@@ -62,5 +62,5 @@
       "last 1 safari version"
     ]
   },
-  "buildDate": "2022-06-03T17:43:56.701Z"
+  "buildDate": "2022-06-04T08:26:01.632Z"
 }
