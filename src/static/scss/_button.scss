@@ -6,9 +6,49 @@
     display: inline-flex;
 }
 
-.btn2 {
+$element-size: 40px;
+
+.element {
+    min-width: $element-size;
+    min-height: $element-size;
+}
+
+.element-solid {
+    @extend .element;
+
+    max-height: $element-size;
+}
+
+.btn {
     @extend %flex;
-    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: center;
+
+    @extend .element-solid;
+
+    line-height: 1;
+
+    width: 200px;
+}
+
+.flex {
+
+    //display: flex;
+    //flex-direction: row;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: auto auto;
+
+    height: 400px;
+    width: 100%;
+    background-color: antiquewhite;
+}
+
+.btn2 {
+
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
@@ -20,7 +60,6 @@
     border: 1px solid transparent;
 
     font-weight: 400;
-    line-height: 1;
 
     text-align: center;
     text-decoration: none;
@@ -33,3 +72,37 @@
     border-radius: 0.25rem;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
+/*
+appearance: auto;
+writing-mode: horizontal-tb !important;
+font-style: ;
+font-variant-ligatures: ;
+font-variant-caps: ;
+font-variant-numeric: ;
+font-variant-east-asian: ;
+font-weight: ;
+font-stretch: ;
+font-size: ;
+font-family: ;
+text-rendering: auto;
+color: -internal-light-dark(black, white);
+letter-spacing: normal;
+word-spacing: normal;
+line-height: normal;
+text-transform: none;
+text-indent: 0px;
+text-shadow: none;
+display: inline-block;
+text-align: center;
+align-items: flex-start;
+cursor: default;
+box-sizing: border-box;
+background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
+margin: 0em;
+padding: 1px 6px;
+border-width: 2px;
+border-style: outset;
+border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+border-image: initial;
+*/

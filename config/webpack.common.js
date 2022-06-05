@@ -113,6 +113,12 @@ module.exports = props => {
                 filename: 'index.html',
                 inject: 'body',
                 minify: false
+            }),
+            new HtmlWebpackPlugin({
+                template: paths.src + '/templates/pages/button.js',
+                filename: 'button.html',
+                inject: 'body',
+                minify: false
             })
         ],
         resolve: {
