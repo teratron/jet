@@ -1,16 +1,16 @@
 {
-  "name": "jet",
-  "version": "0.0.192",
-  "description": "Web Framework",
-  "main": "src/index.js",
-  "keywords": [
-    "html",
-    "css",
-    "sass",
-    "scss",
-    "js",
-    "javascript"
-  ],
+    "name": "jet",
+    "version": "0.0.193",
+    "description": "Web Framework",
+    "main": "src/index.js",
+    "keywords": [
+        "html",
+        "css",
+        "sass",
+        "scss",
+        "js",
+        "javascript"
+    ],
   "author": "Oleg Alexandrov <alexandrovoleg.ru@gmail.com>",
   "license": "ISC",
   "repository": {
@@ -24,7 +24,6 @@
   "devDependencies": {
     "@babel/core": "^7.18.2",
     "@babel/preset-env": "^7.18.2",
-    "autoprefixer": "^10.4.7",
     "babel-loader": "^8.2.5",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
@@ -62,5 +61,5 @@
       "last 1 safari version"
     ]
   },
-  "buildDate": "2022-06-04T08:26:01.632Z"
+    "buildDate": "2022-06-05T12:08:17.558Z"
 }

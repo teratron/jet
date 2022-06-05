@@ -53,7 +53,6 @@ module.exports = props => {
                             options: {
                                 postcssOptions: {
                                     plugins: [
-                                        //'autoprefixer',
                                         'postcss-preset-env'
                                     ]
                                 }
