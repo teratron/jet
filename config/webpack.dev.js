@@ -1,7 +1,7 @@
 'use strict'
 
 const { merge } = require('webpack-merge')
-const common = require('./webpack.common').default
+const common = require('./webpack.common')
 const paths = require('./paths')
 
 const config = merge(common({ styleLoader: 'style-loader' }), {
@@ -11,7 +11,7 @@ const config = merge(common({ styleLoader: 'style-loader' }), {
         filename: 'static/js/[name].bundle.js'
     },
     devServer: {
-        static: paths.build,
+        static: paths.build + '/static',
         port: 9001,
         historyApiFallback: true,
         compress: true,
