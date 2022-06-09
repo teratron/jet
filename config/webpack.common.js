@@ -67,13 +67,15 @@ module.exports = props => {
                     loader: 'handlebars-loader',
                     options: {
                         helperDirs: [
-                            paths.src + '/templates/helpers'
+                            paths.src + '/templates/helpers',
+                            paths.src + '/elements/select'
                         ],
                         partialDirs: [
                             paths.src + '/templates',
                             paths.src + '/templates/partials',
                             paths.src + '/templates/pages',
-                            paths.src + '/templates/layouts'
+                            paths.src + '/templates/layouts',
+                            paths.src + '/elements/select'
                         ]
                     }
                 },
@@ -114,12 +116,12 @@ module.exports = props => {
                 inject: 'body',
                 minify: false
             }),
-            new HtmlWebpackPlugin({
+            /*new HtmlWebpackPlugin({
                 template: paths.src + '/templates/pages/button.js',
                 filename: 'button.html',
                 inject: 'body',
                 minify: false
-            })
+            })*/
         ],
         resolve: {
             modules: [paths.src, 'node_modules'],
