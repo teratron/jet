@@ -1,11 +1,11 @@
 'use strict'
 
 import {props} from '../app'
-import template from './dropbox.hbs'
+import template from './dropdown.hbs'
 
 const context = {
     ...props,
-    title: props['title'] + ' - Dropbox'
+    title: props['title'] + ' - Dropdown'
 }
 
 export default template(context)
