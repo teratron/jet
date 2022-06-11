@@ -67,15 +67,13 @@ module.exports = props => {
                     loader: 'handlebars-loader',
                     options: {
                         helperDirs: [
-                            paths.src + '/templates/helpers',
-                            paths.src + '/elements/select'
+                            paths.src + '/templates/helpers'
                         ],
                         partialDirs: [
                             paths.src + '/templates',
                             paths.src + '/templates/partials',
                             paths.src + '/templates/pages',
-                            paths.src + '/templates/layouts',
-                            paths.src + '/elements/select'
+                            paths.src + '/templates/layouts'
                         ]
                     }
                 },
@@ -111,25 +109,30 @@ module.exports = props => {
                 ]
             }),
             new HtmlWebpackPlugin({
-                template: paths.src + '/templates/pages/index.js',
-                filename: 'index.html',
+                title: "Jet - Template",
+                template: paths.public + '/template.html',
+                filename: 'template.html',
                 inject: 'body',
                 minify: false
             }),
-            /*new HtmlWebpackPlugin({
-                template: paths.src + '/templates/pages/button.js',
-                filename: 'button.html',
-                inject: 'body',
-                minify: false
-            })*/
+            ...require('fs')
+                .readdirSync(paths.src + '/templates/pages')
+                .filter(fileName => fileName.endsWith('.js'))
+                .map(page => new HtmlWebpackPlugin({
+                        template: paths.src + `/templates/pages/${page}`,
+                        filename: page.replace(/.js/gi, '.html'),
+                        inject: 'body',
+                        minify: false
+                    })
+                )
         ],
         resolve: {
             modules: [paths.src, 'node_modules'],
             extensions: ['.js', '.jsx', '.json', '.css', '.scss', '.sass'],
             alias: {
                 '~': paths.src,
-                '@': paths.src + 'js',
-                jet$: 'jet.js'
+                '@': paths.src + '/static/js',
+                jet$: paths.src + '/static/js/jet.js'
             }
         }
     }

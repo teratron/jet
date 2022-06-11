@@ -1,16 +1,16 @@
 {
-  "name": "jet",
-  "version": "0.0.194",
-  "description": "Web Framework",
-  "main": "src/index.js",
-  "keywords": [
-    "html",
-    "css",
-    "sass",
-    "scss",
-    "js",
-    "javascript"
-  ],
+    "name": "jet",
+    "version": "0.0.197",
+    "description": "Web Framework",
+    "main": "src/index.js",
+    "keywords": [
+        "html",
+        "css",
+        "sass",
+        "scss",
+        "js",
+        "javascript"
+    ],
   "author": "Oleg Alexandrov <alexandrovoleg.ru@gmail.com>",
   "license": "ISC",
   "repository": {
@@ -61,5 +61,5 @@
       "last 1 safari version"
     ]
   },
-  "buildDate": "2022-06-07T16:59:40.827Z"
+    "buildDate": "2022-06-11T11:11:52.796Z"
 }

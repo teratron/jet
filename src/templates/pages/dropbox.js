@@ -1,11 +1,11 @@
 'use strict'
 
 import {props} from '../app'
-import template from './button.hbs'
+import template from './dropbox.hbs'
 
 const context = {
     ...props,
-    title: props['title'] + ' - Button'
+    title: props['title'] + ' - Dropbox'
 }
 
 export default template(context)

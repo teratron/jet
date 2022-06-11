@@ -32,9 +32,10 @@
         overflow: visible;
     }
 
-    >.pick {}
+    > .pick {
+    }
 
-    >.menu {
+    > .menu {
         position: absolute;
         top: 100%;
         left: 0;
@@ -43,7 +44,7 @@
 
         background-color: rgb(194, 218, 219);
 
-        >.item {
+        > .item {
             &.active {
                 display: none;
             }
@@ -57,7 +58,6 @@
         left: auto;
 
 
-
         .dropdown-item {
             pointer-events: all;
             cursor: pointer;
@@ -69,7 +69,8 @@
             }
 
 
-            &.active {}
+            &.active {
+            }
         }
     }
 }
