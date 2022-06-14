@@ -1,5 +1,3 @@
-//@use "sass:meta";
-
 // Color variables
 $blue: #0009e1;
 $blue2: #3055d6;
@@ -27,32 +25,17 @@ $dark: #212529;
 $body-bg: #fff;
 $body-color: #000;
 
-//
-$font-family-: Menlo, Consolas, "Courier New", monospace;
-$font-family-monospace: Menlo, Consolas, "Courier New", monospace;
-
-/*@font-face {
-  font-family: "Futura";
-  src: url("../../fonts/futura/futura.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 400;
-}*/
-
-/*@font-face {
-  font-family: "FuturaLight";
-  src: url("../../fonts/futura/futura_light_bt.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 400;
-}*/
+// Fonts
+$font-family-sans-serif: Futura, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 // CSS color variables
-:root {
-    --color-primary: #f8bb44;
-    --color-primary-dark: darken(var(--color-primary), 40%);
-    --color-primary-light: lighten(var(--color-primary), 40%);
+@mixin app-theme {
+    --color-primary: #{$primary};
+    --color-primary-dark: #f8bb44;
+    --color-primary-light: #f8bb44;
     --color-primary-font: white;
 
-    --color-secondary: $secondary;
+    --color-secondary: #ebebeb;
     --color-secondary-dark: #668630;
     --color-secondary-light: #96cb4b;
     --color-secondary-font: white;
@@ -62,22 +45,22 @@ $font-family-monospace: Menlo, Consolas, "Courier New", monospace;
     --color-accent-light: #9374f8;
     --color-accent-font: white;
 
-    --color-info: $info;
+    --color-info: #20a1ff;
     --color-info-dark: #3e3167;
     --color-info-light: #9374f8;
     --color-info-font: white;
 
-    --color-success: $success;
+    --color-success: #198754;
     --color-success-dark: #167c24;
     --color-success-light: #5cd06d;
     --color-success-font: white;
 
-    --color-warning: $warning;
+    --color-warning: #ffd582;
     --color-warning-dark: #deaa1f;
     --color-warning-light: #ffd562;
     --color-warning-font: black;
 
-    --color-error: $danger;
+    --color-error: #ff6464;
     --color-error-dark: #c4465e;
     --color-error-light: #ff6381;
     --color-error-font: white;
@@ -85,6 +68,4 @@ $font-family-monospace: Menlo, Consolas, "Courier New", monospace;
     --color-grey: #aaa;
     --color-dark: #222;
     --color-light: #eee;
-
-    //--font-family-monospace: #{meta.inspect($font-family-monospace)};
 }

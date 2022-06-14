@@ -35,15 +35,17 @@ $layout_width: $layout_column*$unit; // + (@layout_column - 1)*@layout_gap
 
 
 //*** Layout ***//
-$grid: 16;
-$grid-gap: 20px;
+$layout-columns: 12;
+$layout-width: 1240px;
+$layout-width-min: 320px;
+$layout-gap: 20px;
+
 $grid-width: 120px;
 
-$layout-width: 1360px;
-$layout-width-min: 360px;
 
 $header-height: 80px;
 $footer-height: auto;
+$main-height: 220px;
 
 $navbar-width: 260px;
 $navbar-width-min: 80px;
@@ -63,11 +65,10 @@ $html-font-size: 1em; // 16px
 :root {
     /* Layout */
     --html-font-size: .5em; // 8px
-
     --app-layout-padding: 7rem;
     --app-header-height: 96px;
     --app-footer-height: 220px;
-
+    --app-main-height: #{$main-height};
     --app-navbar-height: 11rem;
     --app-tab-height: 8.5rem;
 
@@ -88,4 +89,7 @@ $html-font-size: 1em; // 16px
     --zindex-popover: 7000;
     --zindex-tooltip: 8000;
     --zindex-debug: 10000;
+
+    /* Theme */
+    @include app-theme;
 }
