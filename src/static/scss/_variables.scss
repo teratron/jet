@@ -16,10 +16,9 @@ $unit_half: math.round(math.div($unit, 2));
 $px: 1px;
 
 $layout_column: 12;
-$layout_width: $layout_column*$unit; // + (@layout_column - 1)*@layout_gap
+$layout_width: $layout_column * $unit; // + (@layout_column - 1)*@layout_gap
 
 @debug $layout_width;
-
 
 /*
 @layout_gap:            @unit*2;
@@ -33,7 +32,6 @@ $layout_width: $layout_column*$unit; // + (@layout_column - 1)*@layout_gap
 @footer_height:         @unit*8;
 */
 
-
 //*** Layout ***//
 $layout-columns: 12;
 $layout-width: 1240px;
@@ -41,7 +39,6 @@ $layout-width-min: 320px;
 $layout-gap: 20px;
 
 $grid-width: 120px;
-
 
 $header-height: 80px;
 $footer-height: auto;
@@ -53,18 +50,12 @@ $navbar-width-min: 80px;
 $sidebar-width: 0;
 $sidebar-width-min: 0;
 
-
-
-
-
-
 // Layout
 $html-font-size: 1em; // 16px
 
-
 :root {
     /* Layout */
-    --html-font-size: .5em; // 8px
+    --html-font-size: 0.5em; // 8px
     --app-layout-padding: 7rem;
     --app-header-height: 96px;
     --app-footer-height: 220px;

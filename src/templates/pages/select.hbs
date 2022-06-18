@@ -1,13 +1,20 @@
 {{#> base main-partial-block=true title=title}}
-    <h1>Select</h1>
+<h1>Select</h1>
 
-    <label>
-        <select class="custom-select">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option selected>Option 3</option>
-            <option>Option 4</option>
-        </select>
-    </label>
+<label class="dropdown">
+    <div class="toggle">Option 3</div>
+    <nav class="menu">
+        <a class="item" href="/#">Option 1</a>
+        <a class="item" href="/#">Option 2</a>
+    </nav>
+
+    <select class="select-custom">
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option selected>Option 3</option>
+    </select>
+</label>
+
+<div class="select-custom"></div>
 
 {{/base}}

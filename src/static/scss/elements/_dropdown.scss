@@ -1,15 +1,60 @@
-.display-flex {
+.dropdown {
     display: flex;
+    flex-direction: column;
+
+    height: 40px;
+    width: 150px;
+
+    border: 1px solid #ddd;
+
+    > .item {
+        display: none;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        min-height: 40px;
+        padding: 0 10px;
+        order: 2;
+        cursor: pointer;
+        background-color: azure;
+        visibility: hidden;
+        opacity: 0;
+        transition: all ease-out 0.8s;
+
+        &:not(.active) {
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+
+            &:first-child {
+                border-top: 1px solid #ddd;
+            }
+
+            &:last-child {
+                border-bottom: 1px solid #ddd;
+            }
+        }
+
+        &.active {
+            display: flex;
+            order: 1;
+            visibility: inherit;
+            opacity: 1;
+            margin-bottom: 10px;
+        }
+    }
+
+    &:hover {
+        > .item {
+            display: flex;
+            z-index: 1000;
+            visibility: inherit;
+            opacity: 1;
+        }
+    }
+    transition: all ease-out 0.8s;
 }
 
-.position-relative {
-    position: relative;
-}
-
-.position-absolute {
-    position: absolute;
-}
-
+/*
 .dropdown {
     //@extend .display-flex;
     //@extend .position-relative;
@@ -32,8 +77,8 @@
         overflow: visible;
     }
 
-    > .pick {
-    }
+    //> .pick {
+    //}
 
     > .menu {
         position: absolute;
@@ -57,7 +102,6 @@
         right: auto;
         left: auto;
 
-
         .dropdown-item {
             pointer-events: all;
             cursor: pointer;
@@ -68,9 +112,8 @@
                 height: 40px;
             }
 
-
-            &.active {
-            }
+            //&.active {
+            //}
         }
     }
 }
@@ -97,3 +140,4 @@
         position: absolute;
     }
 }
+*/
