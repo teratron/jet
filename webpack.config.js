@@ -5,10 +5,12 @@ const prod = require('./config/webpack.prod')
 
 module.exports = (_env, argv) => {
     switch (argv.mode) {
-        default:
+        case 'none':
         case 'development':
             return dev
         case 'production':
             return prod
+        default:
+            throw new Error('No matching configuration was found!')
     }
 }
