@@ -1,0 +1,26 @@
+//@use "bootstrap/scss/mixins/breakpoints";
+
+.app-debug {
+    background-color: rgba(0, 0, 0, .3);
+    width:            50px;
+    height:           30px;
+    position:         fixed;
+    bottom:           0;
+    right:            0;
+}
+
+/*@include media-breakpoint-up(sm) {
+
+}
+@include media-breakpoint-up(md) {
+
+}
+@include media-breakpoint-up(lg) {
+
+}
+@include media-breakpoint-up(xl) {
+
+}
+@include media-breakpoint-up(xxl) {
+
+}*/
