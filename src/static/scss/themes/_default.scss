@@ -1,71 +1,71 @@
 // Color variables
-$blue: #0009e1;
-$blue2: #3055d6;
-$indigo: #6610f2;
-$purple: #6f42c1;
-$pink: #d63384;
-$red: #ff0000;
-$orange: #fd7e14;
-$yellow: #ffa900;
-$green: #198754;
-$teal: #20ff6c;
-$cyan: #20a1ff;
+$blue:                   #0009e1;
+$blue2:                  #3055d6;
+$indigo:                 #6610f2;
+$purple:                 #6f42c1;
+$pink:                   #d63384;
+$red:                    #ff0000;
+$orange:                 #fd7e14;
+$yellow:                 #ffa900;
+$green:                  #198754;
+$teal:                   #20ff6c;
+$cyan:                   #20a1ff;
 
 // Theme color variables
-$primary: #f8bb44;
-$secondary: #ebebeb;
-$success: #198754;
-$info: $cyan;
-$warning: #ffd582;
-$danger: #ff6464;
-$light: #f8f9fa;
-$dark: #212529;
+$primary:                #f8bb44;
+$secondary:              #ebebeb;
+$success:                #198754;
+$info:                   $cyan;
+$warning:                #ffd582;
+$danger:                 #ff6464;
+$light:                  #f8f9fa;
+$dark:                   #212529;
 
 // Body
-$body-bg: #fff;
-$body-color: #000;
+$body-bg:                #fff;
+$body-color:             #000;
 
 // Fonts
 $font-family-sans-serif: Futura, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 // CSS color variables
 @mixin app-theme {
-    --color-primary: #{$primary};
-    --color-primary-dark: #f8bb44;
-    --color-primary-light: #f8bb44;
-    --color-primary-font: white;
+    --color-primary:         #{$primary};
+    --color-primary-dark:    #f8bb44;
+    --color-primary-light:   #f8bb44;
+    --color-primary-font:    white;
 
-    --color-secondary: #ebebeb;
-    --color-secondary-dark: #668630;
+    --color-secondary:       #ebebeb;
+    --color-secondary-dark:  #668630;
     --color-secondary-light: #96cb4b;
-    --color-secondary-font: white;
+    --color-secondary-font:  white;
 
-    --color-accent: #725ac1;
-    --color-accent-dark: #3e3167;
-    --color-accent-light: #9374f8;
-    --color-accent-font: white;
+    --color-accent:          #725ac1;
+    --color-accent-dark:     #3e3167;
+    --color-accent-light:    #9374f8;
+    --color-accent-font:     white;
 
-    --color-info: #20a1ff;
-    --color-info-dark: #3e3167;
-    --color-info-light: #9374f8;
-    --color-info-font: white;
+    --color-info:            #20a1ff;
+    --color-info-dark:       #3e3167;
+    --color-info-light:      #9374f8;
+    --color-info-font:       white;
 
-    --color-success: #198754;
-    --color-success-dark: #167c24;
-    --color-success-light: #5cd06d;
-    --color-success-font: white;
+    --color-success:         #198754;
+    --color-success-dark:    #167c24;
+    --color-success-light:   #5cd06d;
+    --color-success-font:    white;
 
-    --color-warning: #ffd582;
-    --color-warning-dark: #deaa1f;
-    --color-warning-light: #ffd562;
-    --color-warning-font: black;
+    --color-warning:         #ffd582;
+    --color-warning-dark:    #deaa1f;
+    --color-warning-light:   #ffd562;
+    --color-warning-font:    black;
 
-    --color-error: #ff6464;
-    --color-error-dark: #c4465e;
-    --color-error-light: #ff6381;
-    --color-error-font: white;
+    --color-error:           #ff6464;
+    --color-error-dark:      #c4465e;
+    --color-error-light:     #ff6381;
+    --color-error-font:      white;
 
-    --color-grey: #aaa;
-    --color-dark: #222;
-    --color-light: #eee;
+    --color-grey:            #aaa;
+    --color-dark:            #222;
+    --color-light:           #eee;
 }

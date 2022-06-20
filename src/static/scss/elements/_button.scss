@@ -9,7 +9,7 @@
 $element-size: 40px;
 
 .element {
-    min-width: $element-size;
+    min-width:  $element-size;
     min-height: $element-size;
 }
 
@@ -21,56 +21,56 @@ $element-size: 40px;
 
 .btn {
     @extend %flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    flex-direction:  row;
+    flex-wrap:       nowrap;
 
     justify-content: center;
-    align-items: center;
+    align-items:     center;
 
     @extend .element-solid;
 
-    line-height: 1;
+    line-height:     1;
 
-    width: 200px;
+    width:           200px;
 }
 
 .flex {
 
     //display: flex;
     //flex-direction: row;
-    display: grid;
-    grid-auto-flow: column;
+    display:            grid;
+    grid-auto-flow:     column;
     grid-template-rows: auto auto;
 
-    height: 400px;
-    width: 100%;
-    background-color: antiquewhite;
+    height:             400px;
+    width:              100%;
+    background-color:   antiquewhite;
 }
 
 .btn2 {
 
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
+    flex-direction:   row;
+    flex-wrap:        nowrap;
+    justify-content:  center;
+    align-items:      center;
+    align-content:    center;
 
 
     background-color: aqua;
-    border: 1px solid transparent;
+    border:           1px solid transparent;
 
-    font-weight: 400;
+    font-weight:      400;
 
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    cursor: pointer;
-    user-select: none;
+    text-align:       center;
+    text-decoration:  none;
+    vertical-align:   middle;
+    cursor:           pointer;
+    user-select:      none;
 
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    border-radius: 0.25rem;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    padding:          0.375rem 0.75rem;
+    font-size:        1rem;
+    border-radius:    0.25rem;
+    transition:       color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 /*

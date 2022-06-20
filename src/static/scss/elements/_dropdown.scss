@@ -1,28 +1,28 @@
 .dropdown {
-    display: flex;
+    display:        flex;
     flex-direction: column;
 
-    height: 40px;
-    width: 150px;
+    height:         40px;
+    width:          150px;
 
-    border: 1px solid #ddd;
+    border:         1px solid #ddd;
 
     > .item {
-        display: none;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-items: center;
-        min-height: 40px;
-        padding: 0 10px;
-        order: 2;
-        cursor: pointer;
+        display:          none;
+        flex-direction:   row;
+        flex-wrap:        nowrap;
+        align-items:      center;
+        min-height:       40px;
+        padding:          0 10px;
+        order:            2;
+        cursor:           pointer;
         background-color: azure;
-        visibility: hidden;
-        opacity: 0;
-        transition: all ease-out 0.8s;
+        visibility:       hidden;
+        opacity:          0;
+        transition:       all ease-out 0.8s;
 
         &:not(.active) {
-            border-left: 1px solid #ddd;
+            border-left:  1px solid #ddd;
             border-right: 1px solid #ddd;
 
             &:first-child {
@@ -35,23 +35,24 @@
         }
 
         &.active {
-            display: flex;
-            order: 1;
-            visibility: inherit;
-            opacity: 1;
+            display:       flex;
+            order:         1;
+            visibility:    inherit;
+            opacity:       1;
             margin-bottom: 10px;
         }
     }
 
     &:hover {
         > .item {
-            display: flex;
-            z-index: 1000;
+            display:    flex;
+            z-index:    1000;
             visibility: inherit;
-            opacity: 1;
+            opacity:    1;
         }
     }
-    transition: all ease-out 0.8s;
+
+    transition:     all ease-out 0.8s;
 }
 
 /*

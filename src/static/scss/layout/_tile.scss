@@ -7,8 +7,8 @@
 
     @for $i from 1 through $layout-columns {
         .tile-#{$i} > * {
-            $j: math.div(100%, $i);
-            width: $j;
+            $j:        math.div(100%, $i);
+            width:     $j;
             max-width: $j;
         }
     }
@@ -17,8 +17,8 @@
 @for $i from 1 through $layout-columns {
     @media only screen and (min-width: (120px + $i*120px)) {
         .tile > * {
-            $j: math.div(100%, ($i + 1));
-            width: $j;
+            $j:        math.div(100%, ($i + 1));
+            width:     $j;
             max-width: $j;
         }
     }
@@ -28,8 +28,8 @@
     @for $j from 1 through 6*$i {
         @media only screen and (min-width: math.round(math.div($layout-width-min + $j * $layout-width-min, $i))) {
             .tile-#{$i} > * {
-                $k: math.div(100%, ($i + $j));
-                width: $k;
+                $k:        math.div(100%, ($i + $j));
+                width:     $k;
                 max-width: $k;
             }
         }
