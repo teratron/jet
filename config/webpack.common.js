@@ -9,11 +9,6 @@ module.exports = props => {
         entry: {
             main: paths.src + '/index.js'
         },
-        output: {
-            path: paths.build,
-            publicPath: 'auto',
-            clean: true
-        },
         module: {
             rules: [
                 {

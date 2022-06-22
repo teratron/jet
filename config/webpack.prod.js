@@ -10,7 +10,10 @@ const config = merge(common({styleLoader: MiniCssExtractPlugin.loader}), {
     mode: 'production',
     devtool: 'source-map',
     output: {
-        filename: 'static/js/[name].[contenthash].bundle.js'
+        filename: 'static/js/[name].[contenthash].bundle.js',
+        path: paths.build,
+        publicPath: 'auto',
+        clean: true
     },
     plugins: [
         new MiniCssExtractPlugin({
