@@ -242,10 +242,10 @@ web_modules/
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+dist/
 
 # production
-/build
+build/
 
 # Gatsby files
 .cache/

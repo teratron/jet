@@ -7,7 +7,7 @@ const paths = require('./paths')
 module.exports = props => {
     return {
         entry: {
-            main: paths.src + '/index.js'
+            main: paths.app + '/index.js'
         },
         module: {
             rules: [
@@ -62,13 +62,13 @@ module.exports = props => {
                     loader: 'handlebars-loader',
                     options: {
                         helperDirs: [
-                            paths.src + '/templates/helpers'
+                            paths.app + '/templates/helpers'
                         ],
                         partialDirs: [
-                            paths.src + '/templates',
-                            paths.src + '/templates/partials',
-                            paths.src + '/templates/pages',
-                            paths.src + '/templates/layouts'
+                            paths.app + '/templates',
+                            paths.app + '/templates/partials',
+                            paths.app + '/templates/pages',
+                            paths.app + '/templates/layouts'
                         ]
                     }
                 },
@@ -111,10 +111,10 @@ module.exports = props => {
                 minify: false
             }),
             ...require('fs')
-                .readdirSync(paths.src + '/templates/pages')
+                .readdirSync(paths.app + '/templates/pages')
                 .filter(fileName => fileName.endsWith('.js'))
                 .map(page => new HtmlWebpackPlugin({
-                        template: paths.src + `/templates/pages/${page}`,
+                        template: paths.app + `/templates/pages/${page}`,
                         filename: page.replace(/.js/gi, '.html'),
                         inject: 'body',
                         minify: false
@@ -126,8 +126,8 @@ module.exports = props => {
             extensions: ['.js', '.jsx', '.json', '.css', '.scss', '.sass'],
             alias: {
                 '~': paths.src,
-                '@': paths.src + '/static/js',
-                jet$: paths.src + '/static/js/jet.js'
+                '@': paths.src + '/js',
+                jet$: paths.src + '/js/jet.js'
             }
         }
     }

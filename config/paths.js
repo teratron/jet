@@ -7,5 +7,6 @@ module.exports = {
     src: path.resolve(__dirname, '../src'),
     dist: path.resolve(__dirname, '../dist'),
     build: path.resolve(__dirname, '../build'),
-    public: path.resolve(__dirname, '../public')
+    app: path.resolve(__dirname, '../app'),
+    public: path.resolve(__dirname, '../app/public')
 }
