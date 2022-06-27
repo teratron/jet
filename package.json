@@ -1,14 +1,17 @@
 {
   "name": "jettix",
-  "version": "0.0.204",
+  "version": "0.0.207",
   "description": "HTML, CSS, SCSS, JavaScript Framework.",
+  "private": false,
   "main": "dist/js/jettix.js",
   "style": "dist/css/jettix.css",
   "sass": "src/scss/jettix.scss",
   "files": [
-    "dist/{css,js}/*.{css,js,map}",
-    "js/{src,dist}/**/*.{js,map}",
-    "scss/**/*.scss"
+    "dist/{css,js}/**/*.{css,js,map}",
+    "src/{scss,js}/**/*.{scss,js}"
+  ],
+  "workspaces": [
+    "app"
   ],
   "keywords": [
     "web",
@@ -62,35 +65,5 @@
     "publish:npm": "npm run version && npm publish",
     "release": "npm run version"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "jspm": {
-    "registry": "npm",
-    "main": "js/bootstrap",
-    "directories": {
-      "lib": "dist"
-    },
-    "shim": {
-      "js/bootstrap": {
-        "deps": [
-          "@popperjs/core"
-        ]
-      }
-    },
-    "dependencies": {},
-    "peerDependencies": {
-      "@popperjs/core": "^2.10.2"
-    }
-  },
-  "buildDate": "2022-06-27T10:35:08.104Z"
+  "buildDate": "2022-06-27T15:56:41.407Z"
 }

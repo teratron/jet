@@ -1,0 +1,49 @@
+{
+  "name": "jettix-app",
+  "version": "0.0.1",
+  "description": "Web application for Jettix.",
+  "private": false,
+  "main": "index.js",
+  "keywords": [
+    "app",
+    "site",
+    "web",
+    "framework",
+    "front-end",
+    "html",
+    "css",
+    "scss",
+    "js",
+    "javascript"
+  ],
+  "author": "Oleg Alexandrov <alexandrovoleg.ru@gmail.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teratron/jettix.git"
+  },
+  "bugs": {
+    "url": "https://github.com/teratron/jettix/issues"
+  },
+  "homepage": "https://teratron.github.io/jettix",
+  "devDependencies": {},
+  "scripts": {
+    "start:app": "webpack serve --config config/webpack.dev.js",
+    "build:app": "webpack --config config/webpack.prod.js",
+    "deploy:gh": "gh-pages -d build",
+    "build-deploy:gh": "npm run build:app && npm run deploy:gh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

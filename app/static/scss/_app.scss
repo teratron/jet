@@ -1,5 +1,5 @@
-//@import './mixins/bar';
-//@import 'layout';
+/*
+@import "themes/default";
 
 // Application
 #app {
@@ -90,38 +90,5 @@
         font-size:   2rem;
         font-weight: 500;
         margin:      0;
-    }
-
-}
-
-
-/*
-@media (min-width: 1400px) {
-    .app-container {
-        max-width: 1320px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .app-container {
-        max-width: 1140px;
-    }
-}
-
-@media (min-width: 992px) {
-    .app-container {
-        max-width: 960px;
-    }
-}
-
-@media (min-width: 768px) {
-    .app-container {
-        max-width: 720px;
-    }
-}
-
-@media (min-width: 576px) {
-    .app-container {
-        max-width: 540px;
     }
 }*/

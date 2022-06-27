@@ -103,13 +103,6 @@ module.exports = props => {
                     }
                 ]
             }),
-            new HtmlWebpackPlugin({
-                title: "Jettix - Template",
-                template: paths.public + '/template.html',
-                filename: 'template.html',
-                inject: 'body',
-                minify: false
-            }),
             ...require('fs')
                 .readdirSync(paths.app + '/templates/pages')
                 .filter(fileName => fileName.endsWith('.js'))
@@ -117,7 +110,7 @@ module.exports = props => {
                         template: paths.app + `/templates/pages/${page}`,
                         filename: page.replace(/.js/gi, '.html'),
                         inject: 'body',
-                        minify: false
+                        minify: true
                     })
                 )
         ],
@@ -125,7 +118,7 @@ module.exports = props => {
             modules: [paths.src, 'node_modules'],
             extensions: ['.js', '.jsx', '.json', '.css', '.scss', '.sass'],
             alias: {
-                '~': paths.src,
+                '~': paths.src + '/',
                 '@': paths.src + '/js',
                 jettix$: paths.src + '/js/jettix.js'
             }

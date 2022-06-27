@@ -4,7 +4,11 @@ const {merge} = require('webpack-merge')
 const common = require('./webpack.common')
 const paths = require('./paths')
 
-const config = merge(common({styleLoader: 'style-loader'}), {
+const config = merge(
+    common({
+        styleLoader: 'style-loader'
+    }),
+    {
     mode: 'development',
     devtool: 'eval-cheap-module-source-map',
     output: {

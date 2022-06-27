@@ -5,12 +5,14 @@
 //
 //**********************************************************
 
-//@import "themes/default";
+// Configuration
+@import "functions";
 @import "variables";
+@import "mixins";
 @import "reset";
+
+// Layout
 @import "layout";
-//@import 'adaptive';
-//@import "app";
 
 // Elements
 @import "elements/button";

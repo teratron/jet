@@ -1,0 +1,36 @@
+//**********************************************************
+// Functions
+//----------------------------------------------------------
+//
+//**********************************************************
+//@use "variables" as *;
+@use "sass:math";
+@use "sass:list";
+
+// Breakpoints
+@function getListBreakpoints() {
+    $list: [];
+    $b: math.div(100, $layout_width) * $layout_gaps;
+    $g: 100 - $b;
+
+    @for $i from 1 through $grid_column {
+        $w: $i * $grid_col_width;
+        $s: math.div($w, $g) * $b;
+        $d: $w + $s - $px;
+        $list: list.append($list, $d);
+    }
+
+    @return $list;
+}
+
+@function getBreakpoint($n: $grid_column) {
+    @return list.nth($list_breakpoints, $n);
+}
+
+@function stripUnit($value) {
+    @return math.div($value, ($value * 0 + 1));
+}
+
+@function toRem($value) {
+    @return 0.0625rem * stripUnit($value);
+}
