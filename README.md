@@ -1,3 +1,7 @@
 # Jettix
 
-HTML, CSS, SCSS, JavaScript Framework
+## About
+
+HTML, CSS, SCSS, JavaScript Framework.
+
+## Usage

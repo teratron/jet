@@ -1,10 +1,11 @@
 'use strict'
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const SemverWebpackPlugin = require('semver-extended-webpack-plugin')
+//const SemverWebpackPlugin = require('semver-extended-webpack-plugin')
 const {merge} = require('webpack-merge')
 const common = require('./webpack.common')
 const paths = require('./paths')
+const SemverWebpackPlugin = require('./version')
 
 const config = merge(common({styleLoader: MiniCssExtractPlugin.loader}), {
     mode: 'production',
@@ -19,12 +20,13 @@ const config = merge(common({styleLoader: MiniCssExtractPlugin.loader}), {
         new MiniCssExtractPlugin({
             filename: 'static/css/[name].[contenthash].bundle.css'
         }),
-        new SemverWebpackPlugin({
+        SemverWebpackPlugin
+        /*new SemverWebpackPlugin({
             files: [paths.root + '/package.json'],
             incArgs: ['patch'],
             console: true,
             buildDate: true
-        })
+        })*/
     ],
     performance: {
         hints: false,

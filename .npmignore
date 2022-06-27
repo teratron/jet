@@ -6,7 +6,6 @@
 # !a/b/c/d/*
 
 *
-!docs/*
 !dist/*
 !src/*
 !package.json

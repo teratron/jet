@@ -7,7 +7,7 @@ const paths = require('./paths')
 module.exports = props => {
     return {
         entry: {
-            main: paths.app + '/index.js'
+            app: paths.app + '/index.js'
         },
         module: {
             rules: [
@@ -127,7 +127,7 @@ module.exports = props => {
             alias: {
                 '~': paths.src,
                 '@': paths.src + '/js',
-                jet$: paths.src + '/js/jettix.js'
+                jettix$: paths.src + '/js/jettix.js'
             }
         }
     }

@@ -1,9 +1,19 @@
 {
   "name": "jettix",
-  "version": "0.0.202",
-  "description": "Web Framework",
-  "main": "app/index.js",
+  "version": "0.0.204",
+  "description": "HTML, CSS, SCSS, JavaScript Framework.",
+  "main": "dist/js/jettix.js",
+  "style": "dist/css/jettix.css",
+  "sass": "src/scss/jettix.scss",
+  "files": [
+    "dist/{css,js}/*.{css,js,map}",
+    "js/{src,dist}/**/*.{js,map}",
+    "scss/**/*.scss"
+  ],
   "keywords": [
+    "web",
+    "framework",
+    "front-end",
     "html",
     "css",
     "scss",
@@ -19,7 +29,7 @@
   "bugs": {
     "url": "https://github.com/teratron/jettix/issues"
   },
-  "homepage": "https://github.com/teratron/jettix/docs#readme",
+  "homepage": "https://teratron.github.io/jettix",
   "devDependencies": {
     "@babel/core": "^7.18.5",
     "@babel/preset-env": "^7.18.2",
@@ -44,10 +54,13 @@
     "webpack-merge": "^5.8.0"
   },
   "scripts": {
-    "start": "webpack serve --config config/webpack.dev.js",
-    "build": "webpack --config config/webpack.prod.js",
+    "start:app": "webpack serve --config config/webpack.dev.js",
+    "build:app": "webpack --config config/webpack.prod.js",
     "deploy:gh": "gh-pages -d build",
-    "build-deploy:gh": "npm run build && npm run deploy:gh"
+    "build-deploy:gh": "npm run build:app && npm run deploy:gh",
+    "version": "node config/version.js",
+    "publish:npm": "npm run version && npm publish",
+    "release": "npm run version"
   },
   "browserslist": {
     "production": [
@@ -61,5 +74,23 @@
       "last 1 safari version"
     ]
   },
-  "buildDate": "2022-06-27T07:35:06.629Z"
+  "jspm": {
+    "registry": "npm",
+    "main": "js/bootstrap",
+    "directories": {
+      "lib": "dist"
+    },
+    "shim": {
+      "js/bootstrap": {
+        "deps": [
+          "@popperjs/core"
+        ]
+      }
+    },
+    "dependencies": {},
+    "peerDependencies": {
+      "@popperjs/core": "^2.10.2"
+    }
+  },
+  "buildDate": "2022-06-27T10:35:08.104Z"
 }
