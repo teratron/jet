@@ -1,0 +1,15 @@
+# *
+# !a
+# !a/b
+# !a/b/c
+# !a/b/c/d
+# !a/b/c/d/*
+
+*
+!docs/*
+!dist/*
+!src/*
+!package.json
+!README.md
+!SECURITY.md
+!LICENSE

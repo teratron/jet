@@ -127,7 +127,7 @@ module.exports = props => {
             alias: {
                 '~': paths.src,
                 '@': paths.src + '/js',
-                jet$: paths.src + '/js/jet.js'
+                jet$: paths.src + '/js/jettix.js'
             }
         }
     }

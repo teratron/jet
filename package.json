@@ -1,6 +1,6 @@
 {
-    "name": "jet",
-    "version": "0.0.200",
+    "name": "jettix",
+    "version": "0.0.201",
     "description": "Web Framework",
     "main": "app/index.js",
     "keywords": [
@@ -14,12 +14,12 @@
     "license": "ISC",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/teratron/jet.git"
+        "url": "git+https://github.com/teratron/jettix.git"
     },
     "bugs": {
-        "url": "https://github.com/teratron/jet/issues"
+        "url": "https://github.com/teratron/jettix/issues"
     },
-    "homepage": "https://github.com/teratron/jet/docs#readme",
+    "homepage": "https://github.com/teratron/jettix/docs#readme",
     "devDependencies": {
         "@babel/core": "^7.18.5",
         "@babel/preset-env": "^7.18.2",

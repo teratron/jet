@@ -1,6 +1,6 @@
 
 set_url: ## git remote set-url origin git@github.com:login/repo.git
-	git remote set-url origin git@github.com:teratron/jet.git
+	git remote set-url origin git@github.com:teratron/jettix.git
 
 message = Dropdown
 branch = master
