@@ -1,3 +1,3 @@
 # Jettix
 
-HTML, SASS, SCSS, CSS Framework
+HTML, CSS, SCSS, JavaScript Framework
