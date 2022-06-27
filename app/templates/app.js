@@ -4,7 +4,7 @@ import fs from 'fs'
 import packageJSON from '../../package.json'
 
 export const props = {
-    title: 'Jet',
+    title: 'Jettix',
     description: 'Web Framework etc.',
     keyword: 'html,css,scss,js,javascript',
     publicURL: '',

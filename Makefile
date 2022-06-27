@@ -9,6 +9,9 @@ add_commit_push: ## add commit push
 	git commit -m "$(message)"
 	git push origin $(branch)
 
+npm_publish: ## npm publish
+	npm publish
+
 .PHONY: help
 help:
 	@awk '                                             \

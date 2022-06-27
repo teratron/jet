@@ -104,7 +104,7 @@ module.exports = props => {
                 ]
             }),
             new HtmlWebpackPlugin({
-                title: "Jet - Template",
+                title: "Jettix - Template",
                 template: paths.public + '/template.html',
                 filename: 'template.html',
                 inject: 'body',
