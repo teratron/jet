@@ -55,7 +55,8 @@
     "build": "npm run version",
     "version": "node config/version.js",
     "deploy:npm": "npm run version && npm publish",
-    "build-deploy:npm": "npm run build && npm deploy:npm"
+    "build-deploy:npm": "npm run build && npm deploy:npm",
+    "app:deploy:gh": "gh-pages -d build"
   },
   "browserslist": {
     "production": [
