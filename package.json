@@ -54,8 +54,20 @@
   "scripts": {
     "build": "npm run version",
     "version": "node config/version.js",
-    "publish:npm": "npm run version && npm publish",
-    "build-publish:npm": "npm run build && npm publish"
+    "deploy:npm": "npm run version && npm publish",
+    "build-deploy:npm": "npm run build && npm deploy:npm"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "buildDate": "2022-06-27T15:56:41.407Z"
 }

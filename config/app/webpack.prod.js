@@ -1,10 +1,10 @@
 'use strict'
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const { merge } = require('webpack-merge')
+const {merge} = require('webpack-merge')
 const common = require('./webpack.common')
-const paths = require('./paths')
-const SemverWebpackPlugin = require('./version')
+const semver = require('../version')
+const paths = require('../paths')
 
 const config = merge(
     common({
@@ -23,14 +23,17 @@ const config = merge(
             new MiniCssExtractPlugin({
                 filename: 'static/css/[name].[contenthash].bundle.css'
             }),
-            SemverWebpackPlugin
+            semver({
+                files: [paths.app + '/package.json']
+            })
         ],
         performance: {
             hints: false,
             maxEntrypointSize: 512000,
             maxAssetSize: 512000
         }
-    })
+    }
+)
 
 module.exports = new Promise(resolve => {
     resolve(config)

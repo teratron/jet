@@ -1,7 +1,7 @@
 'use strict'
 
 import fs from 'fs'
-import packageJSON from '../../package.json'
+import packageJSON from '../package.json'
 
 export const props = {
     title: 'Jettix',
@@ -9,7 +9,7 @@ export const props = {
     keyword: 'web,framework,html,css,scss,js,javascript',
     publicURL: '',
     version: packageJSON.version,
-    pages: fs.readdirSync('./app/templates/pages')
+    pages: fs.readdirSync('./templates/pages')
         .filter(fileName => fileName.endsWith('.js'))
         .map(page => page.replace(/.js/gi, ''))
 }

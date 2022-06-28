@@ -57,11 +57,12 @@ module.exports = props => {
             ]
         },
         resolve: {
-            modules: [paths.src, 'node_modules'],
-            extensions: ['.js', '.json', '.css', '.scss'],
+            modules: [paths.src, paths.app, 'node_modules'],
+            extensions: ['.js', '.json', '.hbs', '.scss', '.css'],
             alias: {
-                '~': paths.src + '/',
+                '~': paths.src,
                 '@': paths.src + '/js',
+                '#': paths.src + '/scss',
                 jettix$: paths.src + '/js/jettix.js'
             }
         }

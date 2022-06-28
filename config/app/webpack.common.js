@@ -2,17 +2,15 @@
 
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { merge } = require('webpack-merge')
-const common = require('./webpack.common')
-const paths = require('./paths')
+const {merge} = require('webpack-merge')
+const common = require('../webpack.common')
+const paths = require('../paths')
 
-const config = merge(
-    common({
-        styleLoader: 'style-loader'
-    }),
+module.exports = props => merge(
+    common(props),
     {
         entry: {
-            app: paths.app + '/index.js'
+            main: paths.app + '/index.js'
         },
         module: {
             rules: [
@@ -73,8 +71,5 @@ const config = merge(
                     minify: true
                 }))
         ]
-    })
-
-module.exports = new Promise(resolve => {
-    resolve(config)
-})
+    }
+)

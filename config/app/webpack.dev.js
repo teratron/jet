@@ -1,8 +1,10 @@
 'use strict'
 
-const { merge } = require('webpack-merge')
+const {merge} = require('webpack-merge')
 const common = require('./webpack.common')
-const paths = require('./paths')
+const paths = require('../paths')
+
+console.log(paths.app + '/templates/pages')
 
 const config = merge(
     common({
@@ -22,7 +24,8 @@ const config = merge(
             open: true,
             hot: true
         }
-    })
+    }
+)
 
 module.exports = new Promise(resolve => {
     resolve(config)

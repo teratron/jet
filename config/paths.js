@@ -1,12 +1,13 @@
 'use strict'
 
 const path = require('path')
+const root = path.resolve(__dirname, '../')
 
 module.exports = {
-    root: path.resolve(__dirname, '../'),
-    src: path.resolve(__dirname, '../src'),
-    dist: path.resolve(__dirname, '../dist'),
-    build: path.resolve(__dirname, '../build'),
-    app: path.resolve(__dirname, '../app'),
-    public: path.resolve(__dirname, '../app/public')
+    root: root,
+    src: path.resolve(root, 'src'),
+    dist: path.resolve(root, 'dist'),
+    build: path.resolve(root, 'build'),
+    app: path.resolve(root, 'app'),
+    public: path.resolve(root, 'app', 'public')
 }

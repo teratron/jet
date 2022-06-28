@@ -1,7 +1,7 @@
 'use strict'
 
-const dev = require('./config/webpack.dev')
-const prod = require('./config/webpack.prod')
+const dev = require('./config/app/webpack.dev')
+const prod = require('./config/app/webpack.prod')
 
 module.exports = (_env, argv) => {
     switch (argv.mode) {
