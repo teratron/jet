@@ -2,7 +2,7 @@
 set_url: ## git remote set-url origin git@github.com:login/repo.git
 	git remote set-url origin git@github.com:teratron/jettix.git
 
-message = Webpack configs.
+message = Update package.json
 branch = master
 add_commit_push: ## add commit push
 	git add .

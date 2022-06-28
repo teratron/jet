@@ -1,19 +1,8 @@
 {
   "name": "jettix-app",
   "version": "0.0.2",
-  "description": "Web application for Jettix.",
+  "description": "Web application for Jettix",
   "private": true,
-  "main": "index.js",
-  "keywords": [
-    "app",
-    "site",
-    "web"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/teratron/jettix.git",
-    "directory": "app"
-  },
   "homepage": "https://teratron.github.io/jettix",
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",
@@ -25,10 +14,8 @@
   "scripts": {
     "start": "webpack serve --config ../config/app/webpack.dev.js",
     "build": "webpack --config ../config/app/webpack.prod.js",
-    "deploy:gh": "gh-pages-clean gh-pages -d ../build",
-    "gh-pages-clean": "gh-pages-clean",
-    "build-deploy:gh": "npm run build && npm run deploy:gh",
-    "test": "echo \"Error: no test specified\" && exit 1 && npm run test --workspace=a"
+    "deploy:gh": "gh-pages -d ../build",
+    "build-deploy:gh": "gh-pages-clean && npm run build && npm run deploy:gh"
   },
   "buildDate": "2022-06-28T14:05:05.222Z"
 }

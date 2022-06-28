@@ -1,10 +1,10 @@
 ### Commons
-dist
-build
-tmp
-.tmp
-.run
-.cache
+dist/
+build/
+tmp/
+.tmp/
+.run/
+.cache/
 
 ### Windows
 Thumbs.db
