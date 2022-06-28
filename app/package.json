@@ -26,6 +26,7 @@
     "start": "webpack serve --config ../config/app/webpack.dev.js",
     "build": "webpack --config ../config/app/webpack.prod.js",
     "deploy:gh": "gh-pages-clean gh-pages -d ../build",
+    "gh-pages-clean": "gh-pages-clean",
     "build-deploy:gh": "npm run build && npm run deploy:gh",
     "test": "echo \"Error: no test specified\" && exit 1 && npm run test --workspace=a"
   },
