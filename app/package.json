@@ -17,10 +17,10 @@
     "html-webpack-plugin": "^5.5.0"
   },
   "scripts": {
-    "start:app": "webpack serve --config config/webpack.dev.js",
-    "build:app": "webpack --config config/webpack.prod.js",
+    "start": "webpack serve --config config/webpack.dev.js",
+    "build": "webpack --config config/webpack.prod.js",
     "deploy:gh": "gh-pages -d build",
-    "build-deploy:gh": "npm run build:app && npm run deploy:gh",
+    "build-deploy:gh": "npm run build && npm run deploy:gh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "browserslist": {
