@@ -1,4 +1,4 @@
 'use strict'
 
 import 'jettix'
-import 'jettix_scss'
+import './static/scss/index.scss'

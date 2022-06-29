@@ -16,7 +16,7 @@ const config = merge(
         },
         devServer: {
             static: paths.build + '/static',
-            port: 9009,
+            port: 9001,
             historyApiFallback: true,
             compress: true,
             open: true,

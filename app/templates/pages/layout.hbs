@@ -1,4 +1,6 @@
-{{#> base main-partial-block=true title=title}}
+{{#> app app-partial-block=true title=title}}
+    {{> header}}
+    {{#> main main-partial-block=true}}
     <section class="grid-12 outline">
         {{#each debugGrid}}
             <div>{{this}}</div>
@@ -34,4 +36,6 @@
         <div>5</div>
     </div>
 
-{{/base}}
+    {{/main}}
+    {{> footer}}
+{{/app}}

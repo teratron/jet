@@ -11,51 +11,20 @@
     outline:    0 none;
 }
 
-body {
-    font-size:   .8rem;
-    line-height: $grid_cell_height;
-    min-height:  100vh;
-    margin:      0;
-    overflow-x:  hidden;
-}
-
 html {
-    font-size:   $unit;
-    height:      100vh;
-}
-
-body {
-    //font-family: $font-family;
-    font-size:   1rem;
-    font-weight: 300;
-    line-height: 2rem;
-    min-height:  100vh;
-    margin:      0;
-    overflow-x:  hidden;
-    z-index:     1;
-}
-
-body,
-input,
-textarea,
-select {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-}
-
-
-html {
-    font-size: 1em;
+    font-size: $unit;
     height:    100vh;
 }
 
 body {
-    font-size:   .8rem;
-    line-height: 2rem;
-    min-height:  100vh;
-    margin:      0;
-    overflow-x:  hidden;
-    z-index:     $zindex_body;
+    font-size:     .8rem;
+    font-min-size: .8rem;
+    font-max-size: .8rem;
+    line-height:   $grid_cell_height;
+    min-height:    100vh;
+    margin:        0;
+    overflow-x:    hidden;
+    z-index:       $zindex_body;
 }
 
 body, input, textarea, select {

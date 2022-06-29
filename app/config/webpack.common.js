@@ -73,7 +73,7 @@ module.exports = props => merge(
         ],
         resolve: {
             modules: [paths.src, paths.app, 'node_modules'],
-            //extensions: ['.js', '.hbs', '.json', '.scss', '.css']
+            extensions: ['.js', '.hbs', '.scss', '.css']
         }
     }
 )

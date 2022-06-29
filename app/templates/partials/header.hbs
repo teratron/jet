@@ -1,5 +1,13 @@
 <header class="app-header">
     <div class="app-container">
         <h1>Header</h1>
+        <nav>
+            <a href="/">Home</a>
+            {{#each pages}}
+                <div>
+                    <a href="/{{this}}.html">{{this}}</a>
+                </div>
+            {{/each}}
+        </nav>
     </div>
 </header>

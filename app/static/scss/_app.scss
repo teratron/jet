@@ -1,9 +1,5 @@
-/*
-@import "themes/default";
-
 // Application
 #app {
-    //@extend %grid;
     display:               grid;
     grid-template-rows:    auto 1fr;
     grid-template-columns: auto;
@@ -11,84 +7,9 @@
     grid-auto-rows:        auto;
     grid-gap:              0;
     min-height:            100vh;
-    //z-index: var(--zindex-app);
+    z-index:               $zindex_app;
 }
 
 .app-container {
-    width:        100%;
-    max-width:    1200px;
-    margin-left:  auto;
-    margin-right: auto;
+    @extend .layout;
 }
-
-// Common mixin for Header and Footer
-@mixin app-common {
-    background-color: var(--color-primary);
-    color:            var(--color-primary-font);
-
-    .nav-link {
-        color: var(--color-primary-font);
-    }
-}
-
-// Header
-.app-header {
-    @include app-common;
-
-    max-height: var(--app-header-height);
-    //z-index: var(--zindex-header);
-
-    > .app-container {
-        @extend .bar;
-    }
-
-    &,
-    > .app-container {
-        height: var(--app-header-height);
-    }
-
-    .logo {
-        height:         3.4em;
-        margin-right:   2rem;
-        pointer-events: none;
-    }
-
-    .title {
-        font-size:   2rem;
-        font-weight: 500;
-        margin:      0;
-    }
-
-    .btn {
-        color: var(--color-primary-font);
-    }
-
-    .dropdown-menu {
-        min-width: auto;
-    }
-}
-
-// Footer
-.app-footer {
-    @include app-common;
-
-    min-height: var(--app-footer-height);
-    //z-index: var(--zindex-footer);
-
-    > .app-container {
-        @extend .row;
-        grid-template-columns: 3fr 6fr 3fr;
-    }
-
-    .logo {
-        height:         3.4em;
-        margin-right:   2rem;
-        pointer-events: none;
-    }
-
-    .title {
-        font-size:   2rem;
-        font-weight: 500;
-        margin:      0;
-    }
-}*/

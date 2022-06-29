@@ -1,6 +1,9 @@
 // @import "themes/default";
-// @import "variables";
-// @import "app";
 
 // Jettix
 @import "../../../src/scss/jettix.scss";
+
+// Configuration
+@import "variables";
+@import "app";
+
