@@ -5,46 +5,42 @@
 //**********************************************************
 @use "sass:math";
 
-$prefix:                "";
+$prefix: "" !default;
 
 // Root
-$unit:                  1.25rem !default; // 20px
-$px:                    .0625rem !default;
-$rate_horizontal:       .8 !default;
-$rate_vertical:         .8 !default;
+$unit: 1.25rem !default; // 20px
+$px: 0.0625rem !default;
+$rate_horizontal: 0.8 !default;
+$rate_vertical: 0.8 !default;
 
 // Grid
-$grid_column:           12;
-$grid_width:            $unit * 60; // 1200px
-$grid_gap:              $unit * 2; // 40px
-$grid_col_width:        math.div($grid_width, $grid_column);
-$grid_cell_width:       math.div($grid_width - ($grid_column - 1) * $grid_gap, $grid_column);
-$grid_cell_height:      $unit;
+$grid_column: 12 !default;
+$grid_width: $unit * 60 !default; // 1200px
+$grid_gap: $unit * 2 !default; // 40px
+$grid_col_width: math.div($grid_width, $grid_column) !default;
+$grid_cell_width: math.div($grid_width - ($grid_column - 1) * $grid_gap, $grid_column) !default;
+$grid_cell_height: $unit;
 
 // Layout
-$layout_gap:            $unit * 2; // 40px
-$layout_gaps:           $layout_gap * 2;
-$layout_width:          $grid_width + $layout_gaps;
-$layout_width_min:      $unit * 18; // 360px
-$layout_rate:           math.div(100vw, $layout_width);
+$layout_gap: $unit * 2 !default; // 40px
+$layout_gaps: $layout_gap * 2 !default;
+$layout_width: $grid_width + $layout_gaps !default;
+$layout_width_min: $unit * 18 !default; // 360px
+$layout_rate: math.div(100vw, $layout_width) !default;
 
 // Z-index
-$zindex_body:           1;
-$zindex_app:            10;
-$zindex_main:           20;
-$zindex_content:        30;
-$zindex_sidebar:        40;
-$zindex_header:         50;
-$zindex_footer:         60;
-$zindex_dropdown:       1000;
-$zindex_sticky:         2000;
-$zindex_fixed:          3000;
-$zindex_modal-backdrop: 4000;
-$zindex_offcanvas:      5000;
-$zindex_modal:          6000;
-$zindex_popover:        7000;
-$zindex_tooltip:        8000;
-$zindex_debug:          10000;
+$zindex_body: 1 !default;
+$zindex_dropdown: 1000 !default;
+$zindex_sticky: 1100 !default;
+$zindex_fixed: 1200 !default;
+$zindex_offcanvas_backdrop: 1300 !default;
+$zindex_offcanvas: 1400 !default;
+$zindex_modal_backdrop: 1500 !default;
+$zindex_modal: 1600 !default;
+$zindex_popover: 1700 !default;
+$zindex_tooltip: 1800 !default;
+$zindex_toast: 1900 !default;
+$zindex_debug: 2000 !default;
 
 // Breakpoints
-$list_breakpoints:      getListBreakpoints();
+$list_breakpoints: getListBreakpoints() !default;

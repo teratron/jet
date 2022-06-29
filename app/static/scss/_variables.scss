@@ -4,17 +4,25 @@
 //
 //**********************************************************
 
-//$prefix: "jx-";
+$prefix: "jx-";
 
 // Path
-$fonts:  "../fonts/";
-$media:  "../media/";
+$fonts: "../fonts/";
+$media: "../media/";
 
 $variables: (
     prefix: "jx-",
 );
 
-@include SetVariables($variables);
+//@include SetVariables($variables);
+
+// Z-index
+$zindex_app: 100;
+$zindex_main: 200;
+$zindex_content: 300;
+$zindex_sidebar: 400;
+$zindex_header: 500;
+$zindex_footer: 600;
 
 :root {
     /* Debug */
