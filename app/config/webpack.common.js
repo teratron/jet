@@ -3,8 +3,8 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {merge} = require('webpack-merge')
-const common = require('../webpack.common')
-const paths = require('../paths')
+const common = require('../../config/webpack.common')
+const paths = require('../../config/paths')
 
 module.exports = props => merge(
     common(props),
@@ -70,6 +70,10 @@ module.exports = props => merge(
                     inject: 'body',
                     minify: true
                 }))
-        ]
+        ],
+        resolve: {
+            modules: [paths.src, paths.app, 'node_modules'],
+            //extensions: ['.js', '.hbs', '.json', '.scss', '.css']
+        }
     }
 )

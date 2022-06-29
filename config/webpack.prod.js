@@ -3,8 +3,8 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const {merge} = require('webpack-merge')
 const common = require('./webpack.common')
-const semver = require('../version')
-const paths = require('../paths')
+const semver = require('./version')
+const paths = require('./paths')
 
 const config = merge(
     common({
@@ -13,9 +13,12 @@ const config = merge(
     {
         mode: 'production',
         devtool: 'source-map',
+        entry: {
+            main: paths.src + '/index.js'
+        },
         output: {
             filename: 'static/js/[name].[contenthash].bundle.js',
-            path: paths.build,
+            path: paths.dist,
             publicPath: 'auto',
             clean: true
         },
@@ -24,7 +27,7 @@ const config = merge(
                 filename: 'static/css/[name].[contenthash].bundle.css'
             }),
             semver({
-                files: [paths.app + '/package.json']
+                files: [paths.root + '/package.json']
             })
         ],
         performance: {

@@ -1,6 +1,6 @@
 {
   "name": "jettix-app",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Web application for Jettix",
   "private": true,
   "homepage": "https://teratron.github.io/jettix",
@@ -12,10 +12,10 @@
     "html-webpack-plugin": "^5.5.0"
   },
   "scripts": {
-    "start": "webpack serve --config ../config/app/webpack.dev.js",
-    "build": "webpack --config ../config/app/webpack.prod.js",
-    "deploy:gh": "gh-pages -d ../build",
+    "start": "webpack serve --config config/webpack.dev.js",
+    "build": "webpack --config config/webpack.prod.js",
+    "deploy:gh": "gh-pages -d build",
     "build-deploy:gh": "gh-pages-clean && npm run build && npm run deploy:gh"
   },
-  "buildDate": "2022-06-28T14:05:05.222Z"
+  "buildDate": "2022-06-29T09:59:02.259Z"
 }

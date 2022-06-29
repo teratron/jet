@@ -2,9 +2,7 @@
 
 const {merge} = require('webpack-merge')
 const common = require('./webpack.common')
-const paths = require('../paths')
-
-console.log(paths.app + '/templates/pages')
+const paths = require('../../config/paths')
 
 const config = merge(
     common({
@@ -18,7 +16,7 @@ const config = merge(
         },
         devServer: {
             static: paths.build + '/static',
-            port: 9001,
+            port: 9009,
             historyApiFallback: true,
             compress: true,
             open: true,

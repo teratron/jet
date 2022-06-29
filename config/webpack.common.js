@@ -4,9 +4,6 @@ const paths = require('./paths')
 
 module.exports = props => {
     return {
-        entry: {
-            main: paths.src + '/index.js'
-        },
         module: {
             rules: [
                 {
@@ -57,13 +54,14 @@ module.exports = props => {
             ]
         },
         resolve: {
-            modules: [paths.src, paths.app, 'node_modules'],
-            extensions: ['.js', '.json', '.hbs', '.scss', '.css'],
+            modules: [paths.src, 'node_modules'],
+            extensions: ['.js', '.scss', '.css'],
             alias: {
                 '~': paths.src,
                 '@': paths.src + '/js',
                 '#': paths.src + '/scss',
-                jettix$: paths.src + '/js/jettix.js'
+                jettix$: paths.src + '/js/jettix.js',
+                jettix_scss$: paths.src + '/scss/jettix.scss'
             }
         }
     }
