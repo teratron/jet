@@ -31,5 +31,5 @@
 }
 
 @function toRem($value) {
-    @return 0.0625rem * stripUnit($value);
+    @return .0625rem * stripUnit($value);
 }

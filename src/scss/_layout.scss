@@ -1,3 +1,15 @@
+//**********************************************************
+// Layout
+//----------------------------------------------------------
+// layout
+// grid
+// row
+// col
+//
+//
+//
+//
+//**********************************************************
 // @import "layout/grid";
 // @import "layout/column";
 // @import "layout/tile";
@@ -93,6 +105,21 @@
             .#{$prefix}grid-#{$j} {
                 @extend %col-#{$i};
                 @extend %grid-#{$i};
+            }
+        }
+    }
+}
+
+// Breakpoint action
+@for $i from $grid_column to 1 {
+    @media only screen and (max-width: getBreakpoint($i)) {
+        .#{$prefix}col-0-b#{$i} {
+            display: none;
+        }
+        @for $j from 1 through $grid_column {
+            .#{$prefix}col-#{$j}-b#{$i} {
+                display: initial;
+                grid-column-end: span $j;
             }
         }
     }

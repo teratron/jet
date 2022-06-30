@@ -3,9 +3,9 @@
         <h1>Header</h1>
         <nav>
             <a href="/">Home</a>
-            {{#each pages}}
+            {{#each page}}
                 <div>
-                    <a href="/{{this}}.html">{{this}}</a>
+                    <a href="{{this.url}}">{{this.title}}</a>
                 </div>
             {{/each}}
         </nav>

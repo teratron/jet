@@ -9,7 +9,19 @@ export const props = {
     keyword: 'web,framework,html,css,scss,js,javascript',
     publicURL: '',
     version: packageJSON.version,
-    pages: fs.readdirSync('./templates/pages')
-        .filter(fileName => fileName.endsWith('.js'))
-        .map(page => page.replace(/.js/gi, ''))
+    page: function () {
+        let page = {}
+        fs.readdirSync('./templates/pages')
+            .filter(fileName => fileName.endsWith('.js'))
+            .forEach(key => {
+                key = key.replace(/.js/gi, '')
+                let value = key
+                if (key === 'index') value = 'home'
+                page[key] = {
+                    title: value.replace(/[_|-]/, ' ').trim(),
+                    url: `./${key}.html`
+                }
+            })
+        return page
+    }()
 }

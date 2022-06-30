@@ -1,6 +1,6 @@
 {
   "name": "jettix",
-  "version": "0.0.208",
+  "version": "0.0.213",
   "description": "HTML, CSS, SCSS, JavaScript Framework",
   "private": false,
   "main": "dist/js/jettix.js",
@@ -8,10 +8,7 @@
   "sass": "src/scss/jettix.scss",
   "files": [
     "dist/{css,js}/**/*.{css,js,map}",
-    "src/{scss,js}/**/*.{scss,js}"
-  ],
-  "workspaces": [
-    "app"
+    "src/scss/**/*.scss"
   ],
   "keywords": [
     "web",
@@ -52,10 +49,9 @@
     "webpack-merge": "^5.8.0"
   },
   "scripts": {
-    "build": "npm run version",
-    "version": "node config/version.js",
+    "build": "webpack --config config/webpack.prod.js",
     "deploy:npm": "npm publish",
-    "build-deploy:npm": "npm run build && npm deploy:npm"
+    "build-deploy:npm": "npm run build && npm run deploy:npm"
   },
   "browserslist": {
     "production": [
@@ -69,5 +65,8 @@
       "last 1 safari version"
     ]
   },
-  "buildDate": "2022-06-27T15:56:41.407Z"
+  "workspaces": [
+    "app"
+  ],
+  "buildDate": "2022-06-30T15:37:49.399Z"
 }

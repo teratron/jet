@@ -14,17 +14,20 @@ const config = merge(
         mode: 'production',
         devtool: 'source-map',
         entry: {
-            main: paths.src + '/index.js'
+            jettix: [
+                paths.src + '/js/jettix.js',
+                paths.src + '/scss/jettix.scss'
+            ]
         },
         output: {
-            filename: 'static/js/[name].[contenthash].bundle.js',
+            filename: 'js/[name].bundle.js',
             path: paths.dist,
             publicPath: 'auto',
             clean: true
         },
         plugins: [
             new MiniCssExtractPlugin({
-                filename: 'static/css/[name].[contenthash].bundle.css'
+                filename: 'css/[name].bundle.css'
             }),
             semver({
                 files: [paths.root + '/package.json']

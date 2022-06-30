@@ -25,8 +25,7 @@ module.exports = props => merge(
                         partialDirs: [
                             paths.app + '/templates',
                             paths.app + '/templates/partials',
-                            paths.app + '/templates/pages',
-                            paths.app + '/templates/layouts'
+                            paths.app + '/templates/pages'
                         ]
                     }
                 },

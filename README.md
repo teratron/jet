@@ -1,5 +1,7 @@
 # Jettix
 
+    Under construction
+
 ## About
 
 HTML, CSS, SCSS, JavaScript Framework.

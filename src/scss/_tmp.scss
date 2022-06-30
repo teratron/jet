@@ -1,0 +1,57 @@
+/*@for $j from 1 through $grid_column {
+    %col-#{$j} {
+        grid-column-end: span $j;
+    }
+    .#{$prefix}col-#{$j}-b#{$k} {
+        @extend %col-#{$j};
+    }
+}*/
+
+/*@for $j from 1 through $grid_column {
+    .#{$prefix}col-#{$j}-b#{$k} {
+        @extend %col-#{$j};
+    }
+}*/
+
+
+.shrink > .col-12,
+.shrink > .grid-12,
+.shrink > .grid-12 > .col,
+.shrink > .grid-12 > .row {
+    grid-column-end: span 11
+}
+
+%col-#{$i} {
+    grid-column-end: span $k;
+}
+
+%grid-#{$i} {
+    grid-template-columns: repeat($k, 1fr);
+}
+
+.#{$prefix}shrink {
+    &,
+    > %grid-#{$i} {
+        grid-template-columns: repeat($k, 1fr);
+    }
+
+    > %col-#{$i},
+    > .#{$prefix}grid-#{$i} > .#{$prefix}col,
+    > .#{$prefix}grid-#{$i} > .#{$prefix}row {
+        grid-column-end: span $k;
+    }
+}
+
+@for $j from $i through $grid_column {
+    .#{$prefix}col-#{$j},
+    .#{$prefix}grid-#{$j} {
+        @extend %col-#{$i};
+        @extend %grid-#{$i};
+    }
+}
+
+@for $j from 1 through $grid_column {
+    .#{$prefix}col-#{$j}-b#{$k} {
+        grid-column-end: span $j;
+    }
+}

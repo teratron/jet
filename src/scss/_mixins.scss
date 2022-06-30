@@ -3,9 +3,8 @@
 //----------------------------------------------------------
 //
 //**********************************************************
-//@use "variables" as v;
-//@use "functions" as f;
 
+// Helpers
 @mixin setPropsAdaptive($props) {
     @each $key, $value in $props {
         @if $value > 0 {

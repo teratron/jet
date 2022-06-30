@@ -4,7 +4,7 @@
 //
 //**********************************************************
 
-$prefix: "jx-";
+$prefix: "";
 
 // Path
 $fonts: "../fonts/";
@@ -21,10 +21,10 @@ $zindex_app: 100;
 $zindex_main: 200;
 $zindex_content: 300;
 $zindex_sidebar: 400;
-$zindex_header: 500;
-$zindex_footer: 600;
+$zindex_footer: 500;
+$zindex_header: 600;
 
 :root {
     /* Debug */
-    --d1: #{$prefix};
+    //--d1: #{$prefix};
 }
