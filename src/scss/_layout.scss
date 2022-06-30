@@ -3,8 +3,10 @@
 //----------------------------------------------------------
 // layout
 // grid
+// grid-[1...12]
 // row
 // col
+// col-[1...12]
 //
 //
 //
@@ -16,20 +18,22 @@
 
 // Layout
 .#{$prefix}layout {
-    width:        100%;
-    max-width:    $layout_width;
-    margin-left:  auto;
+    width: 100%;
+    max-width: $layout_width;
+    margin-left: auto;
     margin-right: auto;
 
-    @include setPropsAdaptive((
+    @include setPropsAdaptive(
+        (
             padding-left: $layout_gap,
-            padding-right: $layout_gap
-    ));
+            padding-right: $layout_gap,
+        )
+    );
 }
 
 // Grid
 .#{$prefix}grid {
-    display:        grid;
+    display: grid;
     grid-auto-rows: minmax($grid_cell_height, auto);
 }
 
@@ -37,20 +41,22 @@
     @extend .#{$prefix}grid;
     grid-auto-flow: dense;
 
-    @include setPropsAdaptive((
-            grid-gap: $grid_gap
-    ));
+    @include setPropsAdaptive(
+        (
+            grid-gap: $grid_gap,
+        )
+    );
 }
 
 .#{$prefix}row {
     @extend .#{$prefix}grid;
     grid-template-columns: repeat(auto-fit, minmax($grid_cell_height, auto));
-    grid-auto-flow:        column;
+    grid-auto-flow: column;
 }
 
 .#{$prefix}col,
 %col {
-    width:     auto;
+    width: auto;
     max-width: none;
 }
 
@@ -79,7 +85,7 @@
 .#{$prefix}list {
     @extend .#{$prefix}grid;
     grid-template-rows: repeat(auto-fill, minmax($grid_cell_height, auto));
-    grid-auto-flow:     row;
+    grid-auto-flow: row;
 }
 
 // Shrink
@@ -110,16 +116,28 @@
     }
 }
 
+%display-initial {
+    display: initial;
+}
+
 // Breakpoint action
 @for $i from $grid_column to 1 {
     @media only screen and (max-width: getBreakpoint($i)) {
-        .#{$prefix}col-0-b#{$i} {
+        .#{$prefix}col-b#{$i}-0 {
             display: none;
         }
+
         @for $j from 1 through $grid_column {
-            .#{$prefix}col-#{$j}-b#{$i} {
-                display: initial;
+            .#{$prefix}col-b#{$i}-#{$j} {
+                @at-root (without: media) {
+                    @extend %display-initial;
+                }
+
                 grid-column-end: span $j;
+            }
+
+            .#{$prefix}order-b#{$i}-#{$j} {
+                order: $j;
             }
         }
     }

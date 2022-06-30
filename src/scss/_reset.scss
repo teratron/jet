@@ -10,42 +10,45 @@
 ::before,
 ::after {
     box-sizing: border-box;
-    outline:    0 none;
+    outline: 0 none;
 }
 
 html {
     font-size: 20px;
-    height:    100vh;
+    height: 100vh;
 }
 
 body {
-    font-size:     .8rem;
-    font-min-size: .8rem;
-    font-max-size: .8rem;
-    line-height:   $grid_cell_height;
-    min-height:    100vh;
-    margin:        0;
-    overflow-x:    hidden;
-    z-index:       $zindex_body;
+    font-size: 0.8rem;
+    line-height: $grid_cell_height;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+    z-index: $zindex_body;
 }
 
-body, input, textarea, select {
-    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
-                 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-                 sans-serif;
+body,
+input,
+textarea,
+select {
+    font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+        "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
-pre, code, kbd, samp {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+pre,
+code,
+kbd,
+samp {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 hr {
-    display:    block;
-    height:     1px;
-    border:     0;
+    display: block;
+    height: 1px;
+    border: 0;
     border-top: 1px solid #ccc;
-    margin:     1em 0;
-    padding:    0;
+    margin: 1em 0;
+    padding: 0;
 }
 
 a {
@@ -53,27 +56,32 @@ a {
 }
 
 abbr[title] {
-    border-bottom:   none;
+    border-bottom: none;
     text-decoration: underline dotted;
 }
 
-b, strong {
+b,
+strong {
     font-weight: bolder;
 }
 
-pre, code, kbd, samp {
+pre,
+code,
+kbd,
+samp {
     font-family: monospace, monospace;
-    font-size:   1em;
+    font-size: 1em;
 }
 
 small {
     font-size: 80%;
 }
 
-sub, sup {
-    font-size:      75%;
-    line-height:    0;
-    position:       relative;
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
     vertical-align: baseline;
 }
 
@@ -89,10 +97,14 @@ img {
     border-style: none;
 }
 
-button, input, optgroup, select, textarea {
-    margin:      0;
+button,
+input,
+optgroup,
+select,
+textarea {
+    margin: 0;
     font-family: inherit;
-    font-size:   inherit;
+    font-size: inherit;
     line-height: inherit;
 }
 
@@ -108,7 +120,7 @@ button,
 
     &::-moz-focus-inner {
         border-style: none;
-        padding:      0;
+        padding: 0;
     }
 
     &:-moz-focusring {
@@ -121,10 +133,10 @@ fieldset {
 }
 
 legend {
-    color:       inherit;
-    display:     table;
-    max-width:   100%;
-    padding:     0;
+    color: inherit;
+    display: table;
+    max-width: 100%;
+    padding: 0;
     white-space: normal;
 }
 
@@ -138,7 +150,7 @@ progress {
 
 textarea {
     overflow: auto;
-    resize:   vertical;
+    resize: vertical;
 }
 
 [type="checkbox"],
@@ -153,7 +165,7 @@ textarea {
 
 [type="search"] {
     -webkit-appearance: textfield;
-    outline-offset:     -2px;
+    outline-offset: -2px;
 
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button {
@@ -163,7 +175,7 @@ textarea {
 
 ::-webkit-file-upload-button {
     -webkit-appearance: button;
-    font:               inherit;
+    font: inherit;
 }
 
 details {
@@ -182,11 +194,16 @@ template {
     display: none !important;
 }
 
-audio, canvas, iframe, img, svg, video {
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
     vertical-align: middle;
 }
 
 ::selection {
     background-color: #b3d4fc;
-    text-shadow:      none;
+    text-shadow: none;
 }
