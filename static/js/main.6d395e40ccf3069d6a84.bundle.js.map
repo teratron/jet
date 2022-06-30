@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/main.6d395e40ccf3069d6a84.bundle.js","mappings":"yBAKAA,QAAQC,IAAI,M","sources":["webpack://jettix-app/../src/js/jettix.js"],"sourcesContent":["'use strict'\r\n\r\nimport './elements/dropdown'\r\nimport './elements/select'\r\n\r\nconsole.log('ok')\r\n"],"names":["console","log"],"sourceRoot":""}
