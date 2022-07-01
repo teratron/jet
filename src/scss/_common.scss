@@ -1,26 +1,7 @@
-@use "sass:map";
-
 .#{$prefix}outline > * {
     outline: 1px solid #ddd;
 }
 
-@mixin unstyle() {
-
-}
-
 .#{$prefix}unstyle {
     list-style: none outside none;
-}
-
-
-
-@mixin SetVariables($variables) {
-    $prefix: map.get($variables, prefix);
-}
-
-
-
-:root {
-    /* Debug */
-    //--d1: #{$prefix};
 }

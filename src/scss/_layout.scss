@@ -1,67 +1,89 @@
 //**********************************************************
 // Layout
 //----------------------------------------------------------
+//
 // layout
 // grid
-// grid-[1...12]
+// grid-[1...n]
 // row
 // col
-// col-[1...12]
-// col-b[1...12]-0
-// col-b[1...12]-[1...12]
-// span-[1...12]
-// order-[1...12]
-// order-b[1...12]-[1...12]
-//
-//
-//
+// col-[1...n]
+// col-b[1...n]-0
+// col-b[1...n]-[1...n]
+// span-[1...n]
+// order-[1...n]
+// order-b[1...n]-[1...n]
+// list
+// gap
+// gap-half
 //
 //**********************************************************
-// @import "layout/grid";
-// @import "layout/column";
-// @import "layout/tile";
 
 // Layout
 .#{$prefix}layout {
-    width: 100%;
-    max-width: $layout_width;
-    margin-left: auto;
+    width:        100%;
+    max-width:    $layout_width;
+    margin-left:  auto;
     margin-right: auto;
 
-    @include setPropsAdaptive(
-        (
+    @include setPropsAdaptive((
             padding-left: $layout_gap,
             padding-right: $layout_gap,
-        )
-    );
+    ));
 }
 
 // Grid
 .#{$prefix}grid {
-    display: grid;
+    display:        grid;
     grid-auto-rows: minmax($grid_cell_height, auto);
 }
 
 %grid {
     @extend .#{$prefix}grid;
-    grid-auto-flow: dense;
+    @extend .#{$prefix}gap;
+    grid-auto-flow: row;
+}
 
-    @include setPropsAdaptive(
-        (
-            grid-gap: $grid_gap,
-        )
-    );
+.#{$prefix}gap {
+    @include setPropsAdaptive((
+            grid-gap: $grid_gap
+    ));
+
+    &-half {
+        @include setPropsAdaptive((
+                grid-gap: $unit
+        ));
+    }
+
+    &-0 {
+        grid-gap: 0;
+    }
 }
 
 .#{$prefix}row {
     @extend .#{$prefix}grid;
     grid-template-columns: repeat(auto-fit, minmax($grid_cell_height, auto));
-    grid-auto-flow: column;
+    grid-auto-flow:        column;
 }
 
-.#{$prefix}col,
-%col {
-    width: auto;
+.#{$prefix}col {
+    @extend .#{$prefix}grid;
+    grid-template-rows: repeat(auto-fit, minmax($grid_cell_height, auto));
+    grid-auto-flow:     dense;
+}
+
+.#{$prefix}bar {
+    @extend .#{$prefix}row;
+    // TODO: bar
+}
+
+.#{$prefix}list {
+    @extend .#{$prefix}col;
+    // TODO: list
+}
+
+[class*="#{$prefix}col-"] {
+    width:     auto;
     max-width: none;
 }
 
@@ -73,13 +95,8 @@
 
     .#{$prefix}col-#{$i},
     .#{$prefix}grid-#{$i},
-    .#{$prefix}grid-#{$i} > .#{$prefix}col,
     .#{$prefix}grid-#{$i} > .#{$prefix}row {
         grid-column-end: span $i;
-    }
-
-    .#{$prefix}col-#{$i} {
-        @extend %col;
     }
 
     .#{$prefix}span-#{$i} {
@@ -91,57 +108,47 @@
     }
 }
 
-.#{$prefix}list {
-    @extend .#{$prefix}grid;
-    grid-template-rows: repeat(auto-fill, minmax($grid_cell_height, auto));
-    grid-auto-flow: row;
-}
-
-// Shrink
-@for $i from $grid_column to 1 {
-    $k: $i - 1;
-
-    @media only screen and (max-width: getBreakpoint($k)) {
-        .#{$prefix}shrink {
-            &,
-            > %grid-#{$i} {
-                grid-template-columns: repeat($k, 1fr);
-            }
-
-            > %col-#{$i},
-            > .#{$prefix}grid-#{$i} > .#{$prefix}col,
-            > .#{$prefix}grid-#{$i} > .#{$prefix}row {
-                grid-column-end: span $k;
-            }
-        }
-
-        @for $j from $i through $grid_column {
-            .#{$prefix}col-#{$j},
-            .#{$prefix}grid-#{$j} {
-                @extend %col-#{$i};
-                @extend %grid-#{$i};
-            }
-        }
-    }
-}
-
-%display-initial {
-    display: initial;
-}
-
-// Breakpoint action
-@for $i from $grid_column to 1 {
+// Breakpoints
+@for $i from $grid_column to 0 {
     @media only screen and (max-width: getBreakpoint($i)) {
+
+        // Shrink
+        @if $i < $grid_column {
+            $k: $i + 1;
+
+            .#{$prefix}shrink {
+                &,
+                > %grid-#{$k} {
+                    grid-template-columns: repeat($i, 1fr);
+                }
+
+                > %col-#{$k},
+                > .#{$prefix}grid-#{$k} > .#{$prefix}col,
+                > .#{$prefix}grid-#{$k} > .#{$prefix}row {
+                    grid-column-end: span $i;
+                }
+            }
+
+            @for $j from $k through $grid_column {
+                .#{$prefix}col-#{$j},
+                .#{$prefix}grid-#{$j} {
+                    @extend %col-#{$k};
+                    @extend %grid-#{$k};
+                }
+            }
+        }
+
+        // Actions
+        [class*="#{$prefix}col-b#{$i}-"] {
+            display: initial;
+        }
+
         .#{$prefix}col-b#{$i}-0 {
             display: none;
         }
 
         @for $j from 1 through $grid_column {
             .#{$prefix}col-b#{$i}-#{$j} {
-                @at-root (without: media) {
-                    @extend %display-initial;
-                }
-
                 grid-column-end: span $j;
             }
 

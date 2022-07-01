@@ -11,6 +11,7 @@ module.exports = props => merge(
     {
         entry: {
             main: paths.app + '/index.js'
+            //theme: paths.app + '/static/scss/themes/_default.scss'
         },
         module: {
             rules: [

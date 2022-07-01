@@ -1,26 +1,80 @@
-//@use "variables" as *;
-
-.app-debug {
-    background-color: rgba(0, 0, 0, .3);
-    width:            50px;
-    height:           30px;
-    position:         fixed;
-    bottom:           0;
-    right:            $unit;
+// No semantic
+address nav,
+a a,
+a label,
+a button,
+label a,
+label label,
+button a,
+button label,
+button button {
+    outline: 5px solid red;
 }
 
-/*@include media-breakpoint-up(sm) {
+// Sticker
+.#{$prefix}sticker {
+    &:after,
+    &:before {
+        color:          white;
+        font-size:      11px;
+        line-height:    40px;
+        min-width:      80px;
+        height:         40px;
+        content:        "";
+        display:        block;
+        position:       fixed;
+        top:            50%;
+        bottom:         50%;
+        text-align:     center;
+        vertical-align: middle;
+        z-index:        $zindex_debug;
+    }
 
+    &:after {
+        background-color: rgba(59, 59, 255, 0.6);
+        left:             auto;
+        right:            0;
+    }
+
+    &:before {
+        background-color: rgba(0, 182, 141, 0.6);
+        left:             0;
+        right:            auto;
+    }
 }
-@include media-breakpoint-up(md) {
 
+@media only screen and (max-width: 1in) {
+    .#{$prefix}sticker:after {
+        content: "<= 1'"
+    }
 }
-@include media-breakpoint-up(lg) {
 
+@for $i from 1 through 23 {
+    $j: $i + .5;
+    $k: $i + 1;
+    .#{$prefix}sticker:after {
+        @media only screen {
+            @media (min-width: #{$i}in) and (max-width: #{$j}in) {
+                content: "#{$i}' - #{$j}'";
+            }
+
+            @media (min-width: #{$j}in) and (max-width: #{$k}in) {
+                content: "#{$j}' - #{$k}'";
+            }
+        }
+    }
 }
-@include media-breakpoint-up(xl) {
 
+@media only screen and (min-width: getBreakpoint($grid_column)) {
+    .#{$prefix}sticker:before {
+        content: "> #{$grid_column} bp";
+    }
 }
-@include media-breakpoint-up(xxl) {
 
-}*/
+@for $i from $grid_column to 1 {
+    .#{$prefix}sticker:before {
+        @media only screen and (max-width: getBreakpoint($i)) {
+            content: "#{$i - 1} - #{$i} bp";
+        }
+    }
+}

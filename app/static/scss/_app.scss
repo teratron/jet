@@ -8,8 +8,11 @@
     grid-gap: 0;
     min-height: 100vh;
     z-index: $zindex_app;
+
+    @extend .sticker; // TODO: debug
 }
 
 .app-container {
     @extend .layout;
+    @extend .grid-12;
 }

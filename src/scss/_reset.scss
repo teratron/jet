@@ -19,7 +19,7 @@ html {
 }
 
 body {
-    font-size: 0.8rem;
+    font-size: 0.8rem;  // TODO:
     line-height: $grid_cell_height;
     min-height: 100vh;
     margin: 0;
@@ -46,7 +46,7 @@ hr {
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #ccc;  // TODO:
     margin: 1em 0;
     padding: 0;
 }
@@ -124,12 +124,12 @@ button,
     }
 
     &:-moz-focusring {
-        outline: 1px dotted ButtonText;
+        outline: 1px dotted ButtonText; // TODO:
     }
 }
 
 fieldset {
-    padding: 0.35em 0.75em 0.625em;
+    padding: 0.35em 0.75em 0.625em; // TODO:
 }
 
 legend {
@@ -204,6 +204,6 @@ video {
 }
 
 ::selection {
-    background-color: #b3d4fc;
+    background-color: #b3d4fc; // TODO:
     text-shadow: none;
 }

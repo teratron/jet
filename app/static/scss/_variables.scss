@@ -10,12 +10,6 @@ $prefix: "";
 $fonts: "../fonts/";
 $media: "../media/";
 
-$variables: (
-    prefix: "jx-",
-);
-
-//@include SetVariables($variables);
-
 // Z-index
 $zindex_app: 100;
 $zindex_main: 200;
@@ -26,5 +20,5 @@ $zindex_header: 600;
 
 :root {
     /* Debug */
-    //--d1: #{$prefix};
+    --app: 42;
 }

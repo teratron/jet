@@ -4,31 +4,31 @@
 }
 
 h1 {
+    font-size: 2rem;
     @extend %heading;
-    //@include font-size($h1-font-size);
 }
 
 h2 {
+    font-size: 2rem;
     @extend %heading;
-    //@include font-size($h2-font-size);
 }
 
 h3 {
+    font-size: 2rem;
     @extend %heading;
-    //@include font-size($h3-font-size);
 }
 
 h4 {
+    font-size: 2rem;
     @extend %heading;
-    //@include font-size($h4-font-size);
 }
 
 h5 {
     @extend %heading;
-    //@include font-size($h5-font-size);
+    font-size: 2rem;
 }
 
 h6 {
     @extend %heading;
-    //@include font-size($h6-font-size);
+    font-size: 1rem;
 }
