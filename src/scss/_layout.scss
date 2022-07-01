@@ -51,7 +51,7 @@
 
     &-half {
         @include setPropsAdaptive((
-                grid-gap: $unit
+                grid-gap: $grid_gap_half
         ));
     }
 
@@ -145,6 +145,14 @@
 
         .#{$prefix}col-b#{$i}-0 {
             display: none;
+        }
+
+        [class*="#{$prefix}gap-b#{$i}-"] {
+            grid-gap: initial;
+        }
+
+        .#{$prefix}gap-b#{$i}-0 {
+            grid-gap: 0;
         }
 
         @for $j from 1 through $grid_column {
