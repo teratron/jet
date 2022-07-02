@@ -1,7 +1,11 @@
-.#{$prefix}outline > * {
-    outline: 1px solid #ddd;
-}
 
 .#{$prefix}unstyle {
     list-style: none outside none;
+}
+
+
+.#{$prefix}unstyle {
+    > li {
+        list-style-type: none;
+    }
 }

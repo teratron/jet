@@ -1,13 +1,13 @@
 // Application
 #app {
-    display: grid;
+    display:               grid;
     grid-template-rows: auto 1fr;
     grid-template-columns: auto;
-    grid-auto-flow: row;
-    grid-auto-rows: auto;
-    grid-gap: 0;
-    min-height: 100vh;
-    z-index: $zindex_app;
+    grid-auto-flow:        row;
+    grid-auto-rows:        auto;
+    grid-gap:              0;
+    min-height:            100vh;
+    z-index:               $zindex_app;
 
     @extend .sticker; // TODO: debug
 }
@@ -15,4 +15,8 @@
 .app-container {
     @extend .layout;
     @extend .grid-12;
+}
+
+.#{$prefix}outline > * {
+    outline: 1px solid #ddd;
 }

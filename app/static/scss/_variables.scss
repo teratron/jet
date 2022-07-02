@@ -4,19 +4,19 @@
 //
 //**********************************************************
 
-$prefix: "";
+$prefix:         "";
 
 // Path
-$fonts: "../fonts/";
-$media: "../media/";
+$fonts:          "../fonts/";
+$media:          "../media/";
 
 // Z-index
-$zindex_app: 100;
-$zindex_main: 200;
+$zindex_app:     100;
+$zindex_main:    200;
 $zindex_content: 300;
 $zindex_sidebar: 400;
-$zindex_footer: 500;
-$zindex_header: 600;
+$zindex_footer:  500;
+$zindex_header:  600;
 
 :root {
     /* Debug */
