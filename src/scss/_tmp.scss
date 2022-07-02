@@ -1,3 +1,69 @@
+/*@mixin setGapProperty($prop) {
+    $dir: top, bottom, left, right;
+
+    %#{$prop} {
+        #{$prop}: $grid_gap;
+
+        &-half {
+            #{$prop}: $grid_gap_half;
+        }
+
+        &-0 {
+            #{$prop}: 0;
+        }
+
+        &-top {
+            #{$prop}-top: $grid_gap;
+
+            &-half {
+                #{$prop}-top: $grid_gap_half;
+            }
+
+            &-0 {
+                #{$prop}-top: 0;
+            }
+        }
+
+        &-bottom {
+            #{$prop}-bottom: $grid_gap;
+
+            &-half {
+                #{$prop}-bottom: $grid_gap_half;
+            }
+
+            &-0 {
+                #{$prop}-bottom: 0;
+            }
+        }
+
+        &-left {
+            #{$prop}-left: $grid_gap;
+
+            &-half {
+                #{$prop}-left: $grid_gap_half;
+            }
+
+            &-0 {
+                #{$prop}-left: 0;
+            }
+        }
+
+        &-right {
+            #{$prop}-right: $grid_gap;
+
+            &-half {
+                #{$prop}-right: $grid_gap_half;
+            }
+
+            &-0 {
+                #{$prop}-right: 0;
+            }
+        }
+    }
+}
+
+@include setGapProperty("margin");*/
+
 /*@for $j from 1 through $grid_column {
     %col-#{$j} {
         grid-column-end: span $j;
@@ -12,7 +78,6 @@
         @extend %col-#{$j};
     }
 }*/
-
 
 /*.shrink > .col-12,
 .shrink > .grid-12,

@@ -1,0 +1,66 @@
+$directions: top, bottom, left, right;
+
+// Margin
+%margin {
+    margin: $grid_gap;
+
+    &-half {
+        margin: $grid_gap_half;
+    }
+
+    &-0 {
+        margin: 0;
+    }
+
+    @each $dir in $directions {
+        &-#{$dir} {
+            margin-#{$dir}: $grid_gap;
+
+            &-half {
+                margin-#{$dir}: $grid_gap_half;
+            }
+
+            &-0 {
+                margin-#{$dir}: 0;
+            }
+        }
+    }
+}
+
+// Padding
+%padding {
+    padding: $grid_gap;
+
+    &-half {
+        padding: $grid_gap_half;
+    }
+
+    &-0 {
+        padding: 0;
+    }
+
+    @each $dir in $directions {
+        &-#{$dir} {
+            padding-#{$dir}: $grid_gap;
+
+            &-half {
+                padding-#{$dir}: $grid_gap_half;
+            }
+
+            &-0 {
+                padding-#{$dir}: 0;
+            }
+        }
+    }
+}
+
+// Cursor
+$cursors: pointer, help, not-allowed;
+
+%cursor {
+    @each $cur in $cursors {
+        &-#{$cur} {
+            cursor: $cur;
+        }
+    }
+}

@@ -15,37 +15,53 @@
 
 html {
     font-size: $cell;
-    height:    100vh;
+    height: 100vh;
 }
 
 body {
-    font-size:   0.8rem; // TODO:
+    font-size: 0.8rem; // TODO:
     line-height: $grid_cell_height;
-    min-height:  100vh;
-    margin:      0;
-    overflow-x:  hidden;
-    z-index:     $zindex_body;
+    min-height: 100vh;
+    overflow-x: hidden;
+    z-index: $zindex_body;
+    @extend %margin-0;
 }
 
-body, input, select, optgroup, textarea {
-    font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-                 "Droid Sans", "Helvetica Neue", sans-serif;
+body,
+input,
+select,
+optgroup,
+textarea {
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans",
+        "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
-pre, code, kbd, samp {
+pre,
+kbd,
+code,
+samp {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+    direction: ltr;
 }
 
 // Commons
-img, iframe {
+hr,
+img,
+iframe {
     border: 0 none;
 }
 
-img, svg, canvas, audio, video {
+img,
+svg,
+audio,
+video,
+canvas {
     vertical-align: middle;
 }
 
-sub, sup, progress {
+sub,
+sup,
+progress {
     vertical-align: baseline;
 }
 
@@ -55,6 +71,10 @@ sub, sup, progress {
 
 ::selection {
     text-shadow: none;
+}
+
+:disabled {
+    @extend %cursor-not-allowed;
 }
 
 script,
@@ -71,23 +91,30 @@ details {
 
 summary {
     display: list-item;
+    @extend %cursor-pointer;
+}
+
+figure {
+    @extend %margin-bottom-half;
 }
 
 hr {
-    display:          block;
-    height:           1px;
-    border:           0;
+    display: block;
+    height: 1px;
     border-top-width: 1px;
     border-top-style: solid;
-    margin:           1em 0;
-    padding:          0;
+    @extend %padding-0;
+    @extend %margin-top-0;
+    @extend %margin-bottom-half;
 }
 
-ul, ol {
-    margin-top: 0;
+ul,
+ol {
+    @extend %margin-top-0;
 
-    ul, ol {
-        margin-bottom: 0;
+    ul,
+    ol {
+        @extend %margin-bottom-0;
     }
 
     ul {
@@ -104,24 +131,24 @@ ul, ol {
 }
 
 dl {
-    margin-top: 0;
+    @extend %margin-top-0;
 
     dt {
         font-weight: bold;
     }
 
     dd {
-        margin-bottom: $grid_gap_half;
-        margin-left:   0;
+        @extend %margin-left-0;
+        @extend %margin-bottom-half;
     }
 }
 
 // Text semantics
 p {
-    text-align:    justify;
-    text-indent:   $grid_gap_half;
-    margin-top:    0;
-    margin-bottom: $grid_gap_half;
+    text-align: justify;
+    text-indent: $grid_gap_half;
+    @extend %margin-top-0;
+    @extend %margin-bottom-half;
 }
 
 b,
@@ -131,7 +158,8 @@ strong {
 
 a {
     background-color: transparent;
-    text-decoration:  underline;
+    text-decoration: underline;
+    @extend %cursor-pointer;
 
     &:link,
         //&:visited,
@@ -142,14 +170,7 @@ a {
 
     &[target="_blank"]:before {
         font-size: 90%;
-        content:   "\e164\00A0";
-    }
-
-    &:not([href]):not([class]) {
-        &,
-        &:hover {
-            color: inherit;
-        }
+        content: "\e164\00A0";
     }
 }
 
@@ -157,90 +178,87 @@ q {
     &,
     &:lang(fr),
     &:lang(ru) {
-        quotes: "\00ab" "\00bb";
+        quotes: "\00ab""\00bb";
     }
 
     &:lang(en) {
-        quotes: "\201c" "\201d";
+        quotes: "\201c""\201d";
     }
 
     q,
     &:lang(de) {
-        quotes: "\201e" "\201c";
+        quotes: "\201e""\201c";
     }
 }
 
-blockquote, figure{
-    margin: 0 0 $grid_gap_half;
+blockquote {
+    @extend %margin-bottom-half;
 }
 
-pre, kbd, code, samp {
-    font-family: monospace;
-    font-size:   1em;
-    direction:   ltr;
+mark,
+code {
+    padding: 0 0.5em;
 }
 
-mark, code {
-    padding: 0 .5em;
+acronym,
+abbr[title] {
+    @extend %cursor-help;
 }
 
 abbr {
-    font-variant:   small-caps;
+    font-variant: small-caps;
     text-transform: uppercase;
-    letter-spacing: .05em;
+    letter-spacing: 0.05em;
 
     &[title] {
-        border-bottom:   none;
+        border-bottom: none;
         text-decoration: underline dotted;
     }
 }
 
 address {
-    margin-bottom: $grid_gap_half;
-    font-style:    normal;
-    line-height:   inherit;
+    @extend %margin-bottom-half;
+    font-style: normal;
+    line-height: inherit;
 }
 
 pre {
-    display:       block;
-    margin-top:    0;
-    margin-bottom: 1rem;
-    overflow:      auto;
+    display: block;
+    @extend %margin-top-0;
+    @extend %margin-bottom-half;
+    overflow: auto;
 
     code {
-        color:      inherit;
+        color: inherit;
         word-break: normal;
     }
 }
 
 code {
     word-wrap: break-word;
-
-    a > & {
-        color: inherit;
-    }
 }
 
 kbd {
-    padding: .5em;
+    padding: 0.5em;
 }
 
 small {
     font-size: 80%;
 }
 
-sub, sup {
-    font-size:      75%;
-    line-height:    0;
-    position:       relative;
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
 }
 
 sub {
-    bottom: -.25em;
+    bottom: -0.25em;
 }
 
 sup {
-    top: -.5em;
+    top: -0.5em;
 }
 
 time {
@@ -249,17 +267,17 @@ time {
 
 // Tables
 table {
-    caption-side:    bottom;
+    caption-side: bottom;
     border-collapse: collapse;
 
     caption {
-        padding-top:    $grid_gap_half;
-        padding-bottom: $grid_gap_half;
-        text-align:     left;
+        @extend %padding-top-half;
+        @extend %padding-bottom-half;
+        text-align: left;
     }
 
     th {
-        text-align:  inherit;
+        text-align: inherit;
     }
 
     tr,
@@ -279,29 +297,30 @@ legend,
 fieldset,
 [type="radio"],
 [type="checkbox"] {
-    padding: 0;
+    @extend %padding-0;
 }
 
 fieldset {
     min-width: 0;
-    margin: 0;
+    @extend %margin-0;
     border: 0 none;
 }
 
 legend {
     line-height: inherit;
-    color:       inherit;
-    display:     table;
-    max-width:   100%;
-    margin-bottom: -.5em;
+    color: inherit;
+    display: table;
+    max-width: 100%;
+    margin-bottom: -0.5em;
     white-space: normal;
 }
 
 form {
-    margin-bottom: 0;
+    @extend %margin-bottom-0;
 }
 
-label, output {
+label,
+output {
     display: inline-block;
 }
 
@@ -310,7 +329,7 @@ button,
 select,
 optgroup,
 textarea {
-    margin: 0;
+    @extend %margin-0;
     font-family: inherit;
     line-height: inherit;
 }
@@ -322,10 +341,6 @@ select {
 
 select {
     word-wrap: normal;
-
-    &:disabled {
-        opacity: 1;
-    }
 }
 
 textarea {
@@ -333,11 +348,8 @@ textarea {
     resize: vertical;
 }
 
-// Cursor
-a,
 button,
 select,
-summary,
 label[for],
 [role="button"],
 [type="file"],
@@ -349,14 +361,5 @@ label[for],
 [type="button"],
 [type="submit"],
 [type="checkbox"] {
-    cursor: pointer;
-}
-
-acronym,
-abbr[title] {
-    cursor: help;
-}
-
-:disabled {
-    cursor: not-allowed;
+    @extend %cursor-pointer;
 }
