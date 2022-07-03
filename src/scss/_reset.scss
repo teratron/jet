@@ -5,26 +5,28 @@
 //**********************************************************
 
 // Root
+/*:root {
+    font-size: $root_cell;
+}*/
+
 *,
-:before,
-:after,
 ::before,
 ::after {
     box-sizing: border-box;
 }
 
 html {
-    font-size: $cell;
-    height: 100vh;
+    font-size: $root_cell;
+    height:    100vh;
 }
 
 body {
-    font-size: 0.8rem; // TODO:
-    line-height: $grid_cell_height;
-    min-height: 100vh;
-    overflow-x: hidden;
-    z-index: $zindex_body;
-    @extend %margin-0;
+    font-size:   0.8rem;
+    line-height: $cell;
+    min-height:  100vh;
+    overflow-x:  hidden;
+    z-index:     1;
+    @extend .#{$prefix}margin-0;
 }
 
 body,
@@ -33,7 +35,7 @@ select,
 optgroup,
 textarea {
     font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans",
-        "Droid Sans", "Helvetica Neue", sans-serif;
+                 "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 pre,
@@ -41,7 +43,7 @@ kbd,
 code,
 samp {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-    direction: ltr;
+    direction:   ltr;
 }
 
 // Commons
@@ -69,12 +71,12 @@ progress {
     outline: 0 none;
 }
 
-::selection {
-    text-shadow: none;
+:disabled {
+    @extend .#{$prefix}cursor-not-allowed;
 }
 
-:disabled {
-    @extend %cursor-not-allowed;
+::selection {
+    text-shadow: none;
 }
 
 script,
@@ -91,64 +93,98 @@ details {
 
 summary {
     display: list-item;
-    @extend %cursor-pointer;
+    @extend .#{$prefix}cursor-pointer;
 }
 
 figure {
-    @extend %margin-bottom-half;
+    @extend .#{$prefix}margin-top-0;
+    @extend .#{$prefix}margin-left-0;
+    @extend .#{$prefix}margin-right-0;
+    @extend .#{$prefix}margin-bottom-half;
 }
 
 hr {
-    display: block;
-    height: 1px;
+    display:          block;
+    height:           1px;
     border-top-width: 1px;
     border-top-style: solid;
-    @extend %padding-0;
-    @extend %margin-top-0;
-    @extend %margin-bottom-half;
+    @extend .#{$prefix}padding-0;
+    @extend .#{$prefix}margin-top-0;
+    @extend .#{$prefix}margin-bottom-half;
 }
 
 ul,
 ol {
-    @extend %margin-top-0;
+    @extend .#{$prefix}margin-top-0;
+    @extend .#{$prefix}padding-left-half;
 
     ul,
     ol {
-        @extend %margin-bottom-0;
+        @extend .#{$prefix}margin-bottom-0;
     }
 
     ul {
-        list-style-type: toggle(circle, square, box);
+        list-style-type: circle;
     }
 
     ol {
         list-style-type: lower-latin;
     }
+}
 
-    li {
-        list-style-position: outside;
-    }
+li {
+    list-style-position: outside;
 }
 
 dl {
-    @extend %margin-top-0;
+    @extend .#{$prefix}margin-top-0;
+}
 
-    dt {
-        font-weight: bold;
-    }
+dt {
+    font-weight: bold;
+}
 
-    dd {
-        @extend %margin-left-0;
-        @extend %margin-bottom-half;
-    }
+dd {
+    @extend .#{$prefix}margin-left-0;
+    @extend .#{$prefix}margin-bottom-half;
+}
+
+// Typography
+%heading {
+    @extend .#{$prefix}margin-top-0;
+    @extend .#{$prefix}margin-bottom-half;
+}
+
+h1 {
+    @extend %heading;
+}
+
+h2 {
+    @extend %heading;
+}
+
+h3 {
+    @extend %heading;
+}
+
+h4 {
+    @extend %heading;
+}
+
+h5 {
+    @extend %heading;
+}
+
+h6 {
+    @extend %heading;
 }
 
 // Text semantics
 p {
-    text-align: justify;
+    text-align:  justify;
     text-indent: $grid_gap_half;
-    @extend %margin-top-0;
-    @extend %margin-bottom-half;
+    @extend .#{$prefix}margin-top-0;
+    @extend .#{$prefix}margin-bottom-half;
 }
 
 b,
@@ -157,12 +193,9 @@ strong {
 }
 
 a {
-    background-color: transparent;
-    text-decoration: underline;
-    @extend %cursor-pointer;
+    text-decoration:  underline;
+    @extend .#{$prefix}cursor-pointer;
 
-    &:link,
-        //&:visited,
     &:hover,
     &:active {
         text-decoration: none;
@@ -170,7 +203,7 @@ a {
 
     &[target="_blank"]:before {
         font-size: 90%;
-        content: "\e164\00A0";
+        content:   "\e164\00A0";
     }
 }
 
@@ -178,21 +211,21 @@ q {
     &,
     &:lang(fr),
     &:lang(ru) {
-        quotes: "\00ab""\00bb";
+        quotes: "\00ab" "\00bb";
     }
 
     &:lang(en) {
-        quotes: "\201c""\201d";
+        quotes: "\201c" "\201d";
     }
 
     q,
     &:lang(de) {
-        quotes: "\201e""\201c";
+        quotes: "\201e" "\201c";
     }
 }
 
 blockquote {
-    @extend %margin-bottom-half;
+    @extend .#{$prefix}margin-bottom-half;
 }
 
 mark,
@@ -200,42 +233,42 @@ code {
     padding: 0 0.5em;
 }
 
-acronym,
-abbr[title] {
-    @extend %cursor-help;
+acronym {
+    @extend .#{$prefix}cursor-help;
 }
 
 abbr {
-    font-variant: small-caps;
+    font-variant:   small-caps;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 
     &[title] {
-        border-bottom: none;
+        border-bottom:   none;
         text-decoration: underline dotted;
+        @extend .#{$prefix}cursor-help;
     }
 }
 
 address {
-    @extend %margin-bottom-half;
-    font-style: normal;
+    font-style:  normal;
     line-height: inherit;
-}
-
-pre {
-    display: block;
-    @extend %margin-top-0;
-    @extend %margin-bottom-half;
-    overflow: auto;
-
-    code {
-        color: inherit;
-        word-break: normal;
-    }
+    @extend .#{$prefix}margin-bottom-half;
 }
 
 code {
     word-wrap: break-word;
+}
+
+pre {
+    display:  block;
+    overflow: auto;
+    @extend .#{$prefix}margin-top-0;
+    @extend .#{$prefix}margin-bottom-half;
+
+    code {
+        color:      inherit;
+        word-break: normal;
+    }
 }
 
 kbd {
@@ -248,9 +281,9 @@ small {
 
 sub,
 sup {
-    font-size: 75%;
+    font-size:   75%;
     line-height: 0;
-    position: relative;
+    position:    relative;
 }
 
 sub {
@@ -267,29 +300,29 @@ time {
 
 // Tables
 table {
-    caption-side: bottom;
+    caption-side:    bottom;
     border-collapse: collapse;
+}
 
-    caption {
-        @extend %padding-top-half;
-        @extend %padding-bottom-half;
-        text-align: left;
-    }
+caption {
+    @extend .#{$prefix}padding-top-half;
+    @extend .#{$prefix}padding-bottom-half;
+    text-align: left;
+}
 
-    th {
-        text-align: inherit;
-    }
+th {
+    text-align: inherit;
+}
 
-    tr,
-    td,
-    th,
-    thead,
-    tbody,
-    tfoot {
-        border-color: inherit;
-        border-style: solid;
-        border-width: 0;
-    }
+tr,
+td,
+th,
+thead,
+tbody,
+tfoot {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
 }
 
 // Forms
@@ -297,26 +330,26 @@ legend,
 fieldset,
 [type="radio"],
 [type="checkbox"] {
-    @extend %padding-0;
+    @extend .#{$prefix}padding-0;
 }
 
 fieldset {
     min-width: 0;
-    @extend %margin-0;
-    border: 0 none;
+    @extend .#{$prefix}margin-0;
+    border:    0 none;
 }
 
 legend {
-    line-height: inherit;
-    color: inherit;
-    display: table;
-    max-width: 100%;
+    line-height:   inherit;
+    color:         inherit;
+    display:       table;
+    max-width:     100%;
     margin-bottom: -0.5em;
-    white-space: normal;
+    white-space:   normal;
 }
 
 form {
-    @extend %margin-bottom-0;
+    @extend .#{$prefix}margin-bottom-0;
 }
 
 label,
@@ -329,7 +362,7 @@ button,
 select,
 optgroup,
 textarea {
-    @extend %margin-0;
+    @extend .#{$prefix}margin-0;
     font-family: inherit;
     line-height: inherit;
 }
@@ -345,7 +378,7 @@ select {
 
 textarea {
     overflow: auto;
-    resize: vertical;
+    resize:   vertical;
 }
 
 button,
@@ -361,5 +394,5 @@ label[for],
 [type="button"],
 [type="submit"],
 [type="checkbox"] {
-    @extend %cursor-pointer;
+    @extend .#{$prefix}cursor-pointer;
 }

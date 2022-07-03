@@ -9,30 +9,26 @@
 $prefix:                    "" !default;
 
 // Root
-$cell:                      20px !default;
-$unit:                      1.25rem !default; // 20px
-$px:                        0.0625rem !default;
+$root_cell:                 20px !default; // Respond 1rem
+$cell:                      1.25rem !default; // Respond 20px
 $rate_horizontal:           0.8 !default;
 $rate_vertical:             0.8 !default;
+$px:                        math.div($cell, stripUnit($root_cell)) !default;
 
 // Grid
 $grid_column:               12 !default;
-$grid_width:                $unit * 60 !default; // 1200px
-$grid_gap:                  $unit * 2 !default; // 40px
-$grid_gap_half:             math.div($grid_gap, 2) !default;
+$grid_width:                $cell * 60 !default;
+$grid_gap:                  $cell * 2 !default;
+$grid_gap_half:             $cell !default;
 $grid_col_width:            math.div($grid_width, $grid_column) !default;
-$grid_cell_width:           math.div($grid_width - ($grid_column - 1) * $grid_gap, $grid_column) !default;
-$grid_cell_height:          $unit !default;
 
 // Layout
-$layout_gap:                $unit * 2 !default; // 40px
-$layout_gaps:               $layout_gap * 2 !default;
-$layout_width:              $grid_width + $layout_gaps !default;
-$layout_width_min:          $unit * 18 !default; // 360px
+$layout_gap:                $cell * 2 !default;
+$layout_width_min:          $cell * 18 !default;
+$layout_width:              $grid_width + $layout_gap * 2 !default;
 $layout_rate:               math.div(100vw, $layout_width) !default;
 
 // Z-index
-$zindex_body:               1 !default;
 $zindex_dropdown:           1000 !default;
 $zindex_sticky:             1100 !default;
 $zindex_fixed:              1200 !default;
@@ -48,6 +44,12 @@ $zindex_debug:              2000 !default;
 // Breakpoints
 $list_breakpoints:          getListBreakpoints() !default;
 
+// Commons
+$list_directions:           top, bottom, left, right;
+$list_cursors:              default, pointer, help, not-allowed;
+
 :root {
+    --var: #{getBreakpoint($grid_column)};
+    --px: #{$px};
     --bp: #{$list_breakpoints};
 }

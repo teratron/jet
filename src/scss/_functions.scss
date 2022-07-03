@@ -6,10 +6,15 @@
 @use "sass:math";
 @use "sass:list";
 
+// Grid
+@function getGridCellWidth() {
+    @return math.div($grid_width - ($grid_column - 1) * $grid_gap, $grid_column);
+}
+
 // Breakpoints
 @function getListBreakpoints() {
     $list: [];
-    $b: math.div(100, $layout_width) * $layout_gaps;
+    $b: math.div(100, $layout_width) * $layout_gap * 2;
     $g: 100 - $b;
 
     @for $i from 1 through $grid_column {
@@ -26,10 +31,11 @@
     @return list.nth($list_breakpoints, $n);
 }
 
+// Helpers
 @function stripUnit($value) {
     @return math.div($value, ($value * 0 + 1));
 }
 
 @function toRem($value) {
-    @return .0625rem * stripUnit($value);
+    @return $px * stripUnit($value);
 }

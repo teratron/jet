@@ -13,8 +13,8 @@ button button {
 
 // Sticker
 .#{$prefix}sticker {
-    &:after,
-    &:before {
+    &::after,
+    &::before {
         color: white;
         font-size: 11px;
         line-height: 40px;
@@ -29,13 +29,13 @@ button button {
         z-index: $zindex_debug;
     }
 
-    &:after {
+    &::after {
         background-color: rgba(59, 59, 255, 0.6);
         left: auto;
         right: 0;
     }
 
-    &:before {
+    &::before {
         background-color: rgba(0, 182, 141, 0.6);
         left: 0;
         right: auto;
@@ -43,7 +43,7 @@ button button {
 }
 
 @media only screen and (max-width: 1in) {
-    .#{$prefix}sticker:after {
+    .#{$prefix}sticker::after {
         content: "<= 1'";
     }
 }
@@ -51,7 +51,7 @@ button button {
 @for $i from 1 through 23 {
     $j: $i + 0.5;
     $k: $i + 1;
-    .#{$prefix}sticker:after {
+    .#{$prefix}sticker::after {
         @media only screen {
             @media (min-width: #{$i}in) and (max-width: #{$j}in) {
                 content: "#{$i}' - #{$j}'";
@@ -64,14 +64,14 @@ button button {
     }
 }
 
-@media only screen and (min-width: getBreakpoint($grid_column)) {
-    .#{$prefix}sticker:before {
-        content: "> #{$grid_column} bp";
+@media only screen and (min-width: getBreakpoint($grid_column) + $px) {
+    .#{$prefix}sticker::before {
+        content: ">= #{$grid_column} bp";
     }
 }
 
 @for $i from $grid_column to 1 {
-    .#{$prefix}sticker:before {
+    .#{$prefix}sticker::before {
         @media only screen and (max-width: getBreakpoint($i)) {
             content: "#{$i - 1} - #{$i} bp";
         }

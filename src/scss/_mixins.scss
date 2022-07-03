@@ -5,6 +5,42 @@
 //**********************************************************
 
 // Helpers
+@mixin setGutters($prop) {
+    .#{$prefix}#{$prop} {
+        @include setPropsAdaptive((
+                #{$prop}: $grid_gap,
+        ));
+
+        &-half {
+            @include setPropsAdaptive((
+                    #{$prop}: $grid_gap_half,
+            ));
+        }
+
+        &-0 {
+            #{$prop}: 0;
+        }
+
+        @each $dir in $list_directions {
+            &-#{$dir} {
+                @include setPropsAdaptive((
+                        #{$prop}-#{$dir}: $grid_gap,
+                ));
+
+                &-half {
+                    @include setPropsAdaptive((
+                            #{$prop}-#{$dir}: $grid_gap_half,
+                    ));
+                }
+
+                &-0 {
+                    #{$prop}-#{$dir}: 0;
+                }
+            }
+        }
+    }
+}
+
 @mixin setPropsAdaptive($props) {
     @each $key, $value in $props {
         @if $value > 0 {

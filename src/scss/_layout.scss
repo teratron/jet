@@ -33,23 +33,21 @@
 
 // Layout
 .#{$prefix}layout {
-    width: 100%;
-    max-width: $layout_width;
-    margin-left: auto;
+    width:        100%;
+    max-width:    $layout_width;
+    margin-left:  auto;
     margin-right: auto;
 
-    @include setPropsAdaptive(
-        (
+    @include setPropsAdaptive((
             padding-left: $layout_gap,
             padding-right: $layout_gap,
-        )
-    );
+    ));
 }
 
 // Grid
 .#{$prefix}grid {
-    display: grid;
-    grid-auto-rows: minmax($grid_cell_height, auto);
+    display:        grid;
+    grid-auto-rows: minmax($cell, auto);
 }
 
 %grid {
@@ -59,18 +57,14 @@
 }
 
 .#{$prefix}gap {
-    @include setPropsAdaptive(
-        (
+    @include setPropsAdaptive((
             grid-gap: $grid_gap,
-        )
-    );
+    ));
 
     &-half {
-        @include setPropsAdaptive(
-            (
+        @include setPropsAdaptive((
                 grid-gap: $grid_gap_half,
-            )
-        );
+        ));
     }
 
     &-0 {
@@ -80,14 +74,14 @@
 
 .#{$prefix}row {
     @extend .#{$prefix}grid;
-    grid-template-columns: repeat(auto-fit, minmax($grid_cell_height, auto));
-    grid-auto-flow: column;
+    grid-template-columns: repeat(auto-fit, minmax($cell, auto));
+    grid-auto-flow:        column;
 }
 
 .#{$prefix}col {
     @extend .#{$prefix}grid;
-    grid-template-rows: repeat(auto-fit, minmax($grid_cell_height, auto));
-    grid-auto-flow: dense;
+    grid-template-rows: repeat(auto-fit, minmax($cell, auto));
+    grid-auto-flow:     dense;
 }
 
 .#{$prefix}bar {
@@ -101,7 +95,7 @@
 }
 
 [class*="#{$prefix}col-"] {
-    width: auto;
+    width:     auto;
     max-width: none;
 }
 

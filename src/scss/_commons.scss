@@ -1,0 +1,49 @@
+
+@include setGutters(margin);
+@include setGutters(padding);
+
+.#{$prefix}cursor {
+    @each $cursor in $list_cursors {
+        &-#{$cursor} {
+            cursor: $cursor;
+        }
+    }
+}
+
+/*a {
+    background-color: yellow;
+
+    &:link {
+        background-color: red;
+    }
+    &:focus {
+        background-color: red;
+        &-within {
+        }
+        &-visible {
+        }
+    }
+    &:target {
+        background-color: green;
+    }
+    &:visited {
+        background-color: green;
+    }
+    &:hover {
+        background-color: orange;
+    }
+    &:active {
+        background-color: blue;
+    }
+}*/
+
+/*
+.#{$prefix}unstyled {
+    list-style: none outside none;
+}
+
+.#{$prefix}unstyle {
+    > li {
+        list-style-type: none;
+    }
+}*/
