@@ -1,14 +1,7 @@
 
-@include setGutters(margin);
-@include setGutters(padding);
+//@include setGutters(margin);
+//@include setGutters(padding);
 
-.#{$prefix}cursor {
-    @each $cursor in $list_cursors {
-        &-#{$cursor} {
-            cursor: $cursor;
-        }
-    }
-}
 
 /*a {
     background-color: yellow;

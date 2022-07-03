@@ -5,10 +5,6 @@
 //**********************************************************
 
 // Root
-/*:root {
-    font-size: $root_cell;
-}*/
-
 *,
 ::before,
 ::after {
@@ -26,7 +22,7 @@ body {
     min-height:  100vh;
     overflow-x:  hidden;
     z-index:     1;
-    @extend .#{$prefix}margin-0;
+    @extend %margin-0;
 }
 
 body,
@@ -72,7 +68,7 @@ progress {
 }
 
 :disabled {
-    @extend .#{$prefix}cursor-not-allowed;
+    @extend %cursor-not-allowed;
 }
 
 ::selection {
@@ -93,14 +89,14 @@ details {
 
 summary {
     display: list-item;
-    @extend .#{$prefix}cursor-pointer;
+    @extend %cursor-pointer;
 }
 
 figure {
-    @extend .#{$prefix}margin-top-0;
-    @extend .#{$prefix}margin-left-0;
-    @extend .#{$prefix}margin-right-0;
-    @extend .#{$prefix}margin-bottom-half;
+    @extend %margin-top-0;
+    @extend %margin-left-0;
+    @extend %margin-right-0;
+    @extend %margin-bottom-half;
 }
 
 hr {
@@ -108,19 +104,19 @@ hr {
     height:           1px;
     border-top-width: 1px;
     border-top-style: solid;
-    @extend .#{$prefix}padding-0;
-    @extend .#{$prefix}margin-top-0;
-    @extend .#{$prefix}margin-bottom-half;
+    @extend %padding-0;
+    @extend %margin-top-0;
+    @extend %margin-bottom-half;
 }
 
 ul,
 ol {
-    @extend .#{$prefix}margin-top-0;
-    @extend .#{$prefix}padding-left-half;
+    @extend %margin-top-0;
+    @extend %padding-left-half;
 
     ul,
     ol {
-        @extend .#{$prefix}margin-bottom-0;
+        @extend %margin-bottom-0;
     }
 
     ul {
@@ -137,7 +133,7 @@ li {
 }
 
 dl {
-    @extend .#{$prefix}margin-top-0;
+    @extend %margin-top-0;
 }
 
 dt {
@@ -145,14 +141,14 @@ dt {
 }
 
 dd {
-    @extend .#{$prefix}margin-left-0;
-    @extend .#{$prefix}margin-bottom-half;
+    @extend %margin-left-0;
+    @extend %margin-bottom-half;
 }
 
 // Typography
 %heading {
-    @extend .#{$prefix}margin-top-0;
-    @extend .#{$prefix}margin-bottom-half;
+    @extend %margin-top-0;
+    @extend %margin-bottom-half;
 }
 
 h1 {
@@ -183,8 +179,8 @@ h6 {
 p {
     text-align:  justify;
     text-indent: $grid_gap_half;
-    @extend .#{$prefix}margin-top-0;
-    @extend .#{$prefix}margin-bottom-half;
+    @extend %margin-top-0;
+    @extend %margin-bottom-half;
 }
 
 b,
@@ -194,7 +190,7 @@ strong {
 
 a {
     text-decoration:  underline;
-    @extend .#{$prefix}cursor-pointer;
+    @extend %cursor-pointer;
 
     &:hover,
     &:active {
@@ -225,7 +221,7 @@ q {
 }
 
 blockquote {
-    @extend .#{$prefix}margin-bottom-half;
+    @extend %margin-bottom-half;
 }
 
 mark,
@@ -234,7 +230,7 @@ code {
 }
 
 acronym {
-    @extend .#{$prefix}cursor-help;
+    @extend %cursor-help;
 }
 
 abbr {
@@ -245,14 +241,14 @@ abbr {
     &[title] {
         border-bottom:   none;
         text-decoration: underline dotted;
-        @extend .#{$prefix}cursor-help;
+        @extend %cursor-help;
     }
 }
 
 address {
     font-style:  normal;
     line-height: inherit;
-    @extend .#{$prefix}margin-bottom-half;
+    @extend %margin-bottom-half;
 }
 
 code {
@@ -262,8 +258,8 @@ code {
 pre {
     display:  block;
     overflow: auto;
-    @extend .#{$prefix}margin-top-0;
-    @extend .#{$prefix}margin-bottom-half;
+    @extend %margin-top-0;
+    @extend %margin-bottom-half;
 
     code {
         color:      inherit;
@@ -305,8 +301,8 @@ table {
 }
 
 caption {
-    @extend .#{$prefix}padding-top-half;
-    @extend .#{$prefix}padding-bottom-half;
+    @extend %padding-top-half;
+    @extend %padding-bottom-half;
     text-align: left;
 }
 
@@ -330,12 +326,12 @@ legend,
 fieldset,
 [type="radio"],
 [type="checkbox"] {
-    @extend .#{$prefix}padding-0;
+    @extend %padding-0;
 }
 
 fieldset {
     min-width: 0;
-    @extend .#{$prefix}margin-0;
+    @extend %margin-0;
     border:    0 none;
 }
 
@@ -349,7 +345,7 @@ legend {
 }
 
 form {
-    @extend .#{$prefix}margin-bottom-0;
+    @extend %margin-bottom-0;
 }
 
 label,
@@ -362,7 +358,7 @@ button,
 select,
 optgroup,
 textarea {
-    @extend .#{$prefix}margin-0;
+    @extend %margin-0;
     font-family: inherit;
     line-height: inherit;
 }
@@ -394,5 +390,5 @@ label[for],
 [type="button"],
 [type="submit"],
 [type="checkbox"] {
-    @extend .#{$prefix}cursor-pointer;
+    @extend %cursor-pointer;
 }

@@ -10,21 +10,21 @@ $prefix:                    "" !default;
 
 // Root
 $root_cell:                 20px !default; // Respond 1rem
-$cell:                      1.25rem !default; // Respond 20px
+$cell:                      1rem !default; // Respond 20px
 $rate_horizontal:           0.8 !default;
 $rate_vertical:             0.8 !default;
 $px:                        math.div($cell, stripUnit($root_cell)) !default;
 
 // Grid
 $grid_column:               12 !default;
-$grid_width:                $cell * 60 !default;
-$grid_gap:                  $cell * 2 !default;
-$grid_gap_half:             $cell !default;
+$grid_width:                1200px !default;
+$grid_gap:                  40px !default;
+$grid_gap_half:             20px !default;
 $grid_col_width:            math.div($grid_width, $grid_column) !default;
 
 // Layout
-$layout_gap:                $cell * 2 !default;
-$layout_width_min:          $cell * 18 !default;
+$layout_gap:                40px !default;
+$layout_width_min:          360px !default;
 $layout_width:              $grid_width + $layout_gap * 2 !default;
 $layout_rate:               math.div(100vw, $layout_width) !default;
 
@@ -49,7 +49,8 @@ $list_directions:           top, bottom, left, right;
 $list_cursors:              default, pointer, help, not-allowed;
 
 :root {
-    --var: #{getBreakpoint($grid_column)};
+    --var2: #{$layout_width * 20};
+    //--var: #{getBreakpoint($grid_column)};
     --px: #{$px};
     --bp: #{$list_breakpoints};
 }
