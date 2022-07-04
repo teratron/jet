@@ -4,16 +4,31 @@
 //
 //**********************************************************
 
+@use "sass:list";
+//@use "sass:meta";
+
+//@mixin setPlaceholderBreakpoints($name) {
+//    @at-root {
+//        @for $i from $grid_column to 0 {
+//            @media only screen and (max-width: getBreakpoint($i)) {
+//                %#{$name}-breakpoint-#{$i} {
+//                    @content;
+//                }
+//            }
+//        }
+//    }
+//}
+
 // Helpers
 @mixin setPlaceholderGutter($prop) {
     %#{$prop} {
         @include setPropsAdaptive((
-                #{$prop}: $grid_gap,
+                #{$prop}: $grid_gap
         ));
 
         &-half {
             @include setPropsAdaptive((
-                    #{$prop}: $grid_gap_half,
+                    #{$prop}: $grid_gap_half
             ));
         }
 
@@ -21,31 +36,51 @@
             #{$prop}: 0;
         }
 
-        @each $dir in $list_directions {
-            &-#{$dir} {
+        @each $side in $sides {
+            &-#{$side} {
                 @include setPropsAdaptive((
-                        #{$prop}-#{$dir}: $grid_gap,
+                        #{$prop}-#{$side}: $grid_gap
                 ));
 
                 &-half {
                     @include setPropsAdaptive((
-                            #{$prop}-#{$dir}: $grid_gap_half,
+                            #{$prop}-#{$side}: $grid_gap_half
                     ));
                 }
 
                 &-0 {
-                    #{$prop}-#{$dir}: 0;
+                    #{$prop}-#{$side}: 0;
                 }
             }
         }
     }
 }
 
+$breakpoint-placeholders: ();
+
+@mixin setPlaceholderBreakpoints($name) {
+    @at-root {
+        @media only screen and (max-width: getBreakpoint($grid_column)) {
+            %#{$name}-breakpoint-#{$grid_column} {
+                @content;
+            }
+        }
+    }
+}
+
 @mixin setPropsAdaptive($props) {
+    $name: & -#{props-adaptive};
+
     @each $key, $value in $props {
         @if $value > 0 {
             #{$key}: $value;
         }
+    }
+
+    @if not list.index($breakpoint-placeholders, $name) {
+        $breakpoint-placeholders: append($breakpoint-placeholders, $name);
+    } @else {
+        @warn "Placeholder #{$name} already exists.";
     }
 
     @media only screen and (max-width: getBreakpoint($grid_column)) {
@@ -59,6 +94,35 @@
     }
 }
 
+@mixin respond-to($width) {
+    @media only screen and (max-width: getBreakpoint($width)) {
+        @content;
+    }
+}
+
+@mixin asd($name) {
+        @content;
+}
+//@include respond-to($grid_column) {
+//%block {
+//    width: 100%;
+//}
+//%block2 {
+//    width: 80%;
+//}
+//}
+
+.block {
+    @extend %block;
+    background-color: #20ff6c;
+}
+
+.block2 {
+    @extend %block;
+    @extend %block2;
+    background-color: #20ff6c;
+}
+
 // Utilities
 
 // Components
@@ -67,25 +131,36 @@
 
 // Layout
 
-@use "sass:meta";
-@mixin placeholder($name) {
-    @if not meta.variable-exists($name) {
-        //$placeholders: append($placeholders, $name) !global;
 
-        @at-root {
-            @each $breakpoint in $list_breakpoints {
-                @media (min-width: $breakpoint) {
-                    %#{$name}-#{$breakpoint} {
-                        @content;
-                    }
-                }
-            }
-
-            %#{$name}-default-breakpoint {
-                @content;
-            }
-        }
-    } @else {
-        @warn "Placeholder `#{$name}` already exists.";
-    }
-}
+// @mixin setPlaceholderBreakpoints($name) {
+//     @if not list.index($placeholders, $name) {
+//         //$placeholders: append($placeholders, $name) !global;
+//
+//         @at-root {
+//             @each $breakpoint in $breakpoints {
+//                 @media (min-width: $breakpoint) {
+//                     %#{$name}-#{$breakpoint} {
+//                         @content;
+//                     }
+//                 }
+//             }
+//
+//             %#{$name}-default-breakpoint {
+//                 @content;
+//             }
+//         }
+//     } @else {
+//         @warn "Placeholder #{$name} already exists.";
+//     }
+// }
+//
+// $placeholders: ();
+//
+// @mixin setPlaceholder($name) {
+//     @if not list.index($placeholders, $name) {
+//         $placeholders: append($placeholders, $name);
+//
+//     } @else {
+//         @warn "Placeholder #{$name} already exists.";
+//     }
+// }

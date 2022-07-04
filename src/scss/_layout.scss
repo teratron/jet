@@ -124,31 +124,29 @@
         order: $i;
     }
 }
-/*
-%res{
-    @at-root %#{$child} {
-    @media only screen and (max-width: getBreakpoint($grid_column)) {
-            @content;
-        }
+
+//@include setPlaceholderBreakpoints(zzz);
+
+//@media only screen and (max-width: getBreakpoint($grid_column)) {
+//    @each $placeholder in $breakpoint-placeholders {
+//        .#{$placeholder} {
+//
+//        }
+//    }
+//}
+
+@include respond-to($grid_column) {
+    //%block {
+    //    width: 100%;
+    //}
+    //%block2 {
+    //    width: 80%;
+    //}
+    @include asd($name) {
+
     }
 }
 
-@mixin unify-parent($child) {
-
-}
-
-.field {
-    @include unify-parent("input") {
-        background-color: #6f42c1;
-    }
-}
-
-.field2 {
-    @include unify-parent("input") {
-        background-color: red;
-    }
-}
-*/
 // Breakpoints
 @for $i from $grid_column to 0 {
     @media only screen and (max-width: getBreakpoint($i)) {

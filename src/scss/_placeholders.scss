@@ -1,12 +1,27 @@
 
+// Gutters
 @include setPlaceholderGutter(margin);
 @include setPlaceholderGutter(padding);
 
 // Cursor
 %cursor {
-    @each $cursor in $list_cursors {
+    @each $cursor in $cursors {
         &-#{$cursor} {
             cursor: $cursor;
+        }
+    }
+}
+
+// Fonts
+%font {
+    &-family {
+        &-sans-serif {
+            font-family: $font_family_sans_serif;
+        }
+
+        &-monospace {
+            font-family: $font_family_monospace;
+            direction:   ltr;
         }
     }
 }

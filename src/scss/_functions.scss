@@ -43,7 +43,7 @@
 }
 
 @function getBreakpoint($n: $grid_column) {
-    @return list.nth($list_breakpoints, $n);
+    @return list.nth($breakpoints, $n);
 }
 
 // Helpers
