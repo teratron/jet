@@ -27,23 +27,8 @@
     @return $list;
 }
 
-@function getListBreakpointsRem() {
-    $list: [];
-    $b: math.div(100, $layout_width) * $layout_gap * 2;
-    $g: 100 - $b;
-
-    @for $i from 1 through $grid_column {
-        $w: $i * $grid_col_width;
-        $s: math.div($w, $g) * $b;
-        $d: $w + $s - $px;
-        $list: list.append($list, $d);
-    }
-
-    @return $list;
-}
-
 @function getBreakpoint($n: $grid_column) {
-    @return list.nth($breakpoints, $n);
+    @return list.nth($list_breakpoints, $n);
 }
 
 // Helpers

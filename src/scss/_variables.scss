@@ -42,11 +42,13 @@ $zindex_toast:              1900 !default;
 $zindex_debug:              2000 !default;
 
 // Breakpoints
-$breakpoints:               getListBreakpoints() !default;
+$list_breakpoints:          getListBreakpoints() !default;
+$breakpoint_placeholders:   [];
+$global_map: [];
 
 // Commons
-$sides:                     top, bottom, left, right;
-$cursors:                   default, pointer, help, not-allowed;
+$list_sides:                top, bottom, left, right;
+$list_cursors:              default, pointer, help, not-allowed;
 
 // Fonts
 $font_family_sans_serif:    Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans",
@@ -54,8 +56,7 @@ $font_family_sans_serif:    Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI
 $font_family_monospace:     SFMono-Regular, source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 
 :root {
-    --var2: #{$layout_width * 20};
-    //--var: #{getBreakpoint($grid_column)};
-    --px:   #{$px};
-    --bp:   #{$breakpoints};
+    --var: #{getBreakpoint($grid_column)};
+    --px:  #{$px};
+    --bp:  #{$list_breakpoints};
 }

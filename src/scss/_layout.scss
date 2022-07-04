@@ -41,8 +41,23 @@
 
     @include setPropsAdaptive((
             padding-left: $layout_gap,
-            padding-right: $layout_gap,
+            padding-right: $layout_gap
     ));
+
+    //$BP: [
+    //    (
+    //        selector: &,
+    //        props: (
+    //            padding-left: $layout_gap,
+    //            padding-right: $layout_gap
+    //        )
+    //    ),
+    //    (AA: #{&}),
+    //];
+    //
+    //:root {
+    //    //--var7: #{$asd};
+    //}
 }
 
 // Grid
@@ -59,12 +74,12 @@
 
 .#{$prefix}gap {
     @include setPropsAdaptive((
-            grid-gap: $grid_gap,
+            grid-gap: $grid_gap
     ));
 
     &-half {
         @include setPropsAdaptive((
-                grid-gap: $grid_gap_half,
+                grid-gap: $grid_gap_half
         ));
     }
 
@@ -89,6 +104,11 @@
     }
 }
 
+%col {
+    width:     auto;
+    max-width: none;
+}
+
 .#{$prefix}bar {
     @extend .#{$prefix}row;
     // TODO: bar
@@ -97,11 +117,6 @@
 .#{$prefix}list {
     @extend .#{$prefix}col;
     // TODO: list
-}
-
-[class*="#{$prefix}col-"] {
-    width:     auto;
-    max-width: none;
 }
 
 @for $i from 1 through $grid_column {
@@ -114,6 +129,10 @@
     .#{$prefix}grid-#{$i},
     .#{$prefix}grid-#{$i} > .#{$prefix}row {
         grid-column-end: span $i;
+    }
+
+    .#{$prefix}col-#{$i} {
+        @extend %col;
     }
 
     .#{$prefix}span-#{$i} {
@@ -135,17 +154,21 @@
 //    }
 //}
 
-@include respond-to($grid_column) {
-    //%block {
-    //    width: 100%;
-    //}
-    //%block2 {
-    //    width: 80%;
-    //}
-    @include asd($name) {
+//:root {
+//    --var3: #{$breakpoint_placeholders};
+//}
 
-    }
+
+@include respond-to($grid_column) {
+    //@each $placeholder in $breakpoint_placeholders {
+    //    #{$placeholder} {
+    //        background-color: red;
+    //    }
+    //}
+
+    @include expand();
 }
+
 
 // Breakpoints
 @for $i from $grid_column to 0 {
@@ -161,23 +184,25 @@
                 }
 
                 > %col-#{$k},
-                > .#{$prefix}grid-#{$k} > .#{$prefix}col,
                 > .#{$prefix}grid-#{$k} > .#{$prefix}row {
                     grid-column-end: span $i;
                 }
             }
 
             @for $j from $k through $grid_column {
+                .#{$prefix}grid-#{$j} {
+                    @extend %grid-#{$k};
+                }
+
                 .#{$prefix}col-#{$j},
                 .#{$prefix}grid-#{$j} {
                     @extend %col-#{$k};
-                    @extend %grid-#{$k};
                 }
             }
         }
 
         // Actions
-        [class*="#{$prefix}col-b#{$i}-"] {
+        %col-b#{$i} {
             display: inherit;
         }
 
@@ -185,7 +210,7 @@
             display: none;
         }
 
-        [class*="#{$prefix}gap-b#{$i}"] {
+        .#{$prefix}gap-b#{$i} {
             grid-gap: inherit;
         }
 
@@ -196,6 +221,7 @@
         @for $j from 1 through $grid_column {
             .#{$prefix}col-b#{$i}-#{$j} {
                 grid-column-end: span $j;
+                @extend %col-b#{$i};
             }
 
             .#{$prefix}order-b#{$i}-#{$j} {

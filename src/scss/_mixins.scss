@@ -4,8 +4,11 @@
 //
 //**********************************************************
 
+@use "sass:map";
 @use "sass:list";
-//@use "sass:meta";
+@use "sass:meta";
+@use "sass:string";
+@use "sass:selector";
 
 //@mixin setPlaceholderBreakpoints($name) {
 //    @at-root {
@@ -36,7 +39,7 @@
             #{$prop}: 0;
         }
 
-        @each $side in $sides {
+        @each $side in $list_sides {
             &-#{$side} {
                 @include setPropsAdaptive((
                         #{$prop}-#{$side}: $grid_gap
@@ -56,71 +59,106 @@
     }
 }
 
-$breakpoint-placeholders: ();
+//@mixin addPlaceholder($name) {
+//    //@if string.index(#{$name}, ".") == 1 or string.index(#{$name}, "%") == 1 or string.index(#{$name}, "#") == 1 {
+//    //    $name: string.slice(#{$name}, 2);
+//    //}
+//
+//    //@if list.index($breakpoint_placeholders, #{$name}) == null {
+//    //    $breakpoint_placeholders: list.append($breakpoint_placeholders, #{$name}) !global;
+//    //} @else {
+//    //    @warn "Placeholder %#{$name} already exists.";
+//    //}
+//
+//    @if list.index($breakpoint_placeholders, $name) == null {
+//        $breakpoint_placeholders: list.append($breakpoint_placeholders, $name) !global;
+//    } @else {
+//        @warn "Placeholder %#{$name} already exists.";
+//    }
+//}
 
-@mixin setPlaceholderBreakpoints($name) {
-    @at-root {
-        @media only screen and (max-width: getBreakpoint($grid_column)) {
-            %#{$name}-breakpoint-#{$grid_column} {
-                @content;
-            }
-        }
-    }
-}
+//@mixin extendPlaceholder($name) {
+//    @if list.index($breakpoint_placeholders, #{$name}) == null {
+//        @include addPlaceholder($name);
+//    }
+//
+//    @if string.index(#{$name}, ".") == 1 or string.index(#{$name}, "%") == 1 or string.index(#{$name}, "#") == 1 {
+//        $name: string.slice(#{$name}, 2);
+//    }
+//
+//    $selector: selector.parse($name);
+//
+//    @extend %#{$selector} !optional;
+//}
+
+//@mixin makePlaceholder($name) {
+//    @if string.index(#{$name}, ".") == 1 or string.index(#{$name}, "%") == 1 or string.index(#{$name}, "#") == 1 {
+//        $name: string.slice(#{$name}, 2);
+//    }
+//
+//    $selector: selector.parse($name);
+//
+//    %#{$selector} {
+//        @content;
+//    }
+//}
 
 @mixin setPropsAdaptive($props) {
-    $name: & -#{props-adaptive};
-
     @each $key, $value in $props {
         @if $value > 0 {
             #{$key}: $value;
         }
     }
 
-    @if not list.index($breakpoint-placeholders, $name) {
-        $breakpoint-placeholders: append($breakpoint-placeholders, $name);
-    } @else {
-        @warn "Placeholder #{$name} already exists.";
-    }
+    $map: (selector: #{&});
+
 
     @media only screen and (max-width: getBreakpoint($grid_column)) {
         @each $key, $value in $props {
             @if $value > 0 {
                 #{$key}: $layout_rate * $value;
+                $map: map.merge($map, props, (#{$key}: $layout_rate * $value));
             } @else {
                 #{$key}: 0;
+                $map: map.merge($map, props, (#{$key}: 0));
+            }
+        }
+    }
+
+    $global_map: list.append($global_map, $map) !global;
+
+    //:root {
+    //        //--var7: #{$global_map};
+    //    }
+    //@include makePlaceholder(&) {
+    //    @each $key, $value in $props {
+    //        @if $value > 0 {
+    //            #{$key}: $layout_rate * $value;
+    //        } @else {
+    //            #{$key}: 0;
+    //        }
+    //    }
+    //}
+
+    //@include extendPlaceholder(&);
+    //@include addPlaceholder(&);
+    //@extend #{&} !optional;
+}
+@mixin expand() {
+    @each $g in $global_map {
+        $selector: map.get($g, selector);
+        #{$selector} {
+            @each $key, $value in map.get($g, props) {
+                    #{$key}: $value;
+
             }
         }
     }
 }
-
-@mixin respond-to($width) {
-    @media only screen and (max-width: getBreakpoint($width)) {
+@mixin respond-to($id) {
+    @media only screen and (max-width: getBreakpoint($id)) {
         @content;
     }
-}
-
-@mixin asd($name) {
-        @content;
-}
-//@include respond-to($grid_column) {
-//%block {
-//    width: 100%;
-//}
-//%block2 {
-//    width: 80%;
-//}
-//}
-
-.block {
-    @extend %block;
-    background-color: #20ff6c;
-}
-
-.block2 {
-    @extend %block;
-    @extend %block2;
-    background-color: #20ff6c;
 }
 
 // Utilities
@@ -130,37 +168,3 @@ $breakpoint-placeholders: ();
 // Skins
 
 // Layout
-
-
-// @mixin setPlaceholderBreakpoints($name) {
-//     @if not list.index($placeholders, $name) {
-//         //$placeholders: append($placeholders, $name) !global;
-//
-//         @at-root {
-//             @each $breakpoint in $breakpoints {
-//                 @media (min-width: $breakpoint) {
-//                     %#{$name}-#{$breakpoint} {
-//                         @content;
-//                     }
-//                 }
-//             }
-//
-//             %#{$name}-default-breakpoint {
-//                 @content;
-//             }
-//         }
-//     } @else {
-//         @warn "Placeholder #{$name} already exists.";
-//     }
-// }
-//
-// $placeholders: ();
-//
-// @mixin setPlaceholder($name) {
-//     @if not list.index($placeholders, $name) {
-//         $placeholders: append($placeholders, $name);
-//
-//     } @else {
-//         @warn "Placeholder #{$name} already exists.";
-//     }
-// }

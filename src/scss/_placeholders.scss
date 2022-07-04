@@ -3,9 +3,9 @@
 @include setPlaceholderGutter(margin);
 @include setPlaceholderGutter(padding);
 
-// Cursor
+// Cursors
 %cursor {
-    @each $cursor in $cursors {
+    @each $cursor in $list_cursors {
         &-#{$cursor} {
             cursor: $cursor;
         }
