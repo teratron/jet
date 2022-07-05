@@ -1,3 +1,4 @@
+
 // Application
 #app {
     display:               grid;
@@ -9,7 +10,7 @@
     min-height:            100vh;
     z-index:               $zindex_app;
 
-    @extend .sticker; // TODO: debug
+    @extend .sticker;
 }
 
 .app-container {

@@ -1,6 +1,6 @@
 {
   "name": "jettix-app",
-  "version": "0.0.183",
+  "version": "0.0.184",
   "description": "Web application for Jettix",
   "private": true,
   "homepage": "https://teratron.github.io/jettix",
@@ -17,5 +17,5 @@
     "deploy:gh": "gh-pages -d build",
     "build-deploy:gh": "gh-pages-clean && npm run build && npm run deploy:gh"
   },
-  "buildDate": "2022-07-05T13:53:34.312Z"
+  "buildDate": "2022-07-05T16:38:51.629Z"
 }
