@@ -19,6 +19,8 @@
 // span-[1...n]
 // span-b[1...n]-[1...n]
 //
+// shrink
+//
 // row
 //
 // col
@@ -44,20 +46,6 @@
             padding-right: $layout_gap
     ));
 
-    //$BP: [
-    //    (
-    //        selector: &,
-    //        props: (
-    //            padding-left: $layout_gap,
-    //            padding-right: $layout_gap
-    //        )
-    //    ),
-    //    (AA: #{&}),
-    //];
-    //
-    //:root {
-    //    //--var7: #{$asd};
-    //}
 }
 
 // Grid
@@ -144,35 +132,11 @@
     }
 }
 
-//@include setPlaceholderBreakpoints(zzz);
-
-//@media only screen and (max-width: getBreakpoint($grid_column)) {
-//    @each $placeholder in $breakpoint-placeholders {
-//        .#{$placeholder} {
-//
-//        }
-//    }
-//}
-
-//:root {
-//    --var3: #{$breakpoint_placeholders};
-//}
-
-
-@include respond-to($grid_column) {
-    //@each $placeholder in $breakpoint_placeholders {
-    //    #{$placeholder} {
-    //        background-color: red;
-    //    }
-    //}
-
-    @include expand();
-}
-
-
 // Breakpoints
 @for $i from $grid_column to 0 {
     @media only screen and (max-width: getBreakpoint($i)) {
+        @include pasteBuffer($i);
+
         // Shrink
         @if $i < $grid_column {
             $k: $i + 1;

@@ -6,21 +6,9 @@
 
 @use "sass:map";
 @use "sass:list";
-@use "sass:meta";
-@use "sass:string";
-@use "sass:selector";
-
-//@mixin setPlaceholderBreakpoints($name) {
-//    @at-root {
-//        @for $i from $grid_column to 0 {
-//            @media only screen and (max-width: getBreakpoint($i)) {
-//                %#{$name}-breakpoint-#{$i} {
-//                    @content;
-//                }
-//            }
-//        }
-//    }
-//}
+//@use "sass:meta";
+//@use "sass:string";
+//@use "sass:selector";
 
 // Helpers
 @mixin setPlaceholderGutter($prop) {
@@ -59,49 +47,18 @@
     }
 }
 
-//@mixin addPlaceholder($name) {
-//    //@if string.index(#{$name}, ".") == 1 or string.index(#{$name}, "%") == 1 or string.index(#{$name}, "#") == 1 {
-//    //    $name: string.slice(#{$name}, 2);
-//    //}
+// Array of breakpoints buffer:
 //
-//    //@if list.index($breakpoint_placeholders, #{$name}) == null {
-//    //    $breakpoint_placeholders: list.append($breakpoint_placeholders, #{$name}) !global;
-//    //} @else {
-//    //    @warn "Placeholder %#{$name} already exists.";
-//    //}
-//
-//    @if list.index($breakpoint_placeholders, $name) == null {
-//        $breakpoint_placeholders: list.append($breakpoint_placeholders, $name) !global;
-//    } @else {
-//        @warn "Placeholder %#{$name} already exists.";
-//    }
-//}
-
-//@mixin extendPlaceholder($name) {
-//    @if list.index($breakpoint_placeholders, #{$name}) == null {
-//        @include addPlaceholder($name);
-//    }
-//
-//    @if string.index(#{$name}, ".") == 1 or string.index(#{$name}, "%") == 1 or string.index(#{$name}, "#") == 1 {
-//        $name: string.slice(#{$name}, 2);
-//    }
-//
-//    $selector: selector.parse($name);
-//
-//    @extend %#{$selector} !optional;
-//}
-
-//@mixin makePlaceholder($name) {
-//    @if string.index(#{$name}, ".") == 1 or string.index(#{$name}, "%") == 1 or string.index(#{$name}, "#") == 1 {
-//        $name: string.slice(#{$name}, 2);
-//    }
-//
-//    $selector: selector.parse($name);
-//
-//    %#{$selector} {
-//        @content;
-//    }
-//}
+// $list_breakpoints_buffer: [
+//     (
+//         selector: &,
+//         breakpoint: 11,
+//         props: (
+//             padding-left: 1rem,
+//             padding-right: 1rem
+//         )
+//     )
+// ]
 
 @mixin setPropsAdaptive($props) {
     @each $key, $value in $props {
@@ -110,54 +67,30 @@
         }
     }
 
-    $map: (selector: #{&});
+    $buffer: (selector: #{&}, breakpoint: $grid_column);
 
-
-    @media only screen and (max-width: getBreakpoint($grid_column)) {
-        @each $key, $value in $props {
-            @if $value > 0 {
-                #{$key}: $layout_rate * $value;
-                $map: map.merge($map, props, (#{$key}: $layout_rate * $value));
-            } @else {
-                #{$key}: 0;
-                $map: map.merge($map, props, (#{$key}: 0));
-            }
+    @each $key, $value in $props {
+        @if $value > 0 {
+            $buffer: map.merge($buffer, props, (#{$key}: $layout_rate * $value));
+        } @else {
+            $buffer: map.merge($buffer, props, (#{$key}: 0));
         }
     }
 
-    $global_map: list.append($global_map, $map) !global;
-
-    //:root {
-    //        //--var7: #{$global_map};
-    //    }
-    //@include makePlaceholder(&) {
-    //    @each $key, $value in $props {
-    //        @if $value > 0 {
-    //            #{$key}: $layout_rate * $value;
-    //        } @else {
-    //            #{$key}: 0;
-    //        }
-    //    }
-    //}
-
-    //@include extendPlaceholder(&);
-    //@include addPlaceholder(&);
-    //@extend #{&} !optional;
+    $list_breakpoints_buffer: list.append($list_breakpoints_buffer, $buffer) !global;
 }
-@mixin expand() {
-    @each $g in $global_map {
-        $selector: map.get($g, selector);
-        #{$selector} {
-            @each $key, $value in map.get($g, props) {
+
+@mixin pasteBuffer($breakpoint: $grid_column) {
+    @each $buffer in $list_breakpoints_buffer {
+        @if $breakpoint == map.get($buffer, breakpoint) {
+            $selector: map.get($buffer, selector);
+
+            #{$selector} {
+                @each $key, $value in map.get($buffer, props) {
                     #{$key}: $value;
-
+                }
             }
         }
-    }
-}
-@mixin respond-to($id) {
-    @media only screen and (max-width: getBreakpoint($id)) {
-        @content;
     }
 }
 
