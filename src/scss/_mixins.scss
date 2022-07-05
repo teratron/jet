@@ -3,14 +3,9 @@
 //----------------------------------------------------------
 //
 //**********************************************************
-
 @use "sass:map";
 @use "sass:list";
-//@use "sass:meta";
-//@use "sass:string";
-//@use "sass:selector";
 
-// Helpers
 @mixin setPlaceholderGutter($prop) {
     %#{$prop} {
         @include setPropsAdaptive((
@@ -47,6 +42,7 @@
     }
 }
 
+//----------------------------------------------------------
 // Array of breakpoints buffer:
 //
 // $list_breakpoints_buffer: [
@@ -57,9 +53,10 @@
 //             padding-left: 1rem,
 //             padding-right: 1rem
 //         )
-//     )
+//     ),
+//     ...
 // ]
-
+//----------------------------------------------------------
 @mixin setPropsAdaptive($props) {
     @each $key, $value in $props {
         @if $value > 0 {
@@ -93,6 +90,8 @@
         }
     }
 }
+
+// Helpers
 
 // Utilities
 

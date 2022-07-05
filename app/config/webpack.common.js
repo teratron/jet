@@ -10,8 +10,8 @@ module.exports = props => merge(
     common(props),
     {
         entry: {
-            main: paths.app + '/index.js'
-            //theme: paths.app + '/static/scss/themes/_default.scss'
+            main: paths.app + '/index.js',
+            theme: paths.app + '/static/scss/themes/default.scss'
         },
         module: {
             rules: [
@@ -66,7 +66,7 @@ module.exports = props => merge(
                 .filter(fileName => fileName.endsWith('.js'))
                 .map(page => new HtmlWebpackPlugin({
                     template: paths.app + `/templates/pages/${page}`,
-                    filename: page.replace(/.js/gi, '.html'),
+                    filename: page.replace(/\.js/gi, '.html'),
                     inject: 'body',
                     minify: true
                 }))

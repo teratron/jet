@@ -9,7 +9,7 @@
     min-height:            100vh;
     z-index:               $zindex_app;
 
-    //@extend .sticker; // TODO: debug
+    @extend .sticker; // TODO: debug
 }
 
 .app-container {
@@ -17,6 +17,13 @@
     @extend .grid-12;
 }
 
-.#{$prefix}outline > * {
+.outline > * {
     outline: 1px solid #ddd;
+}
+
+.row-test {
+    @extend .row, .outline;
+    > :first-child {
+        @extend .col-b10-3, .col-b9-5, .col-b8-6;
+    }
 }

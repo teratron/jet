@@ -21,7 +21,9 @@ const config = merge(
         },
         plugins: [
             new MiniCssExtractPlugin({
-                filename: 'static/css/[name].[contenthash].bundle.css'
+                filename: pathData => pathData.chunk.name === 'main'
+                    ? 'static/css/[name].[contenthash].bundle.css'
+                    : 'static/css/[name].css'
             }),
             semver({
                 files: [paths.app + '/package.json']

@@ -1,3 +1,8 @@
+//**********************************************************
+// Placeholders
+//----------------------------------------------------------
+//
+//**********************************************************
 
 // Gutters
 @include setPlaceholderGutter(margin);
@@ -24,4 +29,10 @@
             direction:   ltr;
         }
     }
+}
+
+// Typography
+%heading {
+    @extend %margin-top-0, %margin-bottom-half;
+    //@extend %col; // TODO: @extend %col
 }

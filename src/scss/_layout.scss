@@ -7,6 +7,8 @@
 // grid
 // grid-[1...n]
 //
+// shrink
+//
 // gap
 // gap-half
 // gap-0
@@ -19,8 +21,6 @@
 // span-[1...n]
 // span-b[1...n]-[1...n]
 //
-// shrink
-//
 // row
 //
 // col
@@ -30,6 +30,7 @@
 // col-b[1...n]-[1...n]
 //
 // list
+//
 // bar
 //
 //**********************************************************
@@ -45,7 +46,6 @@
             padding-left: $layout_gap,
             padding-right: $layout_gap
     ));
-
 }
 
 // Grid
@@ -95,6 +95,7 @@
 %col {
     width:     auto;
     max-width: none;
+    @extend %margin-0;
 }
 
 .#{$prefix}bar {
@@ -115,6 +116,7 @@
 
     .#{$prefix}col-#{$i},
     .#{$prefix}grid-#{$i},
+    .#{$prefix}grid-#{$i} > %heading,
     .#{$prefix}grid-#{$i} > .#{$prefix}row {
         grid-column-end: span $i;
     }
@@ -147,7 +149,9 @@
                     grid-template-columns: repeat($i, 1fr);
                 }
 
+                > %heading,
                 > %col-#{$k},
+                > .#{$prefix}grid-#{$k} > %heading,
                 > .#{$prefix}grid-#{$k} > .#{$prefix}row {
                     grid-column-end: span $i;
                 }
@@ -167,7 +171,7 @@
 
         // Actions
         %col-b#{$i} {
-            display: inherit;
+            display: initial;
         }
 
         .#{$prefix}col-b#{$i}-0 {
@@ -175,7 +179,7 @@
         }
 
         .#{$prefix}gap-b#{$i} {
-            grid-gap: inherit;
+            grid-gap: initial;
         }
 
         .#{$prefix}gap-b#{$i}-0 {

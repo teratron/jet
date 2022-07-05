@@ -77,10 +77,7 @@ summary {
 }
 
 figure {
-    @extend %margin-top-0;
-    @extend %margin-left-0;
-    @extend %margin-right-0;
-    @extend %margin-bottom-half;
+    @extend %margin-top-0, %margin-left-0, %margin-right-0, %margin-bottom-half;
 }
 
 hr {
@@ -89,8 +86,7 @@ hr {
     border-top-width: 1px;
     border-top-style: solid;
     @extend %padding-0;
-    @extend %margin-top-0;
-    @extend %margin-bottom-half;
+    @extend %margin-top-0, %margin-bottom-half;
 }
 
 ul,
@@ -125,16 +121,10 @@ dt {
 }
 
 dd {
-    @extend %margin-left-0;
-    @extend %margin-bottom-half;
+    @extend %margin-left-0, %margin-bottom-half;
 }
 
 // Typography
-%heading {
-    @extend %margin-top-0;
-    @extend %margin-bottom-half;
-}
-
 h1 {
     @extend %heading;
 }
@@ -163,8 +153,7 @@ h6 {
 p {
     text-align:  justify;
     text-indent: $grid_gap_half;
-    @extend %margin-top-0;
-    @extend %margin-bottom-half;
+    @extend %margin-top-0, %margin-bottom-half;
 }
 
 b,
@@ -173,7 +162,7 @@ strong {
 }
 
 a {
-    text-decoration:  underline;
+    text-decoration: underline;
     @extend %cursor-pointer;
 
     &:hover,
@@ -249,8 +238,7 @@ code {
 pre {
     display:  block;
     overflow: auto;
-    @extend %margin-top-0;
-    @extend %margin-bottom-half;
+    @extend %margin-top-0, %margin-bottom-half;
 
     code {
         color:      inherit;
@@ -292,8 +280,7 @@ table {
 }
 
 caption {
-    @extend %padding-top-half;
-    @extend %padding-bottom-half;
+    @extend %padding-top-half, %padding-bottom-half;
     text-align: left;
 }
 
