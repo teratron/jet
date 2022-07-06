@@ -53,26 +53,13 @@
 
 .#{$prefix}grid {
     @extend %grid;
-    @extend .#{$prefix}gap;
+    @extend %grid-gap;
     grid-auto-flow: row;
 }
 
 // Gap
 .#{$prefix}gap {
     @extend %grid-gap;
-    //@include setPropsAdaptive((
-    //        grid-gap: $grid_gap
-    //));
-    //
-    //&-half {
-    //    @include setPropsAdaptive((
-    //            grid-gap: $grid_gap_half
-    //    ));
-    //}
-    //
-    //&-0 {
-    //    grid-gap: 0;
-    //}
 }
 
 // Row

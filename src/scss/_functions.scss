@@ -14,7 +14,7 @@
 // Breakpoints
 @function GetListBreakpoints() {
     $list: [];
-    $b: math.div(100, $layout_width) * $layout_gap * 2;
+    $b: math.div(100, $layout_width) * $grid_gap * 2;
     $g: 100 - $b;
 
     @for $i from 1 through $grid_column {
