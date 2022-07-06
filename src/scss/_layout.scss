@@ -35,6 +35,8 @@
 // bar
 //
 //**********************************************************
+@import "mixins/bar";
+@import "mixins/list";
 
 // Layout
 .#{$prefix}layout {
@@ -49,6 +51,24 @@
 %grid {
     @extend %display-grid;
     grid-auto-rows: minmax($cell, auto);
+}
+
+%grid-child-width {
+    @extend %reset-width;
+
+    :first-child > & {
+        @extend %margin-top-0;
+    }
+
+    :only-child > &,
+    :last-child > & {
+        @extend %margin-bottom-0;
+    }
+}
+
+%reset-width {
+    width:     auto;
+    max-width: none;
 }
 
 .#{$prefix}grid {
@@ -80,6 +100,7 @@
 
 .#{$prefix}bar {
     @extend %row;
+    //@include setBar(auto, $grid_gap_half);
 }
 
 // Column
@@ -103,18 +124,30 @@
 }
 
 @for $i from 1 through $grid_column {
-    .#{$prefix}grid-#{$i} {
-        @extend .#{$prefix}grid;
+    %grid-#{$i} {
         grid-template-columns: repeat($i, 1fr);
     }
 
-    .#{$prefix}col-#{$i},
-    .#{$prefix}grid-#{$i},
+    %col-#{$i},
     .#{$prefix}grid-#{$i} > %grid-child-width {
         grid-column-end: span $i;
     }
 
+    .#{$prefix}grid-#{$i} {
+        @extend .#{$prefix}grid;
+        @extend %grid-#{$i};
+        @extend %col-#{$i};
+
+        @for $j from $i + 1 through $grid_column {
+            > .#{$prefix}grid-#{$j} {
+                @extend %grid-#{$i};
+                @extend %col-#{$i};
+            }
+        }
+    }
+
     .#{$prefix}col-#{$i} {
+        @extend %col-#{$i};
         @extend %reset-width;
     }
 
@@ -138,11 +171,11 @@
 
             .#{$prefix}shrink {
                 &,
-                > %grid-#{$k} {
+                > %grid-shrink-#{$k} {
                     grid-template-columns: repeat($i, 1fr);
                 }
 
-                > %col-#{$k},
+                > %col-shrink-#{$k},
                 > %grid-child-width,
                 > .#{$prefix}grid-#{$k} > %grid-child-width {
                     grid-column-end: span $i;
@@ -151,12 +184,12 @@
 
             @for $j from $k through $grid_column {
                 .#{$prefix}grid-#{$j} {
-                    @extend %grid-#{$k};
+                    @extend %grid-shrink-#{$k};
                 }
 
                 .#{$prefix}col-#{$j},
                 .#{$prefix}grid-#{$j} {
-                    @extend %col-#{$k};
+                    @extend %col-shrink-#{$k};
                 }
             }
         }

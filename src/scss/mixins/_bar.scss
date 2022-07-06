@@ -1,9 +1,6 @@
-@mixin bar($height: auto, $gap: 0, $padding: 0) {
-    display:            grid;
-    //grid-template-columns: max-content 1fr;
+@mixin setBar($height: auto, $gap: 0, $padding: 0) {
+    @extend .#{$prefix}bar;
     grid-template-rows: $height;
-    grid-auto-flow:     column;
-    grid-auto-columns:  max-content;
     grid-gap:           $gap;
     justify-content:    space-between;
     justify-items:      stretch;

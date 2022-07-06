@@ -6,15 +6,26 @@
 
 // Gutters
 //----------------------------------------------------------
-// %grid-gap
-// %grid-gap-half
-// %grid-gap-0
+// %grid-gap       %grid-[row | column]-gap
+// %grid-gap-half  %grid-[row | column]-gap-half
+// %grid-gap-0     %grid-[row | column]-gap-0
+//----------------------------------------------------------
+// %margin       %margin-[top | bottom | left | right]
+// %margin-half  %margin-[top | bottom | left | right]-half
+// %margin-0     %margin-[top | bottom | left | right]-0
+//----------------------------------------------------------
+// %padding       %padding-[top | bottom | left | right]
+// %padding-half  %padding-[top | bottom | left | right]-half
+// %padding-0     %padding-[top | bottom | left | right]-0
 //**********************************************************
 @include setPlaceholderGap;
 @include setPlaceholderGutter(margin);
 @include setPlaceholderGutter(padding);
 
 // Cursors
+//----------------------------------------------------------
+// %cursor-[default | pointer | help | not-allowed | ...]
+//**********************************************************
 %cursor {
     @each $cursor in $list_cursors {
         &-#{$cursor} {
@@ -24,6 +35,9 @@
 }
 
 // Displays
+//----------------------------------------------------------
+// %display-[none | block | table | flex | grid | ...]
+//**********************************************************
 %display {
     @each $display in $list_displays {
         &-#{$display} {
@@ -33,6 +47,10 @@
 }
 
 // Fonts
+//----------------------------------------------------------
+// %font-family-sans-serif
+// %font-family-monospace
+//**********************************************************
 %font {
     &-family {
         &-sans-serif {
@@ -43,30 +61,5 @@
             font-family: $font_family_monospace;
             direction:   ltr;
         }
-    }
-}
-
-// Typography
-%heading {
-    @extend %margin-top-0, %margin-bottom-half;
-    @extend %grid-child-width;
-}
-
-// Helpers
-%reset-width {
-    width:     auto;
-    max-width: none;
-}
-
-%grid-child-width {
-    @extend %reset-width;
-
-    :first-child > & {
-        @extend %margin-top-0;
-    }
-
-    :only-child > &,
-    :last-child > & {
-        @extend %margin-bottom-0;
     }
 }

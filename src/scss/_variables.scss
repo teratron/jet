@@ -12,6 +12,7 @@ $prefix:                    "" !default;
 // Root
 $root_cell:                 20px !default; // Respond 1rem
 $cell:                      1rem !default; // Respond 20px
+$font-size:                 0.813rem !default;
 $rate_horizontal:           0.8 !default;
 $rate_vertical:             0.8 !default;
 $px:                        math.div($cell, StripUnit($root_cell));
@@ -20,13 +21,13 @@ $px:                        math.div($cell, StripUnit($root_cell));
 $grid_column:               12 !default;
 $grid_width:                1200px !default;
 $grid_gap:                  40px !default;
-$grid_gap_half:             if($grid_gap > 0, math.round(math.div($grid_gap, 2)), $grid_gap);
-$grid_col_width:            math.round(math.div($grid_width, $grid_column));
+$grid_gap_half:             if($grid_gap > 0, math.round(math.div($grid_gap, 2)), $grid_gap) !default;
+$grid_col_width:            math.round(math.div($grid_width, $grid_column)) !default;
 
 // Layout
 $layout_width_min:          360px !default;
-$layout_width:              $grid_width + $grid_gap * 2;
-$layout_rate:               math.div(100vw, $layout_width);
+$layout_width:              $grid_width + $grid_gap * 2 !default;
+$layout_rate:               math.div(100vw, $layout_width) !default;
 
 // Z-index
 $zindex_dropdown:           1000 !default;
@@ -48,7 +49,7 @@ $list_breakpoints_buffer:   [];
 // Commons
 $list_sides:                top, bottom, left, right;
 $list_cursors:              default, pointer, help, not-allowed;
-$list_displays:             none, block, table, flex, grid;
+$list_displays:             none, block, inline-block, table, flex, grid, inline-grid, list-item;
 
 // Fonts
 $font_family_sans_serif:    Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans",
@@ -56,8 +57,8 @@ $font_family_sans_serif:    Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI
 $font_family_monospace:     SFMono-Regular, source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace !default;
 
 :root {
-    --px:  #{$px};
-    --bp:  #{$list_breakpoints};
+    --px:                     #{$px};
+    --bp:                     #{$list_breakpoints};
 
     // Fonts
     --font-family-sans-serif: #{meta.inspect($font_family_sans_serif)};

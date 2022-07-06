@@ -17,7 +17,7 @@ html {
 }
 
 body {
-    font-size:   0.8rem;
+    font-size:   $font-size;
     line-height: $cell;
     min-height:  100vh;
     overflow-x:  hidden;
@@ -64,15 +64,15 @@ template,
 [hidden],
 [scoped],
 audio:not([controls]) {
-    display: none;
+    @extend %display-none;
 }
 
 details {
-    display: block;
+    @extend %display-block;
 }
 
 summary {
-    display: list-item;
+    @extend %display-list-item;
     @extend %cursor-pointer;
 }
 
@@ -81,10 +81,10 @@ figure {
 }
 
 hr {
-    display:          block;
     height:           1px;
     border-top-width: 1px;
     border-top-style: solid;
+    @extend %display-block;
     @extend %padding-0;
     @extend %margin-top-0, %margin-bottom-half;
 }
@@ -125,6 +125,11 @@ dd {
 }
 
 // Typography
+%heading {
+    @extend %margin-top-0, %margin-bottom-half;
+    @extend %grid-child-width;
+}
+
 h1 {
     @extend %heading;
 }
@@ -151,7 +156,7 @@ h6 {
 
 // Text semantics
 p {
-    text-align:  justify;
+    text-align: justify;
     @extend %margin-top-0, %margin-bottom-half;
 }
 
@@ -235,8 +240,8 @@ code {
 }
 
 pre {
-    display:  block;
     overflow: auto;
+    @extend %display-block;
     @extend %margin-top-0, %margin-bottom-half;
 
     code {
@@ -308,14 +313,14 @@ fieldset,
 
 fieldset {
     min-width: 0;
-    @extend %margin-0;
     border:    0 none;
+    @extend %margin-0;
 }
 
 legend {
+    @extend %display-table;
     line-height:   inherit;
     color:         inherit;
-    display:       table;
     max-width:     100%;
     margin-bottom: -0.5em;
     white-space:   normal;
@@ -327,7 +332,7 @@ form {
 
 label,
 output {
-    display: inline-block;
+    @extend %display-inline-block;
 }
 
 input,

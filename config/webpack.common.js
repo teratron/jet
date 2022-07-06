@@ -43,7 +43,7 @@ module.exports = props => {
                             options: {
                                 postcssOptions: {
                                     plugins: [
-                                        'postcss-preset-env'
+                                        //'postcss-preset-env'
                                     ]
                                 }
                             }
