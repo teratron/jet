@@ -34,14 +34,18 @@ module.exports = props => merge(
                     test: /\.(svg|gif|png|jpe?g)$/i,
                     type: 'asset/resource',
                     generator: {
-                        filename: 'static/media/[name].[hash][ext]'
+                        filename: props.isBuildDev
+                            ? 'static/media/[name][ext]'
+                            : 'static/media/[name].[hash][ext]'
                     }
                 },
                 {
                     test: /\.(woff(2)?|eot|ttf|otf)$/i,
                     type: 'asset/resource',
                     generator: {
-                        filename: 'static/fonts/[name].[hash][ext]'
+                        filename: props.env
+                            ? 'static/fonts/[name][ext]'
+                            : 'static/fonts/[name].[hash][ext]'
                     }
                 }
             ]
@@ -68,7 +72,7 @@ module.exports = props => merge(
                     template: paths.app + `/templates/pages/${page}`,
                     filename: page.replace(/\.js/gi, '.html'),
                     inject: 'body',
-                    minify: true
+                    minify: !props.isBuildDev
                 }))
         ],
         resolve: {

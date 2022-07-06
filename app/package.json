@@ -14,8 +14,9 @@
   "scripts": {
     "start": "webpack serve --config config/webpack.dev.js",
     "build": "webpack --config config/webpack.prod.js",
+    "build:dev": "webpack --config config/webpack.prod.js --node-env build-dev",
     "deploy:gh": "gh-pages -d build",
     "build-deploy:gh": "gh-pages-clean && npm run build && npm run deploy:gh"
   },
-  "buildDate": "2022-07-05T16:38:51.629Z"
+  "buildDate": "2022-07-06T05:33:30.814Z"
 }

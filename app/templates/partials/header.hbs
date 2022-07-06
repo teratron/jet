@@ -2,11 +2,8 @@
     <div class="app-container">
         <h1>Header</h1>
         <nav class="row">
-            <a href="/">Home</a>
             {{#each page}}
-                <div>
-                    <a href="{{this.url}}">{{this.title}}</a>
-                </div>
+                <a href="{{this.url}}">{{this.title}}</a>
             {{/each}}
         </nav>
     </div>

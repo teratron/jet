@@ -1,4 +1,16 @@
 
+//grid-gap
+//@warn #{string.index("grid-gap", #{$key})};
+//@if string.index("grid-gap", $key)  {
+//@if #{$key} == #{padding-left} {
+//@if $value == $grid_gap or $value == $layout_gap {
+//    @extend %#{selector.parse(#{$key})} !optional;
+//}
+//
+//@if $value == $grid_gap_half {
+//    @extend %#{selector.parse(#{$key}-half)} !optional;
+//}
+//}
 
 //$BP: [
 //    (

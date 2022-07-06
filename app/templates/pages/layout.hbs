@@ -1,15 +1,21 @@
 {{#> app app-partial-block=true title=title}}
     {{> header}}
     {{#> main main-partial-block=true}}
-
         <p>PPPP</p>
-        <h3 class="col">grid</h3>
+        <h3>Grid</h3>
+        <section class="grid-12 outline">
+            {{#each debugGrid}}
+                <div>{{this}}</div>
+            {{/each}}
+        </section>
+
         <section class="grid-12 gap-b12-0 gap-b10 outline">
             {{#each debugGrid}}
                 <div>{{this}}</div>
             {{/each}}
         </section>
 
+        <h3>Shrink</h3>
         <section class="grid-12 shrink outline">
             {{#each debugGrid}}
                 <div>{{this}}</div>
@@ -60,7 +66,7 @@
         </section>
 
         <h3>Bar</h3>
-        <section class="bar outline">
+        <section class="bar col-2 outline">
             <div>1</div>
             <div>2</div>
             <div>3</div>
@@ -83,7 +89,6 @@
             <span>2<br/>5</span>
             <div>5</div>
         </div>
-
     {{/main}}
     {{> footer}}
 {{/app}}

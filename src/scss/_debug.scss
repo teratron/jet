@@ -43,7 +43,7 @@ button button {
     }
 }
 
-@media only screen and (min-width: getBreakpoint($grid_column) + 1) {
+@media only screen and (min-width: GetBreakpoint($grid_column) + 1) {
     .#{$prefix}sticker::before {
         content: ">= #{$grid_column} bp";
     }
@@ -51,7 +51,7 @@ button button {
 
 @for $i from $grid_column to 1 {
     .#{$prefix}sticker::before {
-        @media only screen and (max-width: getBreakpoint($i)) {
+        @media only screen and (max-width: GetBreakpoint($i)) {
             content: "#{$i - 1} - #{$i} bp";
         }
     }

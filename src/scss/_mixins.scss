@@ -6,32 +6,23 @@
 @use "sass:map";
 @use "sass:list";
 
+@mixin setPlaceholderGap {
+    @include setPlaceholderProp(grid-gap);
+
+    @each $dir in (row, column) {
+        @include setPlaceholderProp(grid-#{$dir}-gap);
+    }
+}
+
 @mixin setPlaceholderGutter($prop) {
-    %#{$prop} {
-        @include setPropsAdaptive((
-                #{$prop}: $grid_gap
-        ));
 
-        &-half {
-            @include setPropsAdaptive((
-                    #{$prop}: $grid_gap_half
-            ));
-        }
-
-        &-0 {
-            #{$prop}: 0;
-        }
-
+    @include setPlaceholderProp($prop) {
         @each $side in $list_sides {
             &-#{$side} {
-                @include setPropsAdaptive((
-                        #{$prop}-#{$side}: $grid_gap
-                ));
+                @include setPropsAdaptive((#{$prop}-#{$side}: $grid_gap));
 
                 &-half {
-                    @include setPropsAdaptive((
-                            #{$prop}-#{$side}: $grid_gap_half
-                    ));
+                    @include setPropsAdaptive((#{$prop}-#{$side}: $grid_gap_half));
                 }
 
                 &-0 {
@@ -40,11 +31,53 @@
             }
         }
     }
+
+    //%#{$prop} {
+    //    @include setPropsAdaptive((#{$prop}: $grid_gap));
+    //
+    //    &-half {
+    //        @include setPropsAdaptive((#{$prop}: $grid_gap_half));
+    //    }
+    //
+    //    &-0 {
+    //        #{$prop}: 0;
+    //    }
+    //
+    //    @each $side in $list_sides {
+    //        &-#{$side} {
+    //            @include setPropsAdaptive((#{$prop}-#{$side}: $grid_gap));
+    //
+    //            &-half {
+    //                @include setPropsAdaptive((#{$prop}-#{$side}: $grid_gap_half));
+    //            }
+    //
+    //            &-0 {
+    //                #{$prop}-#{$side}: 0;
+    //            }
+    //        }
+    //    }
+    //}
 }
 
-//----------------------------------------------------------
+@mixin setPlaceholderProp($prop) {
+    %#{$prop} {
+        @include setPropsAdaptive((#{$prop}: $grid_gap));
+
+        &-half {
+            @include setPropsAdaptive((#{$prop}: $grid_gap_half));
+        }
+
+        &-0 {
+            #{$prop}: 0;
+        }
+
+        @content;
+    }
+}
+
+//**********************************************************
 // Array of breakpoints buffer:
-//
+//----------------------------------------------------------
 // $list_breakpoints_buffer: [
 //     (
 //         selector: &,
@@ -56,7 +89,7 @@
 //     ),
 //     ...
 // ]
-//----------------------------------------------------------
+//**********************************************************
 @mixin setPropsAdaptive($props) {
     @each $key, $value in $props {
         @if $value > 0 {
@@ -90,13 +123,3 @@
         }
     }
 }
-
-// Helpers
-
-// Utilities
-
-// Components
-
-// Skins
-
-// Layout
