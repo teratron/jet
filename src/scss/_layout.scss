@@ -138,12 +138,23 @@
         @extend %grid-#{$i};
         @extend %col-#{$i};
 
-        @for $j from $i + 1 through $grid_column {
-            > .#{$prefix}grid-#{$j} {
-                @extend %grid-#{$i};
-                @extend %col-#{$i};
+        // Fuse
+        @if $i < $grid_column {
+            @for $j from $i + 1 through $grid_column {
+                > .#{$prefix}grid-#{$j} {
+                    @extend %grid-#{$i};
+                }
+
+                > .#{$prefix}col-#{$j},
+                > .#{$prefix}grid-#{$j} {
+                    @extend %col-#{$i};
+                }
             }
         }
+    }
+
+    .#{$prefix}grid-#{$i}.shrink-2 {
+        grid-template-columns: repeat(auto-fit, minmax(100px,1fr)) ;//!important
     }
 
     .#{$prefix}col-#{$i} {
@@ -159,6 +170,10 @@
         order: $i;
     }
 }
+
+//.#{$prefix}shrink {
+//    @extend %grid-child-width;
+//}
 
 // Breakpoints
 @for $i from $grid_column to 0 {
