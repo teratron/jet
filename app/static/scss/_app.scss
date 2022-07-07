@@ -12,20 +12,24 @@
     @extend .sticker;
 }
 
+// Container
 .app-container {
-    @extend .layout, .grid-8;
+    @extend .layout, .grid-12;
 }
 
+// Header
 .app-header {
     .navbar {
         @extend .bar, .col-6;
     }
 }
 
+// Footer
 .app-footer {
 
 }
 
+// Debug
 .outline > * {
     outline: 1px solid #ddd;
 }

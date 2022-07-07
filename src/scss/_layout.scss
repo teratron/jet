@@ -72,9 +72,9 @@
 }
 
 .#{$prefix}grid {
+    grid-auto-flow: row;
     @extend %grid;
     @extend %grid-gap;
-    grid-auto-flow: row;
 }
 
 // Gap
@@ -138,6 +138,12 @@
         @extend %grid-#{$i};
         @extend %col-#{$i};
 
+        &.shrink-2 {
+            //grid-template-columns: repeat(auto-fit, minmax($grid_col_width, 1fr));
+            //grid-template-columns: repeat(auto-fit, minmax(58px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(GetGridCellWidth(), 1fr));
+        }
+
         // Fuse
         @if $i < $grid_column {
             @for $j from $i + 1 through $grid_column {
@@ -151,10 +157,6 @@
                 }
             }
         }
-    }
-
-    .#{$prefix}grid-#{$i}.shrink-2 {
-        grid-template-columns: repeat(auto-fit, minmax(100px,1fr)) ;//!important
     }
 
     .#{$prefix}col-#{$i} {
@@ -206,6 +208,12 @@
                 .#{$prefix}grid-#{$j} {
                     @extend %col-shrink-#{$k};
                 }
+            }
+        }
+
+        .#{$prefix}grid-#{$i} {
+            &.shrink-2 {
+                grid-template-columns: repeat(auto-fit, minmax(GetGridCellWidth(), 1fr));
             }
         }
 
