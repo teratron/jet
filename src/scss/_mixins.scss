@@ -7,29 +7,25 @@
 @use "sass:list";
 
 @mixin setPlaceholderGap {
-    @if $grid_gap > 0 {
-        @include setPlaceholderProps(grid-gap);
+    @include setPlaceholderProps(grid-gap);
 
-        @each $dir in (row, column) {
-            @include setPlaceholderProps(grid-#{$dir}-gap);
-        }
+    @each $dir in (row, column) {
+        @include setPlaceholderProps(grid-#{$dir}-gap);
     }
 }
 
 @mixin setPlaceholderGutter($prop) {
-    @if $grid_gap > 0 {
-        @include setPlaceholderProps($prop) {
-            @each $side in $list_sides {
-                &-#{$side} {
-                    @include setPropsAdaptive((#{$prop}-#{$side}: $grid_gap));
+    @include setPlaceholderProps($prop) {
+        @each $side in $list_sides {
+            &-#{$side} {
+                @include setPropsAdaptive((#{$prop}-#{$side}: $grid_gap));
 
-                    &-half {
-                        @include setPropsAdaptive((#{$prop}-#{$side}: $grid_gap_half));
-                    }
+                &-half {
+                    @include setPropsAdaptive((#{$prop}-#{$side}: $grid_gap_half));
+                }
 
-                    &-0 {
-                        #{$prop}-#{$side}: 0;
-                    }
+                &-0 {
+                    #{$prop}-#{$side}: 0;
                 }
             }
         }

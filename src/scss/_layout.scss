@@ -35,6 +35,7 @@
 // bar
 //
 //**********************************************************
+@use "sass:math";
 @import "mixins/bar";
 @import "mixins/list";
 
@@ -139,9 +140,7 @@
         @extend %col-#{$i};
 
         &.shrink-2 {
-            //grid-template-columns: repeat(auto-fit, minmax($grid_col_width, 1fr));
-            //grid-template-columns: repeat(auto-fit, minmax(58px, 1fr));
-            grid-template-columns: repeat(auto-fit, minmax(GetGridCellWidth(), 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(math.div(GetBreakpoint($grid_column - 1) + 2, $grid_column), 1fr));
         }
 
         // Fuse
@@ -172,10 +171,6 @@
         order: $i;
     }
 }
-
-//.#{$prefix}shrink {
-//    @extend %grid-child-width;
-//}
 
 // Breakpoints
 @for $i from $grid_column to 0 {
@@ -208,12 +203,6 @@
                 .#{$prefix}grid-#{$j} {
                     @extend %col-shrink-#{$k};
                 }
-            }
-        }
-
-        .#{$prefix}grid-#{$i} {
-            &.shrink-2 {
-                grid-template-columns: repeat(auto-fit, minmax(GetGridCellWidth(), 1fr));
             }
         }
 
@@ -250,3 +239,15 @@
         }
     }
 }
+
+@for $i from $grid_column - 1 to 1 {
+    @media only screen and (max-width: GetBreakpoint($i) + 1) {
+        .#{$prefix}grid-#{$i} {
+            &.shrink-2 {
+                grid-template-columns: repeat(auto-fit, minmax(math.div(GetBreakpoint($i - 1) + 2, $i), 1fr));
+                //grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            }
+        }
+    }
+}
+//@warn math.div(GetBreakpoint(10) + 2, 11)

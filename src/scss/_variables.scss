@@ -15,7 +15,7 @@ $cell:                      1rem !default; // Respond 20px
 $font-size:                 0.813rem !default;
 $rate_horizontal:           0.8 !default;
 $rate_vertical:             0.8 !default;
-$px:                        math.div($cell, StripUnit($root_cell));
+$px:                        math.div($cell, StripUnit($root_cell)) !default;
 
 // Grid
 $grid_column:               12 !default;
@@ -44,6 +44,7 @@ $zindex_debug:              2000 !default;
 
 // Breakpoints
 $list_breakpoints:          GetListBreakpoints();
+$list_breakpoints_cell:     GetListBreakpointsCell();
 $list_breakpoints_buffer:   [];
 
 // Commons
