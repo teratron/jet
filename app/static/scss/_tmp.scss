@@ -1,3 +1,19 @@
+// Fuse
+@for $i from 1 through $grid_column {
+    @if $i < $grid_column {
+        @for $j from $i + 1 through $grid_column {
+            > .#{$prefix}grid-#{$j} {
+                @extend %grid-#{$i};
+            }
+
+            > .#{$prefix}col-#{$j},
+            > .#{$prefix}grid-#{$j} {
+                @extend %col-#{$i};
+            }
+        }
+    }
+}
+
 //.grid-8 {
 //    > .grid-9,
 //    > .grid-10,

@@ -92,7 +92,7 @@
 
 .#{$prefix}row {
     @extend %row;
-    @extend %grid-child-width;
+    //@extend %grid-child-width;
 
     &-0 {
         @extend %display-none;
@@ -139,23 +139,9 @@
         @extend %grid-#{$i};
         @extend %col-#{$i};
 
-        &.shrink-2 {
-            grid-template-columns: repeat(auto-fit, minmax(math.div(GetBreakpoint($grid_column - 1) + 2, $grid_column), 1fr));
-        }
-
-        // Fuse
-        @if $i < $grid_column {
-            @for $j from $i + 1 through $grid_column {
-                > .#{$prefix}grid-#{$j} {
-                    @extend %grid-#{$i};
-                }
-
-                > .#{$prefix}col-#{$j},
-                > .#{$prefix}grid-#{$j} {
-                    @extend %col-#{$i};
-                }
-            }
-        }
+        //&.shrink-2 {
+        //    grid-template-columns: repeat(auto-fit, minmax(math.div(GetBreakpoint($grid_column - 1) + 2, $grid_column), 1fr));
+        //}
     }
 
     .#{$prefix}col-#{$i} {
@@ -170,6 +156,11 @@
     .#{$prefix}order-#{$i} {
         order: $i;
     }
+}
+
+// Shrink
+.shrink-2 {
+    grid-template-columns: repeat(auto-fit, minmax(math.div(GetBreakpoint($grid_column - 1) + 2, $grid_column), 1fr));
 }
 
 // Breakpoints
@@ -242,12 +233,8 @@
 
 @for $i from $grid_column - 1 to 1 {
     @media only screen and (max-width: GetBreakpoint($i) + 1) {
-        .#{$prefix}grid-#{$i} {
-            &.shrink-2 {
-                grid-template-columns: repeat(auto-fit, minmax(math.div(GetBreakpoint($i - 1) + 2, $i), 1fr));
-                //grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-            }
+        .shrink-2 {
+            grid-template-columns: repeat(auto-fit, minmax(math.div(GetBreakpoint($i - 1) + 2, $i), 1fr));
         }
     }
 }
-//@warn math.div(GetBreakpoint(10) + 2, 11)
