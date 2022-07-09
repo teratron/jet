@@ -11,23 +11,17 @@ $prefix:                    "" !default;
 
 // Root
 $root_cell:                 20px !default; // Respond 1rem
-$cell:                      1rem !default; // Respond 20px
-$font-size:                 0.813rem !default;
+$font-size:                 16px !default;
 $rate_horizontal:           0.8 !default;
 $rate_vertical:             0.8 !default;
-$px:                        math.div($cell, StripUnit($root_cell)) !default;
 
 // Grid
 $grid_column:               12 !default;
 $grid_width:                1200px !default;
 $grid_gap:                  40px !default;
-$grid_gap_half:             if($grid_gap > 0, math.round(math.div($grid_gap, 2)), $grid_gap) !default;
-$grid_col_width:            math.round(math.div($grid_width, $grid_column)) !default;
 
 // Layout
 $layout_width_min:          360px !default;
-$layout_width:              $grid_width + $grid_gap * 2 !default;
-$layout_rate:               math.div(100vw, $layout_width) !default;
 
 // Z-index
 $zindex_dropdown:           1000 !default;
@@ -42,9 +36,28 @@ $zindex_tooltip:            1800 !default;
 $zindex_toast:              1900 !default;
 $zindex_debug:              2000 !default;
 
+// Under The Hood
+//----------------------------------------------------------
+//
+//**********************************************************
+
+// Root
+$cell:                      1rem;
+$px:                        math.div($cell, StripUnit($root_cell));
+$font-size:                 PxToRem($font-size);
+
+// Grid
+$grid_width:                PxToRem($grid_width);
+$grid_gap:                  PxToRem($grid_gap);
+$grid_gap_half:             math.div($grid_gap, 2);
+$grid_col_width:            math.div($grid_width, $grid_column);
+
+// Layout
+$layout_width:              $grid_width + $grid_gap * 2;
+$layout_rate:               math.div(100vw, $layout_width);
+
 // Breakpoints
 $list_breakpoints:          GetListBreakpoints();
-$list_breakpoints_cell:     GetListBreakpointsCell();
 $list_breakpoints_buffer:   [];
 
 // Commons

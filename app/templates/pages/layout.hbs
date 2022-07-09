@@ -3,12 +3,6 @@
     {{#> main main-partial-block=true}}
 
         <h3>Shrink</h3>
-        <section class="grid-12 shrink-2 outline">
-            {{#each debugGrid}}
-                <div>{{this}}</div>
-            {{/each}}
-        </section>
-
         <section class="grid-12 shrink outline">
             {{#each debugGrid}}
                 <div>{{this}}</div>
@@ -16,6 +10,12 @@
         </section>
 
         <section class="grid-11 shrink outline">
+            {{#each debugGrid}}
+                <div>{{this}}</div>
+            {{/each}}
+        </section>
+
+        <section class="grid-10 shrink outline">
             {{#each debugGrid}}
                 <div>{{this}}</div>
             {{/each}}

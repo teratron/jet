@@ -138,10 +138,6 @@
         @extend .#{$prefix}grid;
         @extend %grid-#{$i};
         @extend %col-#{$i};
-
-        //&.shrink-2 {
-        //    grid-template-columns: repeat(auto-fit, minmax(math.div(GetBreakpoint($grid_column - 1) + 2, $grid_column), 1fr));
-        //}
     }
 
     .#{$prefix}col-#{$i} {
@@ -159,8 +155,9 @@
 }
 
 // Shrink
-.shrink-2 {
-    grid-template-columns: repeat(auto-fit, minmax(math.div(GetBreakpoint($grid_column - 1) + 2, $grid_column), 1fr));
+.shrink {
+    //grid-template-columns: repeat(auto-fit, minmax(math.div(GetBreakpoint($grid_column - 1) + 2, $grid_column), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkCellWidth(), 1fr));
 }
 
 // Breakpoints
@@ -168,36 +165,13 @@
     @media only screen and (max-width: GetBreakpoint($i)) {
         @include pasteBuffer($i);
 
-        // Shrink
-        @if $i < $grid_column {
-            $k: $i + 1;
-
-            .#{$prefix}shrink {
-                &,
-                > %grid-shrink-#{$k} {
-                    grid-template-columns: repeat($i, 1fr);
-                }
-
-                > %col-shrink-#{$k},
-                > %grid-child-width,
-                > .#{$prefix}grid-#{$k} > %grid-child-width {
-                    grid-column-end: span $i;
-                }
-            }
-
-            @for $j from $k through $grid_column {
-                .#{$prefix}grid-#{$j} {
-                    @extend %grid-shrink-#{$k};
-                }
-
-                .#{$prefix}col-#{$j},
-                .#{$prefix}grid-#{$j} {
-                    @extend %col-shrink-#{$k};
-                }
+        @if $grid_gap > 0 {
+            .shrink {
+                //grid-template-columns: repeat(auto-fit, minmax(math.div(GetBreakpoint($grid_column - 1) + 2, $grid_column), 1fr));
+                //grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkCellWidth(), 1fr));
             }
         }
 
-        // Actions
         %col-b#{$i} {
             display: unset;
         }
@@ -227,14 +201,6 @@
             .#{$prefix}span-b#{$i}-#{$j} {
                 grid-column-start: $j;
             }
-        }
-    }
-}
-
-@for $i from $grid_column - 1 to 1 {
-    @media only screen and (max-width: GetBreakpoint($i) + 1) {
-        .shrink-2 {
-            grid-template-columns: repeat(auto-fit, minmax(math.div(GetBreakpoint($i - 1) + 2, $i), 1fr));
         }
     }
 }

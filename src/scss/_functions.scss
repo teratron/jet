@@ -7,9 +7,15 @@
 @use "sass:list";
 
 // Grid
-@function GetGridCellWidth() {
-    @return math.round(math.div($grid_width - ($grid_column - 1) * $grid_gap, $grid_column));
+@function GetMinShrinkCellWidth() {
+    $a: $grid_width - ($grid_column - 1) * $grid_gap;
+    $b: math.div($a, $grid_column);
+
+    @return math.div($a - $b + 1, $grid_column);
 }
+//@function GetGridCellWidth() {
+//    @return math.round(math.div($grid_width - ($grid_column - 1) * $grid_gap, $grid_column));
+//}
 
 // Breakpoints
 @function GetListBreakpoints() {
@@ -20,7 +26,7 @@
     @for $i from 1 through $grid_column {
         $w: $i * $grid_col_width;
         $s: math.div($w, $g) * $b;
-        $d: math.round($w + $s) - 1;
+        $d: math.round($w + $s) - if(math.unit($w) == "rem", $px, 1);
         $list: list.append($list, $d);
     }
 
@@ -31,25 +37,26 @@
     @return list.nth($list_breakpoints, $n);
 }
 
-@function GetListBreakpointsCell() {
-    $list: [];
-    $b: math.div(100, $layout_width) * $grid_gap * 2;
-    $g: 100 - $b;
-
-    @for $i from 1 through $grid_column {
-
-        $k: math.round(math.div($grid_width - ($i - 1) * $grid_gap, $i));
-        $list: list.append($list, $k);
-    }
-
-    @return $list;
-}
-
 // Helpers
 @function StripUnit($value) {
     @return math.div($value, ($value * 0 + 1));
 }
 
 @function PxToRem($value) {
-    @return $px * StripUnit($value);
+    @if math.unit($value) == "px" {
+        @return $px * StripUnit($value);
+    }
+
+    @debug "Unit is not px";
+    @return $value;
+
+}
+
+@function RemToPx($value) {
+    @if math.unit($value) == "rem" {
+        @return math.round($root_cell * StripUnit($value));
+    }
+
+    @debug "Unit is not rem";
+    @return $value;
 }
