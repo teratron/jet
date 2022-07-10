@@ -11,11 +11,20 @@
     @return math.div($grid_width - ($grid_column - 1) * $grid_gap, $grid_column);
 }
 
-@function GetMinShrinkCellWidth() {
-    $a: $grid_width - ($grid_column - 1) * $grid_gap;
-    $b: math.div($a, $grid_column);
+@function GetMinShrinkCellWidth($n: $grid_column) {
+    $w: GetBreakpoint($n - 1);
 
-    @return math.div($a - $b + 1, $grid_column);
+    @if math.unit($w) == "px" {
+        $w: $w + 2;
+    } @else if math.unit($w) == "rem" {
+        $w: $w + 2 * $px;
+    }
+
+    $a: math.div($w, 100);
+    $b: math.div(100, $layout_width) * $grid_gap * ($n + 1); // all gap %
+    $c: $w - $a * $b; // all cell px
+
+    @return math.div($c, $n);
 }
 
 // Breakpoints
@@ -32,11 +41,11 @@
 
         @if math.unit($d) == "px" {
             $d: math.round($d) - 1;
-        } @else if math.unit($w) == "rem" {
+        } @else if math.unit($d) == "rem" {
             $d: $d - $px;
         }
 
-        $list: list.append($list, math.round($d));
+        $list: list.append($list, $d);
     }
 
     @return $list;
