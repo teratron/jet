@@ -19,8 +19,8 @@
 // %padding-0     %padding-[top | bottom | left | right]-0
 //**********************************************************
 @include setPlaceholderGap;
-@include setPlaceholderGutter(margin);
-@include setPlaceholderGutter(padding);
+@include setPlaceholderGutter(margin, $grid_gap);
+@include setPlaceholderGutter(padding, $grid_gap);
 
 // Cursors
 //----------------------------------------------------------

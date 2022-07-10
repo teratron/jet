@@ -5,23 +5,24 @@
 //**********************************************************
 @use "sass:map";
 @use "sass:list";
+@use "sass:math";
 
 @mixin setPlaceholderGap {
-    @include setPlaceholderProps(grid-gap);
+    @include setPlaceholderProps(grid-gap, $grid_gap);
 
     @each $dir in (row, column) {
-        @include setPlaceholderProps(grid-#{$dir}-gap);
+        @include setPlaceholderProps(grid-#{$dir}-gap, $grid_gap);
     }
 }
 
-@mixin setPlaceholderGutter($prop) {
-    @include setPlaceholderProps($prop) {
+@mixin setPlaceholderGutter($prop, $gutter) {
+    @include setPlaceholderProps($prop, $gutter) {
         @each $side in $list_sides {
             &-#{$side} {
-                @include setPropsAdaptive((#{$prop}-#{$side}: $grid_gap));
+                @include setPropsAdaptive((#{$prop}-#{$side}: $gutter));
 
                 &-half {
-                    @include setPropsAdaptive((#{$prop}-#{$side}: $grid_gap_half));
+                    @include setPropsAdaptive((#{$prop}-#{$side}: math.div($gutter, 2)));
                 }
 
                 &-0 {
@@ -32,12 +33,12 @@
     }
 }
 
-@mixin setPlaceholderProps($prop) {
+@mixin setPlaceholderProps($prop, $gutter) {
     %#{$prop} {
-        @include setPropsAdaptive((#{$prop}: $grid_gap));
+        @include setPropsAdaptive((#{$prop}: $gutter));
 
         &-half {
-            @include setPropsAdaptive((#{$prop}: $grid_gap_half));
+            @include setPropsAdaptive((#{$prop}: math.div($gutter, 2)));
         }
 
         &-0 {

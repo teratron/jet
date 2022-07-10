@@ -1,4 +1,25 @@
-
+// Breakpoints
+//@function GetListBreakpoints() {
+//    $list: [];
+//    $b: math.div(100, $layout_width) * $grid_gap * 2;
+//    $g: 100 - $b;
+//
+//    @for $i from 1 through $grid_column {
+//        $w: $i * $grid_col_width;
+//        $s: math.div($w, $g);
+//        $d: $w + $b * $s;
+//
+//        @if math.unit($d) == "px" {
+//            $d: math.round($d) - 1;
+//        } @else if math.unit($w) == "rem" {
+//            $d: $d - $px;
+//        }
+//
+//        $list: list.append($list, $d);
+//    }
+//
+//    @return $list;
+//}
 // Breakpoints
 @for $i from $grid_column to 0 {
     @media only screen and (max-width: GetBreakpoint($i)) {
