@@ -7,37 +7,35 @@
 @use "sass:list";
 
 // Grid
-@function GetGridCellWidth() {
-    @return math.div($grid_width - ($grid_column - 1) * $grid_gap, $grid_column);
-}
+@function GetMinShrinkColWidth($n: $grid_column) {
+    @if $n > 1 {
+        $w: GetBreakpoint($n - 1);
 
-@function GetMinShrinkCellWidth($n: $grid_column) {
-    $w: GetBreakpoint($n - 1);
+        @if math.unit($w) == "px" {
+            $w: $w + 2;
+        } @else if math.unit($w) == "rem" {
+            $w: $w + 2 * $px;
+        }
 
-    @if math.unit($w) == "px" {
-        $w: $w + 2;
-    } @else if math.unit($w) == "rem" {
-        $w: $w + 2 * $px;
+        $a: math.div($w, 100);
+        $b: $layout_gap_adaptive * ($n + 1);
+        $c: $w - $a * $b;
+
+        @return math.div($c, $n);
     }
 
-    $a: math.div($w, 100);
-    $b: math.div(100, $layout_width) * $grid_gap * ($n + 1); // all gap %
-    $c: $w - $a * $b; // all cell px
-
-    @return math.div($c, $n);
+    @return null;
 }
 
 // Breakpoints
 @function GetListBreakpoints() {
     $list: [];
-    $c: GetGridCellWidth();
-    $g: math.div(100, $layout_width) * $grid_gap;
-    $f: 100 - $g * ($grid_column + 1);
+    $c: 100 - $layout_gap_adaptive * ($grid_column + 1);
 
     @for $i from 1 through $grid_column {
-        $w: $i * $c;
-        $s: math.div($w, $f);
-        $d: $w + ($i + 1) * $g * $s;
+        $w: $i * $grid_col_width;
+        $s: math.div($w, $c);
+        $d: $w + ($i + 1) * $layout_gap_adaptive * $s;
 
         @if math.unit($d) == "px" {
             $d: math.round($d) - 1;
@@ -65,9 +63,7 @@
         @return $px * StripUnit($value);
     }
 
-    @debug "Unit is not px";
     @return $value;
-
 }
 
 @function RemToPx($value) {
@@ -75,6 +71,5 @@
         @return math.round($root_cell * StripUnit($value));
     }
 
-    @debug "Unit is not rem";
     @return $value;
 }

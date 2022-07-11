@@ -155,22 +155,20 @@
 }
 
 // Shrink
-.shrink {
-    grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkCellWidth(), 1fr));
-}
+//.shrink {
+//    grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkCellWidth(), 1fr));
+//}
 
 // Breakpoints
 @for $i from $grid_column to 0 {
-    @warn $i;
     @media only screen and (max-width: GetBreakpoint($i)) {
         @include pasteBuffer($i);
 
-        //@if $grid_gap > 0 {
-        //@if $i < $grid_column {
-        //    .shrink {
-        //        grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkCellWidth($i), 1fr));
-        //    }
-        //}
+        @if $grid_gap > 0 {
+            .shrink {
+                grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkColWidth($i), 1fr));
+            }
+        }
 
         %col-b#{$i} {
             display: unset;

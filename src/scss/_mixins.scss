@@ -49,6 +49,26 @@
     }
 }
 
+@mixin setPropsAdaptive($props) {
+    @each $key, $value in $props {
+        @if $value > 0 {
+            #{$key}: $value;
+        }
+    }
+
+    $buffer: ();
+
+    @each $key, $value in $props {
+        @if $value > 0 {
+            $buffer: map.merge($buffer, (#{$key}: 1vw * $layout_rate * $value));
+        } @else {
+            $buffer: map.merge($buffer, (#{$key}: 0));
+        }
+    }
+
+    @include copyBuffer(#{&}, $buffer);
+}
+
 // Array of breakpoints buffer
 //----------------------------------------------------------
 // $list_breakpoints_buffer: [
@@ -63,21 +83,11 @@
 //     ...
 // ]
 //**********************************************************
-@mixin setPropsAdaptive($props) {
-    @each $key, $value in $props {
-        @if $value > 0 {
-            #{$key}: $value;
-        }
-    }
-
-    $buffer:                  (selector: #{&}, breakpoint: $grid_column);
+@mixin copyBuffer($selector, $props, $breakpoint: $grid_column) {
+    $buffer:                  (selector: $selector, breakpoint: $breakpoint);
 
     @each $key, $value in $props {
-        @if $value > 0 {
-            $buffer: map.merge($buffer, props, (#{$key}: $layout_rate * $value));
-        } @else {
-            $buffer: map.merge($buffer, props, (#{$key}: 0));
-        }
+        $buffer: map.merge($buffer, props, (#{$key}: $value));
     }
 
     $list_breakpoints_buffer: list.append($list_breakpoints_buffer, $buffer) !global;
