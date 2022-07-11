@@ -7,7 +7,7 @@
 @use "sass:list";
 
 // Grid
-@function GetMinShrinkColWidth($n: $grid_column) {
+@function GetMinShrinkCellWidth($n: $grid_column) {
     @if $n > 1 {
         $w: GetBreakpoint($n - 1);
 
@@ -30,12 +30,13 @@
 // Breakpoints
 @function GetListBreakpoints() {
     $list: [];
-    $c: 100 - $layout_gap_adaptive * ($grid_column + 1);
+    $b: $layout_gap_adaptive * 2;
+    $g: 100 - $b;
 
     @for $i from 1 through $grid_column {
         $w: $i * $grid_col_width;
-        $s: math.div($w, $c);
-        $d: $w + ($i + 1) * $layout_gap_adaptive * $s;
+        $s: math.div($w, $g);
+        $d: $w + $b * $s;
 
         @if math.unit($d) == "px" {
             $d: math.round($d) - 1;
