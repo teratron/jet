@@ -56,6 +56,17 @@
     grid-auto-rows: minmax($cell_width, auto);
 }
 
+//[class*=#{$prefix}grid],
+.#{$prefix}grid {
+    grid-auto-flow: row;
+    @extend %#{$prefix}grid;
+    @extend %#{$prefix}grid-gap;
+
+    &-0 {
+        @extend %#{$prefix}display-none;
+    }
+}
+
 %#{$prefix}grid-child-width {
     //@extend %#{$prefix}reset-width;
 
@@ -73,16 +84,6 @@
 //    width:     auto;
 //    max-width: none;
 //}
-
-.#{$prefix}grid {
-    grid-auto-flow: row;
-    @extend %#{$prefix}grid;
-    @extend %#{$prefix}grid-gap;
-
-    &-0 {
-        @extend %#{$prefix}display-none;
-    }
-}
 
 // Gap
 .#{$prefix}gap {
@@ -131,15 +132,15 @@
 }
 
 @for $i from 1 through $grid_column {
-    .#{$prefix}col-#{$i},
-    .#{$prefix}grid-#{$i} > %#{$prefix}grid-child-width {
-        grid-column-end: span $i;
-    }
-
     .#{$prefix}grid-#{$i} {
         @extend .#{$prefix}grid;
-        @extend .#{$prefix}col-#{$i};
         grid-template-columns: repeat($i, 1fr);
+    }
+
+    .#{$prefix}col-#{$i},
+    .#{$prefix}grid-#{$i},
+    .#{$prefix}grid-#{$i} > %#{$prefix}grid-child-width {
+        grid-column-end: span $i;
     }
 
     .#{$prefix}span-#{$i} {
@@ -149,10 +150,16 @@
     .#{$prefix}order-#{$i} {
         order: $i;
     }
+
+    @for $j from 1 through $grid_column {
+        .#{$prefix}grid-b#{$i}-#{$j} {
+            @extend .#{$prefix}grid;
+        }
+    }
 }
 
 // Shrink
-@if $grid_gap == 0 {
+@if not $is_grid_gap {
     .#{$prefix}shrink {
         grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkCellWidth(), 1fr));
     }
@@ -185,20 +192,20 @@
         }
 
         @for $j from 1 through $grid_column {
-            %#{$prefix}col-b#{$i}-#{$j},
+            %#{$prefix}grid-b#{$i}-#{$j},
+            .#{$prefix}grid-b#{$i}-#{$j} {
+                @extend %#{$prefix}grid-b#{$i};
+                grid-template-columns: repeat($j, 1fr);
+            }
+
+            .#{$prefix}col-b#{$i}-#{$j},
+            .#{$prefix}grid-b#{$i}-#{$j},
             .#{$prefix}grid-b#{$i}-#{$j} > %#{$prefix}grid-child-width {
                 grid-column-end: span $j;
             }
 
-            .#{$prefix}grid-b#{$i}-#{$j} {
-                @extend %#{$prefix}grid-b#{$i};
-                @extend %#{$prefix}col-b#{$i}-#{$j};
-                grid-template-columns: repeat($j, 1fr);
-            }
-
             .#{$prefix}col-b#{$i}-#{$j} {
                 @extend %#{$prefix}col-b#{$i};
-                @extend %#{$prefix}col-b#{$i}-#{$j};
             }
 
             .#{$prefix}span-b#{$i}-#{$j} {
@@ -210,7 +217,7 @@
             }
         }
 
-        @if $grid_gap > 0 {
+        @if $is_grid_gap and $i > 1 {
             .#{$prefix}shrink {
                 grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkCellWidth($i), 1fr));
             }

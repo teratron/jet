@@ -76,13 +76,13 @@ module.exports = props => merge(
                 }))
         ],
         resolve: {
-            extensions: ['.js', '.hbs', '.scss', '.css'],
-            alias: {
-                '~': paths.app + 'static/js/',
-                '@': paths.app + 'static/scss/',
-                jettix$: paths.src + '/scss/jettix.scss',
-                debug$: paths.src + '/scss/debug.scss'
-            }
+            extensions: ['.js', '.hbs', '.scss', '.css']
+            // alias: {
+            //     '~': paths.app + 'static/js/',
+            //     '@': paths.app + 'static/scss/',
+            //     jettix$: paths.src + '/scss/jettix.scss',
+            //     debug$: paths.src + '/scss/debug.scss'
+            // }
         }
     }
 )

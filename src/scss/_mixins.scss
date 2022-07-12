@@ -7,26 +7,26 @@
 @use "sass:list";
 @use "sass:math";
 
-@mixin setPlaceholderGap {
-    @include setPlaceholderProps(grid-gap, $grid_gap);
+@mixin setPlaceholderGutter($prop, $gutter: $grid_gap) {
+    @if $prop == grid-gap {
+        @include setPlaceholderProps(grid-gap, $gutter);
 
-    @each $dir in (row, column) {
-        @include setPlaceholderProps(grid-#{$dir}-gap, $grid_gap);
-    }
-}
+        @each $dir in (row, column) {
+            @include setPlaceholderProps(grid-#{$dir}-gap, $gutter);
+        }
+    } @else {
+        @include setPlaceholderProps($prop, $gutter) {
+            @each $side in $list_sides {
+                &-#{$side} {
+                    @include setPropsAdaptive((#{$prop}-#{$side}: $gutter));
 
-@mixin setPlaceholderGutter($prop, $gutter) {
-    @include setPlaceholderProps($prop, $gutter) {
-        @each $side in $list_sides {
-            &-#{$side} {
-                @include setPropsAdaptive((#{$prop}-#{$side}: $gutter));
+                    &-half {
+                        @include setPropsAdaptive((#{$prop}-#{$side}: math.div($gutter, 2)));
+                    }
 
-                &-half {
-                    @include setPropsAdaptive((#{$prop}-#{$side}: math.div($gutter, 2)));
-                }
-
-                &-0 {
-                    #{$prop}-#{$side}: 0;
+                    &-0 {
+                        #{$prop}-#{$side}: 0;
+                    }
                 }
             }
         }

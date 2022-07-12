@@ -18,9 +18,16 @@
 // %padding-half  %padding-[top | bottom | left | right]-half
 // %padding-0     %padding-[top | bottom | left | right]-0
 //**********************************************************
-@include setPlaceholderGap;
-@include setPlaceholderGutter(margin, $grid_gap);
-@include setPlaceholderGutter(padding, $grid_gap);
+
+@if $is_grid_gap {
+    @include setPlaceholderGutter(grid-gap);
+    @include setPlaceholderGutter(margin);
+    @include setPlaceholderGutter(padding);
+} @else {
+    @include setPlaceholderGutter(grid-gap, $layout_gap);
+    @include setPlaceholderGutter(margin, $layout_gap);
+    @include setPlaceholderGutter(padding, $layout_gap);
+}
 
 // Cursors
 //----------------------------------------------------------
