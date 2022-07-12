@@ -69,7 +69,7 @@
 
 @function RemToPx($value) {
     @if math.unit($value) == "rem" {
-        @return math.round($root_cell * StripUnit($value));
+        @return math.round($root_cell_width * StripUnit($value));
     }
 
     @return $value;

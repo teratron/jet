@@ -4,19 +4,38 @@
 //
 //**********************************************************
 
-$prefix:         "";
+// Prefix
+$prefix:           "";
 
 // Path
-$fonts:          "../fonts/";
-$media:          "../media/";
+$fonts:            "../fonts/";
+$media:            "../media/";
+
+// Root
+$root_cell_width:  20px;
+$cell_width:       1rem;
+$font-size:        16px;
 
 // Grid
-//$grid_gap:       0;
+$grid_column:      12;
+$grid_width:       1200px;
+$grid_gap:         40px;
+
+// Layout
+$layout_width_min: 360px;
 
 // Z-index
-$zindex_app:     100;
-$zindex_main:    200;
-$zindex_content: 300;
-$zindex_sidebar: 400;
-$zindex_footer:  500;
-$zindex_header:  600;
+$zindex_app:       100;
+$zindex_main:      200;
+$zindex_content:   300;
+$zindex_sidebar:   400;
+$zindex_footer:    500;
+$zindex_header:    600;
+
+// Application
+$header_height:    PxToRem(100px);
+$footer_height:    PxToRem(100px);
+$main_height:      PxToRem(400px);
+
+// Fonts
+$font_family_sans_serif: Futura;

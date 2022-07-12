@@ -36,8 +36,11 @@
 //
 //**********************************************************
 @use "sass:math";
+
 @import "mixins/bar";
 @import "mixins/list";
+
+
 
 // Layout
 .#{$prefix}layout {
@@ -51,7 +54,7 @@
 // Grid
 %grid {
     @extend %display-grid;
-    grid-auto-rows: minmax($cell, auto);
+    grid-auto-rows: minmax($cell_width, auto);
 }
 
 %grid-child-width {
@@ -86,7 +89,7 @@
 // Row
 %row {
     @extend %grid;
-    grid-template-columns: repeat(auto-fit, minmax($cell, auto));
+    grid-template-columns: repeat(auto-fit, minmax($cell_width, auto));
     grid-auto-flow:        column;
 }
 
@@ -107,7 +110,7 @@
 // Column
 %col {
     @extend %grid;
-    grid-template-rows: repeat(auto-fit, minmax($cell, auto));
+    grid-template-rows: repeat(auto-fit, minmax($cell_width, auto));
     grid-auto-flow:     dense;
 }
 
