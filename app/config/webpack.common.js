@@ -10,8 +10,8 @@ module.exports = props => merge(
     common(props),
     {
         entry: {
-            main: paths.app + '/index.js',
-            theme: paths.app + '/static/scss/themes/default.scss'
+            main: paths.app + '/index.js'
+            //theme: paths.app + '/static/scss/themes/default.scss'
         },
         module: {
             rules: [
@@ -76,7 +76,13 @@ module.exports = props => merge(
                 }))
         ],
         resolve: {
-            extensions: ['.js', '.hbs', '.scss', '.css']
+            extensions: ['.js', '.hbs', '.scss', '.css'],
+            alias: {
+                '~': paths.app + 'static/js/',
+                '@': paths.app + 'static/scss/',
+                jettix$: paths.src + '/scss/jettix.scss',
+                debug$: paths.src + '/scss/debug.scss'
+            }
         }
     }
 )

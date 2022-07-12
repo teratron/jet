@@ -26,7 +26,7 @@
 //----------------------------------------------------------
 // %cursor-[default | pointer | help | not-allowed | ...]
 //**********************************************************
-%cursor {
+%#{$prefix}cursor {
     @each $cursor in $list_cursors {
         &-#{$cursor} {
             cursor: $cursor;
@@ -38,7 +38,7 @@
 //----------------------------------------------------------
 // %display-[none | block | table | flex | grid | ...]
 //**********************************************************
-%display {
+%#{$prefix}display {
     @each $display in $list_displays {
         &-#{$display} {
             display: $display;
@@ -51,7 +51,7 @@
 // %font-family-sans-serif
 // %font-family-monospace
 //**********************************************************
-%font {
+%#{$prefix}font {
     &-family {
         &-sans-serif {
             font-family: $font_family_sans_serif;

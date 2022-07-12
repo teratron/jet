@@ -5,7 +5,10 @@
 // layout
 //
 // grid
+// grid-0
 // grid-[1...n]
+// grid-b[1...n]-0
+// grid-b[1...n]-[1...n]
 //
 // shrink
 //
@@ -35,12 +38,8 @@
 // bar
 //
 //**********************************************************
-@use "sass:math";
-
-@import "mixins/bar";
-@import "mixins/list";
-
-
+//@import "mixins/bar";
+//@import "mixins/list";
 
 // Layout
 .#{$prefix}layout {
@@ -48,104 +47,99 @@
     max-width:    $layout_width;
     margin-left:  auto;
     margin-right: auto;
-    @extend %padding-left, %padding-right;
+    @extend %#{$prefix}padding-left, %#{$prefix}padding-right;
 }
 
 // Grid
-%grid {
-    @extend %display-grid;
+%#{$prefix}grid {
+    @extend %#{$prefix}display-grid;
     grid-auto-rows: minmax($cell_width, auto);
 }
 
-%grid-child-width {
-    @extend %reset-width;
+%#{$prefix}grid-child-width {
+    //@extend %#{$prefix}reset-width;
 
     :first-child > & {
-        @extend %margin-top-0;
+        @extend %#{$prefix}margin-top-0;
     }
 
     :only-child > &,
     :last-child > & {
-        @extend %margin-bottom-0;
+        @extend %#{$prefix}margin-bottom-0;
     }
 }
 
-%reset-width {
-    width:     auto;
-    max-width: none;
-}
+//%#{$prefix}reset-width {
+//    width:     auto;
+//    max-width: none;
+//}
 
 .#{$prefix}grid {
     grid-auto-flow: row;
-    @extend %grid;
-    @extend %grid-gap;
+    @extend %#{$prefix}grid;
+    @extend %#{$prefix}grid-gap;
+
+    &-0 {
+        @extend %#{$prefix}display-none;
+    }
 }
 
 // Gap
 .#{$prefix}gap {
-    @extend %grid-gap;
+    @extend %#{$prefix}grid-gap;
 }
 
 // Row
-%row {
-    @extend %grid;
+%#{$prefix}row {
+    @extend %#{$prefix}grid;
     grid-template-columns: repeat(auto-fit, minmax($cell_width, auto));
     grid-auto-flow:        column;
 }
 
 .#{$prefix}row {
-    @extend %row;
-    //@extend %grid-child-width;
+    @extend %#{$prefix}row;
+    //@extend %#{$prefix}grid-child-width;
 
     &-0 {
-        @extend %display-none;
+        @extend %#{$prefix}display-none;
     }
 }
 
 .#{$prefix}bar {
-    @extend %row;
+    @extend %#{$prefix}row;
     //@include setBar(auto, $grid_gap_half);
 }
 
 // Column
-%col {
-    @extend %grid;
+%#{$prefix}col {
+    @extend %#{$prefix}grid;
     grid-template-rows: repeat(auto-fit, minmax($cell_width, auto));
     grid-auto-flow:     dense;
 }
 
 .#{$prefix}col {
-    @extend %col;
-    @extend %grid-child-width;
+    @extend %#{$prefix}col;
+    @extend %#{$prefix}grid-child-width;
 
     &-0 {
-        @extend %display-none;
+        @extend %#{$prefix}display-none;
     }
 }
 
 .#{$prefix}list {
-    @extend %col;
+    @extend %#{$prefix}col;
 }
 
 @for $i from 1 through $grid_column {
-    %grid-#{$i} {
-        grid-template-columns: repeat($i, 1fr);
-    }
-
-    %col-#{$i},
-    .#{$prefix}grid-#{$i} > %grid-child-width {
+    .#{$prefix}col-#{$i},
+    .#{$prefix}grid-#{$i} > %#{$prefix}grid-child-width {
         grid-column-end: span $i;
     }
 
     .#{$prefix}grid-#{$i} {
         @extend .#{$prefix}grid;
-        @extend %grid-#{$i};
-        @extend %col-#{$i};
-    }
-
-    .#{$prefix}col-#{$i} {
-        @extend %col-#{$i};
-        @extend %reset-width;
+        @extend .#{$prefix}col-#{$i};
+        grid-template-columns: repeat($i, 1fr);
     }
 
     .#{$prefix}span-#{$i} {
@@ -159,7 +153,7 @@
 
 // Shrink
 @if $grid_gap == 0 {
-    .shrink {
+    .#{$prefix}shrink {
         grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkCellWidth(), 1fr));
     }
 }
@@ -169,17 +163,16 @@
     @media only screen and (max-width: GetBreakpoint($i)) {
         @include pasteBuffer($i);
 
-        @if $grid_gap > 0 {
-            .shrink {
-                grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkCellWidth($i), 1fr));
-            }
+        %#{$prefix}col-b#{$i} {
+            display: inherit;
         }
 
-        %col-b#{$i} {
-            display: unset;
+        %#{$prefix}grid-b#{$i} {
+            display: grid;
         }
 
-        .#{$prefix}col-b#{$i}-0 {
+        .#{$prefix}col-b#{$i}-0,
+        .#{$prefix}grid-b#{$i}-0 {
             display: none;
         }
 
@@ -192,17 +185,34 @@
         }
 
         @for $j from 1 through $grid_column {
-            .#{$prefix}col-b#{$i}-#{$j} {
+            %#{$prefix}col-b#{$i}-#{$j},
+            .#{$prefix}grid-b#{$i}-#{$j} > %#{$prefix}grid-child-width {
                 grid-column-end: span $j;
-                @extend %col-b#{$i};
+            }
+
+            .#{$prefix}grid-b#{$i}-#{$j} {
+                @extend %#{$prefix}grid-b#{$i};
+                @extend %#{$prefix}col-b#{$i}-#{$j};
+                grid-template-columns: repeat($j, 1fr);
+            }
+
+            .#{$prefix}col-b#{$i}-#{$j} {
+                @extend %#{$prefix}col-b#{$i};
+                @extend %#{$prefix}col-b#{$i}-#{$j};
+            }
+
+            .#{$prefix}span-b#{$i}-#{$j} {
+                grid-column-start: $j;
             }
 
             .#{$prefix}order-b#{$i}-#{$j} {
                 order: $j;
             }
+        }
 
-            .#{$prefix}span-b#{$i}-#{$j} {
-                grid-column-start: $j;
+        @if $grid_gap > 0 {
+            .#{$prefix}shrink {
+                grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkCellWidth($i), 1fr));
             }
         }
     }

@@ -22,8 +22,8 @@ body {
     min-height:  100vh;
     overflow-x:  hidden;
     z-index:     1;
-    @extend %font-family-sans-serif;
-    @extend %margin-0;
+    @extend %#{$prefix}font-family-sans-serif;
+    @extend %#{$prefix}margin-0;
 }
 
 // Commons
@@ -52,7 +52,7 @@ progress {
 }
 
 :disabled {
-    @extend %cursor-not-allowed;
+    @extend %#{$prefix}cursor-not-allowed;
 }
 
 ::selection {
@@ -64,39 +64,40 @@ template,
 [hidden],
 [scoped],
 audio:not([controls]) {
-    @extend %display-none;
+    @extend %#{$prefix}display-none;
 }
 
 details {
-    @extend %display-block;
+    @extend %#{$prefix}display-block;
 }
 
 summary {
-    @extend %display-list-item;
-    @extend %cursor-pointer;
+    @extend %#{$prefix}display-list-item;
+    @extend %#{$prefix}cursor-pointer;
 }
 
 figure {
-    @extend %margin-top-0, %margin-left-0, %margin-right-0, %margin-bottom-half;
+    @extend %#{$prefix}margin-top-0, %#{$prefix}margin-left-0, %#{$prefix}margin-right-0;
+    @extend %#{$prefix}margin-bottom-half;
 }
 
 hr {
     height:           1px;
     border-top-width: 1px;
     border-top-style: solid;
-    @extend %display-block;
-    @extend %padding-0;
-    @extend %margin-top-0, %margin-bottom-half;
+    @extend %#{$prefix}display-block;
+    @extend %#{$prefix}padding-0;
+    @extend %#{$prefix}margin-top-0, %#{$prefix}margin-bottom-half;
 }
 
 ul,
 ol {
-    @extend %margin-top-0;
-    @extend %padding-left-half;
+    @extend %#{$prefix}margin-top-0;
+    @extend %#{$prefix}padding-left-half;
 
     ul,
     ol {
-        @extend %margin-bottom-0;
+        @extend %#{$prefix}margin-bottom-0;
     }
 
     ul {
@@ -113,7 +114,7 @@ li {
 }
 
 dl {
-    @extend %margin-top-0;
+    @extend %#{$prefix}margin-top-0;
 }
 
 dt {
@@ -121,43 +122,43 @@ dt {
 }
 
 dd {
-    @extend %margin-left-0, %margin-bottom-half;
+    @extend %#{$prefix}margin-left-0, %#{$prefix}margin-bottom-half;
 }
 
 // Typography
-%heading {
-    @extend %margin-top-0, %margin-bottom-half;
-    @extend %grid-child-width;
+%#{$prefix}heading {
+    @extend %#{$prefix}margin-top-0, %#{$prefix}margin-bottom-half;
+    @extend %#{$prefix}grid-child-width;
 }
 
 h1 {
-    @extend %heading;
+    @extend %#{$prefix}heading;
 }
 
 h2 {
-    @extend %heading;
+    @extend %#{$prefix}heading;
 }
 
 h3 {
-    @extend %heading;
+    @extend %#{$prefix}heading;
 }
 
 h4 {
-    @extend %heading;
+    @extend %#{$prefix}heading;
 }
 
 h5 {
-    @extend %heading;
+    @extend %#{$prefix}heading;
 }
 
 h6 {
-    @extend %heading;
+    @extend %#{$prefix}heading;
 }
 
 // Text semantics
 p {
     text-align: justify;
-    @extend %margin-top-0, %margin-bottom-half;
+    @extend %#{$prefix}margin-top-0, %#{$prefix}margin-bottom-half;
 }
 
 b,
@@ -167,7 +168,7 @@ strong {
 
 a {
     text-decoration: underline;
-    @extend %cursor-pointer;
+    @extend %#{$prefix}cursor-pointer;
 
     &:hover,
     &:active {
@@ -198,7 +199,7 @@ q {
 }
 
 blockquote {
-    @extend %margin-bottom-half;
+    @extend %#{$prefix}margin-bottom-half;
 }
 
 mark,
@@ -207,7 +208,7 @@ code {
 }
 
 acronym {
-    @extend %cursor-help;
+    @extend %#{$prefix}cursor-help;
 }
 
 abbr {
@@ -218,21 +219,21 @@ abbr {
     &[title] {
         border-bottom:   none;
         text-decoration: underline dotted;
-        @extend %cursor-help;
+        @extend %#{$prefix}cursor-help;
     }
 }
 
 address {
     font-style:  normal;
     line-height: inherit;
-    @extend %margin-bottom-half;
+    @extend %#{$prefix}margin-bottom-half;
 }
 
 pre,
 kbd,
 code,
 samp {
-    @extend %font-family-monospace;
+    @extend %#{$prefix}font-family-monospace;
 }
 
 code {
@@ -241,8 +242,8 @@ code {
 
 pre {
     overflow: auto;
-    @extend %display-block;
-    @extend %margin-top-0, %margin-bottom-half;
+    @extend %#{$prefix}display-block;
+    @extend %#{$prefix}margin-top-0, %#{$prefix}margin-bottom-half;
 
     code {
         color:      inherit;
@@ -284,7 +285,7 @@ table {
 }
 
 caption {
-    @extend %padding-top-half, %padding-bottom-half;
+    @extend %#{$prefix}padding-top-half, %#{$prefix}padding-bottom-half;
     text-align: left;
 }
 
@@ -308,17 +309,17 @@ legend,
 fieldset,
 [type="radio"],
 [type="checkbox"] {
-    @extend %padding-0;
+    @extend %#{$prefix}padding-0;
 }
 
 fieldset {
     min-width: 0;
     border:    0 none;
-    @extend %margin-0;
+    @extend %#{$prefix}margin-0;
 }
 
 legend {
-    @extend %display-table;
+    @extend %#{$prefix}display-table;
     line-height:   inherit;
     color:         inherit;
     max-width:     100%;
@@ -327,12 +328,12 @@ legend {
 }
 
 form {
-    @extend %margin-bottom-0;
+    @extend %#{$prefix}margin-bottom-0;
 }
 
 label,
 output {
-    @extend %display-inline-block;
+    @extend %#{$prefix}display-inline-block;
 }
 
 input,
@@ -340,8 +341,8 @@ button,
 select,
 optgroup,
 textarea {
-    @extend %font-family-sans-serif;
-    @extend %margin-0;
+    @extend %#{$prefix}font-family-sans-serif;
+    @extend %#{$prefix}margin-0;
 }
 
 button,
@@ -371,5 +372,5 @@ label[for],
 [type="button"],
 [type="submit"],
 [type="checkbox"] {
-    @extend %cursor-pointer;
+    @extend %#{$prefix}cursor-pointer;
 }

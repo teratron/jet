@@ -34,7 +34,7 @@
 }
 
 @mixin setPlaceholderProps($prop, $gutter) {
-    %#{$prop} {
+    %#{$prefix}#{$prop} {
         @include setPropsAdaptive((#{$prop}: $gutter));
 
         &-half {
