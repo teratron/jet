@@ -2,32 +2,9 @@
 // Layout
 //----------------------------------------------------------
 //
-// shrink
-//
-//
-// order-[1...n]
-// order-b[1...n]-[1...n]
-//
-// span-[1...n]
-// span-b[1...n]-[1...n]
-//
-// row
-// row-0
-//
-// col
-// col-0
-// col-[1...n]
-// col-b[1...n]-0
-// col-b[1...n]-[1...n]
-//
-// list
-//
-// bar
-//
 //**********************************************************
 //@import "mixins/bar";
 //@import "mixins/list";
-
 
 // Layout
 //----------------------------------------------------------
@@ -52,14 +29,11 @@
     grid-auto-rows: minmax($cell_width, auto);
 }
 
-.#{$prefix}grid,
-[class*=#{$prefix}grid-] {
-    grid-auto-flow: row;
+.#{$prefix}grid {
     @extend %#{$prefix}grid;
     @extend %#{$prefix}grid-gap;
-}
+    grid-auto-flow: row;
 
-.#{$prefix}grid {
     &-0 {
         @extend %#{$prefix}display-none;
     }
@@ -78,11 +52,6 @@
     }
 }
 
-//%#{$prefix}reset-width {
-//    width:     auto;
-//    max-width: none;
-//}
-
 // Gap
 //----------------------------------------------------------
 // .gap
@@ -96,6 +65,10 @@
 }
 
 // Row
+//----------------------------------------------------------
+// .row
+// .row-0
+//**********************************************************
 %#{$prefix}row {
     @extend %#{$prefix}grid;
     grid-template-columns: repeat(auto-fit, minmax($cell_width, auto));
@@ -111,12 +84,23 @@
     }
 }
 
+// Bar
+//----------------------------------------------------------
+// .bar
+//**********************************************************
 .#{$prefix}bar {
     @extend %#{$prefix}row;
     //@include setBar(auto, $grid_gap_half);
 }
 
 // Column
+//----------------------------------------------------------
+// .col
+// .col-0
+// .col-[1...n]
+// .col-b[1...n]-0
+// .col-b[1...n]-[1...n]
+//**********************************************************
 %#{$prefix}col {
     @extend %#{$prefix}grid;
     grid-template-rows: repeat(auto-fit, minmax($cell_width, auto));
@@ -132,6 +116,10 @@
     }
 }
 
+// List
+//----------------------------------------------------------
+// .list
+//**********************************************************
 .#{$prefix}list {
     @extend %#{$prefix}col;
 }
@@ -164,6 +152,9 @@
 }
 
 // Shrink
+//----------------------------------------------------------
+// .shrink
+//**********************************************************
 @if not $is_grid_gap {
     .#{$prefix}shrink {
         grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkCellWidth(), 1fr));
@@ -171,6 +162,13 @@
 }
 
 // Breakpoints
+//----------------------------------------------------------
+// order-[1...n]
+// order-b[1...n]-[1...n]
+//
+// span-[1...n]
+// span-b[1...n]-[1...n]
+//**********************************************************
 @for $i from $grid_column to 0 {
     @media only screen and (max-width: GetBreakpoint($i)) {
         @include pasteBuffer($i);
