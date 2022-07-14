@@ -59,8 +59,8 @@
                 }
 
                 > %col-shrink-#{$k},
-                > %grid-child-width,
-                > .#{$prefix}grid-#{$k} > %grid-child-width {
+                > %grid-child-fit,
+                > .#{$prefix}grid-#{$k} > %grid-child-fit {
                     grid-column-end: span $i;
                 }
             }

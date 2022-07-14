@@ -10,13 +10,13 @@
 // %grid-gap-half  %grid-[row | column]-gap-half
 // %grid-gap-0     %grid-[row | column]-gap-0
 //----------------------------------------------------------
-// %margin       %margin-[top | bottom | left | right]
-// %margin-half  %margin-[top | bottom | left | right]-half
-// %margin-0     %margin-[top | bottom | left | right]-0
+// %margin         %margin-[top | bottom | left | right]
+// %margin-half    %margin-[top | bottom | left | right]-half
+// %margin-0       %margin-[top | bottom | left | right]-0
 //----------------------------------------------------------
-// %padding       %padding-[top | bottom | left | right]
-// %padding-half  %padding-[top | bottom | left | right]-half
-// %padding-0     %padding-[top | bottom | left | right]-0
+// %padding        %padding-[top | bottom | left | right]
+// %padding-half   %padding-[top | bottom | left | right]-half
+// %padding-0      %padding-[top | bottom | left | right]-0
 //**********************************************************
 
 @if $is_grid_gap {
@@ -24,9 +24,21 @@
     @include setPlaceholderGutter(margin);
     @include setPlaceholderGutter(padding);
 } @else {
-    @include setPlaceholderGutter(grid-gap, $layout_gap);
-    @include setPlaceholderGutter(margin, $layout_gap);
-    @include setPlaceholderGutter(padding, $layout_gap);
+    @include setPlaceholderGutter(grid-gap, $grid_gap);
+    @include setPlaceholderGutter(margin, $grid_gap);
+    @include setPlaceholderGutter(padding, $grid_gap);
+}
+
+// Positions
+//----------------------------------------------------------
+// %position-[static | relative | absolute | fixed | sticky]
+//**********************************************************
+%#{$prefix}position {
+    @each $position in $list_positions {
+        &-#{$position} {
+            position: $position;
+        }
+    }
 }
 
 // Cursors
@@ -72,7 +84,8 @@
 }
 
 // Helpers
-//%#{$prefix}reset-width {
-//    width:     auto;
-//    max-width: none;
-//}
+%#{$prefix}reset-width {
+    width:     auto;
+    min-width: auto;
+    max-width: none;
+}

@@ -14,7 +14,7 @@
 
 // Container
 .app-container {
-    @extend .layout, .grid-12;
+    @extend .container, .grid-12;
 }
 
 // Header

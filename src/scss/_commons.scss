@@ -4,40 +4,124 @@
 //
 //**********************************************************
 
-a {
-    background-color: yellow;
+// Offcanvas
+//----------------------------------------------------------
+// .out
+// .out-[top | bottom | left | right]
+// .in
+//**********************************************************
+.#{$prefix}out {
+    @each $side in $list_sides {
+        &, &-#{$side} {
+            @extend %#{$prefix}position-fixed;
+        }
+    }
 
-    &:link {
-        background-color: red;
+    &-top {
+        top:    -100vh;
+        bottom: 100vh;
     }
-    &:focus {
-        background-color: red;
-        &-within {
-        }
-        &-visible {
-        }
+
+    &-bottom {
+        top:    100vh;
+        bottom: -100vh;
     }
-    &:target {
-        background-color: green;
+
+    &, &-left {
+        left:  -100vw;
+        right: 100vw;
     }
-    &:visited {
-        background-color: green;
-    }
-    &:hover {
-        background-color: orange;
-    }
-    &:active {
-        background-color: blue;
+
+    &-right {
+        left:  100vw;
+        right: -100vw;
     }
 }
 
-/*
-.#{$prefix}unstyled {
-    list-style: none outside none;
+.#{$prefix}in {
+    position: initial;
+    top:      auto;
+    bottom:   auto;
+    left:     auto;
+    right:    auto;
 }
 
-.#{$prefix}unstyle {
-    > li {
-        list-style-type: none;
+//
+//----------------------------------------------------------
+// .on / .off
+// .show / .hide
+//**********************************************************
+.#{$prefix}off,
+.#{$prefix}hide {
+    @extend %#{$prefix}position-fixed;
+    z-index: -1;
+}
+
+.#{$prefix}on,
+.#{$prefix}show {
+    position: initial;
+    z-index:  auto;
+}
+
+.#{$prefix}hide {
+    opacity:   0;
+    animation: hide .3s linear;
+}
+
+.#{$prefix}show {
+    opacity: initial;
+}
+
+.#{$prefix}hide,
+.#{$prefix}show {
+    transition: opacity .3s linear;
+}
+
+@keyframes hide {
+    from {
+        position: initial;
+        z-index:  auto;
     }
-}*/
+    to {
+        position: fixed;
+        z-index:  -1;
+    }
+}
+
+//a {
+//    background-color: yellow;
+//
+//    &:link {
+//        background-color: red;
+//    }
+//    &:focus {
+//        background-color: red;
+//        &-within {
+//        }
+//        &-visible {
+//        }
+//    }
+//    &:target {
+//        background-color: green;
+//    }
+//    &:visited {
+//        background-color: green;
+//    }
+//    &:hover {
+//        background-color: orange;
+//    }
+//    &:active {
+//        background-color: blue;
+//    }
+//}
+
+
+//.#{$prefix}unstyled {
+//    list-style: none outside none;
+//}
+//
+//.#{$prefix}unstyle {
+//    > li {
+//        list-style-type: none;
+//    }
+//}
