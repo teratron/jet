@@ -64,7 +64,7 @@
 // .bar
 //**********************************************************
 .#{$prefix}bar {
-    @extend %#{$prefix}row;
+    @extend .#{$prefix}row;
 }
 
 // Column
@@ -85,7 +85,7 @@
 // .list
 //**********************************************************
 .#{$prefix}list {
-    @extend %#{$prefix}col;
+    @extend .#{$prefix}col;
 }
 
 // Checkpoints
