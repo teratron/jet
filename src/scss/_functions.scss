@@ -30,9 +30,8 @@
     $g: 100 - $b;
 
     @for $i from 1 through $grid_column {
-        $w: $i * $grid_col_width;
-        $s: math.div($w, $g);
-        $d: $w + $b * $s;
+        $s: math.div($i * $grid_col_width, $g) * $layout_gap_adaptive;
+        $d: $i * $grid_cell_width + ($i + 1) * $s;
 
         @if math.unit($d) == "px" {
             $d: math.round($d) - 1;

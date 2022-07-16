@@ -3,7 +3,30 @@
 
 
 // Option
-$is_placeholder_mode:       true !default;
+$is_placeholder_mode: true !default;
+
+// Breakpoints
+//@function GetListBreakpoints() {
+//    $list: [];
+//    $b: $layout_gap_adaptive * 2;
+//    $g: 100 - $b;
+//
+//    @for $i from 1 through $grid_column {
+//        $w: $i * $grid_col_width;
+//        $s: math.div($w, $g);
+//        $d: $w + $b * $s;
+//
+//        @if math.unit($d) == "px" {
+//            $d: math.round($d) - 1;
+//        } @else if math.unit($d) == "rem" {
+//            $d: $d - $px;
+//        }
+//
+//        $list: list.append($list, $d);
+//    }
+//
+//    @return $list;
+//}
 
 // Breakpoints
 //@function GetListBreakpoints() {
