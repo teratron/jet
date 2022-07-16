@@ -18,7 +18,7 @@
 .#{$prefix}grid {
     @extend %#{$prefix}grid;
     grid-auto-flow: row;
-    align-items:    baseline;
+    //align-items:    baseline;
 
     @if $is_grid_gap {
         @extend %#{$prefix}grid-gap;
