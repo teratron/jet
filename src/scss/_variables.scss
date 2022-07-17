@@ -98,7 +98,7 @@ $font_family_sans_serif:    list.join($font_family_sans_serif, (Roboto, -apple-s
 $font_family_monospace:     list.join($font_family_monospace, (SFMono-Regular, source-code-pro, Menlo, Monaco, Consolas, "Courier New", "Lucida Console", Courier, monospace), "comma");
 
 :root {
-    --sh:                     #{GetMinShrinkCellWidth($grid_column - 1)};
+    --sh:                     #{GetMinShrinkWidth($grid_column - 1)};
     --px:                     #{$px};
     --bp:                     #{$list_breakpoints};
 

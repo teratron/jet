@@ -88,9 +88,20 @@
     @extend .#{$prefix}col;
 }
 
+// Shrink
+//----------------------------------------------------------
+// .shrink
+//**********************************************************
+@if not $is_grid_gap {
+    .#{$prefix}shrink {
+        grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkWidth(), 1fr));
+    }
+}
+
 // Checkpoints
 //----------------------------------------------------------
 // .grid-[1...n]
+// .tile-[1...n]
 // .col-[1...n]
 // .span-[1...n]
 // .order-[1...n]
@@ -98,6 +109,10 @@
 @for $i from 1 through $grid_column {
     .#{$prefix}grid-#{$i} {
         @extend .#{$prefix}grid;
+    }
+
+    .#{$prefix}tile-#{$i} {
+        @extend %#{$prefix}grid;
     }
 
     .#{$prefix}col-#{$i},
@@ -116,16 +131,12 @@
     .#{$prefix}order-#{$i} {
         order: $i;
     }
-}
-
-// Shrink
-//----------------------------------------------------------
-// .shrink
-//**********************************************************
-@if not $is_grid_gap {
-    .#{$prefix}shrink {
-        grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkCellWidth(), 1fr));
+    //@warn GetMinTileWidth($i);
+    //@if not $is_grid_gap {
+    .#{$prefix}tile-#{$i} {
+        grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i), 1fr)) !important;
     }
+    //}
 }
 
 // Container
@@ -170,7 +181,7 @@
 
         @if $is_grid_gap and $i > 1 {
             .#{$prefix}shrink {
-                grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkCellWidth($i), 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkWidth($i), 1fr));
             }
         }
     }
