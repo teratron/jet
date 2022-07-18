@@ -26,16 +26,8 @@
 }
 
 %#{$prefix}grid-child-fit {
+    @extend %#{$prefix}child-fit;
     @extend %#{$prefix}reset-width;
-
-    :first-child > & {
-        @extend %#{$prefix}margin-top-0;
-    }
-
-    :only-child > &,
-    :last-child > & {
-        @extend %#{$prefix}margin-bottom-0;
-    }
 }
 
 // Gap
@@ -92,52 +84,11 @@
 //----------------------------------------------------------
 // .shrink
 //**********************************************************
-@if not $is_grid_gap {
-    .#{$prefix}shrink {
-        grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkWidth(), 1fr));
-    }
-}
-
-// Checkpoints
-//----------------------------------------------------------
-// .grid-[1...n]
-// .tile-[1...n]
-// .col-[1...n]
-// .span-[1...n]
-// .order-[1...n]
-//**********************************************************
-@for $i from 1 through $grid_column {
-    .#{$prefix}grid-#{$i} {
-        @extend .#{$prefix}grid;
-    }
-
-    .#{$prefix}tile-#{$i} {
-        @extend %#{$prefix}grid;
-    }
-
-    .#{$prefix}col-#{$i},
-    .#{$prefix}grid-#{$i} {
-        grid-template-columns: repeat($i, 1fr);
-
-        &, > %#{$prefix}grid-child-fit {
-            grid-column-end: span $i;
-        }
-    }
-
-    .#{$prefix}span-#{$i} {
-        grid-column-start: $i;
-    }
-
-    .#{$prefix}order-#{$i} {
-        order: $i;
-    }
-    //@warn GetMinTileWidth($i);
-    //@if not $is_grid_gap {
-    .#{$prefix}tile-#{$i} {
-        grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i), 1fr)) !important;
-    }
-    //}
-}
+//@if not $is_grid_gap {
+//    .#{$prefix}shrink {
+//        grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkWidth(), 1fr));
+//    }
+//}
 
 // Container
 //----------------------------------------------------------
@@ -151,8 +102,48 @@
     @extend %#{$prefix}padding-left, %#{$prefix}padding-right;
 }
 
+// Checkpoints
+//----------------------------------------------------------
+// .grid-[1...n]
+// .tile-[1...n]
+// .col-[1...n]
+// .span-[1...n]
+// .order-[1...n]
+//**********************************************************
+@for $i from 1 through $grid_column {
+    .#{$prefix}grid-#{$i} {
+        @extend .#{$prefix}grid;
+        grid-template-columns: repeat($i, 1fr);
+    }
+
+    //.#{$prefix}tile-#{$i} {
+    //    @extend %#{$prefix}grid;
+    //}
+
+    .#{$prefix}col-#{$i},
+    .#{$prefix}grid-#{$i},
+    .#{$prefix}grid-#{$i} > %#{$prefix}grid-child-fit {
+            grid-column-end: span $i;
+    }
+
+    .#{$prefix}span-#{$i} {
+        grid-column-start: $i;
+    }
+
+    .#{$prefix}order-#{$i} {
+        order: $i;
+    }
+    //@warn GetMinTileWidth($i);
+    //@if not $is_grid_gap {
+    //.#{$prefix}tile-#{$i} {
+    //    grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i), 1fr)) !important;
+    //}
+    //}
+}
+
 // Breakpoints
 //----------------------------------------------------------
+// .shrink
 // .col-b[1...n]-[1...n]
 // .span-b[1...n]-[1...n]
 // .order-b[1...n]-[1...n]
@@ -179,9 +170,30 @@
             }
         }
 
-        @if $is_grid_gap and $i > 1 {
+        // Shrink
+        @if $i < $grid_column {
+            $k: $i + 1;
+
             .#{$prefix}shrink {
-                grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkWidth($i), 1fr));
+                &%#{$prefix}grid-shrink-#{$k} {
+                    grid-template-columns: repeat($i, 1fr);
+                }
+
+                > %#{$prefix}col-shrink-#{$k},
+                > .#{$prefix}grid-#{$k} > %#{$prefix}grid-child-fit {
+                    grid-column-end: span $i;
+                }
+            }
+
+            @for $j from $k through $grid_column {
+                .#{$prefix}grid-#{$j} {
+                    @extend %#{$prefix}grid-shrink-#{$k};
+                }
+
+                .#{$prefix}col-#{$j},
+                .#{$prefix}grid-#{$j} {
+                    @extend %#{$prefix}col-shrink-#{$k};
+                }
             }
         }
     }

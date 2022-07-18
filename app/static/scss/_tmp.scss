@@ -1,6 +1,42 @@
 
 
-
+//@function GetMinShrinkWidth($n: $grid_column) {
+//  $w: GetBreakpoint($n - 1);
+//
+//  @if math.unit($w) == "px" {
+//    $w: $w + 2;
+//  } @else if math.unit($w) == "rem" {
+//    $w: $w + 2 * $px;
+//  }
+//
+//  $a: math.div($w, 100);
+//  $b: $layout_gap_adaptive * ($n + 1);
+//  $c: $w - $a * $b;
+//
+//  @return math.div($c, $n);
+//}
+//@if not $is_grid_gap {
+//  .#{$prefix}shrink {
+//    grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkWidth(), 1fr));
+//  }
+//}
+//@for $i from 1 through $grid_column {
+//  @if not $is_grid_gap {
+//    .#{$prefix}tile-#{$i} {
+//      grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i), 1fr)) !important;
+//    }
+//  }
+//}
+//
+//@for $i from $grid_column to 0 {
+//  @media only screen and (max-width: GetBreakpoint($i)) {
+//    @if $is_grid_gap and $i > 1 {
+//      .#{$prefix}shrink {
+//        grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkWidth($i), 1fr));
+//      }
+//    }
+//  }
+//}
 
 // Option
 $is_placeholder_mode: true !default;
@@ -94,52 +130,53 @@ $is_placeholder_mode: true !default;
 
 // Breakpoints
 @for $i from $grid_column to 0 {
-    @media only screen and (max-width: GetBreakpoint($i)) {
+  @media only screen and (max-width: GetBreakpoint($i)) {
 
-        // Shrink
-        @if $i < $grid_column {
-            $k: $i + 1;
+    // Shrink
+    @if $i < $grid_column {
+      $k: $i + 1;
 
-            .#{$prefix}shrink {
-                &,
-                > %grid-shrink-#{$k} {
-                    grid-template-columns: repeat($i, 1fr);
-                }
-
-                > %col-shrink-#{$k},
-                > %grid-child-fit,
-                > .#{$prefix}grid-#{$k} > %grid-child-fit {
-                    grid-column-end: span $i;
-                }
-            }
-
-            @for $j from $k through $grid_column {
-                .#{$prefix}grid-#{$j} {
-                    @extend %grid-shrink-#{$k};
-                }
-
-                .#{$prefix}col-#{$j},
-                .#{$prefix}grid-#{$j} {
-                    @extend %col-shrink-#{$k};
-                }
-            }
+      .#{$prefix}shrink {
+        &,
+        > %grid-shrink-#{$k} {
+          grid-template-columns: repeat($i, 1fr);
         }
+
+        > %col-shrink-#{$k},
+        > %grid-child-fit,
+        > .#{$prefix}grid-#{$k} > %grid-child-fit {
+          grid-column-end: span $i;
+        }
+      }
+
+      @for $j from $k through $grid_column {
+        .#{$prefix}grid-#{$j} {
+          @extend %grid-shrink-#{$k};
+        }
+
+        .#{$prefix}col-#{$j},
+        .#{$prefix}grid-#{$j} {
+          @extend %col-shrink-#{$k};
+        }
+      }
     }
+  }
 }
+
 // Fuse
 @for $i from 1 through $grid_column {
-    @if $i < $grid_column {
-        @for $j from $i + 1 through $grid_column {
-            > .#{$prefix}grid-#{$j} {
-                @extend %grid-#{$i};
-            }
+  @if $i < $grid_column {
+    @for $j from $i + 1 through $grid_column {
+      > .#{$prefix}grid-#{$j} {
+        @extend %grid-#{$i};
+      }
 
-            > .#{$prefix}col-#{$j},
-            > .#{$prefix}grid-#{$j} {
-                @extend %col-#{$i};
-            }
-        }
+      > .#{$prefix}col-#{$j},
+      > .#{$prefix}grid-#{$j} {
+        @extend %col-#{$i};
+      }
     }
+  }
 }
 
 //@for $i from $grid_column - 1 to 1 {
