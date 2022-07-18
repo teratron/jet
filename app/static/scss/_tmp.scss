@@ -1,5 +1,22 @@
 
 
+// Grid
+//@function GetMinShrinkWidth($n: $grid_column) {
+//  $w: GetBreakpoint($n - 1);
+//
+//  @if math.unit($w) == "px" {
+//    $w: $w + 2;
+//  } @else if math.unit($w) == "rem" {
+//    $w: $w + 2 * $px;
+//  }
+//
+//  $a: math.div($w, 100);
+//  $b: $layout_gap_adaptive * ($n + 1);
+//  $c: $w - $a * $b;
+//
+//  @return math.div($c, $n);
+//}
+
 //@function GetMinShrinkWidth($n: $grid_column) {
 //  $w: GetBreakpoint($n - 1);
 //

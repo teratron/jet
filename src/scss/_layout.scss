@@ -179,10 +179,14 @@
                     grid-template-columns: repeat($i, 1fr);
                 }
 
-                > %#{$prefix}col-shrink-#{$k},
-                > .#{$prefix}grid-#{$k} > %#{$prefix}grid-child-fit {
+                &%#{$prefix}col-shrink-#{$k} {
                     grid-column-end: span $i;
                 }
+
+                //> %#{$prefix}col-shrink-#{$k},
+                //&.#{$prefix}grid-#{$k} > %#{$prefix}grid-child-fit {
+                //    grid-column-end: span $i;
+                //}
             }
 
             @for $j from $k through $grid_column {
@@ -190,8 +194,8 @@
                     @extend %#{$prefix}grid-shrink-#{$k};
                 }
 
-                .#{$prefix}col-#{$j},
-                .#{$prefix}grid-#{$j} {
+                .#{$prefix}grid-#{$j},
+                > .#{$prefix}col-#{$j} {
                     @extend %#{$prefix}col-shrink-#{$k};
                 }
             }
