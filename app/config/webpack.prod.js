@@ -1,10 +1,15 @@
 'use strict'
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const {merge} = require('webpack-merge')
-const common = require('./webpack.common')
-const semver = require('../../config/version')
-const paths = require('../../config/paths')
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+// const {merge} = require('webpack-merge')
+// const common = require('./webpack.common')
+// const semver = require('../../config/version')
+// const paths = require('../../config/paths')
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import {merge} from 'webpack-merge'
+import common from './webpack.common'
+import semver from '../../config/version'
+import paths from '../../config/paths'
 
 const isBuildDev = process.env.NODE_ENV === 'build-dev'
 

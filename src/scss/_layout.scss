@@ -193,7 +193,8 @@
                 }
 
                 .#{$prefix}col-#{$j},
-                .#{$prefix}grid-#{$j} {
+                .#{$prefix}grid-#{$j},
+                .#{$prefix}col-b#{$i}-#{$j} {
                     @extend %#{$prefix}col-shrink-#{$k};
                 }
             }

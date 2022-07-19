@@ -1,10 +1,16 @@
 'use strict'
 
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const {merge} = require('webpack-merge')
-const common = require('../../config/webpack.common')
-const paths = require('../../config/paths')
+// const CopyWebpackPlugin = require('copy-webpack-plugin')
+// const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const {merge} = require('webpack-merge')
+// const common = require('../../config/webpack.common')
+// const paths = require('../../config/paths')
+
+import CopyWebpackPlugin from 'copy-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import {merge} from 'webpack-merge'
+import common from '../../config/webpack.common'
+import paths from '../../config/paths'
 
 module.exports = props => merge(
     common(props),
