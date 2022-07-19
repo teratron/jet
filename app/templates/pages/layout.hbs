@@ -9,8 +9,29 @@
             {{/each}}
         </section>
 
+        <section class="grid-12 shrink outline">
+            <div class="col-4">1</div>
+            <div class="grid-4">2</div>
+            <div class="col-4">3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div>10</div>
+            <div>11</div>
+            <div>12</div>
+        </section>
+
         <h3>Tile</h3>
         <section class="tile-3 gap col-12 outline">
+            {{#each debugGrid}}
+                <div>{{this}}</div>
+            {{/each}}
+        </section>
+
+        <section class="grid-12 outline" style="grid-template-columns: repeat(auto-fit, minmax(33.33%, 1fr))">
             {{#each debugGrid}}
                 <div>{{this}}</div>
             {{/each}}

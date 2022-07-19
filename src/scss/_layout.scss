@@ -84,11 +84,9 @@
 //----------------------------------------------------------
 // .shrink
 //**********************************************************
-//@if not $is_grid_gap {
-//    .#{$prefix}shrink {
-//        grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkWidth(), 1fr));
-//    }
-//}
+.#{$prefix}shrink {
+    grid-auto-flow: dense;
+}
 
 // Container
 //----------------------------------------------------------
@@ -116,14 +114,14 @@
         grid-template-columns: repeat($i, 1fr);
     }
 
-    //.#{$prefix}tile-#{$i} {
-    //    @extend %#{$prefix}grid;
-    //}
+    .#{$prefix}tile-#{$i} {
+        @extend %#{$prefix}grid;
+    }
 
     .#{$prefix}col-#{$i},
     .#{$prefix}grid-#{$i},
     .#{$prefix}grid-#{$i} > %#{$prefix}grid-child-fit {
-            grid-column-end: span $i;
+        grid-column-end: span $i;
     }
 
     .#{$prefix}span-#{$i} {
@@ -133,11 +131,13 @@
     .#{$prefix}order-#{$i} {
         order: $i;
     }
+
     //@warn GetMinTileWidth($i);
     //@if not $is_grid_gap {
-    //.#{$prefix}tile-#{$i} {
-    //    grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i), 1fr)) !important;
-    //}
+    .#{$prefix}tile-#{$i} {
+        //grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i), 1fr)) !important;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    }
     //}
 }
 
@@ -175,18 +175,16 @@
             $k: $i + 1;
 
             .#{$prefix}shrink {
-                &%#{$prefix}grid-shrink-#{$k} {
+                &,
+                > %#{$prefix}grid-shrink-#{$k} {
                     grid-template-columns: repeat($i, 1fr);
                 }
 
-                &%#{$prefix}col-shrink-#{$k} {
+                > %#{$prefix}col-shrink-#{$k},
+                > %#{$prefix}grid-child-fit,
+                > .#{$prefix}grid-#{$k} > %#{$prefix}grid-child-fit {
                     grid-column-end: span $i;
                 }
-
-                //> %#{$prefix}col-shrink-#{$k},
-                //&.#{$prefix}grid-#{$k} > %#{$prefix}grid-child-fit {
-                //    grid-column-end: span $i;
-                //}
             }
 
             @for $j from $k through $grid_column {
@@ -194,8 +192,8 @@
                     @extend %#{$prefix}grid-shrink-#{$k};
                 }
 
-                .#{$prefix}grid-#{$j},
-                > .#{$prefix}col-#{$j} {
+                .#{$prefix}col-#{$j},
+                .#{$prefix}grid-#{$j} {
                     @extend %#{$prefix}col-shrink-#{$k};
                 }
             }

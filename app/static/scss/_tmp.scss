@@ -155,25 +155,25 @@ $is_placeholder_mode: true !default;
 
       .#{$prefix}shrink {
         &,
-        > %grid-shrink-#{$k} {
+        > %#{$prefix}grid-shrink-#{$k} {
           grid-template-columns: repeat($i, 1fr);
         }
 
-        > %col-shrink-#{$k},
-        > %grid-child-fit,
-        > .#{$prefix}grid-#{$k} > %grid-child-fit {
+        > %#{$prefix}col-shrink-#{$k},
+        > %#{$prefix}grid-child-fit,
+        > .#{$prefix}grid-#{$k} > %#{$prefix}grid-child-fit {
           grid-column-end: span $i;
         }
       }
 
       @for $j from $k through $grid_column {
         .#{$prefix}grid-#{$j} {
-          @extend %grid-shrink-#{$k};
+          @extend %#{$prefix}grid-shrink-#{$k};
         }
 
         .#{$prefix}col-#{$j},
         .#{$prefix}grid-#{$j} {
-          @extend %col-shrink-#{$k};
+          @extend %#{$prefix}col-shrink-#{$k};
         }
       }
     }
