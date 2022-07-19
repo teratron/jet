@@ -5,11 +5,6 @@ const {merge} = require('webpack-merge')
 const common = require('./webpack.common')
 const semver = require('./version')
 const paths = require('./paths')
-// import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-// import {merge} from 'webpack-merge'
-// import common from './webpack.common'
-// import semver from './version'
-// import paths from './paths'
 
 const config = merge(
     common({

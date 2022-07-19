@@ -30,16 +30,6 @@
     @extend %#{$prefix}reset-width;
 }
 
-// Gap
-//----------------------------------------------------------
-// .gap
-// .gap-half
-// .gap-0
-//**********************************************************
-.#{$prefix}gap {
-    @extend %#{$prefix}grid-gap;
-}
-
 // Row
 //----------------------------------------------------------
 // .row
@@ -100,6 +90,16 @@
     @extend %#{$prefix}padding-left, %#{$prefix}padding-right;
 }
 
+// Gap
+//----------------------------------------------------------
+// .gap
+// .gap-half
+// .gap-0
+//**********************************************************
+.#{$prefix}gap {
+    @extend %#{$prefix}grid-gap;
+}
+
 // Checkpoints
 //----------------------------------------------------------
 // .grid-[1...n]
@@ -112,10 +112,6 @@
     .#{$prefix}grid-#{$i} {
         @extend .#{$prefix}grid;
         grid-template-columns: repeat($i, 1fr);
-    }
-
-    .#{$prefix}tile-#{$i} {
-        @extend %#{$prefix}grid;
     }
 
     .#{$prefix}col-#{$i},
@@ -135,6 +131,7 @@
     //@warn GetMinTileWidth($i);
     //@if not $is_grid_gap {
     .#{$prefix}tile-#{$i} {
+        @extend %#{$prefix}grid;
         //grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i), 1fr)) !important;
         grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     }

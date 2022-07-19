@@ -1,7 +1,6 @@
 'use strict'
 
 const paths = require('./paths')
-//import paths from './paths'
 
 module.exports = props => {
     return {
