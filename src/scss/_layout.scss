@@ -188,7 +188,8 @@
             }
 
             @for $j from $k through $grid_column {
-                .#{$prefix}grid-#{$j} {
+                .#{$prefix}grid-#{$j},
+                .#{$prefix}col-b#{$i}-#{$j} {
                     @extend %#{$prefix}grid-shrink-#{$k};
                 }
 

@@ -3,7 +3,6 @@
   "version": "0.0.216",
   "description": "HTML, CSS, SCSS, JavaScript Framework",
   "private": false,
-  "type": "module",
   "main": "dist/js/jettix.js",
   "style": "dist/css/jettix.css",
   "sass": "src/scss/jettix.scss",

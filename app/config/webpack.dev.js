@@ -1,12 +1,11 @@
 'use strict'
 
-// const {merge} = require('webpack-merge')
-// const common = require('./webpack.common')
-// const paths = require('../../config/paths')
-
-import {merge} from 'webpack-merge'
-import common from './webpack.common'
-import paths from '../../config/paths'
+const {merge} = require('webpack-merge')
+const common = require('./webpack.common')
+const paths = require('../../config/paths')
+// import {merge} from 'webpack-merge'
+// import common from './webpack.common'
+// import paths from '../../config/paths'
 
 const config = merge(
     common({

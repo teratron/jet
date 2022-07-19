@@ -24,7 +24,7 @@
 
 // Breakpoints
 @function GetListBreakpoints($is_evenly: false) {
-    $list: [];
+    $list: ();
     $g: $grid_gap;
     $w: 100;
 

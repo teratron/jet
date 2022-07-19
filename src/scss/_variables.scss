@@ -78,7 +78,7 @@ $layout_gap_adaptive:       $layout_rate * $grid_gap;
 
 // Breakpoints
 $list_breakpoints:          GetListBreakpoints();
-$list_breakpoints_buffer:   [];
+$list_breakpoints_buffer:   ();
 
 // Commons
 $list_sides:                top, bottom, left, right;
@@ -87,9 +87,9 @@ $list_displays:             none, block, inline-block, table, flex, grid, inline
 $list_positions:            static, relative, absolute, fixed, sticky;
 
 // Fonts
-$font_family_serif:         [] !default;
-$font_family_sans_serif:    [] !default;
-$font_family_monospace:     [] !default;
+$font_family_serif:         () !default;
+$font_family_sans_serif:    () !default;
+$font_family_monospace:     () !default;
 // TODO:
 // - проверить есть ли добавляемый шрифт
 // - если не первый в списке удалить и добавить в начало
@@ -98,7 +98,7 @@ $font_family_sans_serif:    list.join($font_family_sans_serif, (Roboto, -apple-s
 $font_family_monospace:     list.join($font_family_monospace, (SFMono-Regular, source-code-pro, Menlo, Monaco, Consolas, "Courier New", "Lucida Console", Courier, monospace), "comma");
 
 :root {
-    --sh:                     #{GetMinShrinkWidth($grid_column - 1)};
+    //--sh:                     #{GetMinShrinkWidth($grid_column - 1)};
     --px:                     #{$px};
     --bp:                     #{$list_breakpoints};
 

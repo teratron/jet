@@ -3,7 +3,6 @@
   "version": "0.0.184",
   "description": "Web application for Jettix",
   "private": true,
-  "type": "module",
   "homepage": "https://teratron.github.io/jettix",
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",

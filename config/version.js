@@ -1,7 +1,7 @@
 'use strict'
 
-//const SemverWebpackPlugin = require('semver-extended-webpack-plugin')
-import SemverWebpackPlugin from 'semver-extended-webpack-plugin'
+const SemverWebpackPlugin = require('semver-extended-webpack-plugin')
+//import SemverWebpackPlugin from 'semver-extended-webpack-plugin'
 
 const paths = require('./paths')
 
