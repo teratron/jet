@@ -9,11 +9,11 @@
 
 @mixin setPlaceholderGutter($prop, $gutter: $grid_gap) {
     @if $prop == grid-gap {
-        @include setPlaceholderProps(grid-gap, $gutter);
-
         @each $dir in (row, column) {
             @include setPlaceholderProps(grid-#{$dir}-gap, $gutter);
         }
+
+        @include setPlaceholderProps(grid-gap, $gutter);
     } @else {
         @include setPlaceholderProps($prop, $gutter) {
             @each $side in $list_sides {
@@ -37,6 +37,8 @@
     %#{$prefix}#{$prop} {
         @include setPropsAdaptive((#{$prop}: $gutter));
 
+        @content;
+
         &-half {
             @include setPropsAdaptive((#{$prop}: math.div($gutter, 2)));
         }
@@ -44,8 +46,6 @@
         &-0 {
             #{$prop}: 0;
         }
-
-        @content;
     }
 }
 

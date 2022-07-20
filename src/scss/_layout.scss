@@ -6,17 +6,19 @@
 //@import "mixins/bar";
 //@import "mixins/list";
 
-// Grid
-//----------------------------------------------------------
-// .grid
-//**********************************************************
-%#{$prefix}grid {
+%#{$prefix}layout {
     @extend %#{$prefix}display-grid;
     grid-auto-rows: minmax($cell_width, auto);
 }
 
+// Grid
+//----------------------------------------------------------
+// .grid
+// .grid-[1...n]
+// .grid-b[1...n]-[1...n]
+//**********************************************************
 .#{$prefix}grid {
-    @extend %#{$prefix}grid;
+    @extend %#{$prefix}layout;
     grid-auto-flow: row;
     //align-items:    baseline;
 
@@ -26,8 +28,8 @@
 }
 
 %#{$prefix}grid-child-fit {
-    @extend %#{$prefix}child-fit;
     @extend %#{$prefix}reset-width;
+    @extend %#{$prefix}margin-0;
 }
 
 // Row
@@ -35,7 +37,7 @@
 // .row
 //**********************************************************
 .#{$prefix}row {
-    @extend %#{$prefix}grid;
+    @extend %#{$prefix}layout;
     grid-template-columns: repeat(auto-fit, minmax($cell_width, auto));
     grid-auto-flow:        column;
     //@extend %#{$prefix}grid-child-fit;
@@ -56,7 +58,7 @@
 // .col-b[1...n]-[1...n]
 //**********************************************************
 .#{$prefix}col {
-    @extend %#{$prefix}grid;
+    @extend %#{$prefix}layout;
     grid-template-rows: repeat(auto-fit, minmax($cell_width, auto));
     grid-auto-flow:     dense;
     //@extend %#{$prefix}grid-child-fit;
@@ -109,6 +111,12 @@
 // .order-[1...n]
 //**********************************************************
 @for $i from 1 through $grid_column {
+    @for $j from 1 through $grid_column {
+        .#{$prefix}grid-b#{$i}-#{$j} {
+            @extend .#{$prefix}grid;
+        }
+    }
+
     .#{$prefix}grid-#{$i} {
         @extend .#{$prefix}grid;
         grid-template-columns: repeat($i, 1fr);
@@ -128,10 +136,9 @@
         order: $i;
     }
 
-    //@warn GetMinTileWidth($i);
     //@if not $is_grid_gap {
     .#{$prefix}tile-#{$i} {
-        @extend %#{$prefix}grid;
+        @extend %#{$prefix}layout;
         //grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i), 1fr)) !important;
         grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     }
@@ -141,6 +148,7 @@
 // Breakpoints
 //----------------------------------------------------------
 // .shrink
+// .grid-b[1...n]-[1...n]
 // .col-b[1...n]-[1...n]
 // .span-b[1...n]-[1...n]
 // .order-b[1...n]-[1...n]
@@ -150,12 +158,14 @@
         @include pasteBuffer($i);
 
         @for $j from 1 through $grid_column {
-            .#{$prefix}col-b#{$i}-#{$j} {
+            .#{$prefix}grid-b#{$i}-#{$j} {
                 grid-template-columns: repeat($j, 1fr);
+            }
 
-                &, > %#{$prefix}grid-child-fit {
-                    grid-column-end: span $j;
-                }
+            .#{$prefix}col-b#{$i}-#{$j},
+            .#{$prefix}grid-b#{$i}-#{$j},
+            .#{$prefix}grid-b#{$i}-#{$j} > %#{$prefix}grid-child-fit {
+                grid-column-end: span $j;
             }
 
             .#{$prefix}span-b#{$i}-#{$j} {
@@ -178,21 +188,21 @@
                 }
 
                 > %#{$prefix}col-shrink-#{$k},
-                > %#{$prefix}grid-child-fit,
-                > .#{$prefix}grid-#{$k} > %#{$prefix}grid-child-fit {
+                > %#{$prefix}grid-child-fit {
                     grid-column-end: span $i;
                 }
             }
 
             @for $j from $k through $grid_column {
                 .#{$prefix}grid-#{$j},
-                .#{$prefix}col-b#{$i}-#{$j} {
+                .#{$prefix}grid-b#{$i}-#{$j} {
                     @extend %#{$prefix}grid-shrink-#{$k};
                 }
 
                 .#{$prefix}col-#{$j},
+                .#{$prefix}col-b#{$i}-#{$j},
                 .#{$prefix}grid-#{$j},
-                .#{$prefix}col-b#{$i}-#{$j} {
+                .#{$prefix}grid-b#{$i}-#{$j} {
                     @extend %#{$prefix}col-shrink-#{$k};
                 }
             }
