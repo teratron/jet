@@ -10,6 +10,7 @@
 // .out-[top | bottom | left | right]
 // .in
 //**********************************************************
+%#{$prefix}out,
 .#{$prefix}out {
     @each $side in $list_sides {
         &, &-#{$side} {
@@ -38,12 +39,13 @@
     }
 }
 
+%#{$prefix}in,
 .#{$prefix}in {
     position: initial;
     top:      auto;
+    right:    auto;
     bottom:   auto;
     left:     auto;
-    right:    auto;
 }
 
 //
@@ -51,28 +53,36 @@
 // .on / .off
 // .show / .hide
 //**********************************************************
+%#{$prefix}off,
 .#{$prefix}off,
+%#{$prefix}hide,
 .#{$prefix}hide {
     @extend %#{$prefix}position-fixed;
     z-index: -1;
 }
 
+%#{$prefix}on,
 .#{$prefix}on,
+%#{$prefix}show,
 .#{$prefix}show {
     position: initial;
     z-index:  auto;
 }
 
+%#{$prefix}hide,
 .#{$prefix}hide {
-    opacity:   0;
     animation: hide .3s linear;
+    opacity:   0;
 }
 
+%#{$prefix}show,
 .#{$prefix}show {
     opacity: initial;
 }
 
+%#{$prefix}hide,
 .#{$prefix}hide,
+%#{$prefix}show,
 .#{$prefix}show {
     transition: opacity .3s linear;
 }
@@ -82,6 +92,7 @@
         position: initial;
         z-index:  auto;
     }
+
     to {
         position: fixed;
         z-index:  -1;
@@ -114,7 +125,6 @@
 //        background-color: blue;
 //    }
 //}
-
 
 //.#{$prefix}unstyled {
 //    list-style: none outside none;
