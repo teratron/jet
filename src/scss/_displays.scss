@@ -1,0 +1,8 @@
+
+.layout {
+    display: flex;
+}
+
+@supports (display: grid) {
+    display: grid;
+}
