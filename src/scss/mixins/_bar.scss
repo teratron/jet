@@ -1,5 +1,5 @@
 @mixin setBar($height: auto, $gap: 0, $padding: 0) {
-    @extend .#{$prefix}bar;
+    @extend %#{$prefix}bar;
     grid-template-rows: $height;
     grid-gap:           $gap;
     justify-content:    space-between;

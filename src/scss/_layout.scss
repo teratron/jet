@@ -7,7 +7,8 @@
 //@import "mixins/bar";
 //@import "mixins/list";
 
-%#{$prefix}layout {
+%#{$prefix}layout,
+.#{$prefix}layout {
     @extend %#{$prefix}display-grid;
     grid-auto-rows: minmax($cell_width, auto);
 }
@@ -18,8 +19,9 @@
 // .grid-[1...n]
 // .grid-b[1...n]-[1...n]
 //**********************************************************
+//[class*=#{$prefix}grid]
 %#{$prefix}grid,
-[class*=#{$prefix}grid] {
+.#{$prefix}grid {
     @extend %#{$prefix}layout;
     grid-auto-flow: row;
     //align-items:    baseline;
@@ -43,7 +45,6 @@
     @extend %#{$prefix}layout;
     grid-template-columns: repeat(auto-fit, minmax($cell_width, auto));
     grid-auto-flow:        column;
-    //@extend %#{$prefix}grid-child-fit;
 }
 
 // Bar
@@ -52,7 +53,12 @@
 //**********************************************************
 %#{$prefix}bar,
 .#{$prefix}bar {
-    @extend .#{$prefix}row;
+    //@extend %#{$prefix}row;
+    @extend %#{$prefix}layout;
+    grid-auto-flow:    column;
+    grid-auto-columns: min-content;
+    align-items:       center;
+    justify-items:     center;
 }
 
 // Column
@@ -66,7 +72,6 @@
     @extend %#{$prefix}layout;
     grid-template-rows: repeat(auto-fit, minmax($cell_width, auto));
     grid-auto-flow:     dense;
-    //@extend %#{$prefix}grid-child-fit;
 }
 
 // List
@@ -75,7 +80,7 @@
 //**********************************************************
 %#{$prefix}list,
 .#{$prefix}list {
-    @extend .#{$prefix}col;
+    @extend %#{$prefix}col;
 }
 
 // Shrink
@@ -104,11 +109,24 @@
 //----------------------------------------------------------
 // .gap
 // .gap-half
+// .gap-quart
 // .gap-0
 //**********************************************************
 %#{$prefix}gap,
 .#{$prefix}gap {
     @extend %#{$prefix}grid-gap;
+
+    &-half {
+        @extend %#{$prefix}grid-gap-half;
+    }
+
+    &-quart {
+        @extend %#{$prefix}grid-gap-quart;
+    }
+
+    &-0 {
+        @extend %#{$prefix}grid-gap-0;
+    }
 }
 
 // Checkpoints
@@ -120,15 +138,16 @@
 // .order-[1...n]
 //**********************************************************
 @for $i from 1 through $grid_column {
-    //@for $j from 1 through $grid_column {
-    //    .#{$prefix}grid-b#{$i}-#{$j} {
-    //        @extend .#{$prefix}grid;
-    //    }
-    //}
+    @for $j from 1 through $grid_column {
+        %#{$prefix}grid-b#{$i}-#{$j},
+        .#{$prefix}grid-b#{$i}-#{$j} {
+            @extend %#{$prefix}grid;
+        }
+    }
 
     %#{$prefix}grid-#{$i},
     .#{$prefix}grid-#{$i} {
-        //@extend .#{$prefix}grid;
+        @extend %#{$prefix}grid;
         grid-template-columns: repeat($i, 1fr);
     }
 
@@ -136,6 +155,7 @@
     .#{$prefix}col-#{$i},
     %#{$prefix}grid-#{$i},
     .#{$prefix}grid-#{$i},
+    %#{$prefix}grid-#{$i} > %#{$prefix}grid-child-fit,
     .#{$prefix}grid-#{$i} > %#{$prefix}grid-child-fit {
         grid-column-end: span $i;
     }
@@ -182,6 +202,7 @@
             .#{$prefix}col-b#{$i}-#{$j},
             %#{$prefix}grid-b#{$i}-#{$j},
             .#{$prefix}grid-b#{$i}-#{$j},
+            %#{$prefix}grid-b#{$i}-#{$j} > %#{$prefix}grid-child-fit,
             .#{$prefix}grid-b#{$i}-#{$j} > %#{$prefix}grid-child-fit {
                 grid-column-end: span $j;
             }
@@ -215,14 +236,20 @@
             }
 
             @for $j from $k through $grid_column {
+                %#{$prefix}grid-#{$j},
                 .#{$prefix}grid-#{$j},
+                %#{$prefix}grid-b#{$i}-#{$j},
                 .#{$prefix}grid-b#{$i}-#{$j} {
                     @extend %#{$prefix}grid-shrink-#{$k};
                 }
 
+                %#{$prefix}col-#{$j},
                 .#{$prefix}col-#{$j},
+                %#{$prefix}col-b#{$i}-#{$j},
                 .#{$prefix}col-b#{$i}-#{$j},
+                %#{$prefix}grid-#{$j},
                 .#{$prefix}grid-#{$j},
+                %#{$prefix}grid-b#{$i}-#{$j},
                 .#{$prefix}grid-b#{$i}-#{$j} {
                     @extend %#{$prefix}col-shrink-#{$k};
                 }

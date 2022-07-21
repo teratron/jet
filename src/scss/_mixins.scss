@@ -24,6 +24,10 @@
                         @include setPropsAdaptive((#{$prop}-#{$side}: math.div($gutter, 2)));
                     }
 
+                    &-quart {
+                        @include setPropsAdaptive((#{$prop}-#{$side}: math.div($gutter, 4)));
+                    }
+
                     &-0 {
                         #{$prop}-#{$side}: 0;
                     }
@@ -41,6 +45,10 @@
 
         &-half {
             @include setPropsAdaptive((#{$prop}: math.div($gutter, 2)));
+        }
+
+        &-quart {
+            @include setPropsAdaptive((#{$prop}: math.div($gutter, 4)));
         }
 
         &-0 {

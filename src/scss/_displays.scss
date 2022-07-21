@@ -1,8 +1,12 @@
 
-.layout {
+%#{$prefix}layout,
+.#{$prefix}layout {
     display: flex;
 }
 
 @supports (display: grid) {
-    display: grid;
+    %#{$prefix}layout,
+    .#{$prefix}layout {
+        display: grid;
+    }
 }

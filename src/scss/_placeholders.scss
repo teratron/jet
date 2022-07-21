@@ -8,14 +8,17 @@
 //----------------------------------------------------------
 // %grid-gap       %grid-[row | column]-gap
 // %grid-gap-half  %grid-[row | column]-gap-half
+// %grid-gap-quart %grid-[row | column]-gap-quart
 // %grid-gap-0     %grid-[row | column]-gap-0
 //----------------------------------------------------------
 // %margin         %margin-[top | bottom | left | right]
 // %margin-half    %margin-[top | bottom | left | right]-half
+// %margin-quart   %margin-[top | bottom | left | right]-quart
 // %margin-0       %margin-[top | bottom | left | right]-0
 //----------------------------------------------------------
 // %padding        %padding-[top | bottom | left | right]
 // %padding-half   %padding-[top | bottom | left | right]-half
+// %padding-quart  %padding-[top | bottom | left | right]-quart
 // %padding-0      %padding-[top | bottom | left | right]-0
 //**********************************************************
 
@@ -67,11 +70,16 @@
 
 // Fonts
 //----------------------------------------------------------
+// %font-family-serif
 // %font-family-sans-serif
 // %font-family-monospace
 //**********************************************************
 %#{$prefix}font {
     &-family {
+        &-serif {
+            font-family: $font_family_serif;
+        }
+
         &-sans-serif {
             font-family: $font_family_sans_serif;
         }

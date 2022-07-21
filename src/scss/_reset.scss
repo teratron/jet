@@ -128,7 +128,7 @@ dd {
 // Typography
 %#{$prefix}heading {
     @extend %#{$prefix}margin-top-0, %#{$prefix}margin-bottom-half;
-    @extend %#{$prefix}grid-child-fit;
+    @extend %#{$prefix}child-fit;
 }
 
 h1 {
