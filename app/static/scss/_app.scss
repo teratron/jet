@@ -1,4 +1,3 @@
-
 // Application
 #app {
     @extend %display-grid;
@@ -17,17 +16,6 @@
     @extend .container, .grid-12;
 }
 
-// Header
-.app-header {
-    .navbar {
-        @extend .bar, .col-6;
-    }
-}
-
-// Footer
-.app-footer {
-
-}
 
 // Debug
 .outline > * {
