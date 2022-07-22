@@ -10,11 +10,10 @@
 // .out-[top | bottom | left | right]
 // .in
 //**********************************************************
-%#{$prefix}out,
-.#{$prefix}out {
+#{JX(out)} {
     @each $side in $list_sides {
         &, &-#{$side} {
-            @extend %#{$prefix}position-fixed;
+            position: fixed;
         }
     }
 
@@ -39,8 +38,7 @@
     }
 }
 
-%#{$prefix}in,
-.#{$prefix}in {
+#{JX(in)} {
     position: initial;
     top:      auto;
     right:    auto;
@@ -48,43 +46,58 @@
     left:     auto;
 }
 
-//
+// On / Off
 //----------------------------------------------------------
-// .on / .off
-// .show / .hide
+// .on
+// .off
 //**********************************************************
-%#{$prefix}off,
-.#{$prefix}off,
-%#{$prefix}hide,
-.#{$prefix}hide {
-    @extend %#{$prefix}position-fixed;
-    z-index: -1;
+@mixin off {
+    display: none;
 }
 
-%#{$prefix}on,
-.#{$prefix}on,
-%#{$prefix}show,
-.#{$prefix}show {
+@mixin on {
+    display: initial;
+}
+
+#{JX(off)} {
+    @include off;
+}
+
+#{JX(on)} {
+    @include on;
+}
+
+// Show / Hide
+//----------------------------------------------------------
+// .show
+// .hide
+//**********************************************************
+$duration: .3s;
+
+@mixin hide {
+    position:  fixed;
+    z-index:   -1;
+    opacity:   0;
+    animation: hide $duration linear;
+}
+
+@mixin show {
     position: initial;
     z-index:  auto;
+    opacity:  initial;
 }
 
-%#{$prefix}hide,
-.#{$prefix}hide {
-    animation: hide .3s linear;
-    opacity:   0;
+#{JX(hide)} {
+    @include hide;
 }
 
-%#{$prefix}show,
-.#{$prefix}show {
-    opacity: initial;
+#{JX(show)} {
+    @include show;
 }
 
-%#{$prefix}hide,
-.#{$prefix}hide,
-%#{$prefix}show,
-.#{$prefix}show {
-    transition: opacity .3s linear;
+%#{$prefix}hide, [class*=#{$prefix}hide],
+%#{$prefix}show, [class*=#{$prefix}show] {
+    transition: opacity $duration linear;
 }
 
 @keyframes hide {

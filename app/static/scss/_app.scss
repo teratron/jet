@@ -13,9 +13,12 @@
 
 // Container
 .app-container {
-    @extend .container, .grid-12;
+    @extend %container, %grid-12 !optional;
 }
 
+@import "components/header";
+@import "components/footer";
+@import "components/main";
 
 // Debug
 .outline > * {
@@ -23,9 +26,9 @@
 }
 
 .row-test {
-    @extend .row, .outline;
+    @extend %row, .outline !optional;
 
     > :first-child {
-        @extend .col-b10-3, .col-b9-5, .col-b8-6;
+        @extend .col-b10-3, .col-b9-5, .col-b8-6 !optional;
     }
 }

@@ -6,6 +6,22 @@
 @use "sass:math";
 @use "sass:list";
 
+//
+@function JX($selector, $_locator: $locator) {
+    @if $_locator == ".%" or $_locator == "%." {
+        $list: ();
+        @each $value in (".", "%") {
+            $list: list.append($list, #{$value}#{$prefix}#{$selector}, "comma");
+        }
+        @return $list;
+    } @else if $_locator == "." or $_locator == "%" or $_locator == "#" {
+        @return #{$_locator}#{$prefix}#{$selector};
+    }
+    @warn "Wrong locator: #{$_locator}";
+
+    @return null;
+}
+
 // Tile
 @function GetMinTileWidth($n) {
     $a: $n - 1;

@@ -1,4 +1,6 @@
-
+//@if string.index(#{$locator}, ".") != null or string.index(#{$locator}, "%") != null {
+//
+//}
 
 // Grid
 //@function GetMinShrinkWidth($n: $grid_column) {

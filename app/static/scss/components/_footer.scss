@@ -6,64 +6,12 @@
     }
 
     .head {
-        @extend %col-3, %col-b11-6, %col-b8-8, %col-b6-6, %col-b4-12;
-        @extend %order-1, %order-b11-3, %order-b8-2, %order-b4-3;
     }
 
     .body {
-        @extend %grid-6, %grid-b11-9, %grid-b8-12;
-        @extend %order-2, %order-b11-1, %order-b4-1;
-
-        .about,
-        .contacts,
-        .social {
-            @extend %col-2, %col-b11-3, %col-b8-4, %col-b7-6, %col-b5-12;
-        }
-
-        .social {
-            .nav {
-                flex-direction: row;
-                flex-wrap:      wrap;
-
-                > :not(:last-child) {
-                    margin-right: 10px;
-                }
-            }
-        }
     }
 
     .foot {
-        @extend %col-3, %col-b8-4, %col-b6-6, %col-b4-12;
-        @extend %order-3, %order-b11-2, %order-b8-3, %order-b4-2;
-        align-items: start;
-
-        .btn {
-            font-size:        .9rem;
-            font-weight:      600;
-            background-color: $color_primary_font;
-            color:            $color_primary;
-            display:          flex;
-            flex-wrap:        nowrap;
-            justify-content:  center;
-            align-items:      center;
-            width:            100%;
-            min-height:       3rem;
-            padding:          0;
-            border:           1px solid white;
-            border-radius:    .4rem;
-            transition:       all .5ms ease-in-out;
-
-            &:hover {
-                background-color: rgba(255, 255, 255, .3);
-                color:            $color_primary_font;
-                border-color:     $color_primary_font;
-            }
-
-            &:active {
-                background-color: transparent;
-                color:            $color_primary_font;
-            }
-        }
     }
 
     .title {

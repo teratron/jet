@@ -2,13 +2,12 @@
 // Layout
 //----------------------------------------------------------
 // %layout
-// %container
+// .%container
 //**********************************************************
 //@import "mixins/bar";
 //@import "mixins/list";
 
-%#{$prefix}layout,
-.#{$prefix}layout {
+#{JX(layout, "%")} {
     @extend %#{$prefix}display-grid;
     grid-auto-rows: minmax($cell_width, auto);
 }
@@ -20,9 +19,8 @@
 // .grid-b[1...n]-[1...n]
 //**********************************************************
 //[class*=#{$prefix}grid]
-%#{$prefix}grid,
-.#{$prefix}grid {
-    @extend %#{$prefix}layout;
+#{JX(grid)} {
+    @extend #{JX(layout, "%")};
     grid-auto-flow: row;
     //align-items:    baseline;
 
@@ -40,21 +38,19 @@
 //----------------------------------------------------------
 // .row
 //**********************************************************
-%#{$prefix}row,
-.#{$prefix}row {
-    @extend %#{$prefix}layout;
+#{JX(row)} {
+    @extend #{JX(layout, "%")};
     grid-template-columns: repeat(auto-fit, minmax($cell_width, auto));
     grid-auto-flow:        column;
 }
 
 // Bar
 //----------------------------------------------------------
-// .bar
+// .%bar
 //**********************************************************
-%#{$prefix}bar,
-.#{$prefix}bar {
+#{JX(bar)} {
     //@extend %#{$prefix}row;
-    @extend %#{$prefix}layout;
+    @extend #{JX(layout, "%")};
     grid-auto-flow:    column;
     grid-auto-columns: min-content;
     align-items:       center;
@@ -63,57 +59,52 @@
 
 // Column
 //----------------------------------------------------------
-// .col
-// .col-[1...n]
-// .col-b[1...n]-[1...n]
+// .%col
+// .%col-[1...n]
+// .%col-b[1...n]-[1...n]
 //**********************************************************
-%#{$prefix}col,
-.#{$prefix}col {
-    @extend %#{$prefix}layout;
+#{JX(col)} {
+    @extend #{JX(layout, "%")};
     grid-template-rows: repeat(auto-fit, minmax($cell_width, auto));
     grid-auto-flow:     dense;
 }
 
 // List
 //----------------------------------------------------------
-// .list
+// .%list
 //**********************************************************
-%#{$prefix}list,
-.#{$prefix}list {
+#{JX(list)} {
     @extend %#{$prefix}col;
 }
 
 // Shrink
 //----------------------------------------------------------
-// .shrink
+// .%shrink
 //**********************************************************
-%#{$prefix}shrink,
-.#{$prefix}shrink {
+#{JX(shrink)} {
     grid-auto-flow: dense;
 }
 
 // Container
 //----------------------------------------------------------
-// .container
+// .%container
 //**********************************************************
-%#{$prefix}container,
-.#{$prefix}container {
+#{JX(container)} {
     width:        100%;
     max-width:    $layout_width;
     margin-right: auto;
     margin-left:  auto;
-    @extend %#{$prefix}padding-left, %#{$prefix}padding-right;
+    @extend #{JX(padding-left, "%")}, #{JX(padding-right, "%")};
 }
 
 // Gap
 //----------------------------------------------------------
-// .gap
-// .gap-half
-// .gap-quart
-// .gap-0
+// .%gap
+// .%gap-half
+// .%gap-quart
+// .%gap-0
 //**********************************************************
-%#{$prefix}gap,
-.#{$prefix}gap {
+#{JX(gap)} {
     @extend %#{$prefix}grid-gap;
 
     &-half {
@@ -131,49 +122,41 @@
 
 // Checkpoints
 //----------------------------------------------------------
-// .grid-[1...n]
-// .tile-[1...n]
-// .col-[1...n]
-// .span-[1...n]
-// .order-[1...n]
+// .%grid-[1...n]
+// .%tile-[1...n]
+// .%col-[1...n]
+// .%span-[1...n]
+// .%order-[1...n]
 //**********************************************************
 @for $i from 1 through $grid_column {
     @for $j from 1 through $grid_column {
-        %#{$prefix}grid-b#{$i}-#{$j},
-        .#{$prefix}grid-b#{$i}-#{$j} {
+        #{JX(grid-b#{$i}-#{$j})} {
             @extend %#{$prefix}grid;
         }
     }
 
-    %#{$prefix}grid-#{$i},
-    .#{$prefix}grid-#{$i} {
+    #{JX(grid-#{$i})} {
         @extend %#{$prefix}grid;
         grid-template-columns: repeat($i, 1fr);
     }
 
-    %#{$prefix}col-#{$i},
-    .#{$prefix}col-#{$i},
-    %#{$prefix}grid-#{$i},
-    .#{$prefix}grid-#{$i},
-    %#{$prefix}grid-#{$i} > %#{$prefix}grid-child-fit,
-    .#{$prefix}grid-#{$i} > %#{$prefix}grid-child-fit {
+    #{JX(col-#{$i})},
+    #{JX(grid-#{$i})},
+    #{JX(grid-#{$i})} > %#{$prefix}grid-child-fit {
         grid-column-end: span $i;
     }
 
-    %#{$prefix}span-#{$i},
-    .#{$prefix}span-#{$i} {
+    #{JX(span-#{$i})} {
         grid-column-start: $i;
     }
 
-    %#{$prefix}order-#{$i},
-    .#{$prefix}order-#{$i} {
+    #{JX(order-#{$i})} {
         order: $i;
     }
 
     //@if not $is_grid_gap {
-    %#{$prefix}tile-#{$i},
-    .#{$prefix}tile-#{$i} {
-        @extend %#{$prefix}layout;
+    #{JX(tile-#{$i})} {
+        @extend #{JX(layout, "%")};
         //grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i), 1fr)) !important;
         grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     }
@@ -182,11 +165,15 @@
 
 // Breakpoints
 //----------------------------------------------------------
-// .shrink
-// .grid-b[1...n]-[1...n]
-// .col-b[1...n]-[1...n]
-// .span-b[1...n]-[1...n]
-// .order-b[1...n]-[1...n]
+// .%shrink
+// .%grid-b[1...n]-[1...n]
+// .%col-b[1...n]-[1...n]
+// .%span-b[1...n]-[1...n]
+// .%order-b[1...n]-[1...n]
+// .%on-b[1...n]
+// .%off-b[1...n]
+// .%show-b[1...n]
+// .%hide-b[1...n]
 //**********************************************************
 @for $i from $grid_column to 0 {
     @media only screen and (max-width: GetBreakpoint($i)) {
@@ -222,8 +209,7 @@
         @if $i < $grid_column {
             $k: $i + 1;
 
-            %#{$prefix}shrink,
-            .#{$prefix}shrink {
+            #{JX(shrink)} {
                 &,
                 > %#{$prefix}grid-shrink-#{$k} {
                     grid-template-columns: repeat($i, 1fr);
@@ -236,24 +222,34 @@
             }
 
             @for $j from $k through $grid_column {
-                %#{$prefix}grid-#{$j},
-                .#{$prefix}grid-#{$j},
-                %#{$prefix}grid-b#{$i}-#{$j},
-                .#{$prefix}grid-b#{$i}-#{$j} {
+                #{JX(grid-#{$j})},
+                #{JX(grid-b#{$i}-#{$j})} {
                     @extend %#{$prefix}grid-shrink-#{$k};
                 }
 
-                %#{$prefix}col-#{$j},
-                .#{$prefix}col-#{$j},
-                %#{$prefix}col-b#{$i}-#{$j},
-                .#{$prefix}col-b#{$i}-#{$j},
-                %#{$prefix}grid-#{$j},
-                .#{$prefix}grid-#{$j},
-                %#{$prefix}grid-b#{$i}-#{$j},
-                .#{$prefix}grid-b#{$i}-#{$j} {
+                #{JX(col-#{$j})},
+                #{JX(col-b#{$i}-#{$j})},
+                #{JX(grid-#{$j})},
+                #{JX(grid-b#{$i}-#{$j})} {
                     @extend %#{$prefix}col-shrink-#{$k};
                 }
             }
+        }
+
+        #{JX(off-b#{$i})} {
+            @include off;
+        }
+
+        #{JX(on-b#{$i})} {
+            @include on;
+        }
+
+        #{JX(hide-b#{$i})} {
+            @include hide;
+        }
+
+        #{JX(show-b#{$i})} {
+            @include show;
         }
     }
 }
