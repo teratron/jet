@@ -2,41 +2,39 @@
 // Layout
 //----------------------------------------------------------
 // %layout
-// .%container
 //**********************************************************
 //@import "mixins/bar";
 //@import "mixins/list";
 
 #{JX(layout, "%")} {
-    @extend %#{$prefix}display-grid;
+    @extend #{JX(display-grid, "%")};
     grid-auto-rows: minmax($cell_width, auto);
 }
 
 // Grid
 //----------------------------------------------------------
-// .grid
-// .grid-[1...n]
-// .grid-b[1...n]-[1...n]
+// .%grid
+// .%grid-[1...n]
+// .%grid-b[1...n]-[1...n]
 //**********************************************************
-//[class*=#{$prefix}grid]
-#{JX(grid)} {
+#{JX(grid, "%")}, [class*=#{JX(grid, "")}] {
     @extend #{JX(layout, "%")};
     grid-auto-flow: row;
     //align-items:    baseline;
 
     @if $is_grid_gap {
-        @extend %#{$prefix}grid-gap;
+        @extend #{JX(grid-gap, "%")};
     }
 }
 
-%#{$prefix}grid-child-fit {
-    @extend %#{$prefix}reset-width;
-    @extend %#{$prefix}margin-0;
+#{JX(grid-child-fit, "%")} {
+    @extend #{JX(reset-width, "%")};
+    @extend #{JX(margin-0, "%")};
 }
 
 // Row
 //----------------------------------------------------------
-// .row
+// .%row
 //**********************************************************
 #{JX(row)} {
     @extend #{JX(layout, "%")};
@@ -74,7 +72,7 @@
 // .%list
 //**********************************************************
 #{JX(list)} {
-    @extend %#{$prefix}col;
+    @extend #{JX(col, "%")};
 }
 
 // Shrink
@@ -105,18 +103,18 @@
 // .%gap-0
 //**********************************************************
 #{JX(gap)} {
-    @extend %#{$prefix}grid-gap;
+    @extend #{JX(grid-gap, "%")};
 
     &-half {
-        @extend %#{$prefix}grid-gap-half;
+        @extend #{JX(grid-gap-half, "%")};
     }
 
     &-quart {
-        @extend %#{$prefix}grid-gap-quart;
+        @extend #{JX(grid-gap-quart, "%")};
     }
 
     &-0 {
-        @extend %#{$prefix}grid-gap-0;
+        @extend #{JX(grid-gap-0, "%")};
     }
 }
 
@@ -130,19 +128,22 @@
 //**********************************************************
 @for $i from 1 through $grid_column {
     @for $j from 1 through $grid_column {
-        #{JX(grid-b#{$i}-#{$j})} {
-            @extend %#{$prefix}grid;
+        #{JX(grid-b#{$i}-#{$j}, "%")} {
+            @extend #{JX(grid, "%")};
         }
     }
 
+    #{JX(grid-#{$i}, "%")} {
+        @extend #{JX(grid, "%")};
+    }
+
     #{JX(grid-#{$i})} {
-        @extend %#{$prefix}grid;
         grid-template-columns: repeat($i, 1fr);
     }
 
     #{JX(col-#{$i})},
     #{JX(grid-#{$i})},
-    #{JX(grid-#{$i})} > %#{$prefix}grid-child-fit {
+    #{JX(grid-#{$i})} > #{JX(grid-child-fit, "%")} {
         grid-column-end: span $i;
     }
 
@@ -180,27 +181,21 @@
         @include pasteBuffer($i);
 
         @for $j from 1 through $grid_column {
-            %#{$prefix}grid-b#{$i}-#{$j},
-            .#{$prefix}grid-b#{$i}-#{$j} {
+            #{JX(grid-b#{$i}-#{$j})} {
                 grid-template-columns: repeat($j, 1fr);
             }
 
-            %#{$prefix}col-b#{$i}-#{$j},
-            .#{$prefix}col-b#{$i}-#{$j},
-            %#{$prefix}grid-b#{$i}-#{$j},
-            .#{$prefix}grid-b#{$i}-#{$j},
-            %#{$prefix}grid-b#{$i}-#{$j} > %#{$prefix}grid-child-fit,
-            .#{$prefix}grid-b#{$i}-#{$j} > %#{$prefix}grid-child-fit {
+            #{JX(col-b#{$i}-#{$j})},
+            #{JX(grid-b#{$i}-#{$j})},
+            #{JX(grid-b#{$i}-#{$j})} > #{JX(grid-child-fit, "%")} {
                 grid-column-end: span $j;
             }
 
-            %#{$prefix}span-b#{$i}-#{$j},
-            .#{$prefix}span-b#{$i}-#{$j} {
+            #{JX(span-b#{$i}-#{$j})} {
                 grid-column-start: $j;
             }
 
-            %#{$prefix}order-b#{$i}-#{$j},
-            .#{$prefix}order-b#{$i}-#{$j} {
+            #{JX(order-b#{$i}-#{$j})} {
                 order: $j;
             }
         }
@@ -211,12 +206,12 @@
 
             #{JX(shrink)} {
                 &,
-                > %#{$prefix}grid-shrink-#{$k} {
+                > #{JX(grid-shrink-#{$k}, "%")} {
                     grid-template-columns: repeat($i, 1fr);
                 }
 
-                > %#{$prefix}col-shrink-#{$k},
-                > %#{$prefix}grid-child-fit {
+                > #{JX(col-shrink-#{$k}, "%")},
+                > #{JX(grid-child-fit, "%")} {
                     grid-column-end: span $i;
                 }
             }
@@ -224,14 +219,14 @@
             @for $j from $k through $grid_column {
                 #{JX(grid-#{$j})},
                 #{JX(grid-b#{$i}-#{$j})} {
-                    @extend %#{$prefix}grid-shrink-#{$k};
+                    @extend #{JX(grid-shrink-#{$k}, "%")};
                 }
 
                 #{JX(col-#{$j})},
                 #{JX(col-b#{$i}-#{$j})},
                 #{JX(grid-#{$j})},
                 #{JX(grid-b#{$i}-#{$j})} {
-                    @extend %#{$prefix}col-shrink-#{$k};
+                    @extend #{JX(col-shrink-#{$k}, "%")};
                 }
             }
         }

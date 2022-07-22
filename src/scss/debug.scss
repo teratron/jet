@@ -1,3 +1,4 @@
+
 // No semantic
 address nav,
 a a,
@@ -12,8 +13,7 @@ button button {
 }
 
 // Sticker
-%#{$prefix}sticker,
-.#{$prefix}sticker {
+#{JX(sticker)} {
     &::before,
     &::after {
         color:       white;

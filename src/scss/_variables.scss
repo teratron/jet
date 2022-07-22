@@ -9,9 +9,9 @@
 
 // Locator
 //----------------------------------------------------------
-// "."          - for CSS development
-// "%"          - for SCSS development
 // ".%" or "%." - for CSS and SCSS development
+// "."          - class (standard mode)
+// "%"          - placeholder mode
 //**********************************************************
 $locator:                   ".%" !default;
 

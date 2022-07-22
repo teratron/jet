@@ -6,9 +6,9 @@
 
 // Offcanvas
 //----------------------------------------------------------
-// .out
-// .out-[top | bottom | left | right]
-// .in
+// .%out
+// .%out-[top | bottom | left | right]
+// .%in
 //**********************************************************
 #{JX(out)} {
     @each $side in $list_sides {
@@ -48,8 +48,8 @@
 
 // On / Off
 //----------------------------------------------------------
-// .on
-// .off
+// .%on
+// .%off
 //**********************************************************
 @mixin off {
     display: none;
@@ -69,8 +69,8 @@
 
 // Show / Hide
 //----------------------------------------------------------
-// .show
-// .hide
+// .%show
+// .%hide
 //**********************************************************
 $duration: .3s;
 
@@ -95,8 +95,8 @@ $duration: .3s;
     @include show;
 }
 
-%#{$prefix}hide, [class*=#{$prefix}hide],
-%#{$prefix}show, [class*=#{$prefix}show] {
+#{JX(hide, "%")}, [class*=#{JX(hide, "")}],
+#{JX(show, "%")}, [class*=#{JX(show, "")}] {
     transition: opacity $duration linear;
 }
 

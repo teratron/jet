@@ -36,7 +36,7 @@
 //----------------------------------------------------------
 // %position-[static | relative | absolute | fixed | sticky]
 //**********************************************************
-%#{$prefix}position {
+#{JX(position, "%")} {
     @each $position in $list_positions {
         &-#{$position} {
             position: $position;
@@ -48,7 +48,7 @@
 //----------------------------------------------------------
 // %cursor-[default | pointer | help | not-allowed | ...]
 //**********************************************************
-%#{$prefix}cursor {
+#{JX(cursor, "%")} {
     @each $cursor in $list_cursors {
         &-#{$cursor} {
             cursor: $cursor;
@@ -60,7 +60,7 @@
 //----------------------------------------------------------
 // %display-[none | block | table | flex | grid | ...]
 //**********************************************************
-%#{$prefix}display {
+#{JX(display, "%")} {
     @each $display in $list_displays {
         &-#{$display} {
             display: $display;
@@ -74,7 +74,7 @@
 // %font-family-sans-serif
 // %font-family-monospace
 //**********************************************************
-%#{$prefix}font {
+#{JX(font, "%")} {
     &-family {
         &-serif {
             font-family: $font_family_serif;
@@ -96,19 +96,19 @@
 // %reset-width
 // %child-fit
 //**********************************************************
-%#{$prefix}reset-width {
+#{JX(reset-width, "%")} {
     width:     auto;
     min-width: auto;
     max-width: none;
 }
 
-%#{$prefix}child-fit {
+#{JX(child-fit, "%")} {
     &:first-child {
-        @extend %#{$prefix}margin-top-0;
+        @extend #{JX(margin-top-0, "%")};
     }
 
     &:only-child,
     &:last-child {
-        @extend %#{$prefix}margin-bottom-0;
+        @extend #{JX(margin-bottom-0, "%")};
     }
 }

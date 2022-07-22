@@ -6,19 +6,28 @@
 @use "sass:math";
 @use "sass:list";
 
-//
-@function JX($selector, $_locator: $locator) {
-    @if $_locator == ".%" or $_locator == "%." {
+// Locator
+//----------------------------------------------------------
+// ".%" or "%." - class & placeholder
+// "#"          - id
+// "."          - class
+// "%"          - placeholder
+// ""           - without locator
+//**********************************************************
+@function JX($selector, $loc: $locator) {
+    @if $loc == ".%" or $loc == "%." {
         $list: ();
         @each $value in (".", "%") {
             $list: list.append($list, #{$value}#{$prefix}#{$selector}, "comma");
         }
         @return $list;
-    } @else if $_locator == "." or $_locator == "%" or $_locator == "#" {
-        @return #{$_locator}#{$prefix}#{$selector};
+    } @else if $loc == "." or $loc == "%" or $loc == "#" {
+        @return #{$loc}#{$prefix}#{$selector};
+    } @else if $loc == "" {
+        @return #{$prefix}#{$selector};
     }
-    @warn "Wrong locator: #{$_locator}";
 
+    @warn "Wrong locator: #{$loc}";
     @return null;
 }
 

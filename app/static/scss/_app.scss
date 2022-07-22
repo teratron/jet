@@ -13,7 +13,7 @@
 
 // Container
 .app-container {
-    @extend %container, %grid-12 !optional;
+    @extend %container, %grid-12;
 }
 
 @import "components/header";
@@ -26,9 +26,9 @@
 }
 
 .row-test {
-    @extend %row, .outline !optional;
+    @extend %row, .outline;
 
     > :first-child {
-        @extend .col-b10-3, .col-b9-5, .col-b8-6 !optional;
+        @extend .col-b10-3, .col-b9-5, .col-b8-6;
     }
 }
