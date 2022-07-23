@@ -231,6 +231,14 @@
             }
         }
 
+        #{JX(out-b#{$i})} {
+            position: fixed;
+        }
+
+        #{JX(in-b#{$i})} {
+            position: initial;
+        }
+
         #{JX(off-b#{$i})} {
             @include off;
         }

@@ -44,6 +44,10 @@
     }
 }
 
+#{JX(in)}, [class*=#{JX(in-, "")}] {
+    @extend #{JX(position-fixed, "%")};
+}
+
 #{JX(in)} {
     position: initial;
     top:      auto;
@@ -95,6 +99,14 @@ $duration: .3s;
 
 #{JX(hide)} {
     @include hide;
+
+    //@for $i from $grid_column to 0 {
+    //    @media only screen and (max-width: GetBreakpoint($i)) {
+    //        &-b#{$i} {
+    //            @include hide;
+    //        }
+    //    }
+    //}
 }
 
 #{JX(show)} {
