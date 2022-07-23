@@ -17,7 +17,7 @@
 // .%grid-[1...n]
 // .%grid-b[1...n]-[1...n]
 //**********************************************************
-#{JX(grid, "%")}, [class*=#{JX(grid, "")}] {
+#{JX(grid)}, [class*=#{JX(grid-, "")}] {
     @extend #{JX(layout, "%")};
     grid-auto-flow: row;
     //align-items:    baseline;

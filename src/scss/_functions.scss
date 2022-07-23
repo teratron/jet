@@ -21,10 +21,8 @@
             $list: list.append($list, #{$value}#{$prefix}#{$selector}, "comma");
         }
         @return $list;
-    } @else if $loc == "." or $loc == "%" or $loc == "#" {
+    } @else if $loc == "." or $loc == "%" or $loc == "#" or $loc == "" {
         @return #{$loc}#{$prefix}#{$selector};
-    } @else if $loc == "" {
-        @return #{$prefix}#{$selector};
     }
 
     @warn "Wrong locator: #{$loc}";

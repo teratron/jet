@@ -7,11 +7,11 @@
         height:        100%;
 
         > .sidebar {
-            @extend %col-3 !optional;
+            @extend %col-3;
         }
 
         > .content {
-            @extend %grid-9 !optional;
+            @extend %grid-9;
         }
     }
 }

@@ -10,13 +10,19 @@
 // .%out-[top | bottom | left | right]
 // .%in
 //**********************************************************
-#{JX(out)} {
+#{JX(out)}, [class*=#{JX(out-, "")}] {
+    @extend #{JX(position-fixed, "%")};
+}
+
+#{JX(out, "%")} {
     @each $side in $list_sides {
-        &, &-#{$side} {
-            position: fixed;
+        &-#{$side} {
+            @extend #{JX(position-fixed, "%")};
         }
     }
+}
 
+#{JX(out)} {
     &-top {
         top:    -100vh;
         bottom: 100vh;
@@ -52,11 +58,11 @@
 // .%off
 //**********************************************************
 @mixin off {
-    display: none;
+    display: none; // TODO:
 }
 
 @mixin on {
-    display: initial;
+    display: initial; // TODO:
 }
 
 #{JX(off)} {
@@ -95,8 +101,8 @@ $duration: .3s;
     @include show;
 }
 
-#{JX(hide, "%")}, [class*=#{JX(hide, "")}],
-#{JX(show, "%")}, [class*=#{JX(show, "")}] {
+#{JX(hide)}, [class*=#{JX(hide-, "")}],
+#{JX(show)}, [class*=#{JX(show-, "")}] {
     transition: opacity $duration linear;
 }
 
