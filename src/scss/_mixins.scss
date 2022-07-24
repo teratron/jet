@@ -81,8 +81,8 @@
 //----------------------------------------------------------
 // $list_breakpoints_buffer: [
 //     (
-//         selector: &,
 //         breakpoint: 11,
+//         selector: &,
 //         props: (
 //             padding-left: 1rem,
 //             padding-right: 1rem
@@ -114,3 +114,8 @@
         }
     }
 }
+
+//@mixin pushBuffer($selector, $props, $breakpoint: $grid_column) {
+//    $buffer: (selector: $selector, breakpoint: $breakpoint);
+//    @content;
+//}

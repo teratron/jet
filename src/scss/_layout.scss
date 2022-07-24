@@ -158,8 +158,8 @@
     //@if not $is_grid_gap {
     #{JX(tile-#{$i})} {
         @extend #{JX(layout, "%")};
-        //grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i), 1fr)) !important;
-        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i), 1fr));
+        //grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)) !important;
     }
     //}
 }

@@ -18,7 +18,13 @@
     @if $loc == ".%" or $loc == "%." {
         $list: ();
         @each $value in (".", "%") {
-            $list: list.append($list, #{$value}#{$prefix}#{$selector}, "comma");
+            //@if $value == "%" {
+            //    $placeholder: #{$value}#{$prefix}#{$selector};
+            //
+            //    $list_placeholders: PushPlaceholder($placeholder);
+            //}
+
+            $list: list.append($list, #{$value}#{$prefix}#{$selector}, comma);
         }
         @return $list;
     } @else if $loc == "." or $loc == "%" or $loc == "#" or $loc == "" {
@@ -28,6 +34,24 @@
     @warn "Wrong locator: #{$loc}";
     @return null;
 }
+
+// Placeholders
+//@function HasPlaceholder($placeholder) {
+//    @if list.index($list_placeholders, $placeholder) == null {
+//        @return false;
+//    }
+//
+//    @warn "The object already exists: #{$placeholder}";
+//    @return true;
+//}
+
+//@function PushPlaceholder($placeholder) {
+//    @if not HasPlaceholder($placeholder) {
+//        @return list.append($list_placeholders, $placeholder);
+//    }
+//
+//    @return null;
+//}
 
 // Tile
 @function GetMinTileWidth($n) {
