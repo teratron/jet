@@ -3,12 +3,25 @@
 //----------------------------------------------------------
 // %layout
 //**********************************************************
-//@import "mixins/bar";
-//@import "mixins/list";
 
 #{JX(layout, "%")} {
     @extend #{JX(display-grid, "%")};
     grid-auto-rows: minmax($cell_width, auto);
+}
+
+// Container
+//----------------------------------------------------------
+// .%container
+//**********************************************************
+#{JX(container)} {
+    width:        100%;
+    max-width:    $layout_width;
+    margin-right: auto;
+    margin-left:  auto;
+
+    @if $layout_gap > 0 {
+        @extend #{JX(padding-left, "%")}, #{JX(padding-right, "%")};
+    }
 }
 
 // Grid
@@ -22,7 +35,7 @@
     grid-auto-flow: row;
     //align-items:    baseline;
 
-    @if $is_grid_gap {
+    @if $grid_gap > 0 {
         @extend #{JX(grid-gap, "%")};
     }
 }
@@ -83,38 +96,28 @@
     grid-auto-flow: dense;
 }
 
-// Container
-//----------------------------------------------------------
-// .%container
-//**********************************************************
-#{JX(container)} {
-    width:        100%;
-    max-width:    $layout_width;
-    margin-right: auto;
-    margin-left:  auto;
-    @extend #{JX(padding-left, "%")}, #{JX(padding-right, "%")};
-}
-
 // Gap
 //----------------------------------------------------------
-// .%gap
-// .%gap-half
-// .%gap-quart
+// .%gap-200
+// .%gap-150
+// .%gap-100  .%gap
+// .%gap-50   .%gap-half
+// .%gap-25   .%gap-quart
 // .%gap-0
 //**********************************************************
 #{JX(gap)} {
-    @extend #{JX(grid-gap, "%")};
+    @extend #{JX(gap, "%")};
 
     &-half {
-        @extend #{JX(grid-gap-half, "%")};
+        @extend #{JX(gap-half, "%")};
     }
 
     &-quart {
-        @extend #{JX(grid-gap-quart, "%")};
+        @extend #{JX(gap-quart, "%")};
     }
 
     &-0 {
-        @extend #{JX(grid-gap-0, "%")};
+        @extend #{JX(gap-0, "%")};
     }
 }
 

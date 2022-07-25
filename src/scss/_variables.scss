@@ -9,7 +9,7 @@
 
 // Locator
 //----------------------------------------------------------
-// ".%" or "%." - for CSS and SCSS development
+// ".%" or "%." - development mode
 // "."          - class (standard mode)
 // "%"          - placeholder mode
 //**********************************************************
@@ -19,17 +19,17 @@ $locator:                   ".%" !default;
 $prefix:                    "" !default;
 
 // Root
-$root_cell_width:           20px !default; // Respond 1rem
+$root_cell_width:           20px !default;
 $cell_width:                1rem !default;
 $font_size:                 16px !default;
 
+// Layout
+$layout_width:              1280px !default;
+$layout_gap:                40px !default;
+
 // Grid
 $grid_column:               12 !default;
-$grid_width:                1200px !default;
 $grid_gap:                  40px !default;
-
-// Layout
-$layout_width_min:          360px !default;
 
 // Z-index
 $zindex_dropdown:           1000 !default;
@@ -53,36 +53,18 @@ $zindex_debug:              2000 !default;
 $px:                        math.div($cell_width, StripUnit($root_cell_width));
 $font_size:                 PxToRem($font_size);
 
-// Grid
-//$grid_width:                PxToRem($grid_width);
-$grid_col_width:            math.div($grid_width, $grid_column);
-$is_grid_gap:               if($grid_gap > 0, true, false);
-
-//$layout_gap: 0;
-$gap:                       $grid_gap;
-
-@if not $is_grid_gap {
-    $gap: $root_cell_width * 2;
-}
-
-//$grid_gap:                  PxToRem($gap);
-$grid_gap_half:             math.div($gap, 2);
-$grid_cell_width:           math.div($grid_width - ($grid_column - 1) * $grid_gap, $grid_column);
-
 // Layout
-$layout_width:              $grid_width + $grid_gap * 2;
+//$layout_width:              PxToRem($layout_width);//$grid_width + $layout_gap * 2;
 $layout_rate:               math.div(100, $layout_width);
 $layout_gap_adaptive:       $layout_rate * $grid_gap;
 
-//$grid_gap:                  PxToRem($grid_gap);
-//$grid_gap_half:             math.div($grid_gap, 2);
-//$grid_col_width:            math.div($grid_width, $grid_column);
-//$grid_cell_width:           math.div($grid_width - ($grid_column - 1) * $grid_gap, $grid_column);
-
-//// Layout
-//$layout_width:              $grid_width + $grid_gap * 2;
-//$layout_rate:               math.div(100, $layout_width);
-//$layout_gap_adaptive:       $layout_rate * $grid_gap;
+// Grid
+$grid_width:                calc($layout_width - $layout_gap * 2);
+//$grid_width:                PxToRem($grid_width);
+//$grid_gap:                  PxToRem($gap);
+$grid_col_width:            math.div($grid_width, $grid_column);
+$grid_cell_width:           math.div($grid_width - ($grid_column - 1) * $grid_gap, $grid_column);
+//$is_grid_gap:               if($grid_gap > 0, true, false);
 
 // Breakpoints
 $list_breakpoints:          GetListBreakpoints();

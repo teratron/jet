@@ -6,10 +6,10 @@
 
 // Gutters
 //----------------------------------------------------------
-// %grid-gap       %grid-[row | column]-gap
-// %grid-gap-half  %grid-[row | column]-gap-half
-// %grid-gap-quart %grid-[row | column]-gap-quart
-// %grid-gap-0     %grid-[row | column]-gap-0
+// %gap        %gap-[row | column]
+// %gap-half   %gap-[row | column]-half
+// %gap-quart  %gap-[row | column]-quart
+// %gap-0      %gap-[row | column]-0
 //----------------------------------------------------------
 // %margin         %margin-[top | bottom | left | right]
 // %margin-half    %margin-[top | bottom | left | right]-half
@@ -22,14 +22,23 @@
 // %padding-0      %padding-[top | bottom | left | right]-0
 //**********************************************************
 
-@if $is_grid_gap {
-    @include setPlaceholderGutter(grid-gap);
+@include setPlaceholder(gap) {
+    @each $dir in (row, column) {
+        &-#{$dir} {
+            @include setPropsAdaptive((grid-#{$dir}-gap: $grid_gap));
+        }
+    }
+    @include setPropsAdaptive((grid-gap: $grid_gap));
+}
+
+@if $grid_gap > 0 {
+    //@include setPlaceholderGutter(grid-gap);
     @include setPlaceholderGutter(margin);
     @include setPlaceholderGutter(padding);
 } @else {
-    @include setPlaceholderGutter(grid-gap, $grid_gap);
-    @include setPlaceholderGutter(margin, $grid_gap);
-    @include setPlaceholderGutter(padding, $grid_gap);
+    //@include setPlaceholderGutter(grid-gap, $grid_gap);
+    @include setPlaceholderGutter(margin, $layout_gap);
+    @include setPlaceholderGutter(padding, $layout_gap);
 }
 
 // Positions

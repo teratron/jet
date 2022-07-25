@@ -17,6 +17,7 @@
 @function JX($selector, $loc: $locator) {
     @if $loc == ".%" or $loc == "%." {
         $list: ();
+
         @each $value in (".", "%") {
             //@if $value == "%" {
             //    $placeholder: #{$value}#{$prefix}#{$selector};
@@ -26,6 +27,7 @@
 
             $list: list.append($list, #{$value}#{$prefix}#{$selector}, comma);
         }
+
         @return $list;
     } @else if $loc == "." or $loc == "%" or $loc == "#" or $loc == "" {
         @return #{$loc}#{$prefix}#{$selector};
@@ -55,16 +57,19 @@
 
 // Tile
 @function GetMinTileWidth($n) {
-    $a: $n - 1;
-    $b: $grid_width - $a * $grid_gap;
-    $c: math.div($b, $n);
-    $d: $c * $a;
+    $c: math.div($grid_width, $n);
+    $d: $c;
 
-    @if math.unit($d) == "px" {
-        $d: math.round(math.div($d + 1, $n));
-    } @else if math.unit($d) == "rem" {
-        $d: math.div($d + $px, $n);
-    }
+    //$a: $n - 1;
+    //$b: $grid_width - $a * $grid_gap;
+    //$c: math.div($b, $n);
+    //$d: $c * $a;
+
+    //@if math.unit($d) == "px" {
+    //    $d: math.round(math.div($d, $n)) + 1;
+    //} @else if math.unit($d) == "rem" {
+    //    $d: math.div($d, $n) + $px;
+    //}
 
     @return $d;
 }

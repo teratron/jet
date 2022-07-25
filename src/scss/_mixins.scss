@@ -6,25 +6,42 @@
 @use "sass:map";
 @use "sass:list";
 @use "sass:math";
+@use "sass:meta";
+
+@mixin setPlaceholder($selector, $props: null, $loc: "%") {
+    #{JX($selector, $loc)} {
+        @content;
+
+        @if $props != null {
+            @if meta.type-of($props) == map {
+                @each $key, $value in $props {
+                    @if $value > 0 {
+                        #{$key}: $value;
+                    }
+                }
+            }
+        }
+    }
+}
 
 @mixin setPlaceholderGutter($prop, $gutter: $grid_gap) {
-    @if $prop == grid-gap {
-        @each $dir in (row, column) {
-            @include setPlaceholderProps(grid-#{$dir}-gap, $gutter);
-        }
+    //@if $prop == grid-gap {
+    //    @each $dir in (row, column) {
+    //        @include setPlaceholderProps(grid-#{$dir}-gap, $gutter);
+    //    }
+    //
+    //    @include setPlaceholderProps(grid-gap, $gutter);
+    //} @else {
+    @include setPlaceholderProps($prop, $gutter) {
+        @each $side in $list_sides {
+            &-#{$side} {
+                @include setPropsAdaptive((#{$prop}-#{$side}: $gutter));
 
-        @include setPlaceholderProps(grid-gap, $gutter);
-    } @else {
-        @include setPlaceholderProps($prop, $gutter) {
-            @each $side in $list_sides {
-                &-#{$side} {
-                    @include setPropsAdaptive((#{$prop}-#{$side}: $gutter));
+                &-half {
+                    @include setPropsAdaptive((#{$prop}-#{$side}: math.div($gutter, 2)));
+                }
 
-                    &-half {
-                        @include setPropsAdaptive((#{$prop}-#{$side}: math.div($gutter, 2)));
-                    }
-
-                    &-quart {
+                &-quart {
                         @include setPropsAdaptive((#{$prop}-#{$side}: math.div($gutter, 4)));
                     }
 
@@ -34,14 +51,13 @@
                 }
             }
         }
-    }
+    //}
 }
 
 @mixin setPlaceholderProps($prop, $gutter) {
     %#{$prefix}#{$prop} {
-        @include setPropsAdaptive((#{$prop}: $gutter));
-
         @content;
+        @include setPropsAdaptive((#{$prop}: $gutter));
 
         &-half {
             @include setPropsAdaptive((#{$prop}: math.div($gutter, 2)));

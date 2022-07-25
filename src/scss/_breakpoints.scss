@@ -1,0 +1,40 @@
+//**********************************************************
+// Breakpoints
+//----------------------------------------------------------
+//
+//**********************************************************
+@use "sass:map";
+@use "sass:list";
+// $list_breakpoints_buffer: [
+//     (
+//         selector: &,
+//         props: (
+//             padding-left: 1rem,
+//             padding-right: 1rem
+//         )
+//     ),
+//     ...
+// ]
+
+// [
+//    [(), (), (), (), ()],
+//    [(), (), ()],
+//    [()],
+//    [(), (), ()],
+//    ...
+// ]
+
+@for $i from $grid_column to 0 {
+    @media only screen and (max-width: GetBreakpoint($i)) {
+        //@include flushBreakpointBuffer($i);
+    }
+}
+
+@mixin flushBreakpointBuffer($i) {
+    //$list_breakpoints_buffer
+    @each $list in $list_breakpoints_buffer {
+        @each $buffer in $list {
+
+        }
+    }
+}
