@@ -34,14 +34,14 @@
 // %padding-quart  %padding-[top | bottom | left | right]-quart
 // %padding-0      %padding-[top | bottom | left | right]-0
 //**********************************************************
-@include setPlaceholder((margin, padding)) {
+@include setPlaceholder((margin, padding)) using($sel) {
     @each $side in $list_sides {
         &-#{$side} {
-            @include setGutter(margin-#{$side}, $grid_gap);
+            @include setGutter(#{$sel}-#{$side}, $grid_gap);
         }
     }
 
-    @include setGutter(margin, $grid_gap);
+    @include setGutter(#{$sel}, $grid_gap);
 }
 
 // Positions

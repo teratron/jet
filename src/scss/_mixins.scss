@@ -11,7 +11,11 @@
 @mixin setPlaceholder($selector, $props: null, $loc: "%") {
     @each $sel in $selector {
         #{JX($sel, $loc)} {
-            @content;
+            @if meta.type-of($selector) == list {
+                @content($sel);
+            } @else {
+                @content;
+            }
 
             @if $props != null {
                 @if meta.type-of($props) == map {
