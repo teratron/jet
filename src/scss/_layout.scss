@@ -6,7 +6,7 @@
 
 #{JX(layout, "%")} {
     @extend #{JX(display-grid, "%")};
-    grid-auto-rows: minmax($cell_width, auto);
+    grid-auto-rows: minmax($layout_unit, auto);
 }
 
 // Container
@@ -15,12 +15,16 @@
 //**********************************************************
 #{JX(container)} {
     width:        100%;
-    max-width:    $layout_width;
+    max-width:    $container_width;
     margin-right: auto;
     margin-left:  auto;
 
-    @if $layout_gap > 0 {
-        @extend #{JX(padding-left, "%")}, #{JX(padding-right, "%")};
+    @if $container_gap > 0 {
+        //@extend #{JX(padding-left, "%")}, #{JX(padding-right, "%")};
+        @include setPropsAdaptive((
+                padding-left: $container_gap,
+                padding-right: $container_gap
+        ));
     }
 }
 
@@ -36,7 +40,7 @@
     //align-items:    baseline;
 
     @if $grid_gap > 0 {
-        @extend #{JX(grid-gap, "%")};
+        @extend #{JX(gap, "%")};
     }
 }
 
@@ -51,7 +55,7 @@
 //**********************************************************
 #{JX(row)} {
     @extend #{JX(layout, "%")};
-    grid-template-columns: repeat(auto-fit, minmax($cell_width, auto));
+    grid-template-columns: repeat(auto-fit, minmax($layout_unit, auto));
     grid-auto-flow:        column;
 }
 
@@ -76,7 +80,7 @@
 //**********************************************************
 #{JX(col)} {
     @extend #{JX(layout, "%")};
-    grid-template-rows: repeat(auto-fit, minmax($cell_width, auto));
+    grid-template-rows: repeat(auto-fit, minmax($layout_unit, auto));
     grid-auto-flow:     dense;
 }
 

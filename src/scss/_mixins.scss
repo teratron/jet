@@ -24,52 +24,19 @@
     }
 }
 
-@mixin setPlaceholderGutter($prop, $gutter: $grid_gap) {
-    //@if $prop == grid-gap {
-    //    @each $dir in (row, column) {
-    //        @include setPlaceholderProps(grid-#{$dir}-gap, $gutter);
-    //    }
-    //
-    //    @include setPlaceholderProps(grid-gap, $gutter);
-    //} @else {
-    @include setPlaceholderProps($prop, $gutter) {
-        @each $side in $list_sides {
-            &-#{$side} {
-                @include setPropsAdaptive((#{$prop}-#{$side}: $gutter));
+@mixin setGutter($prop, $value) {
+    @include setPropsAdaptive((#{$prop}: $value));
 
-                &-half {
-                    @include setPropsAdaptive((#{$prop}-#{$side}: math.div($gutter, 2)));
-                }
+    &-half {
+        @include setPropsAdaptive((#{$prop}: math.div($value, 2)));
+    }
 
-                &-quart {
-                        @include setPropsAdaptive((#{$prop}-#{$side}: math.div($gutter, 4)));
-                    }
+    &-quart {
+        @include setPropsAdaptive((#{$prop}: math.div($value, 4)));
+    }
 
-                    &-0 {
-                        #{$prop}-#{$side}: 0;
-                    }
-                }
-            }
-        }
-    //}
-}
-
-@mixin setPlaceholderProps($prop, $gutter) {
-    %#{$prefix}#{$prop} {
-        @content;
-        @include setPropsAdaptive((#{$prop}: $gutter));
-
-        &-half {
-            @include setPropsAdaptive((#{$prop}: math.div($gutter, 2)));
-        }
-
-        &-quart {
-            @include setPropsAdaptive((#{$prop}: math.div($gutter, 4)));
-        }
-
-        &-0 {
-            #{$prop}: 0;
-        }
+    &-0 {
+        #{$prop}: 0;
     }
 }
 
@@ -84,7 +51,7 @@
 
     @each $key, $value in $props {
         @if $value > 0 {
-            $buffer: map.merge($buffer, (#{$key}: 1vw * $layout_rate * $value));
+            $buffer: map.merge($buffer, (#{$key}: 1vw * $container_rate * $value));
         } @else {
             $buffer: map.merge($buffer, (#{$key}: 0));
         }

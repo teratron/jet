@@ -3,6 +3,7 @@
 //----------------------------------------------------------
 //
 //**********************************************************
+@use "sass:math";
 
 // Gutters
 //----------------------------------------------------------
@@ -25,21 +26,42 @@
 @include setPlaceholder(gap) {
     @each $dir in (row, column) {
         &-#{$dir} {
-            @include setPropsAdaptive((grid-#{$dir}-gap: $grid_gap));
+            @include setGutter(grid-#{$dir}-gap, $grid_gap);
         }
     }
-    @include setPropsAdaptive((grid-gap: $grid_gap));
+
+    @include setGutter(grid-gap, $grid_gap);
 }
 
-@if $grid_gap > 0 {
-    //@include setPlaceholderGutter(grid-gap);
-    @include setPlaceholderGutter(margin);
-    @include setPlaceholderGutter(padding);
-} @else {
-    //@include setPlaceholderGutter(grid-gap, $grid_gap);
-    @include setPlaceholderGutter(margin, $layout_gap);
-    @include setPlaceholderGutter(padding, $layout_gap);
+@include setPlaceholder(margin) {
+    @each $side in $list_sides {
+        &-#{$side} {
+            @include setGutter(margin-#{$side}, $grid_gap);
+        }
+    }
+
+    @include setGutter(margin, $grid_gap);
 }
+
+@include setPlaceholder(padding) {
+    @each $side in $list_sides {
+        &-#{$side} {
+            @include setGutter(padding-#{$side}, $grid_gap);
+        }
+    }
+
+    @include setGutter(padding, $grid_gap);
+}
+
+//@if $grid_gap > 0 {
+//    @include setPlaceholderGutter(grid-gap);
+//    @include setPlaceholderGutter(margin);
+//    @include setPlaceholderGutter(padding);
+//} @else {
+//    @include setPlaceholderGutter(grid-gap, $grid_gap);
+//    @include setPlaceholderGutter(margin, $layout_gap);
+//    @include setPlaceholderGutter(padding, $layout_gap);
+//}
 
 // Positions
 //----------------------------------------------------------
