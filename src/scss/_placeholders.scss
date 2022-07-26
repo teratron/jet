@@ -3,14 +3,26 @@
 //----------------------------------------------------------
 //
 //**********************************************************
-@use "sass:math";
+//@use "sass:math";
 
-// Gutters
+// Gaps
 //----------------------------------------------------------
 // %gap        %gap-[row | column]
 // %gap-half   %gap-[row | column]-half
 // %gap-quart  %gap-[row | column]-quart
 // %gap-0      %gap-[row | column]-0
+//**********************************************************
+@include setPlaceholder(gap) {
+    @each $dir in (row, column) {
+        &-#{$dir} {
+            @include setGutter(grid-#{$dir}-gap, $grid_gap);
+        }
+    }
+
+    @include setGutter(grid-gap, $grid_gap);
+}
+
+// Gutters
 //----------------------------------------------------------
 // %margin         %margin-[top | bottom | left | right]
 // %margin-half    %margin-[top | bottom | left | right]-half
@@ -22,18 +34,7 @@
 // %padding-quart  %padding-[top | bottom | left | right]-quart
 // %padding-0      %padding-[top | bottom | left | right]-0
 //**********************************************************
-
-@include setPlaceholder(gap) {
-    @each $dir in (row, column) {
-        &-#{$dir} {
-            @include setGutter(grid-#{$dir}-gap, $grid_gap);
-        }
-    }
-
-    @include setGutter(grid-gap, $grid_gap);
-}
-
-@include setPlaceholder(margin) {
+@include setPlaceholder((margin, padding)) {
     @each $side in $list_sides {
         &-#{$side} {
             @include setGutter(margin-#{$side}, $grid_gap);
@@ -42,26 +43,6 @@
 
     @include setGutter(margin, $grid_gap);
 }
-
-@include setPlaceholder(padding) {
-    @each $side in $list_sides {
-        &-#{$side} {
-            @include setGutter(padding-#{$side}, $grid_gap);
-        }
-    }
-
-    @include setGutter(padding, $grid_gap);
-}
-
-//@if $grid_gap > 0 {
-//    @include setPlaceholderGutter(grid-gap);
-//    @include setPlaceholderGutter(margin);
-//    @include setPlaceholderGutter(padding);
-//} @else {
-//    @include setPlaceholderGutter(grid-gap, $grid_gap);
-//    @include setPlaceholderGutter(margin, $layout_gap);
-//    @include setPlaceholderGutter(padding, $layout_gap);
-//}
 
 // Positions
 //----------------------------------------------------------

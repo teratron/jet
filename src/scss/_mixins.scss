@@ -9,14 +9,16 @@
 @use "sass:meta";
 
 @mixin setPlaceholder($selector, $props: null, $loc: "%") {
-    #{JX($selector, $loc)} {
-        @content;
+    @each $sel in $selector {
+        #{JX($sel, $loc)} {
+            @content;
 
-        @if $props != null {
-            @if meta.type-of($props) == map {
-                @each $key, $value in $props {
-                    @if $value > 0 {
-                        #{$key}: $value;
+            @if $props != null {
+                @if meta.type-of($props) == map {
+                    @each $key, $value in $props {
+                        @if $value > 0 {
+                            #{$key}: $value;
+                        }
                     }
                 }
             }
@@ -25,14 +27,14 @@
 }
 
 @mixin setGutter($prop, $value) {
-    @include setPropsAdaptive((#{$prop}: $value));
+    @include setPropsAdaptive(($prop: $value));
 
     &-half {
-        @include setPropsAdaptive((#{$prop}: math.div($value, 2)));
+        @include setPropsAdaptive(($prop: math.div($value, 2)));
     }
 
     &-quart {
-        @include setPropsAdaptive((#{$prop}: math.div($value, 4)));
+        @include setPropsAdaptive(($prop: math.div($value, 4)));
     }
 
     &-0 {

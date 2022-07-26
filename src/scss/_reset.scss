@@ -129,6 +129,7 @@ dd {
 #{JX(heading, "%")} {
     @extend #{JX(margin-top-0, "%")}, #{JX(margin-bottom-half, "%")};
     @extend #{JX(child-fit, "%")};
+    @extend #{JX(grid-child-fit, "%")};
 }
 
 h1 {
