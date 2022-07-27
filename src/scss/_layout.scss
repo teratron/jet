@@ -20,11 +20,14 @@
     margin-left:  auto;
 
     @if $container_gap > 0 {
-        //@extend #{JX(padding-left, "%")}, #{JX(padding-right, "%")};
-        @include setPropsAdaptive((
-                padding-left: $container_gap,
-                padding-right: $container_gap
-        ));
+        @if $container_gap == $layout_gap {
+            @extend #{JX(padding-left, "%")}, #{JX(padding-right, "%")};
+        } @else {
+            @include setPropsAdaptive((
+                    padding-left: $container_gap,
+                    padding-right: $container_gap
+            ));
+        }
     }
 }
 

@@ -15,11 +15,11 @@
 @include setPlaceholder(gap) {
     @each $dir in (row, column) {
         &-#{$dir} {
-            @include setGutter(grid-#{$dir}-gap, $grid_gap);
+            @include setGutter(grid-#{$dir}-gap, $layout_gap);
         }
     }
 
-    @include setGutter(grid-gap, $grid_gap);
+    @include setGutter(grid-gap, $layout_gap);
 }
 
 // Gutters
@@ -37,11 +37,11 @@
 @include setPlaceholder((margin, padding)) using($sel) {
     @each $side in $list_sides {
         &-#{$side} {
-            @include setGutter(#{$sel}-#{$side}, $grid_gap);
+            @include setGutter(#{$sel}-#{$side}, $layout_gap);
         }
     }
 
-    @include setGutter(#{$sel}, $grid_gap);
+    @include setGutter(#{$sel}, $layout_gap);
 }
 
 // Positions
