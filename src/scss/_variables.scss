@@ -55,15 +55,15 @@ $zindex_debug:              2000 !default;
 // Root
 $px:                        math.div($layout_unit, StripUnit($root_unit));
 
-// Layout
-$layout_font_size:          PxToRem($layout_font_size);
-//$layout_gap:             PxToRem($layout_gap);
-
 // Container
-//$container_width:           PxToRem($container_width);//$grid_width + $layout_gap * 2;
+//$list_unit: "px", "em", "rem", "%", "vw";
+@if math.unit($container_width) == "px" {
+
+}
+
+//$container_width:           PxToRem($container_width);
 //$container_gap:             PxToRem($container_gap);
 $container_rate:            math.div(100, $container_width);
-$container_gap_adaptive:    $container_rate * $grid_gap;
 
 // Grid
 $grid_width:                calc($container_width - $container_gap * 2);
@@ -71,7 +71,11 @@ $grid_width:                calc($container_width - $container_gap * 2);
 //$grid_gap:                  PxToRem($grid_gap);
 $grid_col_width:            math.div($grid_width, $grid_column);
 $grid_cell_width:           math.div($grid_width - ($grid_column - 1) * $grid_gap, $grid_column);
-//$is_grid_gap:               if($grid_gap > 0, true, false);
+
+// Layout
+$layout_font_size:          PxToRem($layout_font_size);
+//$layout_gap:                PxToRem($layout_gap);
+$layout_gap:                if($grid_gap > 0, $grid_gap, $layout_gap);
 
 // Breakpoints
 $list_breakpoints:          GetListBreakpoints();
