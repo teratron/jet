@@ -6,6 +6,8 @@
 
 HTML, CSS, SCSS, JavaScript Framework.
 
+Вспомогательный маленький framework, предназначенный для формирования layout.
+
 ## Usage
 
 ```shell
@@ -36,7 +38,7 @@ $locator: ".%" !default;
 
 #### SCSS develop mode "%"
 
-Для облегчения компилируемого CSS и чистого HTML.
+Для облегчения компилируемого CSS и чистого/читабельного HTML.
 
 ```html
 
