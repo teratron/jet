@@ -12,7 +12,7 @@
 // %gap-quart  %gap-[row | column]-quart
 // %gap-0      %gap-[row | column]-0
 //**********************************************************
-@include setPlaceholder(gap) {
+@include addPlaceholder(gap) {
     @each $dir in (row, column) {
         &-#{$dir} {
             @include setGutter(grid-#{$dir}-gap, $layout_gap);
@@ -34,7 +34,7 @@
 // %padding-quart  %padding-[top | bottom | left | right]-quart
 // %padding-0      %padding-[top | bottom | left | right]-0
 //**********************************************************
-@include setPlaceholder((margin, padding)) using($sel) {
+@include addPlaceholder((margin, padding)) using($sel) {
     @each $side in $list_sides {
         &-#{$side} {
             @include setGutter(#{$sel}-#{$side}, $layout_gap);

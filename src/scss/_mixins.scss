@@ -8,7 +8,7 @@
 @use "sass:math";
 @use "sass:meta";
 
-@mixin setPlaceholder($selector, $props: null, $loc: "%") {
+@mixin addPlaceholder($selector, $props: null, $loc: "%") {
     @each $sel in $selector {
         #{JX($sel, $loc)} {
             @if meta.type-of($selector) == list {
@@ -20,9 +20,7 @@
             @if $props != null {
                 @if meta.type-of($props) == map {
                     @each $key, $value in $props {
-                        @if $value > 0 {
-                            #{$key}: $value;
-                        }
+                        #{$key}: $value;
                     }
                 }
             }

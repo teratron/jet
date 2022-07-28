@@ -5,6 +5,7 @@
 //**********************************************************
 @use "sass:map";
 @use "sass:list";
+@use "sass:meta";
 // $list_breakpoints_buffer: [
 //     (
 //         selector: &,
@@ -24,17 +25,81 @@
 //    ...
 // ]
 
-@for $i from $grid_column to 0 {
-    @media only screen and (max-width: GetBreakpoint($i)) {
-        //@include flushBreakpointBuffer($i);
+$list_breakpoints_buffer2: (// list
+                                           (// 1 list
+                                                   (// map
+                                                           selector: buff-1-1,
+                                                           props: (
+                                                                   padding-left: 1rem,
+                                                                   padding-right: 1rem
+                                                           )
+                                                   ),
+                                                   (// map
+                                                           selector: buff-1-2,
+                                                           props: (
+                                                                   padding-left: 2rem,
+                                                                   padding-right: 2rem
+                                                           )
+                                                   )
+                                           ),
+                                           (// 2 list
+                                                   (// map
+                                                           selector: buff-2-1,
+                                                           props: (
+                                                                   padding-left: 3rem,
+                                                                   padding-right: 3rem
+                                                           )
+                                                   ),
+                                                   (// map
+                                                           selector: buff-2-2,
+                                                           props: (
+                                                                   padding-left: 4rem,
+                                                                   padding-right: 4rem
+                                                           )
+                                                   )
+                                           ),
+                           );
+
+//@for $i from $grid_column to 0 {
+//    @media only screen and (max-width: GetBreakpoint($i)) {
+//        //@include flushBreakpointBuffer($i);
+//    }
+//}
+
+//@mixin initBreakpointBuffer() {
+//    @for $i from 1 through $grid_column {
+//        $list_breakpoints_buffer2: ();
+//    }
+//}
+
+@mixin pushBreakpointBuffer($breakpoint, $selector, $props: null) {
+    $buffer:                   (selector: $selector);
+
+    @if $props != null {
+        @if meta.type-of($props) == map {
+            @each $key, $value in $props {
+                $buffer: map.merge($buffer, props, ($key: $value));
+            }
+        }
     }
+
+    //$a: @content;
+
+    $list:                     list.nth($list_breakpoints_buffer2, $breakpoint);
+    $list:                     list.append($list, $buffer);
+    $list_breakpoints_buffer2: list.set-nth($list_breakpoints_buffer2, $breakpoint, $list) !global;
 }
 
-@mixin flushBreakpointBuffer($i) {
-    //$list_breakpoints_buffer
-    @each $list in $list_breakpoints_buffer {
+@mixin flushBreakpointBuffer() {
+    @each $list in $list_breakpoints_buffer2 {
         @each $buffer in $list {
-
+            #{map.get($buffer, selector)} {
+                @each $key, $value in map.get($buffer, props) {
+                    #{$key}: $value;
+                }
+            }
         }
     }
 }
+
+//@include flushBreakpointBuffer;
