@@ -43,9 +43,9 @@ $zindex_offcanvas:          1400 !default;
 $zindex_modal_backdrop:     1500 !default;
 $zindex_modal:              1600 !default;
 $zindex_popover:            1700 !default;
-$zindex_tooltip:            1800 !default;
-$zindex_toast:              1900 !default;
-$zindex_debug:              2000 !default;
+$zindex_tooltip:           1800 !default;
+$zindex_toast:             1900 !default;
+$zindex_debug:             2000 !default;
 
 // Under The Hood
 //----------------------------------------------------------
@@ -53,7 +53,7 @@ $zindex_debug:              2000 !default;
 //**********************************************************
 
 // Root
-$px:                        math.div($layout_unit, StripUnit($root_unit));
+$px:                       math.div($layout_unit, StripUnit($root_unit));
 
 // Container
 //$list_unit: "px", "em", "rem", "%", "vw";
@@ -100,7 +100,7 @@ $font_family_monospace:    () !default;
 // - если не первый в списке удалить и добавить в начало
 $font_family_serif:        list.join($font_family_serif, ("Lucida Bright", "Lucida Fax", Palatino, "Palatino Linotype", Palladio, "URW Palladio", Times, "Times New Roman", Georgia, serif), comma);
 $font_family_sans_serif:   list.join($font_family_sans_serif, (Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Verdana, Arial, Helvetica, sans-serif), comma);
-$font_family_monospace:     list.join($font_family_monospace, (SFMono-Regular, source-code-pro, Menlo, Monaco, Consolas, "Courier New", "Lucida Console", Courier, monospace), comma);
+$font_family_monospace:    list.join($font_family_monospace, (SFMono-Regular, source-code-pro, Menlo, Monaco, Consolas, "Courier New", "Lucida Console", Courier, monospace), comma);
 
 :root {
     // Debug
