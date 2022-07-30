@@ -2,14 +2,14 @@
 // Application
 #app {
     @extend %display-grid;
+    z-index:               $zindex_app;
+    min-height:            100vh;
     grid-template-rows:    auto 1fr;
     grid-template-columns: 100%;
     grid-auto-flow:        row;
     grid-auto-rows:        auto;
-    min-height:            100vh;
-    z-index:               $zindex_app;
 
-    @extend .sticker;
+    @extend %debug-sticker;
 }
 
 // Container

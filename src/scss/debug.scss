@@ -1,4 +1,3 @@
-
 // No semantic
 address nav,
 a a,
@@ -12,21 +11,46 @@ button button {
     outline: 5px solid red;
 }
 
-// Sticker
-#{JX(sticker)} {
+// Layout
+#{JX(debug-layout)} {
     &::before,
     &::after {
-        color:       white;
+        //width: 20px;
+        position: fixed;
+        z-index:  $zindex_debug;
+        top:      0;
+        bottom:   0;
+        //left:     0;
+        //right:    0;
+        display:  block;
+        content:  "";
+    }
+
+    &::before {
+        width:            20px;
+        background-color: rgba(255, 0, 0, .5);
+        box-shadow:       0 0 0 0 rgba(0, 0, 0, .3),
+                          20px 0 0 0 rgba(0, 0, 0, .3),
+                          60px 0 0 0 rgba(0, 0, 0, .3),
+                          100px 0 0 0 rgba(0, 0, 0, .3);
+    }
+}
+
+// Sticker
+#{JX(debug-sticker)} {
+    &::before,
+    &::after {
         font-size:   12px;
         line-height: 40px;
-        min-width:   80px;
-        height:      40px;
-        display:     block;
         position:    fixed;
+        z-index:     $zindex_debug + 1;
         top:         auto;
         bottom:      0;
+        display:     block;
+        min-width:   80px;
+        height:      40px;
         text-align:  center;
-        z-index:     $zindex_debug;
+        color:       white;
     }
 
     &::before {

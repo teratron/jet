@@ -100,13 +100,13 @@ $duration: .3s;
 #{JX(hide)} {
     @include hide;
 
-    @for $i from $grid_column to 0 {
-        @include pushBreakpointBuffer($i) {
-            &-b#{$i} {
-                @include hide;
-            }
-        }
-    }
+    //@for $i from $grid_column to 0 {
+    //    @include pushBreakpointBuffer($i) {
+    //        &-b#{$i} {
+    //            @include hide;
+    //        }
+    //    }
+    //}
 }
 
 #{JX(show)} {
