@@ -1,3 +1,33 @@
+// Breakpoints
+//@function GetListBreakpoints($is_evenly: false) {
+//  $list: ();
+//  $g: $grid_gap;
+//  $w: 100;
+//
+//  @if not $is_evenly {
+//    $w: $w - $container_rate * $container_gap * 2;
+//  }
+//
+//  @for $i from 1 through $grid_column {
+//    @if not $is_evenly {
+//      $g: math.div($i * $grid_col_width, $w) * $container_rate * $grid_gap;
+//    }
+//
+//    $d: $i * $grid_cell_width + ($i + 1) * $g;
+//
+//    @if math.unit($d) == "px" {
+//      $d: math.round($d) - 1;
+//    } @else if math.unit($d) == "rem" {
+//      $d: $d - $px;
+//    }
+//
+//    $list: list.append($list, $d);
+//  }
+//
+//  @return $list;
+//}
+
+
 //@import "mixins/bar";
 //@import "mixins/list";
 

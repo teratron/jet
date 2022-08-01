@@ -77,27 +77,32 @@
 // Breakpoints
 @function GetListBreakpoints($is_evenly: false) {
     $list: ();
-    $g: $grid_gap;
-    $w: 100;
-
-    @if not $is_evenly {
-        $w: $w - $container_rate * $grid_gap * 2;
-    }
+    $gg: $grid_gap;
+    $cg: $container_gap * 2;
+    $cr: $container_rate * $cg;
+    $gr: $container_rate * $gg;
+    $cc: $cg;
 
     @for $i from 1 through $grid_column {
+        $gi: $i * $grid_cell_width;
+        $di: $i - 1;
+
         @if not $is_evenly {
-            $g: math.div($i * $grid_col_width, $w) * $container_rate * $grid_gap;
+            $gw: $gi + $di * $grid_gap;
+            $pp: math.div($gw + $cc, 100);
+            $gg: $pp * $gr;
+            $cg: $pp * $cr;
         }
 
-        $d: $i * $grid_cell_width + ($i + 1) * $g;
+        $bp: $gi + $di * $gg + $cg;
 
-        @if math.unit($d) == "px" {
-            $d: math.round($d) - 1;
+        @if math.unit($bp) == "px" {
+            $d: math.round($bp) - 1;
         } @else if math.unit($d) == "rem" {
             $d: $d - $px;
         }
 
-        $list: list.append($list, $d);
+        $list: list.append($list, $bp);
     }
 
     @return $list;

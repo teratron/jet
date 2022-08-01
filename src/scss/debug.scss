@@ -1,3 +1,9 @@
+//**********************************************************
+// Debug
+//----------------------------------------------------------
+//
+//**********************************************************
+
 // No semantic
 address nav,
 a a,
@@ -15,13 +21,10 @@ button button {
 #{JX(debug-layout)} {
     &::before,
     &::after {
-        //width: 20px;
         position: fixed;
         z-index:  $zindex_debug;
         top:      0;
         bottom:   0;
-        //left:     0;
-        //right:    0;
         display:  block;
         content:  "";
     }
