@@ -30,12 +30,14 @@ button button {
     }
 
     &::before {
-        width:            20px;
+        $a:               calc(100vw - $container_width);
+        $w:               $container_rate * $grid_cell_width * 1vw;
+        $d:               $container_rate * $grid_gap * 1vw;
         background-color: rgba(255, 0, 0, .5);
-        box-shadow:       0 0 0 0 rgba(0, 0, 0, .3),
-                          20px 0 0 0 rgba(0, 0, 0, .3),
-                          60px 0 0 0 rgba(0, 0, 0, .3),
-                          100px 0 0 0 rgba(0, 0, 0, .3);
+        width:            $a;
+        box-shadow:       $w + $d 0 0 0 rgba(0, 0, 0, .3),
+                          ($w + $d) * 2 0 0 0 rgba(0, 0, 0, .3),
+                          ($w + $d) * 3 0 0 0 rgba(0, 0, 0, .3);
     }
 }
 

@@ -1,13 +1,19 @@
 {{#> app app-partial-block=true title=title}}
     {{> header}}
     {{#> main main-partial-block=true}}
-
-        <h3>Shrink</h3>
-        <section class="grid-12 shrink outline">
+        <h3>Grid</h3>
+        <section class="grid-12 outline">
             {{#each debugGrid}}
                 <div>{{this}}</div>
             {{/each}}
         </section>
+
+        <h3>Shrink</h3>
+        {{!--<section class="grid-12 shrink outline">
+            {{#each debugGrid}}
+                <div>{{this}}</div>
+            {{/each}}
+        </section>--}}
 
         <section class="grid-12 shrink outline">
             <div class="col-4">1</div>
