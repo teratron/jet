@@ -78,6 +78,7 @@ $layout_font_size:          PxToRem($layout_font_size);
 $layout_gap:                if($grid_gap > 0, $grid_gap, $layout_gap);
 
 // Breakpoints
+//$is_evenly_breakpoints:     false;
 $list_breakpoints:          GetListBreakpoints();
 $list_breakpoints_buffer:   ();
 $list_breakpoints_buffer2:  ();

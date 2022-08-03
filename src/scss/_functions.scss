@@ -55,25 +55,6 @@
 //    @return null;
 //}
 
-// Tile
-@function GetMinTileWidth($n) {
-    $c: math.div($grid_width, $n);
-    $d: $c;
-
-    //$a: $n - 1;
-    //$b: $grid_width - $a * $grid_gap;
-    //$c: math.div($b, $n);
-    //$d: $c * $a;
-
-    //@if math.unit($d) == "px" {
-    //    $d: math.round(math.div($d, $n)) + 1;
-    //} @else if math.unit($d) == "rem" {
-    //    $d: math.div($d, $n) + $px;
-    //}
-
-    @return $d;
-}
-
 // Breakpoints
 @function GetListBreakpoints($is_evenly: false) {
     $list: ();
@@ -89,8 +70,8 @@
 
         @if not $is_evenly {
             $p: math.div($w + $d * $grid_gap + $v, 100);
-            $gg: $p * $f;
-            $cg: $p * $r;
+            $g: $p * $f;
+            $c: $p * $r;
         }
 
         $b: $w + $d * $g + $c;
@@ -109,6 +90,36 @@
 
 @function GetBreakpoint($n: $grid_column) {
     @return list.nth($list_breakpoints, $n);
+}
+
+// Tile
+@function GetMinTileWidth($n: $grid_column) {
+    //$c: math.div(GetBreakpoint($n), $n);
+    //$g: $grid_gap;
+    //$c: $container_gap * 2;
+    //$r: $container_rate * $c;
+    //$f: $container_rate * $g;
+
+    $u: math.div($grid_width - ($n - 1) * $grid_gap, $n);
+    //$w: $u * ($n - 1) + $grid_gap * ($n - 2) + $container_gap * 2;
+    $w: $u * ($n - 1);
+
+    $v: math.div($w, $n);
+
+    //$d: $c;
+
+    //$a: $n - 1;
+    //$b: $grid_width - $a * $grid_gap;
+    //$c: math.div($b, $n);
+    //$d: $c * $a;
+
+    //@if math.unit($d) == "px" {
+    //    $d: math.round(math.div($d, $n)) + 1;
+    //} @else if math.unit($d) == "rem" {
+    //    $d: math.div($d, $n) + $px;
+    //}
+
+    @return $w;
 }
 
 // Helpers
