@@ -3,6 +3,17 @@
 //----------------------------------------------------------
 // %layout
 //**********************************************************
+//#{JX(layout, "%")} {
+//    @extend #{JX(display-flex, "%")};
+//}
+
+//@supports (display: grid) {
+//    #{JX(layout, "%")} {
+//        @extend #{JX(display-grid, "%")};
+//        grid-auto-rows: minmax($layout_unit, auto);
+//    }
+//}
+
 #{JX(layout, "%")} {
     @extend #{JX(display-grid, "%")};
     grid-auto-rows: minmax($layout_unit, auto);
@@ -164,13 +175,18 @@
         order: $i;
     }
 
-    //@if not $is_grid_gap {
     #{JX(tile-#{$i})} {
         @extend #{JX(layout, "%")};
+
+        //@if {
+        //
+        //}
         grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i), 1fr));
-        //grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)) !important;
+
+        &.gap {
+            grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i, $grid_gap), 1fr));
+        }
     }
-    //}
 }
 
 // Breakpoints
