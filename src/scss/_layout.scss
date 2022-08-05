@@ -3,6 +3,8 @@
 //----------------------------------------------------------
 // %layout
 //**********************************************************
+//@use "sass:math";
+
 //#{JX(layout, "%")} {
 //    @extend #{JX(display-flex, "%")};
 //}
@@ -60,6 +62,16 @@
 #{JX(grid-child-fit, "%")} {
     @extend #{JX(reset-width, "%")};
     @extend #{JX(margin-0, "%")};
+}
+
+// Tile
+//----------------------------------------------------------
+// .%tile
+// .%tile-[1...n]
+// .%tile-b[1...n]-[1...n]
+//**********************************************************
+#{JX(tile)}, [class*=#{JX(tile-, "")}] {
+    @extend #{JX(layout, "%")};
 }
 
 // Row
@@ -151,6 +163,10 @@
         #{JX(grid-b#{$i}-#{$j}, "%")} {
             @extend #{JX(grid, "%")};
         }
+
+        #{JX(tile-b#{$i}-#{$j}, "%")} {
+            @extend #{JX(layout, "%")};
+        }
     }
 
     #{JX(grid-#{$i}, "%")} {
@@ -177,15 +193,25 @@
 
     #{JX(tile-#{$i})} {
         @extend #{JX(layout, "%")};
-
-        //@if {
-        //
-        //}
         grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i), 1fr));
 
-        &.gap {
-            grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i, $grid_gap), 1fr));
+        @each $value in (gap, gap-half, gap-quart) {
+            &.#{$value} {
+                grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i, GetGap($value)), 1fr));
+            }
         }
+
+        //&.gap {
+        //    grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i, $grid_gap), 1fr));
+        //}
+        //
+        //&.gap-half {
+        //    grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i, math.div($grid_gap, 2)), 1fr));
+        //}
+        //
+        //&.gap-quart {
+        //    grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i, math.div($grid_gap, 4)), 1fr));
+        //}
     }
 }
 
@@ -222,6 +248,28 @@
 
             #{JX(order-b#{$i}-#{$j})} {
                 order: $j;
+            }
+
+            #{JX(tile-b#{$i}-#{$j})} {
+                grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($j), 1fr));
+
+                @each $value in (gap, gap-half, gap-quart) {
+                    &.#{$value} {
+                        grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($j, GetGap($value)), 1fr));
+                    }
+                }
+
+                //&.gap {
+                //    grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($j, $grid_gap), 1fr));
+                //}
+                //
+                //&.gap-half {
+                //    grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($j, math.div($grid_gap, 2)), 1fr));
+                //}
+                //
+                //&.gap-quart {
+                //    grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($j, math.div($grid_gap, 4)), 1fr));
+                //}
             }
         }
 

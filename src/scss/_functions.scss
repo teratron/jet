@@ -94,14 +94,8 @@
 
 // Tile
 @function GetMinTileWidth($n: $grid_column, $gap: 0) {
-    //$d: $n - 1;
-    //$u: math.div($grid_width - $gap * $d, $n);
-    //$v: $u * $d + $gap * ($d - 1) + $container_gap * 2;
-    //$v: $u * $d;
-    //$w: math.div($v, $n);
-
-    $u: math.div($grid_width - $gap * $n, $n + 1);
-    $w: math.div($grid_width, $n + 1);
+    $u: $grid_width - $gap * $n;
+    $w: math.div($u, $n + 1);
 
     @if math.unit($w) == "px" {
         $w: math.round($w) + 1;
@@ -110,6 +104,19 @@
     }
 
     @return $w;
+}
+
+// Gaps
+@function GetGap($value) {
+    @if $value == gap-half {
+        @return math.div($grid_gap, 2);
+    } @else if $value == gap-quart {
+        @return math.div($grid_gap, 4);
+    } @else if $value == gap-0 {
+        @return 0;
+    }
+
+    @return $grid_gap;
 }
 
 // Helpers

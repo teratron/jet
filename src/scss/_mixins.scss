@@ -31,6 +31,11 @@
 @mixin setGutter($prop, $value) {
     @include setPropsAdaptive(($prop: $value));
 
+    //@each $v in (gap, gap-half, gap-quart, gap-0) {
+    //    &.#{$v} {
+    //        @include setPropsAdaptive(($prop: math.div($value, 2)));
+    //    }
+    //}
     &-half {
         @include setPropsAdaptive(($prop: math.div($value, 2)));
     }
@@ -101,8 +106,3 @@
         }
     }
 }
-
-//@mixin pushBuffer($selector, $props, $breakpoint: $grid_column) {
-//    $buffer: (selector: $selector, breakpoint: $breakpoint);
-//    @content;
-//}
