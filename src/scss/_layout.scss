@@ -3,8 +3,6 @@
 //----------------------------------------------------------
 // %layout
 //**********************************************************
-//@use "sass:math";
-
 //#{JX(layout, "%")} {
 //    @extend #{JX(display-flex, "%")};
 //}
@@ -185,8 +183,11 @@
         order: $i;
     }
 
-    #{JX(tile-#{$i})} {
+    #{JX(tile-#{$i}, "%")} {
         @extend #{JX(layout, "%")};
+    }
+
+    #{JX(tile-#{$i})} {
         grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i), 1fr));
 
         @each $v in (gap, gap-half, gap-quart) {
