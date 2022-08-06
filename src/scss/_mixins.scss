@@ -31,18 +31,18 @@
 @mixin setGutter($prop, $value) {
     @include setPropsAdaptive(($prop: $value));
 
-    //@each $v in (gap, gap-half, gap-quart, gap-0) {
-    //    &.#{$v} {
-    //        @include setPropsAdaptive(($prop: math.div($value, 2)));
-    //    }
+    @each $v in (-half, -quart) {
+        &#{$v} {
+            @include setPropsAdaptive(($prop: GetGap($v)));
+        }
+    }
+    //&-half {
+    //    @include setPropsAdaptive(($prop: math.div($value, 2)));
     //}
-    &-half {
-        @include setPropsAdaptive(($prop: math.div($value, 2)));
-    }
-
-    &-quart {
-        @include setPropsAdaptive(($prop: math.div($value, 4)));
-    }
+    //
+    //&-quart {
+    //    @include setPropsAdaptive(($prop: math.div($value, 4)));
+    //}
 
     &-0 {
         #{$prop}: 0;

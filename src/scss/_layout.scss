@@ -80,7 +80,7 @@
 //**********************************************************
 #{JX(row)} {
     @extend #{JX(layout, "%")};
-    grid-template-columns: repeat(auto-fit, minmax($layout_unit, auto));
+    //grid-template-columns: repeat(auto-fit, minmax($layout_unit, auto));
     grid-auto-flow:        column;
 }
 
@@ -137,16 +137,10 @@
 #{JX(gap)} {
     @extend #{JX(gap, "%")};
 
-    &-half {
-        @extend #{JX(gap-half, "%")};
-    }
-
-    &-quart {
-        @extend #{JX(gap-quart, "%")};
-    }
-
-    &-0 {
-        @extend #{JX(gap-0, "%")};
+    @each $v in (-half, -quart, -0) {
+        &#{$v} {
+            @extend #{JX(gap#{$v}, "%")};
+        }
     }
 }
 
@@ -195,23 +189,11 @@
         @extend #{JX(layout, "%")};
         grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i), 1fr));
 
-        @each $value in (gap, gap-half, gap-quart) {
-            &.#{$value} {
-                grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i, GetGap($value)), 1fr));
+        @each $v in (gap, gap-half, gap-quart) {
+            &#{JX($v)} {
+                grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i, GetGap($v)), 1fr));
             }
         }
-
-        //&.gap {
-        //    grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i, $grid_gap), 1fr));
-        //}
-        //
-        //&.gap-half {
-        //    grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i, math.div($grid_gap, 2)), 1fr));
-        //}
-        //
-        //&.gap-quart {
-        //    grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i, math.div($grid_gap, 4)), 1fr));
-        //}
     }
 }
 
@@ -219,6 +201,7 @@
 //----------------------------------------------------------
 // .%shrink
 // .%grid-b[1...n]-[1...n]
+// .%tile-b[1...n]-[1...n]
 // .%col-b[1...n]-[1...n]
 // .%span-b[1...n]-[1...n]
 // .%order-b[1...n]-[1...n]
@@ -253,23 +236,11 @@
             #{JX(tile-b#{$i}-#{$j})} {
                 grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($j), 1fr));
 
-                @each $value in (gap, gap-half, gap-quart) {
-                    &.#{$value} {
-                        grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($j, GetGap($value)), 1fr));
+                @each $v in (gap, gap-half, gap-quart) {
+                    &#{JX($v)} {
+                        grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($j, GetGap($v)), 1fr));
                     }
                 }
-
-                //&.gap {
-                //    grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($j, $grid_gap), 1fr));
-                //}
-                //
-                //&.gap-half {
-                //    grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($j, math.div($grid_gap, 2)), 1fr));
-                //}
-                //
-                //&.gap-quart {
-                //    grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($j, math.div($grid_gap, 4)), 1fr));
-                //}
             }
         }
 
