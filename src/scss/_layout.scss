@@ -57,29 +57,39 @@
     }
 }
 
+#{JX(grid-auto-flow, "%")} {
+    @each $flow in (row, column, dense) {
+        &-#{$flow} {
+            grid-auto-flow: $flow;
+        }
+    }
+}
+
 #{JX(grid-child-fit, "%")} {
     @extend #{JX(reset-width, "%")};
     @extend #{JX(margin-0, "%")};
 }
 
-// Tile
-//----------------------------------------------------------
-// .%tile
-// .%tile-[1...n]
-// .%tile-b[1...n]-[1...n]
-//**********************************************************
-#{JX(tile)}, [class*=#{JX(tile-, "")}] {
-    @extend #{JX(layout, "%")};
-}
-
 // Row
 //----------------------------------------------------------
 // .%row
+// .%row-[1...n]
+// .%row-b[1...n]-[1...n]
 //**********************************************************
-#{JX(row)} {
+#{JX(row)}, [class*=#{JX(row-, "")}] {
     @extend #{JX(layout, "%")};
+    @extend #{JX(grid-child-fit, "%")};
+}
+
+#{JX(row)} {
     //grid-template-columns: repeat(auto-fit, minmax($layout_unit, auto));
-    grid-auto-flow:        column;
+    //grid-auto-flow: column;
+    @extend #{JX(grid-auto-flow-column, "%")};
+    //grid-column: 1 / end;
+}
+
+[class*=#{JX(row-, "")}] {
+    @extend #{JX(grid-auto-flow-dense, "%")};
 }
 
 // Bar
@@ -103,8 +113,8 @@
 //**********************************************************
 #{JX(col)} {
     @extend #{JX(layout, "%")};
+    @extend #{JX(grid-auto-flow-dense, "%")};
     grid-template-rows: repeat(auto-fit, minmax($layout_unit, auto));
-    grid-auto-flow:     dense;
 }
 
 // List
@@ -120,7 +130,7 @@
 // .%shrink
 //**********************************************************
 #{JX(shrink)} {
-    grid-auto-flow: dense;
+    @extend #{JX(grid-auto-flow-dense, "%")};
 }
 
 // Gap
@@ -156,7 +166,7 @@
             @extend #{JX(grid, "%")};
         }
 
-        #{JX(tile-b#{$i}-#{$j}, "%")} {
+        #{JX(row-b#{$i}-#{$j}, "%")} {
             @extend #{JX(layout, "%")};
         }
     }
@@ -183,11 +193,12 @@
         order: $i;
     }
 
-    #{JX(tile-#{$i}, "%")} {
+    #{JX(row-#{$i}, "%")} {
         @extend #{JX(layout, "%")};
+        @extend #{JX(grid-auto-flow-dense, "%")};
     }
 
-    #{JX(tile-#{$i})} {
+    #{JX(row-#{$i})} {
         grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i), 1fr));
 
         @each $v in (gap, gap-half, gap-quart) {
@@ -234,7 +245,7 @@
                 order: $j;
             }
 
-            #{JX(tile-b#{$i}-#{$j})} {
+            #{JX(row-b#{$i}-#{$j})} {
                 grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($j), 1fr));
 
                 @each $v in (gap, gap-half, gap-quart) {

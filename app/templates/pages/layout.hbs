@@ -31,10 +31,32 @@
         </section>
 
         <h3>Tile</h3>
-        <section class="tile-3 tile-b11-8 tile-b9-4 gap col-12 outline">
+        <section class="tile-3 tile-b11-8 tile-b9-4 gap outline">
             {{#each debugGrid}}
                 <div>{{this}}</div>
             {{/each}}
+        </section>
+
+        <h3>Row</h3>
+        <section class="row outline">
+            {{#each debugGrid}}
+                <div>{{this}}</div>
+            {{/each}}
+        </section>
+
+        <section class="row outline">
+            <div class="col-b10-3 col-b9-5 col-b8-6">1</div>
+            <div>2</div>
+            <div>3</div>
+            <div class="col-3 col-b12-0 col-b5-6">4</div>
+            <div>5</div>
+            <div class="span-2">6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div>10</div>
+            <div>11</div>
+            <div>12</div>
         </section>
 
     {{/main}}
