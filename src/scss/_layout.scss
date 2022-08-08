@@ -82,8 +82,6 @@
 }
 
 #{JX(row)} {
-    //grid-template-columns: repeat(auto-fit, minmax($layout_unit, auto));
-    //grid-auto-flow: column;
     @extend #{JX(grid-auto-flow-column, "%")};
     //grid-column: 1 / end;
 }
@@ -98,10 +96,11 @@
 //**********************************************************
 #{JX(bar)} {
     //@extend %#{$prefix}row;
+    //grid-template-columns: repeat(auto-fit, minmax($layout_unit, auto));
     @extend #{JX(layout, "%")};
+    align-items:       center;
     grid-auto-flow:    column;
     grid-auto-columns: min-content;
-    align-items:       center;
     justify-items:     center;
 }
 
@@ -155,7 +154,7 @@
 // Checkpoints
 //----------------------------------------------------------
 // .%grid-[1...n]
-// .%tile-[1...n]
+// .%row-[1...n]
 // .%col-[1...n]
 // .%span-[1...n]
 // .%order-[1...n]
@@ -213,7 +212,7 @@
 //----------------------------------------------------------
 // .%shrink
 // .%grid-b[1...n]-[1...n]
-// .%tile-b[1...n]-[1...n]
+// .%row-b[1...n]-[1...n]
 // .%col-b[1...n]-[1...n]
 // .%span-b[1...n]-[1...n]
 // .%order-b[1...n]-[1...n]
