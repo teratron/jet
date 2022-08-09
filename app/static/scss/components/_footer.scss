@@ -18,11 +18,11 @@
     }
 
     .list {
-        @extend %list;
+        //@extend %list;
     }
 
     .bar {
-        @extend %bar;
+        //@extend %bar;
         @extend %gap-quart;
     }
 }

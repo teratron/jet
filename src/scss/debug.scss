@@ -21,12 +21,12 @@ button button {
 #{JX(debug-layout)} {
     &::before,
     &::after {
-        position: fixed;
-        z-index:  $zindex_debug;
-        top:      0;
-        bottom:   0;
-        display:  block;
-        content:  "";
+        @extend %display-block;
+        @extend %position-fixed;
+        z-index: $zindex_debug;
+        top:     0;
+        bottom:  0;
+        content: "";
     }
 
     &::before {
@@ -45,13 +45,13 @@ button button {
 #{JX(debug-sticker)} {
     &::before,
     &::after {
+        @extend %display-block;
+        @extend %position-fixed;
         font-size:   12px;
         line-height: 40px;
-        position:    fixed;
         z-index:     $zindex_debug + 1;
         top:         auto;
         bottom:      0;
-        display:     block;
         min-width:   80px;
         height:      40px;
         text-align:  center;

@@ -142,7 +142,7 @@
 // .%gap-0
 //**********************************************************
 #{JX(gap)} {
-    @extend #{JX(gap, "%")};
+    @extend #{JX(gap, "%")}; // TODO:
 
     @each $v in (-half, -quart, -0) {
         &#{$v} {
@@ -195,6 +195,7 @@
     #{JX(row-#{$i}, "%")} {
         @extend #{JX(layout, "%")};
         @extend #{JX(grid-auto-flow-dense, "%")};
+        @extend #{JX(grid-child-fit, "%")};
     }
 
     #{JX(row-#{$i})} {
@@ -216,6 +217,8 @@
 // .%col-b[1...n]-[1...n]
 // .%span-b[1...n]-[1...n]
 // .%order-b[1...n]-[1...n]
+// .%in-b[1...n]
+// .%out-b[1...n]
 // .%on-b[1...n]
 // .%off-b[1...n]
 // .%show-b[1...n]
