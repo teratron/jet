@@ -5,6 +5,7 @@
 //**********************************************************
 @use "sass:math";
 @use "sass:list";
+@use "sass:string";
 
 // Locator
 //----------------------------------------------------------
@@ -108,11 +109,14 @@
 
 // Gaps
 @function GetGap($value) {
-    @if $value == gap-half or $value == -half or $value == half {
+    //@if $value == gap-half or $value == -half or $value == half {
+    @if string.index(#{$value}, "half") != null {
         @return math.div($grid_gap, 2);
-    } @else if $value == gap-quart or $value == -quart or $value == quart {
+        //} @else if $value == gap-quart or $value == -quart or $value == quart {
+    } @else if string.index(#{$value}, "quart") != null {
         @return math.div($grid_gap, 4);
-    } @else if $value == gap-0 or $value == -0 or $value == 0 {
+        //} @else if $value == gap-0 or $value == -0 or $value == 0 {
+    } @else if string.index(#{$value}, "0") != null {
         @return 0;
     }
 
