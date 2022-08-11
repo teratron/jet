@@ -144,10 +144,14 @@
 #{JX(gap, ".")} {
     @extend #{JX(gap, "%")}; // TODO:
 
-    @each $v in (-half, -quart, -0) {
+    @each $v in (-half, -quart) {
         &#{$v} {
             @extend #{JX(gap#{$v}, "%")};
         }
+    }
+
+    &-0 {
+        @extend #{JX(gap-0, "%")};
     }
 }
 
