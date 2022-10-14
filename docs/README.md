@@ -6,7 +6,7 @@
 [dropdown](dropdown.md)\
 [select](select.md)
 
-| ---             | Style                 |
+| Type            | Style                 |
 |-----------------|-----------------------|
 | function        | PascalCase()          |
 | mixin           | camelCase()           |
