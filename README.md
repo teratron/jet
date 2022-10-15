@@ -4,9 +4,8 @@
 
 ## About
 
-HTML, CSS, SCSS, JavaScript Framework.
-
-Вспомогательный маленький framework, предназначенный для формирования layout.
+HTML, CSS, SCSS, JavaScript Framework.\
+Вспомогательный, маленький framework, предназначенный для формирования layout.
 
 ## Usage
 
