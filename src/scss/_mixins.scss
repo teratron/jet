@@ -77,7 +77,7 @@
 // ]
 //**********************************************************
 @mixin copyBuffer($selector, $props, $breakpoint: $grid_column) {
-    $buffer:                  (selector: $selector, breakpoint: $breakpoint);
+    $buffer: (selector: $selector, breakpoint: $breakpoint);
 
     @each $key, $value in $props {
         $buffer: map.merge($buffer, props, ($key: $value));
