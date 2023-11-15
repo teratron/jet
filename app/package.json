@@ -6,10 +6,10 @@
   "homepage": "https://teratron.github.io/jettix",
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",
-    "gh-pages": "^5.0.0",
-    "handlebars": "^4.7.7",
+    "gh-pages": "^6.0.0",
+    "handlebars": "^4.7.8",
     "handlebars-loader": "^1.7.3",
-    "html-webpack-plugin": "^5.5.0"
+    "html-webpack-plugin": "^5.5.3"
   },
   "scripts": {
     "start": "webpack serve --config config/webpack.dev.js",
