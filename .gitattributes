@@ -1,23 +1,9 @@
-######################################################################
-# GITATTRIBUTES FOR WEB PROJECTS
-#
-# These settings are for any web project.
-#
-# Details per file setting:
-#   text    These files should be normalized (i.e. convert CRLF to LF).
-#   binary  These files are binary and should be left untouched.
-#
-# Note that binary is a macro for -text -diff.
-######################################################################
-
 ## AUTO-DETECT
-##   Handle line endings automatically for files detected as
-##   text and leave all files detected as binary untouched.
-##   This will handle all files NOT defined below.
-* text=auto
+* text=auto eol=lf
 
 ## SOURCE CODE
-*.bat      text eol=crlf
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
 *.coffee   text
 *.css      text
 *.htm      text
@@ -37,7 +23,7 @@
 *.sass     text
 *.scm      text
 *.scss     text
-*.sh       text eol=lf
+*.sh       text
 *.sql      text
 *.styl     text
 *.tag      text
@@ -59,6 +45,7 @@ Dockerfile     text
 *.mkdn       text
 *.mdtxt      text
 *.mdtext     text
+*.rst        text
 *.txt        text
 AUTHORS      text
 CHANGELOG    text
@@ -110,12 +97,14 @@ TODO         text
 .browserslistrc text
 .editorconfig   text
 .gitattributes  text
+.gitmodules     text
 .gitconfig      text
 .gitignore      text
 .htaccess       text
 *.npmignore     text
 *.yaml          text
 *.yml           text
+*.toml          text
 browserslist    text
 Makefile        text
 makefile        text
@@ -129,6 +118,7 @@ Procfile    text
 *.bmp  binary
 *.eps  binary
 *.gif  binary
+*.hdr  binary
 *.ico  binary
 *.jng  binary
 *.jp2  binary
@@ -174,6 +164,7 @@ Procfile    text
 *.swc  binary
 *.swf  binary
 *.webm binary
+*.dat  binary
 
 ## ARCHIVES
 *.7z  binary

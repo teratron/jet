@@ -3,20 +3,20 @@
   "version": "0.0.184",
   "description": "Web application for Jettix",
   "private": true,
+  "type": "module",
   "homepage": "https://teratron.github.io/jettix",
-  "devDependencies": {
-    "copy-webpack-plugin": "^11.0.0",
-    "gh-pages": "^6.0.0",
-    "handlebars": "^4.7.8",
-    "handlebars-loader": "^1.7.3",
-    "html-webpack-plugin": "^5.5.3"
-  },
   "scripts": {
-    "start": "webpack serve --config config/webpack.dev.js",
-    "build": "webpack --config config/webpack.prod.js",
-    "build:dev": "webpack --config config/webpack.prod.js --node-env build-dev",
-    "deploy:gh": "gh-pages -d build",
-    "build-deploy:gh": "gh-pages-clean && npm run build && npm run deploy:gh"
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "deploy:gh": "gh-pages-clean && gh-pages -d build"
   },
-  "buildDate": "2022-07-06T05:33:30.814Z"
+  "dependencies": {
+    "vue": "^3.3.8"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.0",
+    "vue-tsc": "^1.8.22",
+    "gh-pages": "^6.0.0"
+  }
 }
