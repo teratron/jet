@@ -38,10 +38,9 @@
     "deploy:npm": "npm publish"
   },
   "devDependencies": {
-    "vite": "^5.0.0"
-  },
-  "peerDependencies": {
-    "typescript": "^5.2.2"
+    "sass": "^1.69.5",
+    "vite": "^5.0.3",
+    "typescript": "^5.3.2"
   },
   "workspaces": [
     "app"
