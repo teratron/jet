@@ -2,7 +2,7 @@
 import {defineConfig} from 'vite'
 
 // https://vitejs.dev/config/
-defineConfig(({command, mode, isSsrBuild, isPreview}) => {
+export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
     console.log('Config arguments:', command, mode, isSsrBuild, isPreview)
 
     // build      command='build', mode='production'

@@ -3,24 +3,6 @@ import Main   from '../containers/AppMain.vue'
 import Footer from '../containers/AppFooter.vue'
 import Header from '../containers/AppHeader.vue'
 import Button from '../components/Button.vue'
-
-/*export default Home = {
-    computed: {
-        username() {
-            // Скоро мы увидим, что такое `params`
-            return this.$route.params.username
-        }
-    },
-    methods: {
-        goToDashboard() {
-            if (isAuthenticated) {
-                this.$router.push('/dashboard')
-            } else {
-                this.$router.push('/login')
-            }
-        }
-    }
-}*/
 </script>
 
 <template>
