@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {RouterLink, RouterView} from 'vue-router'
 import Header                   from './containers/AppHeader.vue'
 import Footer                   from './containers/AppFooter.vue'

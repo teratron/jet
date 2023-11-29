@@ -183,53 +183,53 @@ $is_placeholder_mode: true !default;
 
 // Breakpoints
 @for $i from $grid_column to 0 {
-  @media only screen and (max-width: GetBreakpoint($i)) {
+    @media only screen and (max-width: GetBreakpoint($i)) {
 
-    // Shrink
-    @if $i < $grid_column {
-      $k: $i + 1;
+        // Shrink
+        @if $i < $grid_column {
+            $k: $i + 1;
 
-      .#{$prefix}shrink {
-        &,
-        > %#{$prefix}grid-shrink-#{$k} {
-          grid-template-columns: repeat($i, 1fr);
+            .#{$prefix}shrink {
+                &,
+                > %#{$prefix}grid-shrink-#{$k} {
+                    grid-template-columns: repeat($i, 1fr);
+                }
+
+                > %#{$prefix}col-shrink-#{$k},
+                > %#{$prefix}grid-child-fit,
+                > .#{$prefix}grid-#{$k} > %#{$prefix}grid-child-fit {
+                    grid-column-end: span $i;
+                }
+            }
+
+            @for $j from $k through $grid_column {
+                .#{$prefix}grid-#{$j} {
+                    @extend %#{$prefix}grid-shrink-#{$k};
+                }
+
+                .#{$prefix}col-#{$j},
+                .#{$prefix}grid-#{$j} {
+                    @extend %#{$prefix}col-shrink-#{$k};
+                }
+            }
         }
-
-        > %#{$prefix}col-shrink-#{$k},
-        > %#{$prefix}grid-child-fit,
-        > .#{$prefix}grid-#{$k} > %#{$prefix}grid-child-fit {
-          grid-column-end: span $i;
-        }
-      }
-
-      @for $j from $k through $grid_column {
-        .#{$prefix}grid-#{$j} {
-          @extend %#{$prefix}grid-shrink-#{$k};
-        }
-
-        .#{$prefix}col-#{$j},
-        .#{$prefix}grid-#{$j} {
-          @extend %#{$prefix}col-shrink-#{$k};
-        }
-      }
     }
-  }
 }
 
 // Fuse
 @for $i from 1 through $grid_column {
-  @if $i < $grid_column {
-    @for $j from $i + 1 through $grid_column {
-      > .#{$prefix}grid-#{$j} {
-        @extend %grid-#{$i};
-      }
+    @if $i < $grid_column {
+        @for $j from $i + 1 through $grid_column {
+            > .#{$prefix}grid-#{$j} {
+                @extend %grid-#{$i};
+            }
 
-      > .#{$prefix}col-#{$j},
-      > .#{$prefix}grid-#{$j} {
-        @extend %col-#{$i};
-      }
+            > .#{$prefix}col-#{$j},
+            > .#{$prefix}grid-#{$j} {
+                @extend %col-#{$i};
+            }
+        }
     }
-  }
 }
 
 //@for $i from $grid_column - 1 to 1 {

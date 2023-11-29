@@ -5,7 +5,7 @@ $blue:      #0009e1 !default;
 $indigo:    #6610f2 !default;
 $purple:    #6f42c1 !default;
 $pink:      #d63384 !default;
-$red:       #f00 !default;
+$red: #ff0000 !default;
 $orange:    #fd7e14 !default;
 $yellow:    #ffa900 !default;
 $green:     #198754 !default;
@@ -82,7 +82,7 @@ $dark:      #212529 !default;
 
 // Reset
 hr {
-    border-top-color: #ccc;
+    border-top-color: #cccccc;
 }
 
 ::selection {
@@ -95,7 +95,7 @@ mark {
 
 
 pre {
-    color: #ccc;
+    color: #cccccc;
 }
 
 code {
