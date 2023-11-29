@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /*const dropdown = {
     active: 0,
@@ -9,7 +9,6 @@
         '444'
     ]
 }*/
-
 
 /*let a = new Dropdown(0, ['111', '222', '333'])
 console.log(a);
@@ -33,4 +32,3 @@ for (const key in dr) {
     console.log(iterator);
 
 }*/
-

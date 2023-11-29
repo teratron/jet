@@ -9,24 +9,34 @@
       "DOM.Iterable"
     ],
     "skipLibCheck": true,
-
-    /* Bundler mode */
     "baseUrl": "./",
+    "paths": {
+      "src": [
+        "src"
+      ],
+      "components": [
+        "src/components"
+      ],
+      "containers": [
+        "src/containers"
+      ],
+      "layouts": [
+        "src/layouts"
+      ],
+      "views": [
+        "src/views"
+      ],
+      "assets": [
+        "src/assets"
+      ]
+    },
+    /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "paths": {
-      "src": ["src"],
-      "components": ["src/components"],
-      "containers": ["src/containers"],
-      "layouts": ["src/layouts"],
-      "pages": ["src/pages"],
-      "assets": ["src/assets"]
-    },
-
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,

@@ -10,7 +10,8 @@
 // .%out-[top | bottom | left | right]
 // .%in
 //**********************************************************
-#{JX(out)}, [class*=#{JX(out-, "")}] {
+#{JX(out)},
+[class*=#{JX(out-, "")}] {
     @extend #{JX(position-fixed, "%")};
 }
 
@@ -33,7 +34,8 @@
         bottom: -100vh;
     }
 
-    &, &-left {
+    &,
+    &-left {
         left:  -100vw;
         right: 100vw;
     }
@@ -44,7 +46,8 @@
     }
 }
 
-#{JX(in)}, [class*=#{JX(in-, "")}] {
+#{JX(in)},
+[class*=#{JX(in-, "")}] {
     @extend #{JX(position-fixed, "%")};
 }
 
@@ -82,7 +85,7 @@
 // .%show
 // .%hide
 //**********************************************************
-$duration: .3s;
+$duration: 0.3s;
 
 @mixin hide {
     position:  fixed;
@@ -113,8 +116,10 @@ $duration: .3s;
     @include show;
 }
 
-#{JX(hide)}, [class*=#{JX(hide-, "")}],
-#{JX(show)}, [class*=#{JX(show-, "")}] {
+#{JX(hide)},
+[class*=#{JX(hide-, "")}],
+#{JX(show)},
+[class*=#{JX(show-, "")}] {
     transition: opacity $duration linear;
 }
 

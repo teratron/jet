@@ -37,6 +37,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --write src/",
     "deploy:npm": "npm publish"
   },
   "devDependencies": {
@@ -44,7 +46,12 @@
     "postcss": "^8.4.31",
     "sass": "^1.69.5",
     "typescript": "^5.3.2",
-    "vite": "^5.0.3"
+    "vite": "^5.0.3",
+    "@types/node": "^18.18.5",
+    "prettier": "^3.0.3",
+    "eslint": "^8.49.0",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0"
   },
   "workspaces": [
     "app"

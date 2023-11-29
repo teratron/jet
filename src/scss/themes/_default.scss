@@ -5,7 +5,7 @@ $blue:      #0009e1 !default;
 $indigo:    #6610f2 !default;
 $purple:    #6f42c1 !default;
 $pink:      #d63384 !default;
-$red:       #f00 !default;
+$red:       #ff0000 !default;
 $orange:    #fd7e14 !default;
 $yellow:    #ffa900 !default;
 $green:     #198754 !default;
@@ -22,7 +22,6 @@ $warning:   #ffd582 !default;
 $danger:    #ff6464 !default;
 $light:     #f8f9fa !default;
 $dark:      #212529 !default;
-
 
 //$color-primary: (
 //            &: $primary,
@@ -92,7 +91,6 @@ hr {
 mark {
     background-color: #f9ff6a;
 }
-
 
 pre {
     color: #ccc;

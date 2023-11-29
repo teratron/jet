@@ -69,10 +69,10 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
         }
       }
     },
-    resolve: {
+    /*resolve: {
       alias: {
         '@': './src',
       }
-    }
+    }*/
   }
 })

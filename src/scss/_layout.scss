@@ -33,10 +33,12 @@
         @if $container_gap == $layout_gap {
             @extend #{JX(padding-left, "%")}, #{JX(padding-right, "%")};
         } @else {
-            @include setPropsAdaptive((
-                    padding-left: $container_gap,
-                    padding-right: $container_gap
-            ));
+            @include setPropsAdaptive(
+                    (
+                        padding-left: $container_gap,
+                        padding-right: $container_gap,
+                    )
+            );
         }
     }
 }
@@ -47,7 +49,8 @@
 // .%grid-[1...n]
 // .%grid-b[1...n]-[1...n]
 //**********************************************************
-#{JX(grid)}, [class*=#{JX(grid-, "")}] {
+#{JX(grid)},
+[class*=#{JX(grid-, "")}] {
     @extend #{JX(layout, "%")};
     grid-auto-flow: row;
     //align-items:    baseline;
@@ -76,7 +79,8 @@
 // .%row-[1...n]
 // .%row-b[1...n]-[1...n]
 //**********************************************************
-#{JX(row)}, [class*=#{JX(row-, "")}] {
+#{JX(row)},
+[class*=#{JX(row-, "")}] {
     @extend #{JX(layout, "%")};
     @extend #{JX(grid-child-fit, "%")};
 }
@@ -207,7 +211,10 @@
 
         @each $v in (gap, gap-half, gap-quart) {
             &#{JX($v)} {
-                grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i, GetGap($v)), 1fr));
+                grid-template-columns: repeat(
+          auto-fit,
+                                               minmax(GetMinTileWidth($i, GetGap($v)), 1fr)
+        );
             }
         }
     }
@@ -252,11 +259,17 @@
             }
 
             #{JX(row-b#{$i}-#{$j})} {
-                grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($j), 1fr));
+                grid-template-columns: repeat(
+          auto-fit,
+                                               minmax(GetMinTileWidth($j), 1fr)
+        );
 
                 @each $v in (gap, gap-half, gap-quart) {
                     &#{JX($v)} {
-                        grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($j, GetGap($v)), 1fr));
+                        grid-template-columns: repeat(
+              auto-fit,
+                                                       minmax(GetMinTileWidth($j, GetGap($v)), 1fr)
+            );
                     }
                 }
             }

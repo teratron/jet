@@ -77,7 +77,9 @@ summary {
 }
 
 figure {
-    @extend #{JX(margin-top-0, "%")}, #{JX(margin-left-0, "%")}, #{JX(margin-right-0, "%")};
+    @extend #{JX(margin-top-0, "%")},
+    #{JX(margin-left-0, "%")},
+    #{JX(margin-right-0, "%")};
     @extend #{JX(margin-bottom-half, "%")};
 }
 
