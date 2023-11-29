@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import {RouterLink, RouterView} from 'vue-router'
-import Header                   from './containers/Header.vue'
-import Footer                   from './containers/Footer.vue'
-import Main                     from './containers/Main.vue'
+import Header                   from './containers/AppHeader.vue'
+import Footer                   from './containers/AppFooter.vue'
+import Main                     from './containers/AppMain.vue'
 import './assets/scss/app.scss'
 </script>
 

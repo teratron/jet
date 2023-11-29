@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import Main   from '../containers/Main.vue'
-import Footer from '../containers/Footer.vue'
-import Header from '../containers/Header.vue'
+import Main   from '../containers/AppMain.vue'
+import Footer from '../containers/AppFooter.vue'
+import Header from '../containers/AppHeader.vue'
 import Button from '../components/Button.vue'
 
 /*export default Home = {

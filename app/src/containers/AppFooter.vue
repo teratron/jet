@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Container from './Container.vue'
+import Container from './AppContainer.vue'
 </script>
 
 <template>
@@ -7,6 +7,7 @@ import Container from './Container.vue'
         <Container>
             <h1>Footer</h1>
             <small>Copyright, 2023</small>
+            <slot></slot>
         </Container>
     </footer>
 </template>

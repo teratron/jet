@@ -1,8 +1,8 @@
 /** @type {import('vite').UserConfig} */
-import { defineConfig } from 'vite'
+import {defineConfig} from 'vite'
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
+defineConfig(({command, mode, isSsrBuild, isPreview}) => {
   console.log('Config arguments:', command, mode, isSsrBuild, isPreview)
 
   // build      command='build', mode='production'
