@@ -3,5 +3,5 @@ defineProps<{ msg: string }>()
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+  <button type="button" msg="">{{ msg }}</button>
 </template>

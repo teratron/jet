@@ -11,6 +11,7 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
+    "baseUrl": "./",
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
@@ -18,12 +19,12 @@
     "noEmit": true,
     "jsx": "preserve",
     "paths": {
-      "src/*": ["src/*"],
-      "components/*": ["src/components/*"],
-      "containers/*": ["src/containers/*"],
-      "layouts/*": ["src/layouts/*"],
-      "pages/*": ["src/pages/*"],
-      "assets/*": ["src/assets/*"]
+      "src": ["src"],
+      "components": ["src/components"],
+      "containers": ["src/containers"],
+      "layouts": ["src/layouts"],
+      "pages": ["src/pages"],
+      "assets": ["src/assets"]
     },
 
     /* Linting */

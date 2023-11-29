@@ -1,13 +1,12 @@
 <script setup lang="ts">
+import Container from './Container.vue'
 </script>
 
 <template>
-    <header class="app-header">
-        <div class="app-container">
+    <header id="app-header">
+        <Container>
             <h1>Jettix</h1>
-            <nav class="navbar">
-
-            </nav>
-        </div>
+            <slot></slot>
+        </Container>
     </header>
 </template>

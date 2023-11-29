@@ -17,10 +17,6 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "paths": {
-      "src/*": ["src/*"],
-      "app/*": ["*"]
-    },
 
     /* Linting */
     "strict": true,
@@ -29,10 +25,10 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*"
   ],
   "exclude": [
-    "test/**/*.ts"
+    "test/**/*"
   ],
   "references": [
     {

@@ -1,11 +1,12 @@
 <script setup lang="ts">
+import Container from './Container.vue'
 </script>
 
 <template>
-    <footer class="app-footer">
-        <div class="app-container">
+    <footer id="app-footer">
+        <Container>
             <h1>Footer</h1>
             <small>Copyright, 2023</small>
-        </div>
+        </Container>
     </footer>
 </template>

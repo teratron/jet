@@ -1,8 +1,15 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './containers/Header.vue'
+import Footer from './containers/Footer.vue'
+import Main   from './containers/Main.vue'
+import './assets/scss/index.scss'
 </script>
 
 <template>
-    <HelloWorld msg="Jettix"/>
-    <p>HTML, CSS, SCSS, JavaScript Framework</p>
+    <Header></Header>
+    <Main>
+        <h1>Jettix</h1>
+        <p>HTML, CSS, SCSS, JavaScript Framework</p>
+    </Main>
+    <Footer></Footer>
 </template>
