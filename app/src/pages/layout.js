@@ -1,6 +1,6 @@
 'use strict'
 
-import {props} from '../app'
+import {props} from '../templates/app.js'
 import template from './layout.hbs'
 
 const arrGrid = []

@@ -1,6 +1,6 @@
 'use strict'
 
-import {props} from '../app'
+import {props} from '../templates/app.js'
 import template from './index.hbs'
 
 const context = {

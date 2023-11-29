@@ -19,7 +19,11 @@
     "jsx": "preserve",
     "paths": {
       "src/*": ["src/*"],
-      "app/*": ["*"]
+      "components/*": ["src/components/*"],
+      "containers/*": ["src/containers/*"],
+      "layouts/*": ["src/layouts/*"],
+      "pages/*": ["src/pages/*"],
+      "assets/*": ["src/assets/*"]
     },
 
     /* Linting */
@@ -29,10 +33,12 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
   ],
   "exclude": [
-    "test/**/*.ts"
+    "test/**/*"
   ],
   "references": [
     {

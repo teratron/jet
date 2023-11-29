@@ -4,11 +4,11 @@
   "description": "HTML, CSS, SCSS, JavaScript Framework",
   "private": false,
   "type": "module",
-  "main": "dist/js/jettix.js",
+  "main": "dist/js/jettix.ts",
   "style": "dist/css/jettix.css",
   "sass": "src/scss/jettix.scss",
   "files": [
-    "dist/{css,js}/**/*.{css,js,map}",
+    "dist/{css,js}/**/*.{css,js,ts,map}",
     "src/scss/**/*.scss"
   ],
   "keywords": [
@@ -19,7 +19,9 @@
     "css",
     "scss",
     "js",
-    "javascript"
+    "ts",
+    "javascript",
+    "typescript"
   ],
   "author": "Oleg Alexandrov <alexandrovoleg.ru@gmail.com>",
   "license": "MIT",
@@ -38,9 +40,11 @@
     "deploy:npm": "npm publish"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
     "sass": "^1.69.5",
-    "vite": "^5.0.3",
-    "typescript": "^5.3.2"
+    "typescript": "^5.3.2",
+    "vite": "^5.0.3"
   },
   "workspaces": [
     "app"
