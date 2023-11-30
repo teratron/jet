@@ -1,3 +1,5 @@
 <script lang="ts" setup></script>
 
-<template>About</template>
+<template>
+    <slot/>
+</template>

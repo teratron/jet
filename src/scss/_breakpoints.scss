@@ -69,8 +69,8 @@ $list_breakpoints_buffer2: (
                            );
 
 //@for $i from $grid_column to 0 {
-//    @media only screen and (max-width: GetBreakpoint($i)) {
-//        //@include flushBreakpointBuffer($i);
+//    @media only screen and (max-width: fnGetBreakpoint($i)) {
+//        //@include mxFlushBreakpointBuffer($i);
 //    }
 //}
 
@@ -80,10 +80,10 @@ $list_breakpoints_buffer2: (
 //    }
 //}
 
-@mixin pushBreakpointBuffer($breakpoint, $selector, $props: null) {
-    $buffer:                   (
-                                   selector: $selector
-                               );
+@mixin mxPushBreakpointBuffer($breakpoint, $selector, $props: null) {
+    $buffer: (
+                 selector: $selector
+             );
 
     @if $props != null {
         @if meta.type-of($props) == map {
@@ -100,13 +100,12 @@ $list_breakpoints_buffer2: (
     }
 
     //$a: @content;
-
-    $list:                     list.nth($list_breakpoints_buffer2, $breakpoint);
-    $list:                     list.append($list, $buffer);
+    $list:   list.nth($list_breakpoints_buffer2, $breakpoint);
+    $list:   list.append($list, $buffer);
     $list_breakpoints_buffer2: list.set-nth($list_breakpoints_buffer2, $breakpoint, $list) !global;
 }
 
-@mixin flushBreakpointBuffer() {
+@mixin mxFlushBreakpointBuffer() {
     @each $list in $list_breakpoints_buffer2 {
         @each $buffer in $list {
             #{map.get($buffer, selector)} {
@@ -118,4 +117,4 @@ $list_breakpoints_buffer2: (
     }
 }
 
-//@include flushBreakpointBuffer;
+//@include mxFlushBreakpointBuffer;

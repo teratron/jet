@@ -14,10 +14,10 @@ import ListRouterLink from '../components/ListRouterLink.vue'
 
 <style scoped>
 #app-header nav {
-    display:        flex;
-    align-items:    center;
+    display:     flex;
+    align-items: center;
     flex-direction: row;
-    flex-wrap:      nowrap;
+    flex-wrap:   nowrap;
     justify-content: space-between;
 }
 </style>

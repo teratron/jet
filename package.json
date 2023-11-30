@@ -34,7 +34,6 @@
   },
   "homepage": "https://teratron.github.io/jettix",
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "type-check": "tsc --noEmit -p tsconfig.json --composite false",

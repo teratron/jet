@@ -17,9 +17,9 @@ html {
 }
 
 body {
-    font-size:  $layout_font_size;
+    font-size: $layout_font_size;
     line-height: $layout_unit;
-    z-index:    1;
+    z-index:   1;
     overflow-x: hidden;
     min-height: 100vh;
     @extend #{JX(font-family-sans-serif, "%")};

@@ -53,10 +53,10 @@
 
 #{JX(in)} {
     position: initial;
-    top:    auto;
-    right:  auto;
+    top:   auto;
+    right: auto;
     bottom: auto;
-    left:   auto;
+    left:  auto;
 }
 
 // On / Off
@@ -64,20 +64,20 @@
 // .%on
 // .%off
 //**********************************************************
-@mixin off {
+@mixin mxOff {
     display: none; // TODO:
 }
 
-@mixin on {
+@mixin mxOn {
     display: initial; // TODO:
 }
 
 #{JX(off)} {
-    @include off;
+    @include mxOff;
 }
 
 #{JX(on)} {
-    @include on;
+    @include mxOn;
 }
 
 // Show / Hide
@@ -87,33 +87,33 @@
 //**********************************************************
 $duration: 0.3s;
 
-@mixin hide {
+@mixin mxHide {
     position: fixed;
-    z-index:  -1;
-    opacity:  0;
+    z-index: -1;
+    opacity: 0;
     animation: hide $duration linear;
 }
 
-@mixin show {
+@mixin mxShow {
     position: initial;
     z-index: auto;
     opacity: initial;
 }
 
 #{JX(hide)} {
-    @include hide;
+    @include mxHide;
 
     //@for $i from $grid_column to 0 {
-    //    @include pushBreakpointBuffer($i) {
+    //    @include mxPushBreakpointBuffer($i) {
     //        &-b#{$i} {
-    //            @include hide;
+    //            @include mxHide;
     //        }
     //    }
     //}
 }
 
 #{JX(show)} {
-    @include show;
+    @include mxShow;
 }
 
 #{JX(hide)},

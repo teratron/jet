@@ -1,0 +1,31 @@
+<script lang="ts" setup>
+</script>
+
+<template>
+    <h1>Select</h1>
+
+    <div class="dropdown select-custom">
+        <div class="toggle">Option 3</div>
+        <nav class="menu">
+            <a class="item" href="/#">Option 1</a>
+            <a class="item" href="/#">Option 2</a>
+        </nav>
+        <label>
+            <select class="select-custom">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option selected>Option 3</option>
+            </select>
+        </label>
+    </div>
+
+    <div class="select-custom"></div>
+
+    <label>
+        <select class="select-custom">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option selected>Option 3</option>
+        </select>
+    </label>
+</template>

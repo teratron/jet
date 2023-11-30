@@ -8,38 +8,30 @@
 //$locator:                "";
 
 // Prefix
-$prefix:           "";
+$prefix:          "";
 
 // Path
-$fonts:            "../fonts/";
-$media:            "../media/";
+$fonts:           "../fonts/";
+$media:           "../media/";
 
 // Root
-$root_unit:        20px;
+$root_unit:       20px;
 
 // Layout
-$layout_unit:      1rem;
+$layout_unit:     1rem;
 $layout_font-size: 16px;
-$layout_gap:       40px;
+$layout_gap:      20px;
 
 // Container
 $container_width: 1280px;
-$container_gap: 40px;
+$container_gap: 20px;
 
 // Grid
-$grid_column:      24;
-$grid_gap:         40px;
-
-// Z-index
-$zindex_app:       100;
-$zindex_main:      200;
-$zindex_content:   300;
-$zindex_sidebar: 400;
-$zindex_footer:    500;
-$zindex_header:    600;
+$grid_column:     24;
+$grid_gap: 20px;
 
 // Application
-$header_height:    100px;
+$header_height: 100px;
 $footer_height: 100px;
 $main_height: 400px;
 

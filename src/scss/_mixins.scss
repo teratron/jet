@@ -8,7 +8,7 @@
 @use "sass:math";
 @use "sass:meta";
 
-@mixin addPlaceholder($selector, $props: null, $loc: "%") {
+@mixin mxAddPlaceholder($selector, $props: null, $loc: "%") {
     @each $sel in $selector {
         #{JX($sel, $loc)} {
             @if meta.type-of($selector) == list {
@@ -28,8 +28,8 @@
     }
 }
 
-@mixin setGutter($prop, $value) {
-    @include setPropsAdaptive(
+@mixin mxSetGutter($prop, $value) {
+    @include mxSetPropsAdaptive(
             (
                 $prop: $value
             )
@@ -37,9 +37,9 @@
 
     @each $v in (-half, -quart) {
         &#{$v} {
-            @include setPropsAdaptive(
+            @include mxSetPropsAdaptive(
                     (
-                        $prop: GetGap($v)
+                        $prop: fnGetGap($v)
                     )
             );
         }
@@ -50,7 +50,7 @@
     }
 }
 
-@mixin setPropsAdaptive($props) {
+@mixin mxSetPropsAdaptive($props) {
     @each $key, $value in $props {
         @if $value > 0 {
             #{$key}: $value;
@@ -77,7 +77,7 @@
         }
     }
 
-    @include copyBuffer(#{&}, $buffer);
+    @include mxCopyBuffer(#{&}, $buffer);
 }
 
 // Array of breakpoints buffer
@@ -94,11 +94,11 @@
 //     ...
 // ]
 //**********************************************************
-@mixin copyBuffer($selector, $props, $breakpoint: $grid_column) {
-    $buffer:                  (
-                                  selector: $selector,
-                                  breakpoint: $breakpoint
-                              );
+@mixin mxCopyBuffer($selector, $props, $breakpoint: $grid_column) {
+    $buffer: (
+                 selector: $selector,
+                 breakpoint: $breakpoint
+             );
 
     @each $key, $value in $props {
         $buffer: map.merge(
@@ -113,7 +113,7 @@
     $list_breakpoints_buffer: list.append($list_breakpoints_buffer, $buffer) !global;
 }
 
-@mixin pasteBuffer($breakpoint: $grid_column) {
+@mixin mxPasteBuffer($breakpoint: $grid_column) {
     @each $buffer in $list_breakpoints_buffer {
         @if $breakpoint == map.get($buffer, breakpoint) {
             $selector: map.get($buffer, selector);

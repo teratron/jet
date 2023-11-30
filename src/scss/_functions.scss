@@ -57,7 +57,7 @@
 //}
 
 // Breakpoints
-@function GetListBreakpoints($is_evenly: false) {
+@function fnGetListBreakpoints($is_evenly: false) {
     $list: ();
     $g: $grid_gap;
     $c: $container_gap * 2;
@@ -89,7 +89,7 @@
     @return $list;
 }
 
-@function GetBreakpoint($n: $grid_column) {
+@function fnGetBreakpoint($n: $grid_column) {
     @return list.nth($list_breakpoints, $n);
 }
 
@@ -108,7 +108,7 @@
 }
 
 // Gaps
-@function GetGap($value) {
+@function fnGetGap($value) {
     //@if $value == gap-half or $value == -half or $value == half {
     @if string.index(#{$value}, "half") != null {
         @return math.div($grid_gap, 2);
@@ -124,27 +124,27 @@
 }
 
 // Helpers
-@function StripUnit($value) {
+@function fnStripUnit($value) {
     @return math.div($value, ($value * 0 + 1));
 }
 
-@function PxToRem($value) {
+@function fnPxToRem($value) {
     @if math.unit($value) == "px" {
-        @return $px * StripUnit($value);
+        @return $px * fnStripUnit($value);
     }
 
     @return $value;
 }
 
-@function RemToPx($value) {
+@function fnRemToPx($value) {
     @if math.unit($value) == "rem" {
-        @return math.round($root_unit * StripUnit($value));
+        @return math.round($root_unit * fnStripUnit($value));
     }
 
     @return $value;
 }
 
-//@function ToLayoutUnit($value) {
+//@function fnToLayoutUnit($value) {
 //    @if math.unit($container_width) == "px" {
 //
 //    }

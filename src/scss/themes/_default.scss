@@ -1,27 +1,50 @@
 @use "sass:color";
 
+// Theme Light
+//----------------------------------------------------------
+//
+//**********************************************************
+:root,
+[data-theme="light"] {
+    color-scheme:          light;
+    --app-header-bg-color: white;
+    --app-footer-bg-color: white;
+    --app-main-bg-color:   #f9f9f9;
+}
+
+// Theme Dark
+//----------------------------------------------------------
+//
+//**********************************************************
+[data-theme="dark"] {
+    color-scheme:          dark;
+    --app-header-bg-color: var(--bs-primary-rgb);
+    --app-footer-bg-color: var(--bs-primary-rgb);
+    --app-main-bg-color:   var(--bs-body-bg);
+}
+
 // Color variables
-$blue:    #0009e1 !default;
-$indigo:  #6610f2 !default;
-$purple:  #6f42c1 !default;
-$pink:    #d63384 !default;
-$red:     #ff0000 !default;
-$orange:  #fd7e14 !default;
-$yellow:  #ffa900 !default;
-$green:   #198754 !default;
-$teal:    #20ff6c !default;
-$cyan:    #20a1ff !default;
+$blue:   #0009e1 !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink:   #d63384 !default;
+$red:    #ff0000 !default;
+$orange: #fd7e14 !default;
+$yellow: #ffa900 !default;
+$green:  #198754 !default;
+$teal:   #20ff6c !default;
+$cyan:   #20a1ff !default;
 
 // Theme color variables
 $primary: #f8bb44 !default;
 $secondary: #ebebeb !default;
-$accent:  #ebebeb !default;
+$accent: #ebebeb !default;
 $success: #198754 !default;
-$info:    #20a1ff !default;
+$info:   #20a1ff !default;
 $warning: #ffd582 !default;
-$danger:  #ff6464 !default;
-$light:   #f8f9fa !default;
-$dark:    #212529 !default;
+$danger: #ff6464 !default;
+$light:  #f8f9fa !default;
+$dark:   #212529 !default;
 
 //$color-primary: (
 //            &: $primary,
@@ -101,7 +124,7 @@ code {
 }
 
 kbd {
-    color:         black;
+    color: black;
     border-radius: 3px;
     background-color: #f5f5f5;
 }

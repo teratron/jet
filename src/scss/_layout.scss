@@ -24,8 +24,8 @@
 // .%container
 //**********************************************************
 #{JX(container)} {
-    width:       100%;
-    max-width:   $container_width;
+    width:     100%;
+    max-width: $container_width;
     margin-right: auto;
     margin-left: auto;
 
@@ -33,7 +33,7 @@
         @if $container_gap == $layout_gap {
             @extend #{JX(padding-left, "%")}, #{JX(padding-right, "%")};
         } @else {
-            @include setPropsAdaptive(
+            @include mxSetPropsAdaptive(
                     (
                         padding-left: $container_gap,
                         padding-right: $container_gap
@@ -102,10 +102,10 @@
     //@extend %#{$prefix}row;
     //grid-template-columns: repeat(auto-fit, minmax($layout_unit, auto));
     @extend #{JX(layout, "%")};
-    align-items:    center;
+    align-items:   center;
     grid-auto-flow: column;
     grid-auto-columns: min-content;
-    justify-items:  center;
+    justify-items: center;
 }
 
 // Column
@@ -213,7 +213,7 @@
             &#{JX($v)} {
                 grid-template-columns: repeat(
                     auto-fit,
-                                               minmax(GetMinTileWidth($i, GetGap($v)), 1fr)
+                                               minmax(GetMinTileWidth($i, fnGetGap($v)), 1fr)
                 );
             }
         }
@@ -236,8 +236,8 @@
 // .%hide-b[1...n]
 //**********************************************************
 @for $i from $grid_column to 0 {
-    @media only screen and (max-width: GetBreakpoint($i)) {
-        @include pasteBuffer($i);
+    @media only screen and (max-width: fnGetBreakpoint($i)) {
+        @include mxPasteBuffer($i);
 
         @for $j from 1 through $grid_column {
             #{JX(grid-b#{$i}-#{$j})} {
@@ -265,7 +265,7 @@
                     &#{JX($v)} {
                         grid-template-columns: repeat(
                             auto-fit,
-                                                       minmax(GetMinTileWidth($j, GetGap($v)), 1fr)
+                                                       minmax(GetMinTileWidth($j, fnGetGap($v)), 1fr)
                         );
                     }
                 }
@@ -312,19 +312,19 @@
         }
 
         #{JX(off-b#{$i})} {
-            @include off;
+            @include mxOff;
         }
 
         #{JX(on-b#{$i})} {
-            @include on;
+            @include mxOn;
         }
 
         #{JX(hide-b#{$i})} {
-            @include hide;
+            @include mxHide;
         }
 
         #{JX(show-b#{$i})} {
-            @include show;
+            @include mxShow;
         }
     }
 }

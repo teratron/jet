@@ -24,7 +24,7 @@ address nav,
     &::after {
         @extend %display-block;
         @extend %position-fixed;
-        z-index: $zindex_debug;
+        z-index: $z_index_debug;
         top:     0;
         bottom:  0;
         content: "";
@@ -51,7 +51,7 @@ address nav,
         @extend %position-fixed;
         font-size:   12px;
         line-height: 40px;
-        z-index:     $zindex_debug + 1;
+        z-index:     $z_index_debug + 1;
         top:         auto;
         bottom:      0;
         min-width:   80px;
@@ -66,12 +66,12 @@ address nav,
         right: 0;
 
         @media only screen {
-            @media (min-width: GetBreakpoint($grid_column) + 1) {
+            @media (min-width: fnGetBreakpoint($grid_column) + 1) {
                 content: ">= #{$grid_column} bp";
             }
 
             @for $i from $grid_column to 1 {
-                @media (max-width: GetBreakpoint($i)) {
+                @media (max-width: fnGetBreakpoint($i)) {
                     content: "#{$i - 1} - #{$i} bp";
                 }
             }

@@ -11,14 +11,14 @@
 // %gap-quart  %gap-[row | column]-quart
 // %gap-0      %gap-[row | column]-0
 //**********************************************************
-@include addPlaceholder(gap) {
+@include mxAddPlaceholder(gap) {
     @each $dir in (row, column) {
         &-#{$dir} {
-            @include setGutter(grid-#{$dir}-gap, $layout_gap);
+            @include mxSetGutter(grid-#{$dir}-gap, $layout_gap);
         }
     }
 
-    @include setGutter(grid-gap, $layout_gap);
+    @include mxSetGutter(grid-gap, $layout_gap);
 }
 
 // Gutters
@@ -33,14 +33,14 @@
 // %padding-quart  %padding-[top | bottom | left | right]-quart
 // %padding-0      %padding-[top | bottom | left | right]-0
 //**********************************************************
-@include addPlaceholder((margin, padding)) using($sel) {
+@include mxAddPlaceholder((margin, padding)) using($sel) {
     @each $side in $list_sides {
         &-#{$side} {
-            @include setGutter(#{$sel}-#{$side}, $layout_gap);
+            @include mxSetGutter(#{$sel}-#{$side}, $layout_gap);
         }
     }
 
-    @include setGutter(#{$sel}, $layout_gap);
+    @include mxSetGutter(#{$sel}, $layout_gap);
 }
 
 // Positions

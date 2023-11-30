@@ -1,5 +1,5 @@
 // Breakpoints
-//@function GetListBreakpoints($is_evenly: false) {
+//@function fnGetListBreakpoints($is_evenly: false) {
 //  $list: ();
 //  $g: $grid_gap;
 //  $w: 100;
@@ -36,7 +36,7 @@
 
 // Grid
 //@function GetMinShrinkWidth($n: $grid_column) {
-//  $w: GetBreakpoint($n - 1);
+//  $w: fnGetBreakpoint($n - 1);
 //
 //  @if math.unit($w) == "px" {
 //    $w: $w + 2;
@@ -52,7 +52,7 @@
 //}
 
 //@function GetMinShrinkWidth($n: $grid_column) {
-//  $w: GetBreakpoint($n - 1);
+//  $w: fnGetBreakpoint($n - 1);
 //
 //  @if math.unit($w) == "px" {
 //    $w: $w + 2;
@@ -80,7 +80,7 @@
 //}
 //
 //@for $i from $grid_column to 0 {
-//  @media only screen and (max-width: GetBreakpoint($i)) {
+//  @media only screen and (max-width: fnGetBreakpoint($i)) {
 //    @if $is_grid_gap and $i > 1 {
 //      .#{$prefix}shrink {
 //        grid-template-columns: repeat(auto-fit, minmax(GetMinShrinkWidth($i), 1fr));
@@ -93,7 +93,7 @@
 $is_placeholder_mode: true !default;
 
 // Breakpoints
-//@function GetListBreakpoints() {
+//@function fnGetListBreakpoints() {
 //    $list: [];
 //
 //    @for $i from 1 through $grid_column {
@@ -112,7 +112,7 @@ $is_placeholder_mode: true !default;
 //}
 
 // Breakpoints
-//@function GetListBreakpoints() {
+//@function fnGetListBreakpoints() {
 //    $list: [];
 //    $b: $layout_gap_adaptive * 2;
 //    $g: 100 - $b;
@@ -135,7 +135,7 @@ $is_placeholder_mode: true !default;
 //}
 
 // Breakpoints
-//@function GetListBreakpoints() {
+//@function fnGetListBreakpoints() {
 //    $list: [];
 //    $c: 100 - $layout_gap_adaptive * ($grid_column + 1);
 //
@@ -157,7 +157,7 @@ $is_placeholder_mode: true !default;
 //}
 
 // Breakpoints
-//@function GetListBreakpoints() {
+//@function fnGetListBreakpoints() {
 //    $list: [];
 //    $b: math.div(100, $layout_width) * $grid_gap * 2;
 //    $g: 100 - $b;
@@ -181,7 +181,7 @@ $is_placeholder_mode: true !default;
 
 // Breakpoints
 @for $i from $grid_column to 0 {
-    @media only screen and (max-width: GetBreakpoint($i)) {
+    @media only screen and (max-width: fnGetBreakpoint($i)) {
         // Shrink
         @if $i < $grid_column {
             $k: $i + 1;
@@ -230,9 +230,9 @@ $is_placeholder_mode: true !default;
 }
 
 //@for $i from $grid_column - 1 to 1 {
-//    @media only screen and (max-width: GetBreakpoint($i)) {
+//    @media only screen and (max-width: fnGetBreakpoint($i)) {
 //        .shrink-2 {
-//            grid-template-columns: repeat(auto-fit, minmax(math.div(GetBreakpoint($i - 1) + 2, $i), 1fr));
+//            grid-template-columns: repeat(auto-fit, minmax(math.div(fnGetBreakpoint($i - 1) + 2, $i), 1fr));
 //        }
 //    }
 //}
@@ -293,10 +293,10 @@ $is_placeholder_mode: true !default;
 //}
 
 //@include extendPlaceholder(&);
-//@include addPlaceholder(&);
+//@include mxAddPlaceholder(&);
 //@extend #{&} !optional;
 
-//@mixin addPlaceholder($name) {
+//@mixin mxAddPlaceholder($name) {
 //    //@if string.index(#{$name}, ".") == 1 or string.index(#{$name}, "%") == 1 or string.index(#{$name}, "#") == 1 {
 //    //    $name: string.slice(#{$name}, 2);
 //    //}
@@ -316,7 +316,7 @@ $is_placeholder_mode: true !default;
 
 //@mixin extendPlaceholder($name) {
 //    @if list.index($breakpoint_placeholders, #{$name}) == null {
-//        @include addPlaceholder($name);
+//        @include mxAddPlaceholder($name);
 //    }
 //
 //    @if string.index(#{$name}, ".") == 1 or string.index(#{$name}, "%") == 1 or string.index(#{$name}, "#") == 1 {
