@@ -97,7 +97,7 @@
 
         &-monospace {
             font-family: $font_family_monospace;
-            direction:   ltr;
+            direction: ltr;
         }
     }
 }
@@ -108,7 +108,7 @@
 // %child-fit
 //**********************************************************
 #{JX(reset-width, "%")} {
-    width:     auto;
+    width: auto;
     min-width: auto;
     max-width: none;
 }

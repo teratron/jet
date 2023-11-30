@@ -31,7 +31,7 @@
 @mixin setGutter($prop, $value) {
     @include setPropsAdaptive(
             (
-                $prop: $value,
+                $prop: $value
             )
     );
 
@@ -39,7 +39,7 @@
         &#{$v} {
             @include setPropsAdaptive(
                     (
-                        $prop: GetGap($v),
+                        $prop: GetGap($v)
                     )
             );
         }
@@ -64,14 +64,14 @@
             $buffer: map.merge(
                              $buffer,
                              (
-                                 $key: 1vw * $container_rate * $value,
+                                 $key: 1vw * $container_rate * $value
                              )
                      );
         } @else {
             $buffer: map.merge(
                              $buffer,
                              (
-                                 $key: 0,
+                                 $key: 0
                              )
                      );
         }
@@ -97,7 +97,7 @@
 @mixin copyBuffer($selector, $props, $breakpoint: $grid_column) {
     $buffer:                  (
                                   selector: $selector,
-                                  breakpoint: $breakpoint,
+                                  breakpoint: $breakpoint
                               );
 
     @each $key, $value in $props {
@@ -105,15 +105,12 @@
                          $buffer,
                          props,
                          (
-                             $key: $value,
+                             $key: $value
                          )
                  );
     }
 
-    $list_breakpoints_buffer: list.append(
-                                      $list_breakpoints_buffer,
-                                      $buffer
-                              ) !global;
+    $list_breakpoints_buffer: list.append($list_breakpoints_buffer, $buffer) !global;
 }
 
 @mixin pasteBuffer($breakpoint: $grid_column) {

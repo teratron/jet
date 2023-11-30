@@ -1,37 +1,37 @@
 @mixin setBar($height: auto, $gap: 0, $padding: 0) {
     @extend %#{$prefix}bar;
     grid-template-rows: $height;
-    grid-gap:           $gap;
-    justify-content:    space-between;
-    justify-items:      stretch;
-    align-content:      center;
-    align-items:        center;
+    grid-gap:        $gap;
+    justify-content: space-between;
+    justify-items:   stretch;
+    align-content:   center;
+    align-items:     center;
 
     > * {
-        display:     grid;
+        display: grid;
         align-items: center;
     }
 
     > .head,
     > :first-child {
         justify-content: start;
-        justify-items:   start;
-        justify-self:    start;
-        padding-left:    $padding;
+        justify-items: start;
+        justify-self:  start;
+        padding-left:  $padding;
     }
 
     > .body,
     > :not(:first-child):not(:last-child) {
         justify-content: center;
-        justify-items:   center;
-        justify-self:    stretch;
+        justify-items: center;
+        justify-self:  stretch;
     }
 
     > .foot,
     > :last-child:not(:first-child) {
         justify-content: end;
-        justify-items:   end;
-        justify-self:    end;
-        padding-right:   $padding;
+        justify-items: end;
+        justify-self:  end;
+        padding-right: $padding;
     }
 }

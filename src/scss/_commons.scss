@@ -25,23 +25,23 @@
 
 #{JX(out)} {
     &-top {
-        top:    -100vh;
+        top: -100vh;
         bottom: 100vh;
     }
 
     &-bottom {
-        top:    100vh;
+        top: 100vh;
         bottom: -100vh;
     }
 
     &,
     &-left {
-        left:  -100vw;
+        left: -100vw;
         right: 100vw;
     }
 
     &-right {
-        left:  100vw;
+        left: 100vw;
         right: -100vw;
     }
 }
@@ -53,10 +53,10 @@
 
 #{JX(in)} {
     position: initial;
-    top:      auto;
-    right:    auto;
-    bottom:   auto;
-    left:     auto;
+    top:    auto;
+    right:  auto;
+    bottom: auto;
+    left:   auto;
 }
 
 // On / Off
@@ -88,16 +88,16 @@
 $duration: 0.3s;
 
 @mixin hide {
-    position:  fixed;
-    z-index:   -1;
-    opacity:   0;
+    position: fixed;
+    z-index:  -1;
+    opacity:  0;
     animation: hide $duration linear;
 }
 
 @mixin show {
     position: initial;
-    z-index:  auto;
-    opacity:  initial;
+    z-index: auto;
+    opacity: initial;
 }
 
 #{JX(hide)} {
@@ -126,12 +126,12 @@ $duration: 0.3s;
 @keyframes hide {
     from {
         position: initial;
-        z-index:  auto;
+        z-index: auto;
     }
 
     to {
         position: fixed;
-        z-index:  -1;
+        z-index: -1;
     }
 }
 

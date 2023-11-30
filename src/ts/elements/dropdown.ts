@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 /*const dropdown = {
     active: 0,

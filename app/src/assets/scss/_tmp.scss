@@ -27,10 +27,8 @@
 //  @return $list;
 //}
 
-
 //@import "mixins/bar";
 //@import "mixins/list";
-
 
 //@if string.index(#{$locator}, ".") != null or string.index(#{$locator}, "%") != null {
 //
@@ -184,7 +182,6 @@ $is_placeholder_mode: true !default;
 // Breakpoints
 @for $i from $grid_column to 0 {
     @media only screen and (max-width: GetBreakpoint($i)) {
-
         // Shrink
         @if $i < $grid_column {
             $k: $i + 1;

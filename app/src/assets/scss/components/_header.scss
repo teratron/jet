@@ -1,7 +1,7 @@
 // Header
 .app-header {
     position: sticky;
-    top:      0;
+    top: 0;
 
     > .app-container {
         @extend %debug-layout;
@@ -10,7 +10,7 @@
     &,
     > .app-container {
         align-items: center;
-        min-height:  $header_height;
+        min-height: $header_height;
     }
 
     .head {

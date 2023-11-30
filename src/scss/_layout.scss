@@ -24,10 +24,10 @@
 // .%container
 //**********************************************************
 #{JX(container)} {
-    width:        100%;
-    max-width:    $container_width;
+    width:       100%;
+    max-width:   $container_width;
     margin-right: auto;
-    margin-left:  auto;
+    margin-left: auto;
 
     @if $container_gap > 0 {
         @if $container_gap == $layout_gap {
@@ -36,7 +36,7 @@
             @include setPropsAdaptive(
                     (
                         padding-left: $container_gap,
-                        padding-right: $container_gap,
+                        padding-right: $container_gap
                     )
             );
         }
@@ -102,10 +102,10 @@
     //@extend %#{$prefix}row;
     //grid-template-columns: repeat(auto-fit, minmax($layout_unit, auto));
     @extend #{JX(layout, "%")};
-    align-items:       center;
-    grid-auto-flow:    column;
+    align-items:    center;
+    grid-auto-flow: column;
     grid-auto-columns: min-content;
-    justify-items:     center;
+    justify-items:  center;
 }
 
 // Column
@@ -212,9 +212,9 @@
         @each $v in (gap, gap-half, gap-quart) {
             &#{JX($v)} {
                 grid-template-columns: repeat(
-          auto-fit,
+                    auto-fit,
                                                minmax(GetMinTileWidth($i, GetGap($v)), 1fr)
-        );
+                );
             }
         }
     }
@@ -259,17 +259,14 @@
             }
 
             #{JX(row-b#{$i}-#{$j})} {
-                grid-template-columns: repeat(
-          auto-fit,
-                                               minmax(GetMinTileWidth($j), 1fr)
-        );
+                grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($j), 1fr));
 
                 @each $v in (gap, gap-half, gap-quart) {
                     &#{JX($v)} {
                         grid-template-columns: repeat(
-              auto-fit,
+                            auto-fit,
                                                        minmax(GetMinTileWidth($j, GetGap($v)), 1fr)
-            );
+                        );
                     }
                 }
             }

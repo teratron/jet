@@ -35,7 +35,7 @@ $list_breakpoints_buffer2: (
                                            selector: buff-1-1,
                                            props: (
                                                padding-left: 1rem,
-                                               padding-right: 1rem,
+                                               padding-right: 1rem
                                            )
                                        ),
                                        (
@@ -43,7 +43,7 @@ $list_breakpoints_buffer2: (
                                            selector: buff-1-2,
                                            props: (
                                                padding-left: 2rem,
-                                               padding-right: 2rem,
+                                               padding-right: 2rem
                                            )
                                        )
                                    ),
@@ -54,7 +54,7 @@ $list_breakpoints_buffer2: (
                                            selector: buff-2-1,
                                            props: (
                                                padding-left: 3rem,
-                                               padding-right: 3rem,
+                                               padding-right: 3rem
                                            )
                                        ),
                                        (
@@ -62,7 +62,7 @@ $list_breakpoints_buffer2: (
                                            selector: buff-2-2,
                                            props: (
                                                padding-left: 4rem,
-                                               padding-right: 4rem,
+                                               padding-right: 4rem
                                            )
                                        )
                                    )
@@ -82,7 +82,7 @@ $list_breakpoints_buffer2: (
 
 @mixin pushBreakpointBuffer($breakpoint, $selector, $props: null) {
     $buffer:                   (
-                                   selector: $selector,
+                                   selector: $selector
                                );
 
     @if $props != null {
@@ -92,7 +92,7 @@ $list_breakpoints_buffer2: (
                                  $buffer,
                                  props,
                                  (
-                                     $key: $value,
+                                     $key: $value
                                  )
                          );
             }
@@ -103,11 +103,7 @@ $list_breakpoints_buffer2: (
 
     $list:                     list.nth($list_breakpoints_buffer2, $breakpoint);
     $list:                     list.append($list, $buffer);
-    $list_breakpoints_buffer2: list.set-nth(
-                                       $list_breakpoints_buffer2,
-                                       $breakpoint,
-                                       $list
-                               ) !global;
+    $list_breakpoints_buffer2: list.set-nth($list_breakpoints_buffer2, $breakpoint, $list) !global;
 }
 
 @mixin flushBreakpointBuffer() {

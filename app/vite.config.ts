@@ -1,4 +1,5 @@
 /** @type {import('vite').UserConfig} */
+import {fileURLToPath, URL} from 'node:url'
 import {defineConfig} from 'vite'
 import vue            from '@vitejs/plugin-vue'
 import autoprefixer   from 'autoprefixer'
@@ -67,11 +68,11 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
                     })
                 }
             }
+        },
+        resolve: {
+            alias: {
+                '@': fileURLToPath(new URL('./src', import.meta.url))
+            }
         }
-        /*resolve: {
-          alias: {
-            '@': './src',
-          }
-        }*/
     }
 })

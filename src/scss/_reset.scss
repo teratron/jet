@@ -13,15 +13,15 @@
 
 html {
     font-size: $root_unit;
-    height:    100vh;
+    height: 100vh;
 }
 
 body {
-    font-size:   $layout_font_size;
+    font-size:  $layout_font_size;
     line-height: $layout_unit;
-    z-index:     1;
-    overflow-x:  hidden;
-    min-height:  100vh;
+    z-index:    1;
+    overflow-x: hidden;
+    min-height: 100vh;
     @extend #{JX(font-family-sans-serif, "%")};
     @extend #{JX(margin-0, "%")};
 }
@@ -77,14 +77,12 @@ summary {
 }
 
 figure {
-    @extend #{JX(margin-top-0, "%")},
-    #{JX(margin-left-0, "%")},
-    #{JX(margin-right-0, "%")};
+    @extend #{JX(margin-top-0, "%")}, #{JX(margin-left-0, "%")}, #{JX(margin-right-0, "%")};
     @extend #{JX(margin-bottom-half, "%")};
 }
 
 hr {
-    height:           1px;
+    height: 1px;
     border-top-width: 1px;
     border-top-style: solid;
     @extend #{JX(display-block, "%")};
@@ -180,7 +178,7 @@ a {
 
     &[target="_blank"]:before {
         font-size: 90%;
-        content:   "\e164\00A0";
+        content: "\e164\00A0";
     }
 }
 
@@ -215,7 +213,7 @@ acronym {
 }
 
 abbr {
-    font-variant:   small-caps;
+    font-variant: small-caps;
     letter-spacing: 0.05em;
     text-transform: uppercase;
 
@@ -227,7 +225,7 @@ abbr {
 }
 
 address {
-    font-style:  normal;
+    font-style: normal;
     line-height: inherit;
     @extend #{JX(margin-bottom-half, "%")};
 }
@@ -249,7 +247,7 @@ pre {
     @extend #{JX(margin-top-0, "%")}, #{JX(margin-bottom-half, "%")};
 
     code {
-        color:      inherit;
+        color: inherit;
         word-break: normal;
     }
 }
@@ -283,7 +281,7 @@ time {
 
 // Tables
 table {
-    caption-side:    bottom;
+    caption-side: bottom;
     border-collapse: collapse;
 }
 

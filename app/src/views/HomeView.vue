@@ -2,7 +2,7 @@
 import Main   from '../containers/AppMain.vue'
 import Footer from '../containers/AppFooter.vue'
 import Header from '../containers/AppHeader.vue'
-import Button from '../components/Button.vue'
+import Button from '../components/ButtonElement.vue'
 </script>
 
 <template>
@@ -15,6 +15,4 @@ import Button from '../components/Button.vue'
     <Footer></Footer>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

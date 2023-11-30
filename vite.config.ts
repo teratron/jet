@@ -1,4 +1,5 @@
 /** @type {import('vite').UserConfig} */
+import {fileURLToPath, URL} from 'node:url'
 import {defineConfig} from 'vite'
 
 // https://vitejs.dev/config/
@@ -11,7 +12,12 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
     // preview    command='serve', mode='production'
 
     const common = {
-        root: './src'
+        root: './src',
+        resolve: {
+            alias: {
+                '@': fileURLToPath(new URL('./src', import.meta.url))
+            }
+        }
     }
 
     if (command === 'serve') {
