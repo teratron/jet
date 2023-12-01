@@ -4,24 +4,28 @@
   "description": "HTML, CSS, SCSS, JavaScript Framework",
   "private": false,
   "type": "module",
-  "main": "dist/js/jettix.ts",
-  "style": "dist/css/jettix.css",
-  "sass": "src/scss/jettix.scss",
+  "module": "./dist/js/jettix.js",
+  "main": "./dist/js/jettix.umd.cjs",
+  "style": "./dist/css/jettix.css",
+  "sass": "./scss/jettix.scss",
   "files": [
-    "dist/{css,js}/**/*.{css,js,ts,map}",
-    "src/scss/**/*.scss"
+    "dist/{css,js}/**/*.{css,js,map}",
+    "dist/js/**/*.{esm,umd}.{js,cjs}",
+    "scss/**/*.scss"
   ],
+  "exports": {
+    "import": "./dist/js/jettix.js",
+    "require": "./dist/js/jettix.umd.cjs"
+  },
   "keywords": [
     "web",
     "framework",
     "front-end",
     "html",
     "css",
-    "scss",
+    "sass",
     "js",
-    "ts",
-    "javascript",
-    "typescript"
+    "javascript"
   ],
   "author": "Oleg Alexandrov <alexandrovoleg.ru@gmail.com>",
   "license": "MIT",
@@ -38,12 +42,12 @@
     "preview": "vite preview",
     "type-check": "tsc --noEmit -p tsconfig.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/ app/src/",
+    "format": "prettier --write lib/",
     "deploy:npm": "npm publish"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.6.0",
-    "@tsconfig/node21": "^21.0.0",
+    "@tsconfig/node18": "^18.2.2",
     "@types/node": "^20.10.1",
     "@typescript-eslint/eslint-plugin": "^6.13.1",
     "@typescript-eslint/parser": "^6.13.1",

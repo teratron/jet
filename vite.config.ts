@@ -1,6 +1,6 @@
 /** @type {import('vite').UserConfig} */
 import {fileURLToPath, URL} from 'node:url'
-import {defineConfig} from 'vite'
+import {defineConfig}       from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
@@ -12,10 +12,18 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
     // preview    command='serve', mode='production'
 
     const common = {
-        root: './src',
+        build: {
+            outDir: './dist',
+            lib: {
+                entry: './lib/main.ts',
+                name: 'Jettix',
+                filename: 'jettix'
+            }
+        },
         resolve: {
+            extensions: ['.ts', '.scss'],
             alias: {
-                '@': fileURLToPath(new URL('./src', import.meta.url))
+                '@': fileURLToPath(new URL('./lib', import.meta.url))
             }
         }
     }

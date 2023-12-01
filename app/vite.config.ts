@@ -16,19 +16,17 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
 
     return {
         base: command === 'serve' ? '/' : './',
-        root: 'src',
-        publicDir: 'public',
+        root: './src',
+        publicDir: './public',
         server: {
             open: app.name,
             warmup: {
                 clientFiles: [
-                    'src/**/*.vue'
+                    './src/**/*.vue'
                 ]
             }
         },
-        preview: {
-            open: app.name
-        },
+        preview: {},
         test: {},
         css: {
             devSourcemap: true,
@@ -44,12 +42,12 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
         minify: mode === 'development' ? false : 'terser',
         sourcemap: command === 'serve' ? 'inline' : false,
         build: {
-            outDir: 'build',
+            outDir: './build',
             emptyOutDir: true,
             manifest: command === 'build' ? 'manifest.json' : false,
             rollupOptions: {
                 input: {
-                    main: 'src/index.html'
+                    main: './src/index.html'
                 },
                 output: {
                     entryFileNames: 'js/[name].[hash].js',
@@ -70,6 +68,7 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
             }
         },
         resolve: {
+            extensions: ['.ts', '.vue', '.scss'],
             alias: {
                 '@': fileURLToPath(new URL('./src', import.meta.url))
             }
