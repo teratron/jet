@@ -1,6 +1,7 @@
 /** @type {import('vite').UserConfig} */
 import {fileURLToPath, URL} from 'node:url'
 import {defineConfig}       from 'vite'
+import copy                 from 'rollup-plugin-copy'
 
 // https://vitejs.dev/config/
 export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
@@ -14,12 +15,21 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
     const common = {
         build: {
             outDir: './dist',
+            emptyOutDir: false,
+            sourcemap: true,
             lib: {
                 entry: './lib/main.ts',
                 name: 'Jettix',
                 filename: 'jettix'
             }
         },
+        plugins: [
+            copy({
+                targets: [
+                    {src: 'lib/scss/**/*', dest: 'dist/scss'}
+                ]
+            })
+        ],
         resolve: {
             extensions: ['.ts', '.scss'],
             alias: {
