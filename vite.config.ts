@@ -1,19 +1,26 @@
 import {fileURLToPath, URL} from 'node:url'
 import {defineConfig}       from 'vite'
 import copy                 from 'rollup-plugin-copy'
+import * as path            from 'path'
+
+const root = path.resolve(__dirname, './')
+const dir = {
+    root: root,
+    lib: path.resolve(root, 'lib'),
+    dist: path.resolve(root, 'dist')
+}
 
 export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
     console.log('Config arguments:', command, mode, isSsrBuild, isPreview)
 
     const common = {
         build: {
-            outDir: './dist',
+            outDir: dir.dist,
             emptyOutDir: false,
             sourcemap: true,
             lib: {
-                entry: './lib/main.ts',
-                name: 'Jettix',
-                filename: 'jettix'
+                entry: dir.lib + '/main.ts',
+                name: 'Jettix'
             }
         },
         plugins: [

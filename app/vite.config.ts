@@ -2,20 +2,27 @@ import {fileURLToPath, URL} from 'node:url'
 import {defineConfig}       from 'vite'
 import vue                  from '@vitejs/plugin-vue'
 import autoprefixer         from 'autoprefixer'
-import app                  from './package.json'
+import * as path            from 'path'
+
+const root = path.resolve(__dirname, './')
+const dir = {
+    root: root,
+    src: path.resolve(root, 'src'),
+    build: path.resolve(root, 'build'),
+    public: path.resolve(root, 'public')
+}
 
 export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
     console.log('Config arguments:', command, mode, isSsrBuild, isPreview)
 
     return {
-        base: command === 'serve' ? '/' : './',
-        root: './src',
-        publicDir: '../public',
+        //base: command === 'serve' ? '/' : './',
+        root: dir.src,
+        publicDir: dir.public,
         server: {
-            open: app.name,
             warmup: {
                 clientFiles: [
-                    './src/**/*.vue'
+                    'src/**/*.vue'
                 ]
             }
         },
@@ -35,12 +42,12 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
         minify: mode === 'development' ? false : 'terser',
         sourcemap: command === 'serve' ? 'inline' : false,
         build: {
-            outDir: '../build',
+            outDir: dir.build,
             emptyOutDir: true,
             manifest: command === 'build' ? 'manifest.json' : false,
             rollupOptions: {
                 input: {
-                    main: './src/index.html'
+                    main: dir.src + '/index.html'
                 },
                 output: {
                     entryFileNames: 'js/[name].[hash].js',

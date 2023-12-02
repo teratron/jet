@@ -9,7 +9,7 @@ HTML, CSS, SCSS, JavaScript Framework.\
 
 ## Usage
 
-```shell
+```sh
 npm install jettix --save-dev
 ```
 

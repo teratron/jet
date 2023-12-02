@@ -1,15 +1,15 @@
 # Docs
 
-### Elements
+## Elements
 
-[button](button.md)\
-[dropdown](dropdown.md)\
-[select](select.md)
+- [button](button.md)
+- [dropdown](dropdown.md)
+- [select](select.md)
 
 | Type            | Style                 |
 |-----------------|-----------------------|
-| function        | PascalCase()          |
-| mixin           | camelCase()           |
+| function        | fnPascalCase()        |
+| mixin           | mxPascalCase()        |
 | class           | .kebab-case           |
 | placeholder     | %kebab-case           |
 | variable        | $snake_case           |

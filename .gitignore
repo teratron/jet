@@ -129,3 +129,56 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+##############################
+
+# Logs
+logs
+*.log
+*.log*
+
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+*.local
+*-lock.json
+.yarn/install-state.gz
+
+# Production
+build
+dist
+dist-ssr
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Testing
+coverage
+
+# Misc
+.DS_Store
+*.pem
+env/.env
+.env.*
+!.env.vault
+!.env.development
+!.env.production
+
+# Next.js
+.next
+out
+
+# Vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
