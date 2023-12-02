@@ -1,23 +1,16 @@
-/** @type {import('vite').UserConfig} */
 import {fileURLToPath, URL} from 'node:url'
 import {defineConfig}       from 'vite'
 import vue                  from '@vitejs/plugin-vue'
 import autoprefixer         from 'autoprefixer'
 import app                  from './package.json'
 
-// https://vitejs.dev/config/
 export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
     console.log('Config arguments:', command, mode, isSsrBuild, isPreview)
-
-    // build      command='build', mode='production'
-    // build:dev  command='build', mode='development'
-    // dev        command='serve', mode='development'
-    // preview    command='serve', mode='production'
 
     return {
         base: command === 'serve' ? '/' : './',
         root: './src',
-        publicDir: './public',
+        publicDir: '../public',
         server: {
             open: app.name,
             warmup: {
@@ -42,7 +35,7 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
         minify: mode === 'development' ? false : 'terser',
         sourcemap: command === 'serve' ? 'inline' : false,
         build: {
-            outDir: './build',
+            outDir: '../build',
             emptyOutDir: true,
             manifest: command === 'build' ? 'manifest.json' : false,
             rollupOptions: {

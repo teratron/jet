@@ -1,39 +1,8 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "components/*": [
-        "./src/components/*"
-      ],
-      "containers/*": [
-        "./src/containers/*"
-      ],
-      "layouts/*": [
-        "./src/layouts/*"
-      ],
-      "views/*": [
-        "./src/views/*"
-      ],
-      "assets/*": [
-        "./src/assets/*"
-      ]
-    }
-  },
-  "include": [
-    "env.d.ts",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue"
-  ],
-  "exclude": [
-    "test/**/*",
-    "src/**/__tests__/*"
-  ],
   "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
     {
       "path": "./tsconfig.node.json"
     }

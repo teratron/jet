@@ -37,10 +37,15 @@
   },
   "include": [
     "env.d.ts",
-    "lib/**/*"
+    "lib/**/*.ts"
   ],
   "exclude": [
     "test/**/*",
     "lib/**/__tests__/*"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
   ]
 }
