@@ -15,6 +15,24 @@ const dir = {
 export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
     console.log('Config arguments:', command, mode, isSsrBuild, isPreview)
 
+    const common = {
+
+    }
+    /*if (command === 'serve') {
+        return {
+            // dev specific config
+            //...common,
+            mode: 'development'
+        }
+    } else {
+        // command === 'build'
+        return {
+            // build specific config
+            //...common,
+            mode: 'production'
+        }
+    }*/
+
     return {
         base: command === 'serve' ? '/' : './',
         root: dir.src,
@@ -54,8 +72,8 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
                     entryFileNames: 'js/[name].[hash].js',
                     chunkFileNames: 'js/[name].[hash].js',
                     assetFileNames: (assetInfo => {
-                        const info = assetInfo.name?.split('.')
-                        let ext: string = info![info!.length - 1]
+                        const info = assetInfo.name.split('.')
+                        let ext: string = info[info.length - 1]
                         if (/png|jpe?g|svg|gif|tiff|bmp|ico|webp|webm|mp3|wav/i.test(ext)) {
                             ext = 'media'
                         } else if (/(sa|sc|c)ss/i.test(ext)) {

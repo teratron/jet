@@ -4,7 +4,7 @@ import ListRouterLink from '../components/ListRouterLink.vue'
 </script>
 
 <template>
-    <header id="app-header">
+    <header class="app-header">
         <Container>
             <slot></slot>
             <ListRouterLink/>

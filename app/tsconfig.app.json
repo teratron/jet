@@ -25,6 +25,7 @@
     }
   },
   "include": [
+    "vite.config.ts",
     "env.d.ts",
     "src/**/*.ts",
     "src/**/*.vue"

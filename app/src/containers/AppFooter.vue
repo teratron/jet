@@ -3,7 +3,7 @@ import Container from './AppContainer.vue'
 </script>
 
 <template>
-    <footer id="app-footer">
+    <footer class="app-footer">
         <Container>
             <h1>Footer</h1>
             <small>Copyright, 2023</small>

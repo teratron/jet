@@ -12,6 +12,7 @@ const dir = {
 
 export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
     console.log('Config arguments:', command, mode, isSsrBuild, isPreview)
+    console.log(import.meta.env.VITE_APP_TITLE)
 
     const common = {
         build: {

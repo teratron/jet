@@ -10,7 +10,8 @@
     ]
   },
   "include": [
-    "vite.config.*",
+    "vite.config.ts",
+    "lib/vite-env.d.ts",
     "vitest.config.*"
   ]
 }

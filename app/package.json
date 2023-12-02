@@ -7,8 +7,9 @@
   "homepage": "https://teratron.github.io/jettix",
   "scripts": {
     "dev": "vite",
-    "build": "npm run type-check && vite build",
     "preview": "vite preview",
+    "build": "npm run type-check && vite build",
+    "build:dev": "npm run type-check && vite build --mode development",
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
     "format": "prettier --write src/",
     "deploy:gh": "gh-pages-clean && gh-pages -d build"

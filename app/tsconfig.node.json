@@ -10,7 +10,7 @@
     ]
   },
   "include": [
-    "vite.config.*",
+    "vite.config.ts",
     "vitest.config.*"
   ]
 }
