@@ -16,13 +16,17 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
     console.log('Config arguments:', command, mode, isSsrBuild, isPreview)
 
     return {
-        //base: command === 'serve' ? '/' : './',
+        base: command === 'serve' ? '/' : './',
         root: dir.src,
         publicDir: dir.public,
+        envDir: '',
+        plugins: [
+            vue()
+        ],
         server: {
             warmup: {
                 clientFiles: [
-                    'src/**/*.vue'
+                    './src/components/*.vue'
                 ]
             }
         },
@@ -36,9 +40,6 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
                 ]
             }
         },
-        plugins: [
-            vue()
-        ],
         minify: mode === 'development' ? false : 'terser',
         sourcemap: command === 'serve' ? 'inline' : false,
         build: {

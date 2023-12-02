@@ -41,13 +41,15 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
     if (command === 'serve') {
         return {
             // dev specific config
-            ...common
+            ...common,
+            mode: 'development'
         }
     } else {
         // command === 'build'
         return {
             // build specific config
-            ...common
+            ...common,
+            mode: 'production'
         }
     }
 })
