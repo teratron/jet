@@ -7,16 +7,15 @@ const root = path.resolve(__dirname, './')
 const dir = {
     root: root,
     lib: path.resolve(root, 'lib'),
-    dist: path.resolve(root, 'dist')
+    build: path.resolve(root, 'dist')
 }
 
 export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
     console.log('Config arguments:', command, mode, isSsrBuild, isPreview)
-    console.log(import.meta.env.VITE_APP_TITLE)
 
     const common = {
         build: {
-            outDir: dir.dist,
+            outDir: dir.build,
             emptyOutDir: false,
             sourcemap: true,
             lib: {

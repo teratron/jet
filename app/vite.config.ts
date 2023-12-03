@@ -15,10 +15,10 @@ const dir = {
 export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
     console.log('Config arguments:', command, mode, isSsrBuild, isPreview)
 
-    const common = {
+    /*const common = {
 
     }
-    /*if (command === 'serve') {
+    if (command === 'serve') {
         return {
             // dev specific config
             //...common,
@@ -37,7 +37,10 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
         base: command === 'serve' ? '/' : './',
         root: dir.src,
         publicDir: dir.public,
-        envDir: '',
+        envDir: '../',
+        env: {
+            root: '../'
+        },
         plugins: [
             vue()
         ],
