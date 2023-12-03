@@ -1,7 +1,6 @@
 <script lang="ts" setup></script>
 
 <template>
-    <main class="app-main">
-        <slot/>
-    </main>
+    <h1>Footer</h1>
+    <small>Copyright, 2023</small>
 </template>

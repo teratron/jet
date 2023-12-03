@@ -1,23 +1,7 @@
-<script lang="ts" setup>
-import Container from './AppContainer.vue'
-import ListRouterLink from '../components/ListRouterLink.vue'
-</script>
+<script lang="ts" setup></script>
 
 <template>
     <header class="app-header">
-        <Container>
-            <slot></slot>
-            <ListRouterLink/>
-        </Container>
+        <slot/>
     </header>
 </template>
-
-<style scoped>
-#app-header nav {
-    display:     flex;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap:   nowrap;
-    justify-content: space-between;
-}
-</style>

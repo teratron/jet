@@ -1,6 +1,7 @@
 {
     "short_name": "Jettix",
     "name": "Jettix - Web Framework",
+    "description": "HTML, CSS, SCSS, JavaScript Framework",
     "icons": [
         {
             "src": "favicon.ico",
@@ -24,6 +25,7 @@
         "minimal-ui"
     ],
     "display": "standalone",
+    "orientation": "portrait-primary",
     "theme_color": "#000000",
     "background_color": "#ffffff"
 }

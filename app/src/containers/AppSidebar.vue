@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-    <main class="app-main">
+    <aside class="app-sidebar">
         <slot/>
-    </main>
+    </aside>
 </template>

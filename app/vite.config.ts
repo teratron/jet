@@ -45,13 +45,16 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
             vue()
         ],
         server: {
+            open: true,
             warmup: {
                 clientFiles: [
                     './src/components/*.vue'
                 ]
             }
         },
-        preview: {},
+        preview: {
+            open: true
+        },
         test: {},
         css: {
             devSourcemap: true,

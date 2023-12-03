@@ -1,5 +1,7 @@
+<script lang="ts" setup></script>
+
 <template>
-    <section class="container">
-        <slot></slot>
+    <section class="app-container">
+        <slot/>
     </section>
 </template>
