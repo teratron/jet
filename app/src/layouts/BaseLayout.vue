@@ -6,13 +6,17 @@ import AppContainer from '@/containers/AppContainer.vue'
 </script>
 
 <template>
-    <AppHeader>
-        <AppContainer/>
+    <AppHeader #header>
+        <AppContainer>
+            <slot/>
+        </AppContainer>
     </AppHeader>
-    <AppMain>
-        <AppContainer/>
+    <AppMain #default>
+        <AppContainer>
+            <slot/>
+        </AppContainer>
     </AppMain>
-    <AppFooter>
+    <AppFooter #footer>
         <AppContainer/>
     </AppFooter>
 </template>

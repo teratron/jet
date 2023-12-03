@@ -1,7 +1,11 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import FooterContent from '@/components/FooterContent.vue'
+</script>
 
 <template>
     <footer class="app-footer">
-        <slot/>
+        <slot>
+            <FooterContent/>
+        </slot>
     </footer>
 </template>
