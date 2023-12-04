@@ -7,9 +7,9 @@ import AppMain    from '@/containers/AppMain.vue'
 
 <template>
     <AppSidebar/>
-    <AppMain>
-        <AppHeader/>
+    <AppMain #default>
+        <AppHeader #header/>
         <slot/>
-        <AppFooter/>
+        <AppFooter #footer/>
     </AppMain>
 </template>

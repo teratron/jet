@@ -1,7 +1,9 @@
 // Header
 .app-header {
-    position: sticky;
-    top: 0;
+    //position: sticky;
+    //top:      0;
+
+    background-color: burlywood;
 
     > .app-container {
         //@extend %debug-layout;
@@ -11,17 +13,5 @@
     > .app-container {
         align-items: center;
         min-height: $header_height;
-    }
-
-    .head {
-    }
-
-    .body {
-    }
-
-    .foot {
-    }
-
-    .title {
     }
 }

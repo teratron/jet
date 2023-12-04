@@ -11,13 +11,19 @@
 // Application
 //********************************************************
 #app {
-    display:        grid;
+    display:          grid;
     grid-template-rows: auto 1fr;
     grid-template-columns: 100%;
-    grid-auto-flow: row;
-    grid-auto-rows: auto;
-    min-height:     100vh;
-    z-index:        $z_index_app;
+    grid-auto-flow:   row;
+    grid-auto-rows:   auto;
+    min-height:       100vh;
+    z-index:          $z_index_app;
+
+    background-color: #cccccc;
+    align-content:    stretch;
+    align-items:      start;
+    justify-content:  space-between;
+    justify-items:    center;
 
     @extend %debug-sticker;
 }

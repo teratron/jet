@@ -2,10 +2,10 @@
 //import {ref} from 'vue'
 
 //const title = ref(import.meta.env.VITE_APP_TITLE)
-const env = import.meta.env
+const title = import.meta.env.VITE_APP_TITLE
 </script>
 
 <template>
-    <h1>{{ env.VITE_APP_TITLE }}</h1>
+    <h1>{{ title }}</h1>
     <p>HTML, CSS, SCSS, JavaScript Framework</p>
 </template>

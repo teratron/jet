@@ -1,17 +1,11 @@
 .app-main {
     min-height: $main_height;
-    height: 1fr;
+    height:           100%;
+
+    background-color: white;
 
     > .app-container {
         align-content: start;
-        height: 100%;
-
-        > .sidebar {
-            @extend %col-3;
-        }
-
-        > .content {
-            @extend %grid-9;
-        }
+        //height:        100%;
     }
 }

@@ -1,13 +1,17 @@
 <script lang="ts" setup>
-import BaseLayout      from './BaseLayout.vue'
+import GridLayout from './GridLayout.vue'
+//import BaseLayout from './BaseLayout.vue'
 //import DashboardLayout from './DashboardLayout.vue'
 //import BlankLayout     from './BlankLayout.vue'
 </script>
 
 <template>
-    <BaseLayout>
+    <!--    <BaseLayout>
+            <slot/>
+        </BaseLayout>-->
+    <GridLayout>
         <slot/>
-    </BaseLayout>
-<!--    <BlankLayout :v-else-if="true"/>-->
-<!--    <DashboardLayout name="dashboard-layout"/>-->
+    </GridLayout>
+    <!--    <BlankLayout :v-else-if="true"/>-->
+    <!--    <DashboardLayout name="dashboard-layout"/>-->
 </template>

@@ -1,28 +1,10 @@
 // Footer
 .app-footer {
+
+    background-color: #b3d4fc;
+
     > .app-container {
         min-height: $footer_height;
         @extend %padding-top, %padding-bottom;
-    }
-
-    .head {
-    }
-
-    .body {
-    }
-
-    .foot {
-    }
-
-    .title {
-    }
-
-    .list {
-        //@extend %list;
-    }
-
-    .bar {
-        //@extend %bar;
-        @extend %gap-quart;
     }
 }
