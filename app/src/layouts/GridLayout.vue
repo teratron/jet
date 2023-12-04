@@ -15,12 +15,3 @@ import AppMain   from '@/containers/AppMain.vue'
         <slot/>
     </AppFooter>
 </template>
-
-<style scoped>
-.app-header,
-.app-footer,
-.app-main {
-    width:     100%;
-    max-width: 800px;
-}
-</style>

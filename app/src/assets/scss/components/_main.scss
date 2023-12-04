@@ -1,11 +1,18 @@
 .app-main {
     min-height: $main_height;
     height:           100%;
+    width:     100%;
+    max-width: $container_width;
+
 
     background-color: white;
 
     > .app-container {
         align-content: start;
         //height:        100%;
+    }
+
+    @media only screen and (max-width: $container_width) {
+        max-width: inherit;
     }
 }

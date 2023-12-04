@@ -95,7 +95,8 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
         resolve: {
             extensions: ['.ts', '.vue', '.scss'],
             alias: {
-                '@': fileURLToPath(new URL('./src', import.meta.url))
+                '@': fileURLToPath(new URL('./src', import.meta.url)),
+                '&': fileURLToPath(new URL('../lib', import.meta.url))
             }
         }
     }
