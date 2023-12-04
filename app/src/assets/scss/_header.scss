@@ -1,0 +1,33 @@
+// Header
+.app-header {
+    //position: sticky;
+    //top:      0;
+
+    //width:     100%;
+    //max-width: $container_width;
+
+    background-color: burlywood;
+
+    > .app-container {
+        //@extend %debug-layout;
+    }
+
+    &,
+    > .app-container {
+        align-items: center;
+        min-height:  $header_height;
+    }
+
+    @extend %app-container;
+
+    // больше
+    /*@media only screen and (min-width: $container_width + 1px) {
+        padding: 0 calc((100vw - $container_width) * .5);
+    }*/
+
+    // меньше
+    /*@media only screen and (max-width: $container_width) {
+        overflow-x: hidden;
+        padding: 0;
+    }*/
+}

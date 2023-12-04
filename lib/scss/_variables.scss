@@ -26,7 +26,7 @@ $media:                      "../media/" !default;
 $root_unit:                  20px !default;
 
 // Layout
-$layout_unit:            1rem !default;
+$layout_unit:                1rem !default;
 $layout_font_size:           16px !default;
 $layout_gap:                 40px !default;
 
@@ -53,9 +53,9 @@ $z_index_offcanvas:          1400 !default;
 $z_index_modal_backdrop:     1500 !default;
 $z_index_modal:              1600 !default;
 $z_index_popover:            1700 !default;
-$z_index_tooltip: 1800 !default;
-$z_index_toast: 1900 !default;
-$z_index_debug: 2000 !default;
+$z_index_tooltip:            1800 !default;
+$z_index_toast:              1900 !default;
+$z_index_debug:              2000 !default;
 
 // Under The Hood
 //----------------------------------------------------------
@@ -63,7 +63,7 @@ $z_index_debug: 2000 !default;
 //**********************************************************
 
 // Root
-$px: math.div($layout_unit, fnStripUnit($root_unit));
+$px:                         math.div($layout_unit, fnStripUnit($root_unit));
 
 // Container
 //$list_unit: "px", "em", "rem", "%", "vw";
@@ -81,12 +81,12 @@ $grid_col_width:             math.div($grid_width, $grid_column);
 $grid_cell_width:            math.div($grid_width - ($grid_column - 1) * $grid_gap, $grid_column);
 
 // Layout
-$layout_font_size: fnPxToRem($layout_font_size);
+$layout_font_size:           fnPxToRem($layout_font_size);
 $layout_gap:                 if($grid_gap > 0, $grid_gap, fnPxToRem($layout_gap));
 
 // Breakpoints
 //$is_evenly_breakpoints:     false;
-$list_breakpoints: fnGetListBreakpoints();
+$list_breakpoints:           fnGetListBreakpoints();
 $list_breakpoints_buffer:    ();
 $list_breakpoints_buffer2:   ();
 
@@ -97,12 +97,12 @@ $list_breakpoints_buffer2:   ();
 $list_sides:                 top, bottom, left, right;
 $list_cursors:               default, pointer, help, not-allowed;
 $list_displays:              none, block, inline-block, table, flex, grid, inline-grid, list-item;
-$list_positions: static, relative, absolute, fixed, sticky;
+$list_positions:             static, relative, absolute, fixed, sticky;
 
 // Fonts
-$font_family_serif: () !default;
-$font_family_sans_serif: () !default;
-$font_family_monospace: () !default;
+$font_family_serif:          () !default;
+$font_family_sans_serif:     () !default;
+$font_family_monospace:      () !default;
 // TODO:
 // - проверить есть ли добавляемый шрифт
 // - если не первый в списке удалить и добавить в начало
@@ -150,21 +150,21 @@ $font_family_monospace:      list.join(
                                              Menlo,
                                              Monaco,
                                              Consolas,
-        "Courier New",
+                                             "Courier New",
                                              "Lucida Console",
-        Courier,
-        monospace
+                                             Courier,
+                                             monospace
                                          ),
                                      comma
                              );
 
 :root {
     // Debug
-    --px: #{$px};
-    --bp: #{$list_breakpoints};
+    --px:                    #{$px};
+    --bp:                    #{$list_breakpoints};
 
     // Fonts
-    --font-family-serif: #{meta.inspect($font_family_serif)};
+    --font-family-serif:     #{meta.inspect($font_family_serif)};
     --font-family-sans-serif: #{meta.inspect($font_family_sans_serif)};
     --font-family-monospace: #{meta.inspect($font_family_monospace)};
 

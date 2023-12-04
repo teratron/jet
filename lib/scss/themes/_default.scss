@@ -17,6 +17,7 @@
 //
 //**********************************************************
 [data-theme="dark"] {
+    filter: invert(100%);
     color-scheme:          dark;
     --app-header-bg-color: var(--bs-primary-rgb);
     --app-footer-bg-color: var(--bs-primary-rgb);

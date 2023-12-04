@@ -11,21 +11,41 @@
 // Application
 //********************************************************
 #app {
-    display:          grid;
-    grid-template-rows: auto 1fr;
+    display:               grid;
+    grid-template-rows:    auto 1fr;
     grid-template-columns: 100%;
-    grid-auto-flow:   row;
-    grid-auto-rows:   auto;
-    min-height:       100vh;
-    z-index:          $z_index_app;
+    grid-auto-flow:        row;
+    grid-auto-rows:        auto;
+    min-height:            100vh;
+    z-index:               $z_index_app;
 
-    background-color: #cccccc;
-    align-content:    stretch;
-    align-items:      start;
-    justify-content:  space-between;
-    justify-items:    center;
+    background-color:      #cccccc;
+    align-content:         stretch;
+    align-items:           start;
+    justify-content:       space-between;
+    justify-items:         center;
 
     @extend %debug-sticker;
+}
+
+%app-container {
+    width:             100%;
+
+    $container_shrink: 20px;
+    $container_expand: calc((100vw - $container_width) * .5 + $container_shrink);
+
+    // больше
+    @media only screen and (min-width: $container_width + 1px) {
+        padding-left:  $container_expand;
+        padding-right: $container_expand;
+    }
+
+    // меньше
+    @media only screen and (max-width: $container_width) {
+        overflow-x:    hidden;
+        padding-left:  $container_shrink;
+        padding-right: $container_shrink;
+    }
 }
 
 // Containers
@@ -34,9 +54,9 @@
     @extend %container, %grid-12;
 }
 
-@import "components/header";
-@import "components/footer";
-@import "components/main";
+@import "header";
+@import "footer";
+@import "main";
 
 // Debug
 //********************************************************

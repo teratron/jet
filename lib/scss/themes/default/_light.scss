@@ -1,0 +1,11 @@
+// Theme Light
+//----------------------------------------------------------
+//
+//**********************************************************
+:root,
+[data-theme="light"] {
+    color-scheme:          light;
+    --app-header-bg-color: white;
+    --app-footer-bg-color: white;
+    --app-main-bg-color:   #f9f9f9;
+}
