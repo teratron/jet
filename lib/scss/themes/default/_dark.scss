@@ -1,11 +1,9 @@
-// Theme Dark
-//----------------------------------------------------------
-//
-//**********************************************************
-[data-theme="dark"] {
+/// ## Dark Theme
+
+[data-#{$prefix}theme="dark"] {
     filter:                invert(100%);
     color-scheme:          dark;
-    --app-header-bg-color: var(--bs-primary-rgb);
-    --app-footer-bg-color: var(--bs-primary-rgb);
-    --app-main-bg-color:   var(--bs-body-bg);
+    --app-header-bg-color: white;
+    --app-footer-bg-color: white;
+    --app-main-bg-color:   #f9f9f9;
 }

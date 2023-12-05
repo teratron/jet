@@ -6,7 +6,11 @@ import AppMain    from '@/containers/AppMain.vue'
 </script>
 
 <template>
-    <AppSidebar #sidebar/>
+    <AppSidebar #sidebar>
+        <AppHeader #header/>
+        <slot/>
+        <AppFooter #footer/>
+    </AppSidebar>
     <AppMain #main>
         <AppHeader #header/>
         <slot/>

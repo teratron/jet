@@ -97,7 +97,7 @@
 
         &-monospace {
             font-family: $font_family_monospace;
-            direction: ltr;
+            direction:   ltr;
         }
     }
 }
@@ -108,18 +108,18 @@
 // %child-fit
 //**********************************************************
 #{JX(reset-width, "%")} {
-    width: auto;
+    width:     auto;
     min-width: auto;
     max-width: none;
 }
 
 #{JX(child-fit, "%")} {
     &:first-child {
-        @extend #{JX(margin-top-0, "%")};
+        margin-top: 0;
     }
 
     &:only-child,
     &:last-child {
-        @extend #{JX(margin-bottom-0, "%")};
+        margin-bottom: 0;
     }
 }

@@ -1,14 +1,11 @@
-// Header
-.app-header {
-    //position: sticky;
-    //top:      0;
-    //width:     100%;
-    //max-width: $container_width;
+/// ## Header
+///
+/// `.%header`
 
-    background-color: burlywood;
+#{JX(header)} {
+    width: 100%;
 
     > #{JX(container, "%")} {
-        align-items: center;
-        min-height:  $header_height;
+        min-height: $header_height;
     }
 }

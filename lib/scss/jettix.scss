@@ -1,11 +1,7 @@
-//**********************************************************
 /// # Jettix
 ///
 /// [Repository](https://github.com/teraron/jettix)
 /// [Homepage](https://teratron.github.io/jettix)
-//----------------------------------------------------------
-//
-//**********************************************************
 
 // Configuration
 @import "functions";
@@ -16,10 +12,14 @@
 @import "reset";
 @import "debug";
 
+// Theme
+@import "themes/default/light";
+@import "themes/default/dark";
+
 // Layout
 @import "grid";
 @import "breakpoints";
-@import "layout/layout";
+@import "layout/app";
 
 // Elements
 @import "elements/button";

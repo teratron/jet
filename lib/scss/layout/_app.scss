@@ -1,14 +1,6 @@
-/// # Layout
+/// # App
 
-.app {
-
-}
-
-%app {
-
-}
-
-#app {
+#{JX(app)} {
     display:               grid;
     grid-template-rows:    auto 1fr;
     grid-template-columns: 100%;
@@ -17,17 +9,15 @@
     min-height:            100vh;
     z-index:               $z_index_app;
 
-    background-color:      #cccccc;
     align-content:         stretch;
     align-items:           start;
     justify-content:       space-between;
     justify-items:         center;
-
-    @extend #{JX(debug-sticker, "%")};
 }
 
-@import "main";
+// Components
+@import "container";
+@import "sidebar";
 @import "header";
 @import "footer";
-@import "sidebar";
-@import "container";
+@import "main";

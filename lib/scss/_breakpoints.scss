@@ -7,24 +7,24 @@
 @use "sass:list";
 @use "sass:meta";
 
-/* $list_breakpoints_buffer: [
-     (
-         selector: &,
-         props: (
-             padding-left: 1rem,
-             padding-right: 1rem
-         )
-     ),
-     ...
- ]
-
- [
-    [(), (), (), (), ()],
-    [(), (), ()],
-    [()],
-    [(), (), ()],
-    ...
- ]*/
+//$list_breakpoints_buffer: [
+//     (
+//         selector: &,
+//         props: (
+//             padding-left: 1rem,
+//             padding-right: 1rem
+//         )
+//     ),
+//     ...
+// ]
+//
+// [
+//    [(), (), (), (), ()],
+//    [(), (), ()],
+//    [()],
+//    [(), (), ()],
+//    ...
+// ]
 
 $list_breakpoints_buffer2: ((// list
     (// 1 list
@@ -75,11 +75,9 @@ $list_breakpoints_buffer2: ((// list
 @mixin mxPushBreakpointBuffer($breakpoint, $selector, $props: null) {
     $buffer:                   (selector: $selector);
 
-    @if $props != null {
-        @if meta.type-of($props) == map {
-            @each $key, $value in $props {
-                $buffer: map.merge($buffer, props, ($key: $value));
-            }
+    @if $props != null and meta.type-of($props) == map {
+        @each $key, $value in $props {
+            $buffer: map.merge($buffer, props, ($key: $value));
         }
     }
 

@@ -1,14 +1,10 @@
-//**********************************************************
-/// # Functions
+/// ## Functions
 ///
-//----------------------------------------------------------
-//
-//**********************************************************
 @use "sass:math";
 @use "sass:list";
 @use "sass:string";
 
-/// ## Locator
+/// ### Locator
 //----------------------------------------------------------
 ///
 /// ".%" or "%." - class & placeholder
@@ -38,7 +34,7 @@
     @return null;
 }
 
-/// ## Placeholders
+/// ### Placeholders
 ///
 //@function fnHasPlaceholder($placeholder) {
 //    @if list.index($list_placeholders, $placeholder) == null {
@@ -55,7 +51,7 @@
 //    @return null;
 //}
 
-/// ## Breakpoints
+/// ### Breakpoints
 ///
 @function fnGetListBreakpoints($is_evenly: false) {
     $list: ();
@@ -92,9 +88,9 @@
     @return list.nth($list_breakpoints, $n);
 }
 
-/// ## Tile
+/// ### Tile
 ///
-@function GetMinTileWidth($n: $grid_column, $gap: 0) {
+@function fnGetMinTileWidth($n: $grid_column, $gap: 0) {
     $u: $grid_width - $gap * $n;
     $w: math.div($u, $n + 1);
 
@@ -106,7 +102,7 @@
     @return $w;
 }
 
-/// ## Gaps
+/// ### Gaps
 @function fnGetGap($value) {
     //@if $value == gap-half or $value == -half or $value == half {
     @if string.index(#{$value}, "half") != null {
@@ -121,7 +117,7 @@
     @return $grid_gap;
 }
 
-/// ## Helpers
+/// ### Helpers
 ///
 @function fnStripUnit($value) {
     @return math.div($value, ($value * 0 + 1));

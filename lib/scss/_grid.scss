@@ -1,25 +1,24 @@
 /// # Grid
 ///
-/// `%layout`
 
-//#{JX(origin, "%")} {
+//#{JX(basis, "%")} {
 //    @extend #{JX(display-flex, "%")};
 //}
 
 //@supports (display: grid) {
-//    #{JX(origin, "%")} {
+//    #{JX(basis, "%")} {
 //        @extend #{JX(display-grid, "%")};
 //        grid-auto-rows: minmax($layout_unit, auto);
 //    }
 //}
 
-@mixin mxGridOrigin {
+@mixin mxGridBasis {
     @extend #{JX(display-grid, "%")};
     grid-auto-rows: minmax($layout_unit, auto);
 }
 
-#{JX(origin, "%")} {
-    @include mxGridOrigin;
+#{JX(basis, "%")} {
+    @include mxGridBasis;
 }
 
 // Grid
@@ -29,7 +28,7 @@
 // .%grid-b[1...n]-[1...n]
 //**********************************************************
 #{JX(grid)}, [class*=#{JX(grid-, "")}] {
-    @extend #{JX(origin, "%")};
+    @extend #{JX(basis, "%")};
     grid-auto-flow: row;
 
     @if $grid_gap > 0 {
@@ -46,8 +45,8 @@
 }
 
 #{JX(grid-child-fit, "%")} {
+    margin: 0;
     @extend #{JX(reset-width, "%")};
-    @extend #{JX(margin-0, "%")};
 }
 
 // Row
@@ -57,7 +56,7 @@
 // .%row-b[1...n]-[1...n]
 //**********************************************************
 #{JX(row)}, [class*=#{JX(row-, "")}] {
-    @extend #{JX(origin, "%")};
+    @extend #{JX(basis, "%")};
     @extend #{JX(grid-child-fit, "%")};
 }
 
@@ -77,7 +76,7 @@
 #{JX(bar)} {
     //@extend %#{$prefix}row;
     //grid-template-columns: repeat(auto-fit, minmax($layout_unit, auto));
-    @extend #{JX(origin, "%")};
+    @extend #{JX(basis, "%")};
     align-items:       center;
     grid-auto-flow:    column;
     grid-auto-columns: min-content;
@@ -91,7 +90,7 @@
 // .%col-b[1...n]-[1...n]
 //**********************************************************
 #{JX(col)} {
-    @extend #{JX(origin, "%")};
+    @extend #{JX(basis, "%")};
     @extend #{JX(grid-auto-flow-dense, "%")};
     grid-template-rows: repeat(auto-fit, minmax($layout_unit, auto));
 }
@@ -150,7 +149,7 @@
         }
 
         #{JX(row-b#{$i}-#{$j}, "%")} {
-            @extend #{JX(origin, "%")};
+            @extend #{JX(basis, "%")};
         }
     }
 
@@ -177,17 +176,17 @@
     }
 
     #{JX(row-#{$i}, "%")} {
-        @extend #{JX(origin, "%")};
+        @extend #{JX(basis, "%")};
         @extend #{JX(grid-auto-flow-dense, "%")};
         @extend #{JX(grid-child-fit, "%")};
     }
 
     #{JX(row-#{$i})} {
-        grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i), 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(fnGetMinTileWidth($i), 1fr));
 
         @each $v in (gap, gap-half, gap-quart) {
             &#{JX($v)} {
-                grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i, fnGetGap($v)), 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(fnGetMinTileWidth($i, fnGetGap($v)), 1fr));
             }
         }
     }
@@ -232,14 +231,11 @@
             }
 
             #{JX(row-b#{$i}-#{$j})} {
-                grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($j), 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(fnGetMinTileWidth($j), 1fr));
 
                 @each $v in (gap, gap-half, gap-quart) {
                     &#{JX($v)} {
-                        grid-template-columns: repeat(
-                            auto-fit,
-                                                       minmax(GetMinTileWidth($j, fnGetGap($v)), 1fr)
-                        );
+                        grid-template-columns: repeat(auto-fit, minmax(fnGetMinTileWidth($j, fnGetGap($v)), 1fr));
                     }
                 }
             }

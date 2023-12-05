@@ -1,12 +1,12 @@
-/// Footer
+/// ## Footer
+///
+/// `.%footer`
 
 #{JX(footer)} {
-    //width:     100%;
-    //max-width: $container_width;
-    background-color: #b3d4fc;
+    width:      100%;
+    min-height: $footer_height;
 
     > #{JX(container, "%")} {
         min-height: $footer_height;
-        //@extend %padding-top, %padding-bottom;
     }
 }

@@ -1,50 +1,37 @@
-//**********************************************************
-// Reset
-//----------------------------------------------------------
-//
-//**********************************************************
+/// ## Reset
+///
 
 // Root
-*,
-::before,
-::after {
+*, ::before, ::after {
     box-sizing: border-box;
 }
 
 html {
     direction: ltr;
     font-size: $root_unit;
-    height: 100vh;
+    height:    100vh;
 }
 
 body {
-    font-size: $layout_font_size;
-    line-height: $layout_unit;
-    z-index:   1;
-    overflow-x: hidden;
-    min-height: 100vh;
     @extend #{JX(font-family-sans-serif, "%")};
-    @extend #{JX(margin-0, "%")};
+    font-size:   $layout_font_size;
+    line-height: $layout_unit;
+    z-index:     1;
+    overflow-x:  hidden;
+    min-height:  100vh;
+    margin:      0;
 }
 
 // Commons
-hr,
-img,
-iframe {
+hr, img, iframe {
     border: 0 none;
 }
 
-img,
-svg,
-audio,
-video,
-canvas {
+img, svg, audio, video, canvas {
     vertical-align: middle;
 }
 
-sub,
-sup,
-progress {
+sub, sup, progress {
     vertical-align: baseline;
 }
 
@@ -60,11 +47,7 @@ progress {
     text-shadow: none;
 }
 
-script,
-template,
-[hidden],
-[scoped],
-audio:not([controls]) {
+script, template, [hidden], [scoped], audio:not([controls]) {
     @extend #{JX(display-none, "%")};
 }
 
@@ -78,27 +61,28 @@ summary {
 }
 
 figure {
-    @extend #{JX(margin-top-0, "%")}, #{JX(margin-left-0, "%")}, #{JX(margin-right-0, "%")};
+    margin-top:   0;
+    margin-left:  0;
+    margin-right: 0;
     @extend #{JX(margin-bottom-half, "%")};
 }
 
 hr {
-    height: 1px;
+    display:          block;
+    height:           1px;
     border-top-width: 1px;
     border-top-style: solid;
-    @extend #{JX(display-block, "%")};
-    @extend #{JX(padding-0, "%")};
-    @extend #{JX(margin-top-0, "%")}, #{JX(margin-bottom-half, "%")};
+    padding:          0;
+    margin-top:       0;
+    @extend #{JX(margin-bottom-half, "%")};
 }
 
-ul,
-ol {
-    @extend #{JX(margin-top-0, "%")};
+ul, ol {
+    margin-top: 0;
     @extend #{JX(padding-left-half, "%")};
 
-    ul,
-    ol {
-        @extend #{JX(margin-bottom-0, "%")};
+    ul, ol {
+        margin-bottom: 0;
     }
 
     ul {
@@ -115,7 +99,7 @@ li {
 }
 
 dl {
-    @extend #{JX(margin-top-0, "%")};
+    margin-top: 0;
 }
 
 dt {
@@ -123,12 +107,14 @@ dt {
 }
 
 dd {
-    @extend #{JX(margin-left-0, "%")}, #{JX(margin-bottom-half, "%")};
+    margin-left: 0;
+    @extend #{JX(margin-bottom-half, "%")};
 }
 
 // Typography
 #{JX(heading, "%")} {
-    @extend #{JX(margin-top-0, "%")}, #{JX(margin-bottom-half, "%")};
+    margin-top: 0;
+    @extend #{JX(margin-bottom-half, "%")};
     //@extend #{JX(child-fit, "%")};
     @extend #{JX(grid-child-fit, "%")};
 }
@@ -163,8 +149,7 @@ p {
     @extend #{JX(margin-top-0, "%")}, #{JX(margin-bottom-half, "%")};
 }
 
-b,
-strong {
+b, strong {
     font-weight: bolder;
 }
 
@@ -172,21 +157,18 @@ a {
     text-decoration: underline;
     @extend #{JX(cursor-pointer, "%")};
 
-    &:hover,
-    &:active {
+    &:hover, &:active {
         text-decoration: none;
     }
 
     &[target="_blank"]:before {
         font-size: 90%;
-        content: "\e164\00A0";
+        content:   "\e164\00A0";
     }
 }
 
 q {
-    &,
-    &:lang(fr),
-    &:lang(ru) {
+    &, &:lang(fr), &:lang(ru) {
         quotes: "\00ab" "\00bb";
     }
 
@@ -194,8 +176,7 @@ q {
         quotes: "\201c" "\201d";
     }
 
-    q,
-    &:lang(de) {
+    q, &:lang(de) {
         quotes: "\201e" "\201c";
     }
 }
@@ -204,8 +185,7 @@ blockquote {
     @extend #{JX(margin-bottom-half, "%")};
 }
 
-mark,
-code {
+mark, code {
     padding: 0 0.5em;
 }
 
@@ -214,7 +194,7 @@ acronym {
 }
 
 abbr {
-    font-variant: small-caps;
+    font-variant:   small-caps;
     letter-spacing: 0.05em;
     text-transform: uppercase;
 
@@ -226,15 +206,12 @@ abbr {
 }
 
 address {
-    font-style: normal;
+    font-style:  normal;
     line-height: inherit;
     @extend #{JX(margin-bottom-half, "%")};
 }
 
-pre,
-kbd,
-code,
-samp {
+pre, kbd, code, samp {
     @extend #{JX(font-family-monospace, "%")};
 }
 
@@ -244,11 +221,12 @@ code {
 
 pre {
     overflow: auto;
+    margin-top: 0;
     @extend #{JX(display-block, "%")};
-    @extend #{JX(margin-top-0, "%")}, #{JX(margin-bottom-half, "%")};
+    @extend #{JX(margin-bottom-half, "%")};
 
     code {
-        color: inherit;
+        color:      inherit;
         word-break: normal;
     }
 }
@@ -261,8 +239,7 @@ small {
     font-size: 80%;
 }
 
-sub,
-sup {
+sub, sup {
     font-size:   75%;
     line-height: 0;
     position:    relative;
@@ -282,7 +259,7 @@ time {
 
 // Tables
 table {
-    caption-side: bottom;
+    caption-side:    bottom;
     border-collapse: collapse;
 }
 
@@ -295,29 +272,21 @@ th {
     text-align: inherit;
 }
 
-tr,
-td,
-th,
-thead,
-tbody,
-tfoot {
+tr, td, th, thead, tbody, tfoot {
     border-color: inherit;
     border-style: solid;
     border-width: 0;
 }
 
 // Forms
-legend,
-fieldset,
-[type="radio"],
-[type="checkbox"] {
-    @extend #{JX(padding-0, "%")};
+legend, fieldset, [type="radio"], [type="checkbox"] {
+    padding: 0;
 }
 
 fieldset {
     min-width: 0;
     border:    0 none;
-    @extend #{JX(margin-0, "%")};
+    margin:    0;
 }
 
 legend {
@@ -330,25 +299,19 @@ legend {
 }
 
 form {
-    @extend #{JX(margin-bottom-0, "%")};
+    margin-bottom: 0;
 }
 
-label,
-output {
+label, output {
     @extend #{JX(display-inline-block, "%")};
 }
 
-input,
-button,
-select,
-optgroup,
-textarea {
+input, button, select, optgroup, textarea {
     @extend #{JX(font-family-sans-serif, "%")};
-    @extend #{JX(margin-0, "%")};
+    margin: 0;
 }
 
-button,
-select {
+button, select {
     text-transform: none;
 }
 

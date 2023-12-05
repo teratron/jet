@@ -1,10 +1,10 @@
-/// # Variables
+/// ## Variables
 ///
 @use "sass:math";
 @use "sass:meta";
 @use "sass:list";
 
-/// ## Locator
+/// ### Locator
 ///
 /// | Symbol       | Description           |
 /// |--------------|-----------------------|
@@ -28,6 +28,10 @@ $media_path:                 "../media/" !default;
 /// Root
 $root_unit:                  20px !default;
 
+/// Grid
+$grid_column:                12 !default;
+$grid_gap:                   $layout_gap !default;
+
 /// Layout
 $layout_unit:                1rem !default;
 $layout_font_size:           16px !default;
@@ -36,10 +40,6 @@ $layout_gap:                 40px !default;
 /// Container
 $container_width:            1280px !default;
 $container_gap:              $layout_gap !default;
-
-/// Grid
-$grid_column:                12 !default;
-$grid_gap:                   $layout_gap !default;
 
 /// Z-index
 $z_index_app:                100 !default;

@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import AppContainer  from '@/containers/AppContainer.vue'
+import SpinnerElement from 'components/SpinnerElement.vue'
 </script>
 
 <template>
     <main class="app-main" role="main">
-        <AppContainer>
-            <slot name="main"/>
-        </AppContainer>
+        <slot name="main">
+            <SpinnerElement/>
+        </slot>
     </main>
 </template>
