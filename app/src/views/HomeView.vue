@@ -1,7 +1,4 @@
 <script lang="ts" setup>
-//import {ref} from 'vue'
-
-//const title = ref(import.meta.env.VITE_APP_TITLE)
 const title = import.meta.env.VITE_APP_TITLE
 </script>
 

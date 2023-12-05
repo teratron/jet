@@ -1,0 +1,53 @@
+//**********************************************************
+/// ## Container
+///
+/// `.%container`
+//----------------------------------------------------------
+//
+//**********************************************************
+
+#{JX(container)} {
+    width:        100%;
+    max-width:    $container_width;
+    margin-right: auto;
+    margin-left:  auto;
+
+    @if $container_gap > 0 {
+        @if $container_gap == $layout_gap {
+            @extend #{JX(padding-left, "%")}, #{JX(padding-right, "%")};
+        } @else {
+            @include mxSetPropsAdaptive((
+                padding-left: $container_gap,
+                padding-right: $container_gap
+            ));
+        }
+    }
+
+    // больше
+    @media only screen and (min-width: calc($container_width + 1px)) {
+    }
+
+    // меньше
+    @media only screen and (max-width: $container_width) {
+        overflow-x: hidden;
+    }
+}
+
+/*
+%container {
+    $container_shrink: 20px;
+    $container_expand: calc((100vw - $container_width) * .5 + $container_shrink);
+
+    // больше
+    @media only screen and (min-width: calc($container_width + 1px)) {
+        padding-left:  $container_expand;
+        padding-right: $container_expand;
+    }
+
+    // меньше
+    @media only screen and (max-width: $container_width) {
+        overflow-x:    hidden;
+        padding-left:  $container_shrink;
+        padding-right: $container_shrink;
+    }
+}*/

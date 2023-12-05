@@ -1,46 +1,25 @@
-//**********************************************************
-// Layout
-//----------------------------------------------------------
-// %layout
-//**********************************************************
-//#{JX(layout, "%")} {
+/// # Grid
+///
+/// `%layout`
+
+//#{JX(origin, "%")} {
 //    @extend #{JX(display-flex, "%")};
 //}
 
 //@supports (display: grid) {
-//    #{JX(layout, "%")} {
+//    #{JX(origin, "%")} {
 //        @extend #{JX(display-grid, "%")};
 //        grid-auto-rows: minmax($layout_unit, auto);
 //    }
 //}
 
-#{JX(layout, "%")} {
+@mixin mxGridOrigin {
     @extend #{JX(display-grid, "%")};
     grid-auto-rows: minmax($layout_unit, auto);
 }
 
-// Container
-//----------------------------------------------------------
-// .%container
-//**********************************************************
-#{JX(container)} {
-    width:     100%;
-    max-width: $container_width;
-    margin-right: auto;
-    margin-left: auto;
-
-    @if $container_gap > 0 {
-        @if $container_gap == $layout_gap {
-            @extend #{JX(padding-left, "%")}, #{JX(padding-right, "%")};
-        } @else {
-            @include mxSetPropsAdaptive(
-                    (
-                        padding-left: $container_gap,
-                        padding-right: $container_gap
-                    )
-            );
-        }
-    }
+#{JX(origin, "%")} {
+    @include mxGridOrigin;
 }
 
 // Grid
@@ -49,11 +28,9 @@
 // .%grid-[1...n]
 // .%grid-b[1...n]-[1...n]
 //**********************************************************
-#{JX(grid)},
-[class*=#{JX(grid-, "")}] {
-    @extend #{JX(layout, "%")};
+#{JX(grid)}, [class*=#{JX(grid-, "")}] {
+    @extend #{JX(origin, "%")};
     grid-auto-flow: row;
-    //align-items:    baseline;
 
     @if $grid_gap > 0 {
         @extend #{JX(gap, "%")};
@@ -79,9 +56,8 @@
 // .%row-[1...n]
 // .%row-b[1...n]-[1...n]
 //**********************************************************
-#{JX(row)},
-[class*=#{JX(row-, "")}] {
-    @extend #{JX(layout, "%")};
+#{JX(row)}, [class*=#{JX(row-, "")}] {
+    @extend #{JX(origin, "%")};
     @extend #{JX(grid-child-fit, "%")};
 }
 
@@ -101,11 +77,11 @@
 #{JX(bar)} {
     //@extend %#{$prefix}row;
     //grid-template-columns: repeat(auto-fit, minmax($layout_unit, auto));
-    @extend #{JX(layout, "%")};
-    align-items:   center;
-    grid-auto-flow: column;
+    @extend #{JX(origin, "%")};
+    align-items:       center;
+    grid-auto-flow:    column;
     grid-auto-columns: min-content;
-    justify-items: center;
+    justify-items:     center;
 }
 
 // Column
@@ -115,7 +91,7 @@
 // .%col-b[1...n]-[1...n]
 //**********************************************************
 #{JX(col)} {
-    @extend #{JX(layout, "%")};
+    @extend #{JX(origin, "%")};
     @extend #{JX(grid-auto-flow-dense, "%")};
     grid-template-rows: repeat(auto-fit, minmax($layout_unit, auto));
 }
@@ -174,7 +150,7 @@
         }
 
         #{JX(row-b#{$i}-#{$j}, "%")} {
-            @extend #{JX(layout, "%")};
+            @extend #{JX(origin, "%")};
         }
     }
 
@@ -201,7 +177,7 @@
     }
 
     #{JX(row-#{$i}, "%")} {
-        @extend #{JX(layout, "%")};
+        @extend #{JX(origin, "%")};
         @extend #{JX(grid-auto-flow-dense, "%")};
         @extend #{JX(grid-child-fit, "%")};
     }
@@ -211,10 +187,7 @@
 
         @each $v in (gap, gap-half, gap-quart) {
             &#{JX($v)} {
-                grid-template-columns: repeat(
-                    auto-fit,
-                                               minmax(GetMinTileWidth($i, fnGetGap($v)), 1fr)
-                );
+                grid-template-columns: repeat(auto-fit, minmax(GetMinTileWidth($i, fnGetGap($v)), 1fr));
             }
         }
     }

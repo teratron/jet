@@ -6,7 +6,7 @@
 
     > .app-container {
         min-height: $footer_height;
-        @extend %padding-top, %padding-bottom;
+        //@extend %padding-top, %padding-bottom;
     }
 
     @extend %app-container;

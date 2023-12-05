@@ -5,7 +5,7 @@ import '@/assets/scss/app.scss'
 </script>
 
 <template>
-    <RouterLayout>
+    <RouterLayout #base-layout="{}">
         <RouterView/>
     </RouterLayout>
 </template>

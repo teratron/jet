@@ -8,7 +8,7 @@ import AppMain   from '@/containers/AppMain.vue'
     <AppHeader #header>
         <slot/>
     </AppHeader>
-    <AppMain #default>
+    <AppMain #main>
         <slot/>
     </AppMain>
     <AppFooter #footer>

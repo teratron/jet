@@ -1,5 +1,6 @@
 //**********************************************************
-// Functions
+/// # Functions
+///
 //----------------------------------------------------------
 //
 //**********************************************************
@@ -7,13 +8,14 @@
 @use "sass:list";
 @use "sass:string";
 
-// Locator
+/// ## Locator
 //----------------------------------------------------------
-// ".%" or "%." - class & placeholder
-// "#"          - id
-// "."          - class
-// "%"          - placeholder
-// ""           - without locator
+///
+/// ".%" or "%." - class & placeholder
+/// "#"          - id
+/// "."          - class
+/// "%"          - placeholder
+/// ""           - without locator
 //**********************************************************
 @function JX($selector, $loc: $locator) {
     @if $loc == ".%" or $loc == "%." {
@@ -25,10 +27,8 @@
             //
             //    $list_placeholders: PushPlaceholder($placeholder);
             //}
-
             $list: list.append($list, #{$value}#{$prefix}#{$selector}, comma);
         }
-
         @return $list;
     } @else if $loc == "." or $loc == "%" or $loc == "#" or $loc == "" {
         @return #{$loc}#{$prefix}#{$selector};
@@ -38,25 +38,25 @@
     @return null;
 }
 
-// Placeholders
-//@function HasPlaceholder($placeholder) {
+/// ## Placeholders
+///
+//@function fnHasPlaceholder($placeholder) {
 //    @if list.index($list_placeholders, $placeholder) == null {
 //        @return false;
 //    }
-//
 //    @warn "The object already exists: #{$placeholder}";
 //    @return true;
 //}
-
-//@function PushPlaceholder($placeholder) {
+//
+//@function fnPushPlaceholder($placeholder) {
 //    @if not HasPlaceholder($placeholder) {
 //        @return list.append($list_placeholders, $placeholder);
 //    }
-//
 //    @return null;
 //}
 
-// Breakpoints
+/// ## Breakpoints
+///
 @function fnGetListBreakpoints($is_evenly: false) {
     $list: ();
     $g: $grid_gap;
@@ -85,7 +85,6 @@
 
         $list: list.append($list, $b);
     }
-
     @return $list;
 }
 
@@ -93,7 +92,8 @@
     @return list.nth($list_breakpoints, $n);
 }
 
-// Tile
+/// ## Tile
+///
 @function GetMinTileWidth($n: $grid_column, $gap: 0) {
     $u: $grid_width - $gap * $n;
     $w: math.div($u, $n + 1);
@@ -103,11 +103,10 @@
     } @else if math.unit($w) == "rem" {
         $w: $w + $px;
     }
-
     @return $w;
 }
 
-// Gaps
+/// ## Gaps
 @function fnGetGap($value) {
     //@if $value == gap-half or $value == -half or $value == half {
     @if string.index(#{$value}, "half") != null {
@@ -119,11 +118,11 @@
     } @else if string.index(#{$value}, "0") != null {
         @return 0;
     }
-
     @return $grid_gap;
 }
 
-// Helpers
+/// ## Helpers
+///
 @function fnStripUnit($value) {
     @return math.div($value, ($value * 0 + 1));
 }
@@ -132,7 +131,6 @@
     @if math.unit($value) == "px" {
         @return $px * fnStripUnit($value);
     }
-
     @return $value;
 }
 
@@ -140,7 +138,6 @@
     @if math.unit($value) == "rem" {
         @return math.round($root_unit * fnStripUnit($value));
     }
-
     @return $value;
 }
 
@@ -148,6 +145,5 @@
 //    @if math.unit($container_width) == "px" {
 //
 //    }
-//
 //    @return $value;
 //}

@@ -1,22 +1,13 @@
 <script lang="ts" setup>
-import AppHeader    from '@/containers/AppHeader.vue'
-import AppFooter    from '@/containers/AppFooter.vue'
-import AppMain      from '@/containers/AppMain.vue'
-import AppContainer from '@/containers/AppContainer.vue'
+import AppHeader from '@/containers/AppHeader.vue'
+import AppFooter from '@/containers/AppFooter.vue'
+import AppMain   from '@/containers/AppMain.vue'
 </script>
 
 <template>
-    <AppHeader #header>
-        <AppContainer>
-            <slot/>
-        </AppContainer>
-    </AppHeader>
-    <AppMain #default>
-        <AppContainer>
-            <slot/>
-        </AppContainer>
+    <AppHeader #header/>
+    <AppMain #main>
+        <slot/>
     </AppMain>
-    <AppFooter #footer>
-        <AppContainer/>
-    </AppFooter>
+    <AppFooter #footer/>
 </template>

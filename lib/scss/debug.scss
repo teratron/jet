@@ -22,8 +22,8 @@ address nav,
 #{JX(debug-layout)} {
     &::before,
     &::after {
-        @extend %display-block;
-        @extend %position-fixed;
+        @extend #{JX(display-block, "%")};
+        @extend #{JX(position-fixed, "%")};
         z-index: $z_index_debug;
         top:     0;
         bottom:  0;
@@ -47,8 +47,8 @@ address nav,
 #{JX(debug-sticker)} {
     &::before,
     &::after {
-        @extend %display-block;
-        @extend %position-fixed;
+        @extend #{JX(display-block, "%")};
+        @extend #{JX(position-fixed, "%")};
         font-size:   12px;
         line-height: 40px;
         z-index:     $z_index_debug + 1;

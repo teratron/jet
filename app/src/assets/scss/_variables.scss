@@ -5,35 +5,40 @@
 //**********************************************************
 
 // Locator
-//$locator:                "";
+$locator:                ".%";
 
 // Prefix
-$prefix:           "";
+$prefix:                 "jx-";
+
+// Options
+$golden_ratio:           true;
+$display_mode:           "grid";
+$theme_mode:             "light";
 
 // Path
-$fonts:            "../fonts/";
-$media:            "../media/";
+$fonts_path:             "../fonts/";
+$media_path:             "../media/";
 
 // Root
-$root_unit:        20px;
+$root_unit:              20px;
 
 // Layout
-$layout_unit:      1rem;
-$layout_font-size: 16px;
-$layout_gap:       20px;
+$layout_unit:            1rem;
+$layout_font-size:       16px;
+$layout_gap:             20px;
 
 // Container
-$container_width: 800px; //1280px;
-$container_gap:    20px;
+$container_width:        800px; //1280px;
+$container_gap:          20px;
 
 // Grid
-$grid_column:      24;
-$grid_gap:         20px;
+$grid_column:            24;
+$grid_gap:               20px;
 
 // Application
-$header_height:    100px;
-$footer_height:    100px;
-$main_height:      400px;
+$header_height:          100px;
+$footer_height:          100px;
+$main_height:            400px;
 
 // Fonts
 $font_family_sans_serif: Futura;

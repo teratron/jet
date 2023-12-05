@@ -1,0 +1,14 @@
+.main {
+    min-height:       $main_height;
+    height:           100%;
+    //width:     100%;
+    //max-width: $container_width;
+
+
+    background-color: white;
+
+    > #{JX(container, "%")} {
+        align-content: start;
+        //height:        100%;
+    }
+}

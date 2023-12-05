@@ -1,6 +1,8 @@
 //**********************************************************
-// Jettix
-// https://github.com/teraron/jettix
+/// # Jettix
+///
+/// [Repository](https://github.com/teraron/jettix)
+/// [Homepage](https://teratron.github.io/jettix)
 //----------------------------------------------------------
 //
 //**********************************************************
@@ -15,8 +17,9 @@
 @import "debug";
 
 // Layout
-@import "layout";
+@import "grid";
 @import "breakpoints";
+@import "layout/layout";
 
 // Elements
 @import "elements/button";

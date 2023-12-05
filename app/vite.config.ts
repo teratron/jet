@@ -46,6 +46,9 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
         ],
         server: {
             open: true,
+            hmr: {
+                overlay: false
+            },
             warmup: {
                 clientFiles: [
                     './src/components/*.vue'
