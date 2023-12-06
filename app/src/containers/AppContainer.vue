@@ -4,7 +4,7 @@ import SpinnerElement from 'components/SpinnerElement.vue'
 
 <template>
     <section class="app-container">
-        <slot :count="1">
+        <slot>
             <SpinnerElement/>
         </slot>
     </section>

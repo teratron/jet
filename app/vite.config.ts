@@ -49,8 +49,8 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
             },
             warmup: {
                 clientFiles: [
-                    './src/components/*.vue',
-                    './src/assets/scss/*.scss'
+                    './src/**/*.vue',
+                    './src/**/*.scss'
                 ]
             }
         },

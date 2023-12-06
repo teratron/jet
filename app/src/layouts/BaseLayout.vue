@@ -6,11 +6,8 @@ import AppContainer from 'containers/AppContainer.vue'
 </script>
 
 <template>
-    <AppHeader v-slot="{children}">
-        <AppContainer v-slot="slotProps">
-            {{ slotProps.count }}
-            {{ children }}
-        </AppContainer>
+    <AppHeader>
+        <AppContainer/>
     </AppHeader>
     <AppMain>
         <AppContainer>

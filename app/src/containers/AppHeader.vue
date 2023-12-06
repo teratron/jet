@@ -4,7 +4,7 @@ import HeaderContent from 'components/HeaderContent.vue'
 
 <template>
     <header class="app-header" role="banner">
-        <slot :children="HeaderContent">
+        <slot>
             <HeaderContent/>
         </slot>
     </header>

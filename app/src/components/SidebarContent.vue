@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import ListRouterLink from './ListRouterLink.vue'
+import ListRouterLink from 'components/ListRouterLink.vue'
 </script>
 
 <template>

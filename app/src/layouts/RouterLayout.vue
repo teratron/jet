@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import BaseLayout from './BaseLayout.vue'
-//import GridLayout from './GridLayout.vue'
-//import DashboardLayout from './DashboardLayout.vue'
-//import BlankLayout from './BlankLayout.vue'
+import BaseLayout from 'layouts/BaseLayout.vue'
+//import GridLayout from 'layouts/GridLayout.vue'
+//import DashboardLayout from 'layouts/DashboardLayout.vue'
+//import BlankLayout from 'layouts/BlankLayout.vue'
 </script>
 
 <template>
