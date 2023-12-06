@@ -169,8 +169,8 @@ coverage
 env/.env
 .env.*
 !.env.vault
-!.env.development
-!.env.production
+!env/.env.development
+!env/.env.production
 
 # Next.js
 .next

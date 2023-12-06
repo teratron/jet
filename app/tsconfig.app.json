@@ -1,0 +1,42 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "compilerOptions": {
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "components/*": [
+        "./src/components/*"
+      ],
+      "containers/*": [
+        "./src/containers/*"
+      ],
+      "layouts/*": [
+        "./src/layouts/*"
+      ],
+      "views/*": [
+        "./src/views/*"
+      ],
+      "assets/*": [
+        "./src/assets/*"
+      ],
+      "lib/*": [
+        "../lib/*"
+      ],
+      "jettix": [
+        "../lib/scss/jettix.scss"
+      ]
+    }
+  },
+  "include": [
+    "env.d.ts",
+    "src/**/*.ts",
+    "src/**/*.vue"
+  ],
+  "exclude": [
+    "test/**/*",
+    "src/**/__tests__/*"
+  ]
+}

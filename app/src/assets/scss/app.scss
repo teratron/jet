@@ -4,27 +4,30 @@
 @import "variables";
 
 // Jettix
-@import "../../../../lib/scss/jettix";
+@import "jettix";
 @import "../../../../lib/scss/debug";
 
 // Application
 #app {
-    background-color: #ccc;
-    @extend %app, %jx-debug-sticker;
-
-    margin-inside: 42px; // TODO:
-    margin-outside: 24px; // TODO:
+    background-color: #cccccc;
+    @extend %jx-app, %jx-debug-sticker;
 }
 
 // Container
 .app-container {
-    @extend %jx-container, %jx-grid-12;
+    @extend %jx-container /*, %jx-grid-12*/
+;
 }
 
 // Main
 .app-main {
     @extend %jx-main;
     background-color: white;
+
+    > .app-container {
+        align-content: start;
+        min-height:    $main_height;
+    }
 }
 
 // Header
@@ -35,6 +38,7 @@
     //top:      0;
 
     > .app-container {
+        min-height: $header_height;
         align-items: center;
     }
 }
@@ -43,11 +47,15 @@
 .app-footer {
     @extend %jx-footer;
     background-color: #b3d4fc;
+
+    > .app-container {
+        min-height: $footer_height;
+    }
 }
 
 // Debug
 .outline > * {
-    outline: 1px solid #ddd;
+    outline: 1px solid #dddddd;
 }
 
 .row-test {

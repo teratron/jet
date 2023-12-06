@@ -1,5 +1,5 @@
 /// ## Variables
-///
+
 @use "sass:math";
 @use "sass:meta";
 @use "sass:list";
@@ -13,35 +13,35 @@
 /// | "%"          | placeholder mode      |
 $locator:                    ".%" !default;
 
-/// Prefix
+/// ### Prefix
 $prefix:                     "" !default;
 
-/// Options
+/// ### Options
 $golden_ratio:               true !default;
-$display_mode:               "grid" !default;
+$display_mode: grid !default;
 $theme_mode:                 "light" !default;
 
-/// Path
+/// ### Paths
 $fonts_path:                 "../fonts/" !default;
 $media_path:                 "../media/" !default;
 
-/// Root
+/// ### Root
 $root_unit:                  20px !default;
 
-/// Grid
+/// ### Grid
 $grid_column:                12 !default;
 $grid_gap:                   $layout_gap !default;
 
-/// Layout
+/// ### Layout
 $layout_unit:                1rem !default;
 $layout_font_size:           16px !default;
 $layout_gap:                 40px !default;
 
-/// Container
+/// ### Container
 $container_width:            1280px !default;
 $container_gap:              $layout_gap !default;
 
-/// Z-index
+/// ### Z-index
 $z_index_app:                100 !default;
 $z_index_main:               200 !default;
 $z_index_content:            300 !default;
@@ -60,15 +60,14 @@ $z_index_tooltip:            1800 !default;
 $z_index_toast:              1900 !default;
 $z_index_debug:              2000 !default;
 
-/// Under The Hood
-///----------------------------------------------------------
+/// ## Under The Hood
 ///
-///**********************************************************
+///
 
-/// Root
+/// ### Root
 $px:                         math.div($layout_unit, fnStripUnit($root_unit));
 
-/// Container
+/// ### Container
 $list_unit:                  "px", "em", "rem", "%", "vw";
 //@if math.unit($container_width) == "px" {
 //}
@@ -77,38 +76,38 @@ $container_width:            fnPxToRem($container_width);
 $container_gap:              fnPxToRem($container_gap);
 $container_rate:             math.div(100, $container_width);
 
-/// Grid
+/// ### Grid
 $grid_width:                 calc($container_width - $container_gap * 2);
 $grid_gap:                   fnPxToRem($grid_gap);
 $grid_col_width:             math.div($grid_width, $grid_column);
 $grid_cell_width:            math.div($grid_width - ($grid_column - 1) * $grid_gap, $grid_column);
 
-/// Layout
+/// ### Layout
 $layout_font_size:           fnPxToRem($layout_font_size);
 $layout_gap:                 if($grid_gap > 0, $grid_gap, fnPxToRem($layout_gap));
 
-/// Breakpoints
+/// ### Breakpoints
 //$is_evenly_breakpoints:     false;
 $list_breakpoints:           fnGetListBreakpoints();
 $list_breakpoints_buffer:    ();
 $list_breakpoints_buffer2:   ();
 
-/// Placeholders
+/// ### Placeholders
 //$list_placeholders:         ();
 
-/// Commons
+/// ### Commons
 $list_sides:                 top, bottom, left, right;
 $list_cursors:               default, pointer, help, not-allowed;
 $list_displays:              none, block, inline-block, table, flex, grid, inline-grid, list-item;
 $list_positions:             static, relative, absolute, fixed, sticky;
 
-/// Fonts
+/// ### Fonts
 $font_family_serif:          () !default;
 $font_family_sans_serif:     () !default;
 $font_family_monospace:      () !default;
-/// TODO:
-/// - проверить есть ли добавляемый шрифт
-/// - если не первый в списке удалить и добавить в начало
+// TODO:
+// - проверить есть ли добавляемый шрифт
+// - если не первый в списке удалить и добавить в начало
 $font_family_serif:          list.join(
                                      $font_family_serif,
                                          (
@@ -162,15 +161,15 @@ $font_family_monospace:      list.join(
                              );
 
 :root {
-    /// Debug
+    // Debug
     --px:                     #{$px};
     --bp:                     #{$list_breakpoints};
 
-    /// Fonts
+    // Fonts
     --font-family-serif:      #{meta.inspect($font_family_serif)};
     --font-family-sans-serif: #{meta.inspect($font_family_sans_serif)};
     --font-family-monospace:  #{meta.inspect($font_family_monospace)};
 
-    /// Theme
+    // Theme
     //@include theme;
 }

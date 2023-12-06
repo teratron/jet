@@ -4,9 +4,7 @@
 
 #{JX(footer)} {
     width:      100%;
-    min-height: $footer_height;
 
     > #{JX(container, "%")} {
-        min-height: $footer_height;
     }
 }

@@ -7,11 +7,11 @@ import BaseLayout from './BaseLayout.vue'
 
 <template>
     <BaseLayout>
-        <slot name="base-layout"/>
+        <slot/>
     </BaseLayout>
     <!--<GridLayout>
             <slot name="grid-layout"/>
         </GridLayout>-->
     <!--<BlankLayout :v-else-if="true"/>-->
-    <!--<DashboardLayout name="dashboard-layout"/>-->
+    <!--<DashboardLayout name="dashboard-layout"/> name="base-layout"-->
 </template>

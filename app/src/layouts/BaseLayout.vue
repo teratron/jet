@@ -1,22 +1,23 @@
 <script lang="ts" setup>
-import AppHeader    from '@/containers/AppHeader.vue'
-import AppFooter    from '@/containers/AppFooter.vue'
-import AppMain      from '@/containers/AppMain.vue'
-import AppContainer from '@/containers/AppContainer.vue'
+import AppHeader    from 'containers/AppHeader.vue'
+import AppFooter    from 'containers/AppFooter.vue'
+import AppMain      from 'containers/AppMain.vue'
+import AppContainer from 'containers/AppContainer.vue'
 </script>
 
 <template>
-    <AppHeader #header>
-        <AppContainer>
-            <slot/>
+    <AppHeader v-slot="{children}">
+        <AppContainer v-slot="slotProps">
+            {{ slotProps.count }}
+            {{ children }}
         </AppContainer>
     </AppHeader>
-    <AppMain #default>
+    <AppMain>
         <AppContainer>
             <slot/>
         </AppContainer>
     </AppMain>
-    <AppFooter #footer>
+    <AppFooter>
         <AppContainer/>
     </AppFooter>
 </template>

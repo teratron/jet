@@ -7,6 +7,7 @@ import * as path            from 'path'
 const root = path.resolve(__dirname, './')
 const dir = {
     root: root,
+    env: path.resolve(root, 'env'),
     src: path.resolve(root, 'src'),
     build: path.resolve(root, 'build'),
     public: path.resolve(root, 'public')
@@ -37,21 +38,19 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
         base: command === 'serve' ? '/' : './',
         root: dir.src,
         publicDir: dir.public,
-        envDir: '../',
-        env: {
-            root: '../'
-        },
+        envDir: dir.env,
         plugins: [
             vue()
         ],
         server: {
             open: true,
             hmr: {
-                overlay: false
+                overlay: true
             },
             warmup: {
                 clientFiles: [
-                    './src/components/*.vue'
+                    './src/components/*.vue',
+                    './src/assets/scss/*.scss'
                 ]
             }
         },
@@ -99,7 +98,13 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
             extensions: ['.ts', '.vue', '.scss'],
             alias: {
                 '@': fileURLToPath(new URL('./src', import.meta.url)),
-                '&': fileURLToPath(new URL('../lib', import.meta.url))
+                'components': fileURLToPath(new URL('./src/components', import.meta.url)),
+                'containers': fileURLToPath(new URL('./src/containers', import.meta.url)),
+                'layouts': fileURLToPath(new URL('./src/layouts', import.meta.url)),
+                'views': fileURLToPath(new URL('./src/views', import.meta.url)),
+                'assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
+                'lib': fileURLToPath(new URL('../lib', import.meta.url)),
+                'jettix': fileURLToPath(new URL('../lib/scss/jettix.scss', import.meta.url))
             }
         }
     }

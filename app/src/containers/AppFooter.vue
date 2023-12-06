@@ -4,7 +4,7 @@ import FooterContent from '@/components/FooterContent.vue'
 
 <template>
     <footer class="app-footer" role="contentinfo">
-        <slot name="footer">
+        <slot>
             <FooterContent/>
         </slot>
     </footer>

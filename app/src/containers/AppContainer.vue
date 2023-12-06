@@ -1,7 +1,11 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import SpinnerElement from 'components/SpinnerElement.vue'
+</script>
 
 <template>
     <section class="app-container">
-        <slot/>
+        <slot :count="1">
+            <SpinnerElement/>
+        </slot>
     </section>
 </template>

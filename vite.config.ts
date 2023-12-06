@@ -6,6 +6,7 @@ import * as path            from 'path'
 const root = path.resolve(__dirname, './')
 const dir = {
     root: root,
+    env: path.resolve(root, 'env'),
     lib: path.resolve(root, 'lib'),
     build: path.resolve(root, 'dist')
 }
@@ -14,6 +15,7 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
     console.log('Config arguments:', command, mode, isSsrBuild, isPreview)
 
     const common = {
+        envDir: dir.env,
         build: {
             outDir: dir.build,
             emptyOutDir: false,
