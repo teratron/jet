@@ -11,7 +11,9 @@ export default {
         }
     },
     methods: {
-        capitalize: (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
+        capitalize(str: string) {
+            return str.charAt(0).toUpperCase() + str.slice(1)
+        }
     },
     /*filters: {
         capitalize2: function (str: string) {
@@ -26,14 +28,8 @@ export default {
 
 <template>
     <nav>
-        <template
-            v-for="item in routes"
-            :key="item.name"
-        >
-            <RouterLink
-                v-if="item.name !== 'NotFound'"
-                :to="item.path"
-            >
+        <template v-for="item in routes" :key="item.name">
+            <RouterLink v-if="item.name !== 'NotFound'" :to="item.path">
                 {{ capitalize(item.name) }}
                 <!--{{ item.name | capitalize2 }}-->
             </RouterLink>
