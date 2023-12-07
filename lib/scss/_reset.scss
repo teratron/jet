@@ -1,5 +1,4 @@
 /// ## Reset
-///
 
 // Root
 *, ::before, ::after {
@@ -146,7 +145,8 @@ h6 {
 // Text semantics
 p {
     text-align: justify;
-    @extend #{JX(margin-top-0, "%")}, #{JX(margin-bottom-half, "%")};
+    margin-top: 0;
+    @extend #{JX(margin-bottom-half, "%")};
 }
 
 b, strong {

@@ -10,4 +10,4 @@ Site for Jettix Framework.
 - Examples
 - etc.
 
-[https://teratron.github.io/jettix/](https://teratron.github.io/jettix/)
+[https://teratron.github.io/jettix](https://teratron.github.io/jettix)

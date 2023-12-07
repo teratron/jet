@@ -1,6 +1,6 @@
 <script lang="ts">
 import {RouterLink} from 'vue-router'
-import {routes}     from '@/router'
+import {routes} from '@/router'
 
 //const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
 
@@ -14,7 +14,9 @@ export default {
         capitalize: (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
     },
     /*filters: {
-        capitalize
+        capitalize2: function (str: string) {
+            return str.charAt(0).toUpperCase() + str.slice(1)
+        }
     },*/
     components: {
         RouterLink
@@ -33,7 +35,7 @@ export default {
                 :to="item.path"
             >
                 {{ capitalize(item.name) }}
-                <!--                {{ item.name | capitalize }}-->
+                <!--{{ item.name | capitalize2 }}-->
             </RouterLink>
         </template>
     </nav>
