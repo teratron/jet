@@ -1,30 +1,18 @@
 <script lang="ts" setup>
-const props = defineProps({
-    title: {
-        type: String,
-        default: 'default',
-        required: false
-    },
-    role: {
-        type: String,
-        default: 'presentation',
-        required: false
-    },
-    color: {
-        type: String,
-        default: '#000000',
-        required: false
-    },
-    width: {
-        type: [Number, String],
-        default: 18,
-        required: false
-    },
-    height: {
-        type: [Number, String],
-        default: 18,
-        required: false
-    }
+interface Props {
+    title?: string,
+    role?: string,
+    color?: string,
+    width?: number | string,
+    height?: number | string,
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    title: 'default',
+    role: 'presentation',
+    color: '#000',
+    width: 18,
+    height: 18
 })
 </script>
 

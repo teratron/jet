@@ -17,5 +17,6 @@ const title = ref(import.meta.env.VITE_APP_TITLE)
         aspect-ratio="2x1"
         background-color="blue"
         background-size="contain"
-        background-width="50%"/>
+        background-width="50%"
+    />
 </template>

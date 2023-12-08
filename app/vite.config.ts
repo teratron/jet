@@ -40,7 +40,12 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
         publicDir: dir.public,
         envDir: dir.env,
         plugins: [
-            vue()
+            vue({
+                script: {
+                    propsDestructure: true,
+                    defineModel: true
+                }
+            })
         ],
         server: {
             open: true,

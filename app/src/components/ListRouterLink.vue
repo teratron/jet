@@ -1,27 +1,9 @@
-<script lang="ts">
+<script lang="ts" setup>
 import {RouterLink} from 'vue-router'
 import {routes}     from '@/router'
 
-export default {
-    data() {
-        return {
-            routes
-        }
-    },
-    created() {
-        this.routes.forEach(item => {
-            item.name = this.capitalize(item.name)
-        })
-    },
-    methods: {
-        capitalize(str: string) {
-            return str.charAt(0).toUpperCase() + str.slice(1)
-        }
-    },
-    components: {
-        RouterLink
-    }
-}
+const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
+routes.forEach(item => item.name = capitalize(item.name))
 </script>
 
 <template>
