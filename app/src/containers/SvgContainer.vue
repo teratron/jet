@@ -19,6 +19,7 @@ const props = withDefaults(defineProps<Props>(), {
 <template>
     <svg
         :aria-labelledby="props.title"
+        :fill="props.color"
         :height="props.height"
         :role="props.role"
         :width="props.width"
@@ -26,8 +27,6 @@ const props = withDefaults(defineProps<Props>(), {
         xmlns="http://www.w3.org/2000/svg"
     >
         <title :id="props.title" lang="en">{{props.title}}</title>
-        <g :fill="props.color">
-            <slot/>
-        </g>
+        <slot/>
     </svg>
 </template>

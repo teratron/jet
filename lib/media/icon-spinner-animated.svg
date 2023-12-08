@@ -1,0 +1,34 @@
+<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        @keyframes rotate_full {
+        to {
+        transform: rotate(360deg);
+        }
+        }
+        @keyframes rotate_pulse {
+        0% {
+        stroke-dasharray: 0 150;
+        stroke-dashoffset: 0;
+        }
+        47.5% {
+        stroke-dasharray: 42 150;
+        stroke-dashoffset: -16;
+        }
+        95%, to {
+        stroke-dasharray: 42 150;
+        stroke-dashoffset: -59;
+        }
+        }
+    </style>
+    <g style="transform-origin: center; animation: rotate_full 2s linear infinite">
+        <circle cx="12"
+                cy="12"
+                r="9.5"
+                fill="none"
+                stroke="#000"
+                stroke-width="3"
+                stroke-linecap="round"
+                style="animation: rotate_pulse 1.5s ease-out infinite"
+        />
+    </g>
+</svg>

@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import SpinnerElement from 'components/SpinnerElement.vue'
+import IconSpinnerCircle from 'components/icons/IconSpinnerCircle.vue'
 </script>
 
 <template>
     <section class="app-container">
         <slot>
-            <SpinnerElement/>
+            <icon-spinner-circle color="green" height="24" width="24"/>
         </slot>
     </section>
 </template>
