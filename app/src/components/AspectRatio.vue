@@ -57,8 +57,8 @@ const imageUrl = computed(() => {
 
 <style lang="scss" scoped>
 svg {
-    height:           auto;
     width:               v-bind(backgroundWidth);
+    height:           auto;
     background-image:    v-bind(imageUrl);
     background-color: v-bind(backgroundColor);
     background-size:  v-bind(backgroundSize);
