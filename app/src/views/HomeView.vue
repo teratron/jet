@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import IconWrite      from 'components/icons/IconWrite.vue'
-import AspectRatioBox from 'components/AspectRatioBox.vue'
+import {ref}       from 'vue'
+import IconWrite   from 'components/icons/IconWrite.vue'
+import AspectRatio from 'components/AspectRatio.vue'
 
-const title = import.meta.env.VITE_APP_TITLE
+const title = ref(import.meta.env.VITE_APP_TITLE)
 </script>
 
 <template>
@@ -11,6 +12,10 @@ const title = import.meta.env.VITE_APP_TITLE
         <icon-write color="red" height="24" width="24"/>
         HTML, CSS, SCSS, JavaScript Framework
     </p>
-    <AspectRatioBox background-size="contain" height="9" width="16"/>
-    <AspectRatioBox aspect-ratio="4x4" background-width="50%"/>
+    <AspectRatio height="9" width="16"/>
+    <AspectRatio
+        aspect-ratio="2x1"
+        background-color="blue"
+        background-size="contain"
+        background-width="50%"/>
 </template>

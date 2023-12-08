@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import {computed} from 'vue'
-import SvgElement from 'components/SvgElement.vue'
+import {computed}   from 'vue'
+import SvgContainer from 'containers/SvgContainer.vue'
 
 const props = defineProps({
     aspectRatio: {
@@ -11,6 +11,11 @@ const props = defineProps({
     backgroundImage: {
         type: String,
         default: 'media/android-chrome-512x512.png',
+        required: false
+    },
+    backgroundColor: {
+        type: String,
+        default: 'transparent',
         required: false
     },
     backgroundSize: {
@@ -25,7 +30,7 @@ const props = defineProps({
     }
 })
 
-const ratio = computed(() => {
+const parseRatio = computed(() => {
     let array = props.aspectRatio?.split('x')
     if (array.length === 2) {
         array = array.map(value => parseInt(value).toString())
@@ -40,21 +45,24 @@ const imageUrl = computed(() => {
 </script>
 
 <template>
-    <SvgElement :height="ratio[1]" :width="ratio[0]" role="img" title="aspect-ratio">
-        <g>
-            <path d=""/>
-        </g>
-    </SvgElement>
+    <SvgContainer
+        :height="parseRatio[1]"
+        :width="parseRatio[0]"
+        role="img"
+        title="aspect-ratio"
+    >
+        <path d=""/>
+    </SvgContainer>
 </template>
 
 <style lang="scss" scoped>
 svg {
+    height:           auto;
     width:               v-bind(backgroundWidth);
-    height:              auto;
     background-image:    v-bind(imageUrl);
-    background-color:    transparent;
+    background-color: v-bind(backgroundColor);
+    background-size:  v-bind(backgroundSize);
     background-position: center center;
     background-repeat:   no-repeat;
-    background-size:     v-bind(backgroundSize);
 }
 </style>

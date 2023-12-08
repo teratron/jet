@@ -7,7 +7,7 @@ import AppContainer from 'containers/AppContainer.vue'
 
 <template>
     <AppHeader>
-
+        <AppContainer/>
     </AppHeader>
     <AppMain>
         <AppContainer>
