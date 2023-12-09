@@ -3,7 +3,7 @@ $list_state: hover, active, visited, target, focus, focus-visible, focus-within;
 %template {
 }
 
-@mixin mxColor($background, $ink, $border) {
+@mixin mxColor($background, $ink, $border: null) {
     background-color: $background;
     color:            $ink;
 
@@ -12,7 +12,7 @@ $list_state: hover, active, visited, target, focus, focus-visible, focus-within;
     }
 }
 
-@mixin mxColorState($state, $background, $ink, $border) {
+@mixin mxColorState($state, $background, $ink, $border: null) {
     &:#{$state} {
         @include mxColor($background, $ink, $border);
     }

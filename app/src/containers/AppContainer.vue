@@ -9,3 +9,18 @@ import IconSpinnerCircle from 'components/icons/IconSpinnerCircle.vue'
         </slot>
     </section>
 </template>
+
+<style lang="scss" scoped>
+.app-container {
+    position: relative;
+
+    > svg[aria-labelledby="spinner-circle"] {
+        $center:  calc(50% - 12px);
+
+        display:  block;
+        position: absolute;
+        top:      $center;
+        left:     $center;
+    }
+}
+</style>

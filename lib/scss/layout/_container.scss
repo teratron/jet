@@ -34,7 +34,7 @@
 //    $container_expand: calc((100vw - $container_width) * .5 + $container_shrink);
 //
 //    // больше
-//    @media only screen and (min-width: calc($container_width + 1px)) {
+//    @media only screen and (min-width: calc($container_width + $px)) {
 //        padding-left:  $container_expand;
 //        padding-right: $container_expand;
 //    }
