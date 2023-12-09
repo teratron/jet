@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import AspectRatio from 'components/AspectRatio.vue'
 </script>
 
 <template>
@@ -24,4 +25,12 @@
         <div class="item active">Item 3</div>
         <div class="item">Item 4</div>
     </div>
+
+    <AspectRatio height="9" width="16"/>
+    <AspectRatio
+        aspect-ratio="2x1"
+        background-color="blue"
+        background-size="contain"
+        background-width="50%"
+    />
 </template>

@@ -26,11 +26,11 @@ hr, img, iframe {
     border: 0 none;
 }
 
-img, svg, audio, video, canvas {
+audio, video, canvas {
     vertical-align: middle;
 }
 
-sub, sup, progress {
+img, svg, sub, sup, progress {
     vertical-align: baseline;
 }
 

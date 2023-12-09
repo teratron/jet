@@ -1,0 +1,19 @@
+$list_state: hover, active, visited, target, focus, focus-visible, focus-within;
+
+%template {
+}
+
+@mixin mxColor($background, $ink, $border) {
+    background-color: $background;
+    color:            $ink;
+
+    @if $border {
+        border-color: $border;
+    }
+}
+
+@mixin mxColorState($state, $background, $ink, $border) {
+    &:#{$state} {
+        @include mxColor($background, $ink, $border);
+    }
+}

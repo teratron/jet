@@ -106,9 +106,9 @@ $grid_cell_width:            math.div($grid_width - ($grid_column - 1) * $grid_g
 // Debug
 :root {
     --px:              #{$px};
-    --root_unit:       #{$root_unit};
-    --root_cell:       #{$root_cell};
-    --container_width: #{$container_width};
+    --root-unit:       #{$root_unit};
+    --root-cell:       #{$root_cell};
+    --container-width: #{$container_width};
 }
 
 // Breakpoints

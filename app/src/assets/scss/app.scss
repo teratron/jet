@@ -15,8 +15,8 @@
 
 // Container
 .app-container {
-    @extend %jx-container /*, %jx-grid-12*/
-;
+    @extend %jx-container;
+    /*@extend %jx-grid-12;*/
 }
 
 // Main
@@ -40,7 +40,7 @@
 
     > .app-container {
         min-height: $header_height;
-        align-items: center;
+        //align-items: center;
     }
 }
 
