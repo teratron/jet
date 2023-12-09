@@ -4,8 +4,9 @@
 @use "sass:meta";
 @use "sass:list";
 
-/// ### Locator
-///
+/// ### Options
+
+/// @param {string} $locator
 /// | Symbol       | Description           |
 /// |--------------|-----------------------|
 /// | ".%" or "%." | development mode      |
@@ -13,35 +14,118 @@
 /// | "%"          | placeholder mode      |
 $locator:                    ".%" !default;
 
-/// ### Prefix
+/// @param {string} $prefix
+///
 $prefix:                     "" !default;
 
-/// ### Options
-$golden_ratio:               true !default;
+/// @param {number | null} $golden_ratio
+/// Коэффициент золотого сечения.\
+/// Возможны варианты:
+/// - 1.618 (истинный)
+/// - 1.42857
+/// - 1.58
+/// - 1.313
+/// - null (отключён)
+$golden_ratio:               1.618 !default;
 $display_mode:               grid !default;
 $theme_mode:                 "light" !default;
 
 /// ### Paths
+
 $fonts_path:                 "../fonts/" !default;
 $media_path:                 "../media/" !default;
 
 /// ### Root
-$root_unit:                  20px !default;
+
+/// @param {number} $root_unit
+/// Единица высоты шрифта приложения.
+$root_unit:                  16px !default;
+
+/// @param {number} $root_cell
+/// Единица минимальной ячейки или высоты строки приложения.
+$root_cell:                  20px !default; // вычисляется при включенном золотом сечении
+
+/// @param {number} $root_measure_unit
+/// Единица измерения в которой будет строиться приложение (по умолчанию rem).
+$root_measure_unit:          1rem !default;
+
+/// ### Layout
+
+$layout_gap:                 40px !default; // вычисляется при включенном золотом сечении
 
 /// ### Grid
+
 $grid_column:                12 !default;
 $grid_gap:                   $layout_gap !default;
 
-/// ### Layout
-$layout_unit:                1rem !default;
-$layout_font_size:           16px !default;
-$layout_gap:                 40px !default;
-
 /// ### Container
-$container_width:            1280px !default;
+
+$container_width:            1280px !default; // вычисляется при включенном золотом сечении
 $container_gap:              $layout_gap !default;
 
-/// ### Z-index
+//****************************************************************************
+// Under The Hood
+//****************************************************************************
+
+// Root
+$px:                         math.div($root_measure_unit, fnStripUnit($root_unit));
+$root_unit:                  fnPxToRem($root_unit);
+
+// Container
+$container_gap:              fnPxToRem($container_gap);
+
+// Grid
+$grid_gap:                   fnPxToRem($grid_gap);
+
+// Layout
+$layout_gap:                 if($grid_gap > 0, $grid_gap, fnPxToRem($layout_gap));
+
+// Golden Ratio
+@if $golden_ratio != null and $golden_ratio > 0 {
+    // Root
+    $root_cell:       fnPxToRem($root_unit * $golden_ratio);
+
+    // Container
+    $container_width: $root_cell * $grid_column + ($grid_column - 1) * $grid_gap + $container_gap * 2;
+} @else {
+    // Container
+    $container_width: fnPxToRem($container_width);
+}
+
+// Container
+//$list_unit:                  "px", "em", "rem", "%", "vw";
+//@if math.unit($container_width) == "px" {
+//}
+$container_rate:             math.div(100, $container_width);
+
+// Grid
+$grid_width:                 calc($container_width - $container_gap * 2);
+$grid_col_width:             math.div($grid_width, $grid_column);
+$grid_cell_width:            math.div($grid_width - ($grid_column - 1) * $grid_gap, $grid_column);
+
+// Debug
+:root {
+    --px:              #{$px};
+    --root_unit:       #{$root_unit};
+    --root_cell:       #{$root_cell};
+    --container_width: #{$container_width};
+}
+
+// Breakpoints
+//$is_evenly_breakpoints:     false;
+$list_breakpoints:           fnGetListBreakpoints();
+$list_breakpoints_buffer:    ();
+$list_breakpoints_buffer2:   ();
+
+// Placeholders
+//$list_placeholders:         ();
+
+// Debug
+:root {
+    --bp: #{$list_breakpoints};
+}
+
+// Z-index
 $z_index_app:                100 !default;
 $z_index_main:               200 !default;
 $z_index_content:            300 !default;
@@ -60,48 +144,13 @@ $z_index_tooltip:            1800 !default;
 $z_index_toast:              1900 !default;
 $z_index_debug:              2000 !default;
 
-/// ## Under The Hood
-///
-///
-
-/// ### Root
-$px:                         math.div($layout_unit, fnStripUnit($root_unit));
-
-/// ### Container
-$list_unit:                  "px", "em", "rem", "%", "vw";
-//@if math.unit($container_width) == "px" {
-//}
-
-$container_width:            fnPxToRem($container_width);
-$container_gap:              fnPxToRem($container_gap);
-$container_rate:             math.div(100, $container_width);
-
-/// ### Grid
-$grid_width:                 calc($container_width - $container_gap * 2);
-$grid_gap:                   fnPxToRem($grid_gap);
-$grid_col_width:             math.div($grid_width, $grid_column);
-$grid_cell_width:            math.div($grid_width - ($grid_column - 1) * $grid_gap, $grid_column);
-
-/// ### Layout
-$layout_font_size:           fnPxToRem($layout_font_size);
-$layout_gap:                 if($grid_gap > 0, $grid_gap, fnPxToRem($layout_gap));
-
-/// ### Breakpoints
-//$is_evenly_breakpoints:     false;
-$list_breakpoints:           fnGetListBreakpoints();
-$list_breakpoints_buffer:    ();
-$list_breakpoints_buffer2:   ();
-
-/// ### Placeholders
-//$list_placeholders:         ();
-
-/// ### Commons
+// Commons
 $list_sides:                 top, bottom, left, right;
 $list_cursors:               default, pointer, help, not-allowed;
 $list_displays:              none, block, inline-block, table, flex, grid, inline-grid, list-item;
 $list_positions:             static, relative, absolute, fixed, sticky;
 
-/// ### Fonts
+// Fonts
 $font_family_serif:          () !default;
 $font_family_sans_serif:     () !default;
 $font_family_monospace:      () !default;
@@ -161,10 +210,6 @@ $font_family_monospace:      list.join(
                              );
 
 :root {
-    // Debug
-    --px:                     #{$px};
-    --bp:                     #{$list_breakpoints};
-
     // Fonts
     --font-family-serif:      #{meta.inspect($font_family_serif)};
     --font-family-sans-serif: #{meta.inspect($font_family_sans_serif)};

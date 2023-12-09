@@ -3,10 +3,14 @@
 /// `.%main`
 
 #{JX(main)} {
-    width:  100%;
-    height: 100%;
+    width:    100%;
+    height:   100%;
+    position: relative;
+    z-index:  $z_index_main;
 
     > #{JX(container, "%")} {
-        height: 100%;
+        height:   100%;
+        position: relative;
+        z-index:  $z_index_content;
     }
 }

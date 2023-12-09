@@ -132,7 +132,7 @@
 
 @function fnRemToPx($value) {
     @if math.unit($value) == "rem" {
-        @return math.round($root_unit * fnStripUnit($value));
+        @return math.round($root_cell * fnStripUnit($value));
     }
     @return $value;
 }

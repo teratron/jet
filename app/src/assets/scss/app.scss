@@ -25,6 +25,7 @@
     background-color: white;
 
     > .app-container {
+        display: grid;
         align-content: start;
         min-height:    $main_height;
     }

@@ -3,7 +3,9 @@
 /// `.%footer`
 
 #{JX(footer)} {
-    width:      100%;
+    width:    100%;
+    position: relative;
+    z-index:  $z_index_footer;
 
     > #{JX(container, "%")} {
     }

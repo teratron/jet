@@ -8,28 +8,18 @@
     --app-main-bg-color:   #f9f9f9;
 }
 
-// Color variables
-$blue:   #0009e1 !default;
-$indigo: #6610f2 !default;
-$purple: #6f42c1 !default;
-$pink:   #d63384 !default;
-$red:    #ff0000 !default;
-$orange: #fd7e14 !default;
-$yellow: #ffa900 !default;
-$green:  #198754 !default;
-$teal:   #20ff6c !default;
-$cyan:   #20a1ff !default;
-
-// Theme color variables
-$primary: #f8bb44 !default;
-$secondary: #ebebeb !default;
-$accent: #ebebeb !default;
-$success: #198754 !default;
-$info:   #20a1ff !default;
-$warning: #ffd582 !default;
-$danger: #ff6464 !default;
-$light:  #f8f9fa !default;
-$dark:   #212529 !default;
+/// ### Theme color variables
+$dominant:  #ffffff !default; // 60%
+$primary:   #f8bb44 !default; // 10% / 8%
+$secondary: #ebebeb !default; // 30%
+$accent:    #ebebeb !default; // 0 / 2%
+$neutral:   #0b0607 !default;
+$info:      #20a1ff !default;
+$success:   #198754 !default;
+$warning:   #ffd582 !default;
+$error:     #ff6464 !default;
+$light:     #f8f9fa !default;
+$dark:      #212529 !default;
 
 //$color-primary: (
 //            &: $primary,
@@ -109,7 +99,7 @@ code {
 }
 
 kbd {
-    color: black;
+    color:         black;
     border-radius: 3px;
     background-color: #f5f5f5;
 }

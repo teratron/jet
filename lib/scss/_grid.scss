@@ -8,13 +8,13 @@
 //@supports (display: grid) {
 //    #{JX(basis, "%")} {
 //        @extend #{JX(display-grid, "%")};
-//        grid-auto-rows: minmax($layout_unit, auto);
+//        grid-auto-rows: minmax($root_cell, auto);
 //    }
 //}
 
 @mixin mxGridBasis {
     @extend #{JX(display-grid, "%")};
-    grid-auto-rows: minmax($layout_unit, auto);
+    grid-auto-rows: minmax($root_cell, auto);
 }
 
 #{JX(basis, "%")} {
@@ -75,7 +75,7 @@
 //**********************************************************
 #{JX(bar)} {
     //@extend %#{$prefix}row;
-    //grid-template-columns: repeat(auto-fit, minmax($layout_unit, auto));
+    //grid-template-columns: repeat(auto-fit, minmax($root_cell, auto));
     @extend #{JX(basis, "%")};
     align-items:       center;
     grid-auto-flow:    column;
@@ -92,7 +92,7 @@
 #{JX(col)} {
     @extend #{JX(basis, "%")};
     @extend #{JX(grid-auto-flow-dense, "%")};
-    grid-template-rows: repeat(auto-fit, minmax($layout_unit, auto));
+    grid-template-rows: repeat(auto-fit, minmax($root_cell, auto));
 }
 
 // List

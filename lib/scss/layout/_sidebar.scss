@@ -3,5 +3,6 @@
 /// `.%sidebar`
 
 #{JX(sidebar)} {
-
+    position: relative;
+    z-index:  $z_index_sidebar;
 }

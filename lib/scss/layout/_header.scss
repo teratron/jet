@@ -3,7 +3,9 @@
 /// `.%header`
 
 #{JX(header)} {
-    width: 100%;
+    width:    100%;
+    position: relative;
+    z-index:  $z_index_header;
 
     > #{JX(container, "%")} {
     }
