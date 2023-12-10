@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import SpinnerElement from 'components/SpinnerElement.vue'
-import AppContainer   from 'containers/AppContainer.vue'
+import AppContainer      from 'containers/AppContainer.vue'
+import IconSpinnerCircle from 'components/icons/IconSpinnerCircle.vue'
 
 const {container = false} = defineProps<{
     container?: boolean
@@ -13,7 +13,19 @@ const {container = false} = defineProps<{
             <slot/>
         </app-container>
         <slot v-else>
-            <spinner-element/>
+            <icon-spinner-circle height="48" width="48"/>
         </slot>
     </main>
 </template>
+
+<style lang="scss" scoped>
+.app-main {
+    > svg[aria-labelledby="spinner-circle"] {
+        $center:  calc(50% - 24px);
+        display:  block;
+        position: absolute;
+        top:      $center;
+        left:     $center;
+    }
+}
+</style>

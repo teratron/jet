@@ -13,10 +13,7 @@ const {color = '#000'} = defineProps<{
                 :stroke="color"
                 cx="50%"
                 cy="50%"
-                fill="none"
                 r="7"
-                stroke-linecap="round"
-                stroke-width="3"
             />
         </g>
     </SvgContainer>
@@ -46,12 +43,15 @@ const {color = '#000'} = defineProps<{
 
 svg {
     > g {
+        animation: rotate_full 2s linear infinite;
         transform-origin: center;
         transform-box:    stroke-box;
-        animation:        rotate_full 2s linear infinite;
 
         > circle {
-            animation: rotate_pulse 1.5s ease-out infinite;
+            animation:      rotate_pulse 1.5s ease-out infinite;
+            fill:           none;
+            stroke-width:   3px;
+            stroke-linecap: round
         }
     }
 }

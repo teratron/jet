@@ -9,7 +9,6 @@ const html = document.querySelector('html')!;
 watch(isDark, () => {
     html.setAttribute('data-theme', isDark.value ? 'dark' : 'light')
 })
-
 </script>
 
 <template>

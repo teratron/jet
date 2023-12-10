@@ -1,1 +1,43 @@
-<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><style>@keyframes rotate_pulse{0%{stroke-dasharray:0 150;stroke-dashoffset:0}47.5%{stroke-dasharray:42 150;stroke-dashoffset:-16}95%{stroke-dasharray:42 150;stroke-dashoffset:-59}}</style><g style="transform-origin:center;animation:rotate_full 2s linear infinite"><circle cx="12" cy="12" r="9.5" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round" style="animation:rotate_pulse 1.5s ease-out infinite"/></g></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        @keyframes rotate_full {
+        to {
+        transform: rotate(360deg);
+        }
+        }
+        @keyframes rotate_pulse {
+        0% {
+        stroke-dasharray: 0 150;
+        stroke-dashoffset: 0;
+        }
+        47.5% {
+        stroke-dasharray: 42 150;
+        stroke-dashoffset: -16;
+        }
+        95%, to {
+        stroke-dasharray: 42 150;
+        stroke-dashoffset: -43;
+        }
+        }
+        .spinner-box {
+        transform-origin: center;
+        transform-box: stroke-box;
+        animation: rotate_full 2s linear infinite
+        }
+        .spinner-circle {
+        animation: rotate_pulse 1.5s ease-out infinite;
+        fill: none;
+        stroke: #000000;
+        stroke-width: 3px;
+        stroke-linecap: round
+        }
+    </style>
+    <g class="spinner-box">
+        <circle
+                class="spinner-circle"
+                cx="50%"
+                cy="50%"
+                r="7"
+        />
+    </g>
+</svg>
