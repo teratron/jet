@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import {computed} from 'vue'
+
 interface Props {
     title?: string,
     role?: string,
@@ -14,6 +16,8 @@ const props = withDefaults(defineProps<Props>(), {
     width: 18,
     height: 18
 })
+
+const viewBox = computed(() => '0 0 ' + props.width + ' ' + props.height)
 </script>
 
 <template>
@@ -23,7 +27,7 @@ const props = withDefaults(defineProps<Props>(), {
         :height="props.height"
         :role="props.role"
         :width="props.width"
-        viewBox="0 0 18 18"
+        :viewBox="viewBox"
         xmlns="http://www.w3.org/2000/svg"
     >
         <title :id="props.title" lang="en">{{props.title}}</title>
