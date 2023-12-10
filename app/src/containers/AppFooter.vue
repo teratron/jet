@@ -11,11 +11,11 @@ const {container = false} = defineProps<{
     <footer class="app-footer" role="contentinfo">
         <app-container v-if="container" colorSpinner="white">
             <slot>
-                <FooterContent/>
+                <footer-content/>
             </slot>
         </app-container>
         <slot v-else>
-            <FooterContent/>
+            <footer-content/>
         </slot>
     </footer>
 </template>

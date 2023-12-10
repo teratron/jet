@@ -1,6 +1,6 @@
 /// ## Dark Theme
 
-[data-#{$prefix}theme="dark"] {
+[data-theme="dark"] {
     filter:                invert(100%);
     color-scheme:          dark;
     --app-header-bg-color: white;

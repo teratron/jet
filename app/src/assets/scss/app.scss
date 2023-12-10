@@ -7,10 +7,21 @@
 @import "jettix";
 @import "lib/scss/debug";
 
+body {
+    @extend %jx-debug-sticker;
+}
+
 // Application
 #app {
+    @extend %jx-app;
     background-color: #cccccc;
-    @extend %jx-app, %jx-debug-sticker;
+    align-content:   stretch;
+    align-items:     start;
+    justify-content: space-between;
+    justify-items:   center;
+
+    //@include %scheme-dominant;
+    //@extend %scheme-dominant;
 }
 
 // Container
@@ -66,3 +77,21 @@
         @extend %jx-col-b10-3, %jx-col-b9-5, %jx-col-b8-6;
     }
 }
+
+//%container {
+//    $container_shrink: 20px;
+//    $container_expand: calc((100vw - $container_width) * .5 + $container_shrink);
+//
+//    // больше
+//    @media only screen and (min-width: calc($container_width + $px)) {
+//        padding-left:  $container_expand;
+//        padding-right: $container_expand;
+//    }
+//
+//    // меньше
+//    @media only screen and (max-width: $container_width) {
+//        overflow-x:    hidden;
+//        padding-left:  $container_shrink;
+//        padding-right: $container_shrink;
+//    }
+//}
