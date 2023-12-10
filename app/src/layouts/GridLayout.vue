@@ -5,9 +5,9 @@ import AppMain   from 'containers/AppMain.vue'
 </script>
 
 <template>
-    <AppHeader/>
-    <AppMain>
+    <app-header/>
+    <app-main>
         <slot/>
-    </AppMain>
-    <AppFooter/>
+    </app-main>
+    <app-footer/>
 </template>

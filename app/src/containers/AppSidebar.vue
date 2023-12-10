@@ -5,7 +5,7 @@ import SidebarContent from 'components/SidebarContent.vue'
 <template>
     <aside class="app-sidebar">
         <slot>
-            <SidebarContent/>
+            <sidebar-content/>
         </slot>
     </aside>
 </template>
