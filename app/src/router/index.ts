@@ -17,7 +17,7 @@ export const routes = [
         path: '/',
         name: 'home',
         component: HomeView,
-        layout: GridLayout//'grid-layout'
+        layout: GridLayout // TODO:
     }, {
         path: '/about',
         name: 'about',

@@ -21,15 +21,13 @@ const props = withDefaults(defineProps<Props>(), {
 const parseRatio = computed(() => {
     let array = props.aspectRatio?.split('x')
     if (Array.isArray(array) && array.length === 2) {
-        array = array.map(value => parseInt(value).toString())
-        if (array.every(value => value !== 'NaN' && value !== 'Finite')) return array
+        array = array.map(item => parseInt(item).toString())
+        if (array.every(item => item !== 'NaN' && item !== 'Finite')) return array
     }
     return ['1', '1']
 })
 
-const imageUrl = computed(() => {
-    return 'url(' + props.backgroundImage + ')'
-})
+const imageUrl = computed(() => 'url(' + props.backgroundImage + ')')
 </script>
 
 <template>

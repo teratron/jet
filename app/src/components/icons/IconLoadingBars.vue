@@ -5,10 +5,10 @@ const {color = '#000'} = defineProps<{ color?: string }>()
 </script>
 
 <template>
-    <svg-container title="spinner-bars">
-        <rect :fill="color" class="spinner-bars" x="1"/>
-        <rect :fill="color" class="spinner-bars spinner-bar-2" x="9"/>
-        <rect :fill="color" class="spinner-bars spinner-bar-3" x="17"/>
+    <svg-container title="loading-bars">
+        <rect :fill="color" class="loading-bars" x="1"/>
+        <rect :fill="color" class="loading-bars loading-bar-2" x="9"/>
+        <rect :fill="color" class="loading-bars loading-bar-3" x="17"/>
     </svg-container>
 </template>
 
@@ -24,18 +24,18 @@ const {color = '#000'} = defineProps<{ color?: string }>()
     }
 }
 
-.spinner-bars {
+.loading-bars {
     animation:       spinner_bars .8s linear infinite;
     animation-delay: -.8s;
     width:           6px;
     transform:       translateY(1px);
 
-    &.spinner-bar-2 {
+    &.loading-bar-2 {
         animation-delay: -.65s;
 
     }
 
-    &.spinner-bar-3 {
+    &.loading-bar-3 {
         animation-delay: -.5s;
     }
 }

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import IconSpinnerCircle from 'components/icons/IconSpinnerCircle.vue'
+import IconSpinnerCircle from 'components/icons/IconLoadingSpinner.vue'
 
 const {colorSpinner = 'black'} = defineProps<{ colorSpinner?: string }>()
 </script>

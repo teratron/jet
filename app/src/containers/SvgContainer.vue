@@ -5,8 +5,9 @@ interface Props {
     title?: string,
     role?: string,
     color?: string,
-    width?: number | string,
-    height?: number | string,
+    width?: string | number,
+    height?: string | number,
+    viewBox?: string | number[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -14,10 +15,18 @@ const props = withDefaults(defineProps<Props>(), {
     role: 'presentation',
     color: '#000',
     width: 18,
-    height: 18
+    height: 18,
+    viewBox: '0 0 18 18'
 })
 
-const viewBox = computed(() => '0 0 ' + props.width + ' ' + props.height)
+const viewBox = computed(() => {
+    if (Array.isArray(props.viewBox)) {
+        let box = ''
+        for (const item of props.viewBox) box += item + ' '
+        return box.trimEnd()
+    }
+    return props.viewBox
+})
 </script>
 
 <template>

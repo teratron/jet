@@ -16,7 +16,7 @@
         }
         95%, to {
         stroke-dasharray: 42 150;
-        stroke-dashoffset: -43;
+        stroke-dashoffset: -56;
         }
         }
         .spinner-box {
@@ -37,7 +37,7 @@
                 class="spinner-circle"
                 cx="50%"
                 cy="50%"
-                r="7"
+                r="9"
         />
     </g>
 </svg>

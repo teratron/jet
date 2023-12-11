@@ -5,13 +5,13 @@ const {color = '#000'} = defineProps<{ color?: string }>()
 </script>
 
 <template>
-    <svg-container title="spinner-circle">
+    <svg-container title="loading-spinner">
         <g>
             <circle
                 :stroke="color"
                 cx="50%"
                 cy="50%"
-                r="7"
+                r="9"
             />
         </g>
     </svg-container>
@@ -35,7 +35,7 @@ const {color = '#000'} = defineProps<{ color?: string }>()
     }
     95%, to {
         stroke-dasharray:  42 150;
-        stroke-dashoffset: -43;
+        stroke-dashoffset: -56;
     }
 }
 
