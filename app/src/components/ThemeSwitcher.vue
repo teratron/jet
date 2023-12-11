@@ -6,6 +6,7 @@ import IconMoon               from 'components/icons/IconMoon.vue'
 const {size = 24} = defineProps<{ size?: string | number }>()
 const isDark = ref(false)
 const html = document.querySelector('html')!
+document.querySelectorAll('[data-theme="popover"]') // TODO:
 
 watch(isDark, () => {
     html.setAttribute('data-theme', isDark.value ? 'dark' : 'light')
