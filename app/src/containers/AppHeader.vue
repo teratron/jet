@@ -2,9 +2,7 @@
 import HeaderContent from 'components/HeaderContent.vue'
 import AppContainer  from 'containers/AppContainer.vue'
 
-const {container = false} = defineProps<{
-    container?: boolean
-}>()
+const {container = false} = defineProps<{ container?: boolean }>()
 </script>
 
 <template>

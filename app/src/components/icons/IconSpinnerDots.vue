@@ -1,17 +1,15 @@
 <script lang="ts" setup>
 import SvgContainer from 'containers/SvgContainer.vue'
 
-const {color = '#000'} = defineProps<{
-    color?: string
-}>()
+const {color = '#000'} = defineProps<{ color?: string }>()
 </script>
 
 <template>
-    <SvgContainer title="spinner-dots">
+    <svg-container title="spinner-dots">
         <circle :fill="color" class="spinner-dots" cx="4" cy="12" r="3"/>
         <circle :fill="color" class="spinner-dots spinner-dot-2" cx="12" cy="12" r="3"/>
         <circle :fill="color" class="spinner-dots spinner-dot-3" cx="20" cy="12" r="3"/>
-    </SvgContainer>
+    </svg-container>
 </template>
 
 <style lang="scss" scoped>

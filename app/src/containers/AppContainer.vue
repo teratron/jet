@@ -1,9 +1,7 @@
 <script lang="ts" setup>
 import IconSpinnerCircle from 'components/icons/IconSpinnerCircle.vue'
 
-const {colorSpinner = 'black'} = defineProps<{
-    colorSpinner?: string
-}>()
+const {colorSpinner = 'black'} = defineProps<{ colorSpinner?: string }>()
 </script>
 
 <template>

@@ -3,5 +3,5 @@ import ListRouterLink from 'components/ListRouterLink.vue'
 </script>
 
 <template>
-    <ListRouterLink/>
+    <list-router-link/>
 </template>

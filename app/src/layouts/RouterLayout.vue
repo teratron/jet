@@ -6,9 +6,9 @@ import BaseLayout from 'layouts/BaseLayout.vue'
 </script>
 
 <template>
-    <BaseLayout>
+    <base-layout>
         <slot/>
-    </BaseLayout>
+    </base-layout>
     <!--<GridLayout>
             <slot name="grid-layout"/>
         </GridLayout>-->

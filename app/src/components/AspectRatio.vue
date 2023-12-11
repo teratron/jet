@@ -12,7 +12,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
     aspectRatio: '1x1',
-    backgroundImage: 'media/android-chrome-512x512.png',
+    backgroundImage: 'media/android-chrome-512x512.png', // TODO: change image
     backgroundColor: 'transparent',
     backgroundSize: 'cover',
     backgroundWidth: '100%'
@@ -33,14 +33,14 @@ const imageUrl = computed(() => {
 </script>
 
 <template>
-    <SvgContainer
+    <svg-container
         :height="parseRatio[1]"
         :width="parseRatio[0]"
         role="img"
         title="aspect-ratio"
     >
         <path d=""/>
-    </SvgContainer>
+    </svg-container>
 </template>
 
 <style lang="scss" scoped>

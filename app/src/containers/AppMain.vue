@@ -2,9 +2,7 @@
 import AppContainer      from 'containers/AppContainer.vue'
 import IconSpinnerCircle from 'components/icons/IconSpinnerCircle.vue'
 
-const {container = false} = defineProps<{
-    container?: boolean
-}>()
+const {container = false} = defineProps<{ container?: boolean }>()
 </script>
 
 <template>

@@ -10,7 +10,7 @@ const ignore = ref('')
 <template>
     <h1>Select</h1>
 
-    <InputForm
+    <input-form
         v-model="ignore"
         v-model:farewellName="farewell"
         v-model:greetingName="greeting"

@@ -9,11 +9,15 @@ import ResetView   from 'views/ResetView.vue'
 import FormView    from 'views/FormView.vue'
 import ElementView from 'views/ElementView.vue'
 
+// Layouts
+import GridLayout from 'layouts/GridLayout.vue'
+
 export const routes = [
     {
         path: '/',
         name: 'home',
-        component: HomeView
+        component: HomeView,
+        layout: GridLayout//'grid-layout'
     }, {
         path: '/about',
         name: 'about',
