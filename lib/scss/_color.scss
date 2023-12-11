@@ -17,3 +17,13 @@ $list_state: hover, active, visited, target, focus, focus-visible, focus-within;
         @include mxColor($background, $ink, $border);
     }
 }
+
+@mixin color-scheme($color) {
+    background-color: $dominant;
+    color:            black;
+}
+
+#{JX(scheme-dominant, ".%")} {
+    background-color: $dominant;
+    color:            black;
+}

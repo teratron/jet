@@ -7,6 +7,7 @@
 /// ### Options
 
 /// @param {string} $locator
+///
 /// | Symbol       | Description           |
 /// |--------------|-----------------------|
 /// | ".%" or "%." | development mode      |
@@ -63,9 +64,9 @@ $grid_gap:                   $layout_gap !default;
 $container_width:            1280px !default; // вычисляется при включенном золотом сечении
 $container_gap:              $layout_gap !default;
 
-//****************************************************************************
+//*********************************************************
 // Under The Hood
-//****************************************************************************
+//*********************************************************
 
 // Root
 $px:                         math.div($root_measure_unit, fnStripUnit($root_unit));
@@ -82,13 +83,9 @@ $layout_gap:                 if($grid_gap > 0, $grid_gap, fnPxToRem($layout_gap)
 
 // Golden Ratio
 @if $golden_ratio != null and $golden_ratio > 0 {
-    // Root
     $root_cell:       fnPxToRem($root_unit * $golden_ratio);
-
-    // Container
     $container_width: $root_cell * $grid_column + ($grid_column - 1) * $grid_gap + $container_gap * 2;
 } @else {
-    // Container
     $container_width: fnPxToRem($container_width);
 }
 

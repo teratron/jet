@@ -21,7 +21,7 @@ body {
     justify-items:   center;
 
     //@include %scheme-dominant;
-    //@extend %scheme-dominant;
+    @extend %scheme-dominant;
 }
 
 // Container

@@ -1,49 +1,55 @@
 /// ## Light Theme
 
+// Theme color variables
+$dominant:      #ffffff !default; // 60%
+$primary:       #f8bb44 !default; // 10%
+$secondary:     #ebebeb !default; // 30%
+$tertiary:      #ebebeb !default;
+$accent:        #ebebeb !default;
+$info:          #20a1ff !default;
+$success:       #198754 !default;
+$warning:       #ffd582 !default;
+$error:         #ff6464 !default;
+
+$theme-colors:  (
+                    "dominant": $dominant,
+                    "primary": $primary,
+                    "secondary": $secondary,
+                    "tertiary": $tertiary,
+                    "accent": $accent,
+                    "info": $info,
+                    "success": $success,
+                    "warning": $warning,
+                    "error": $error
+                ) !default;
+
+$color-schemes: (
+                    "dominant": [$dominant, black],
+                    "primary": [$primary, black],
+                    "secondary": [$secondary, black],
+                    "tertiary": [$tertiary, black],
+                    "accent": [$accent, black],
+                    "info": [$info, black],
+                    "success": [$success, black],
+                    "warning": [$warning, black],
+                    "error": [$error, black]
+                ) !default;
+
+$color-primary: (
+                    &: $primary,
+                    dark: #f8bb44,
+                    light: #f8bb44,
+                    font: white,
+                );
+
 :root,
 [data-theme="light"] {
     color-scheme:          light;
-
-    // Theme color variables
-    $dominant:      #ffffff !default; // 60%
-    $primary:       #f8bb44 !default; // 10%
-    $secondary:     #ebebeb !default; // 30%
-    $tertiary:      #ebebeb !default;
-    $accent:        #ebebeb !default;
-    $info:          #20a1ff !default;
-    $success:       #198754 !default;
-    $warning:       #ffd582 !default;
-    $error:         #ff6464 !default;
-    $light:         #f8f9fa !default;
-    $dark:          #212529 !default;
-
-    $color-schemes: (
-                        dominant: (),
-                        primary: (),
-                        secondary: (),
-                        tertiary : (),
-                        accent: (),
-                        info: (),
-                        success: (),
-                        warning: (),
-                        error: (),
-                        light: (),
-                        dark: (),
-                    );
 
     --app-header-bg-color: white;
     --app-footer-bg-color: white;
     --app-main-bg-color:   #f9f9f9;
 }
-
-
-//$color-primary: (
-//            &: $primary,
-//            dark: #f8bb44,
-//            light: #f8bb44,
-//            font: white,
-//);
-
 
 //@mixin theme {
 //    // Colors
