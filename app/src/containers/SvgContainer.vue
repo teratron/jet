@@ -10,13 +10,14 @@ interface Props {
     viewBox?: string | number[]
 }
 
+const defaultSize = 16
 const props = withDefaults(defineProps<Props>(), {
     title: 'default',
     role: 'presentation',
     color: '#000',
-    width: 16,
-    height: 16,
-    viewBox: '0 0 16 16'
+    width: defaultSize,
+    height: defaultSize,
+    viewBox: '0 0 ' + defaultSize + ' ' + defaultSize
 })
 
 const viewBox = computed(() => {

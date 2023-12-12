@@ -25,10 +25,10 @@ const pxSize = computed(() => size + 'px')
 <style lang="scss" scoped>
 button {
     background-color: transparent;
-    display: inline-flex;
-    width:   v-bind(pxSize);
-    height:  v-bind(pxSize);
+    display:          inline-flex;
+    width:            v-bind(pxSize);
+    height:           v-bind(pxSize);
     padding:          0;
-    border:  0 none;
+    border:           0 none;
 }
 </style>
