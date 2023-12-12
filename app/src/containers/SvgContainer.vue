@@ -14,9 +14,9 @@ const props = withDefaults(defineProps<Props>(), {
     title: 'default',
     role: 'presentation',
     color: '#000',
-    width: 18,
-    height: 18,
-    viewBox: '0 0 18 18'
+    width: 16,
+    height: 16,
+    viewBox: '0 0 16 16'
 })
 
 const viewBox = computed(() => {

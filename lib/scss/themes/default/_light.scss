@@ -24,23 +24,23 @@ $theme-colors:  (
                 ) !default;
 
 $color-schemes: (
-                    "dominant": [$dominant, black],
-                    "primary": [$primary, black],
-                    "secondary": [$secondary, black],
-                    "tertiary": [$tertiary, black],
-                    "accent": [$accent, black],
-                    "info": [$info, black],
-                    "success": [$success, black],
-                    "warning": [$warning, black],
-                    "error": [$error, black]
+                    dominant: [$dominant, black],
+                    primary: [$primary, black],
+                    secondary: [$secondary, black],
+                    tertiary: [$tertiary, black],
+                    accent: [$accent, black],
+                    info: [$info, black],
+                    success: [$success, black],
+                    warning: [$warning, black],
+                    error: [$error, black]
                 ) !default;
 
 $color-primary: (
                     &: $primary,
-                    dark: #f8bb44,
-                    light: #f8bb44,
-                    ink: white,
-                );
+                    dark: #c08e27,
+                    light: #ffd78a,
+                    ink: #1c1c1c,
+                ) !default;
 
 :root,
 [data-theme="light"] {
