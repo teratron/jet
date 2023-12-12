@@ -1,8 +1,5 @@
 $list_state: hover, active, visited, target, focus, focus-visible, focus-within;
 
-%template {
-}
-
 @mixin mxColor($background, $ink, $border: null) {
     background-color: $background;
     color:            $ink;
@@ -26,4 +23,55 @@ $list_state: hover, active, visited, target, focus, focus-visible, focus-within;
 #{JX(scheme-dominant, ".%")} {
     background-color: $dominant;
     color:            black;
+}
+
+#{JX(scheme-border-dominant, ".%")} {
+    @extend %scheme-dominant;
+    border-color: $dominant;
+}
+
+#{JX(scheme-state-dominant, ".%")} {
+    @extend %scheme-border-dominant;
+
+    &:hover {
+        background-color: $dominant;
+        color:            black;
+        border-color:     $dominant;
+    }
+
+    &:active {
+        background-color: $dominant;
+        color:            black;
+        border-color:     $dominant;
+    }
+
+    &:visited {
+        background-color: $dominant;
+        color:            black;
+        border-color:     $dominant;
+    }
+
+    &:target {
+        background-color: $dominant;
+        color:            black;
+        border-color:     $dominant;
+    }
+
+    &:focus {
+        background-color: $dominant;
+        color:            black;
+        border-color:     $dominant;
+
+        &-visible {
+            background-color: $dominant;
+            color:            black;
+            border-color:     $dominant;
+        }
+
+        &-within {
+            background-color: $dominant;
+            color:            black;
+            border-color:     $dominant;
+        }
+    }
 }
