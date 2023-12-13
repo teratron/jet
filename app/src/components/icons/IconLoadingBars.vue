@@ -5,7 +5,7 @@ const {color = '#000'} = defineProps<{ color?: string }>()
 </script>
 
 <template>
-    <svg-container title="loading-bars">
+    <svg-container title="loading-bars" view-box="0 0 24 24">
         <rect :fill="color" class="loading-bars" x="1"/>
         <rect :fill="color" class="loading-bars loading-bar-2" x="9"/>
         <rect :fill="color" class="loading-bars loading-bar-3" x="17"/>
@@ -13,19 +13,19 @@ const {color = '#000'} = defineProps<{ color?: string }>()
 </template>
 
 <style lang="scss" scoped>
-@keyframes spinner_bars {
+@keyframes loading_bars {
     0% {
-        height: 22px
+        height: 22px;
     }
     93.75% {
         transform: translateY(5px);
         height:    14px;
-        opacity:   .2
+        opacity: .2;
     }
 }
 
 .loading-bars {
-    animation:       spinner_bars .8s linear infinite;
+    animation: loading_bars .8s linear infinite;
     animation-delay: -.8s;
     width:           6px;
     transform:       translateY(1px);

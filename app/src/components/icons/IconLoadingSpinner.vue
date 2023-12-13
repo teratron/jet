@@ -5,14 +5,9 @@ const {color = '#000'} = defineProps<{ color?: string }>()
 </script>
 
 <template>
-    <svg-container title="loading-spinner">
-        <g>
-            <circle
-                :stroke="color"
-                cx="50%"
-                cy="50%"
-                r="9"
-            />
+    <svg-container title="loading-spinner" view-box="0 0 24 24">
+        <g class="loading-spinner">
+            <circle :stroke="color" cx="50%" cy="50%" r="9"/>
         </g>
     </svg-container>
 </template>
@@ -39,18 +34,16 @@ const {color = '#000'} = defineProps<{ color?: string }>()
     }
 }
 
-svg {
-    > g {
-        animation: rotate_full 2s linear infinite;
-        transform-origin: center;
-        transform-box:    stroke-box;
+.loading-spinner {
+    animation:        rotate_full 2s linear infinite;
+    transform-origin: center;
+    transform-box:    stroke-box;
 
-        > circle {
-            animation:      rotate_pulse 1.5s ease-out infinite;
-            fill:           none;
-            stroke-width:   3px;
-            stroke-linecap: round
-        }
+    > circle {
+        animation:      rotate_pulse 1.5s ease-out infinite;
+        fill:           none;
+        stroke-width:   3px;
+        stroke-linecap: round;
     }
 }
 </style>

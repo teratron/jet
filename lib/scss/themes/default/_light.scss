@@ -12,15 +12,15 @@ $warning:       #ffd582 !default;
 $error:         #ff6464 !default;
 
 $theme-colors:  (
-                    "dominant":  $dominant,
-                    "primary":   $primary,
+                    "dominant": $dominant,
+                    "primary": $primary,
                     "secondary": $secondary,
-                    "tertiary":  $tertiary,
-                    "accent":    $accent,
-                    "info":      $info,
-                    "success":   $success,
-                    "warning":   $warning,
-                    "error":     $error
+                    "tertiary": $tertiary,
+                    "accent": $accent,
+                    "info": $info,
+                    "success": $success,
+                    "warning": $warning,
+                    "error": $error
                 ) !default;
 
 $color-schemes: (

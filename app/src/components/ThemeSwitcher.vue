@@ -17,8 +17,8 @@ const pxSize = computed(() => size + 'px')
 
 <template>
     <button type="button" @click="isDark = !isDark">
-        <icon-moon v-if="isDark" :height="size" :viewBox="[0, 0, size, size]" :width="size" color="black"/>
-        <icon-sun v-else :height="size" :viewBox="[0, 0, size, size]" :width="size" color="white"/>
+        <icon-moon v-if="isDark" :height="size" :view-box="[0, 0, size, size]" :width="size" color="black"/>
+        <icon-sun v-else :height="size" :view-box="[0, 0, size, size]" :width="size" color="white"/>
     </button>
 </template>
 
