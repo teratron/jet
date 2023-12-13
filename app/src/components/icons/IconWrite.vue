@@ -3,7 +3,7 @@ import SvgContainer from 'containers/SvgContainer.vue'
 </script>
 
 <template>
-    <svg-container title="write">
+    <svg-container title="write" view-box="0 0 18 18">
         <path
             d="M16.001 11a1 1 0 0 0-1 1v2.5a.5.5 0 0 1-.5.5H3.499a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5h2.5a1 1 0 1 0 0-2h-4a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14.002a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1z"/>
         <path
