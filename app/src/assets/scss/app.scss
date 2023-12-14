@@ -1,3 +1,6 @@
+@use "sass:meta";
+@use "sass:list";
+
 // Configuration
 @import "themes/default/light";
 @import "themes/default/dark";
@@ -95,3 +98,44 @@ body {
 //        padding-right: $container_shrink;
 //    }
 //}
+
+@mixin color-scheme($bg, $ink) {
+    background-color: $bg;
+    color:            $ink;
+}
+
+@each $key, $value in $color-schemes {
+    //:root {
+    //    --jx-scheme-#{$key}-bg:  #{list.nth($value, 1)};
+    //    --jx-scheme-#{$key}-ink: #{list.nth($value, 2)};
+    //}
+
+    #{JX(scheme-#{$key}, ".%")} {
+        @include color-scheme(list.nth($value, 1), list.nth($value, 2));
+
+        @each $theme in (dark, light) {
+            &-#{$theme} {
+                @include color-scheme(list.nth($value, 1), list.nth($value, 2));
+            }
+        }
+    }
+
+    @if length($value) == 3 {
+        #{JX(scheme-border-#{$key}, ".%")} {
+            @extend #{JX(scheme-#{$key}, ".%")};
+            border-color: list.nth($value, 3);
+        }
+    }
+
+    @each $state in $list_states {
+        #{JX(scheme-state-#{$key}, ".%")} {
+            &:#{$state} {
+
+            }
+        }
+    }
+}
+
+.app-main {
+    @extend %jx-scheme-border-error;
+}

@@ -11,28 +11,16 @@ $success:       #198754 !default;
 $warning:       #ffd582 !default;
 $error:         #ff6464 !default;
 
-$theme-colors:  (
-                    "dominant": $dominant,
-                    "primary": $primary,
-                    "secondary": $secondary,
-                    "tertiary": $tertiary,
-                    "accent": $accent,
-                    "info": $info,
-                    "success": $success,
-                    "warning": $warning,
-                    "error": $error
-                ) !default;
-
 $color-schemes: (
-                    dominant: [$dominant, black],
-                    primary: [$primary, black],
-                    secondary: [$secondary, black],
-                    tertiary: [$tertiary, black],
-                    accent: [$accent, black],
-                    info: [$info, black],
-                    success: [$success, black],
-                    warning: [$warning, black],
-                    error: [$error, black]
+                    dominant: [$dominant, black, null],
+                    primary: [$primary, black, null],
+                    secondary: [$secondary, black, null],
+                    tertiary: [$tertiary, black, null],
+                    accent: [$accent, black, null],
+                    info: [$info, white, null],
+                    success: [$success, white, null],
+                    warning: [$warning, black, null],
+                    error: [$error, white, blue]
                 ) !default;
 
 $color-primary: (
