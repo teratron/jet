@@ -23,6 +23,90 @@ $color-schemes: (
                     error: [$error, white, blue]
                 ) !default;
 
+$scheme-states: (
+                    dominant: (
+                        hover: [$dominant, black, null],
+                        active: [$dominant, black, null],
+                        visited: [$dominant, black, null],
+                        target: [$dominant, black, null],
+                        focus: [$dominant, black, null],
+                        focus-visible: [$dominant, black, null],
+                        focus-within: [$dominant, black, null]
+                    ),
+                    primary: (
+                        hover: [$primary, black, null],
+                        active: [$primary, black, null],
+                        visited: [$primary, black, null],
+                        target: [$primary, black, null],
+                        focus: [$primary, black, null],
+                        focus-visible: [$primary, black, null],
+                        focus-within: [$primary, black, null]
+                    ),
+                    secondary: (
+                        hover: [$secondary, black, null],
+                        active: [$secondary, black, null],
+                        visited: [$secondary, black, null],
+                        target: [$secondary, black, null],
+                        focus: [$secondary, black, null],
+                        focus-visible: [$secondary, black, null],
+                        focus-within: [$secondary, black, null]
+                    ),
+                    tertiary: (
+                        hover: [$tertiary, black, null],
+                        active: [$tertiary, black, null],
+                        visited: [$tertiary, black, null],
+                        target: [$tertiary, black, null],
+                        focus: [$tertiary, black, null],
+                        focus-visible: [$tertiary, black, null],
+                        focus-within: [$tertiary, black, null]
+                    ),
+                    accent: (
+                        hover: [$accent, black, null],
+                        active: [$accent, black, null],
+                        visited: [$accent, black, null],
+                        target: [$accent, black, null],
+                        focus: [$accent, black, null],
+                        focus-visible: [$accent, black, null],
+                        focus-within: [$accent, black, null]
+                    ),
+                    info: (
+                        hover: [$info, black, null],
+                        active: [$info, black, null],
+                        visited: [$info, black, null],
+                        target: [$info, black, null],
+                        focus: [$info, black, null],
+                        focus-visible: [$info, black, null],
+                        focus-within: [$info, black, null]
+                    ),
+                    success: (
+                        hover: [$success, black, null],
+                        active: [$success, black, null],
+                        visited: [$success, black, null],
+                        target: [$success, black, null],
+                        focus: [$success, black, null],
+                        focus-visible: [$success, black, null],
+                        focus-within: [$success, black, null]
+                    ),
+                    warning: (
+                        hover: [$warning, black, null],
+                        active: [$warning, black, null],
+                        visited: [$warning, black, null],
+                        target: [$warning, black, null],
+                        focus: [$warning, black, null],
+                        focus-visible: [$warning, black, null],
+                        focus-within: [$warning, black, null]
+                    ),
+                    error: (
+                        hover: [$error, black, null],
+                        active: [$error, black, null],
+                        visited: [$error, black, null],
+                        target: [$error, black, null],
+                        focus: [$error, black, null],
+                        focus-visible: [$error, black, null],
+                        focus-within: [$error, black, null]
+                    )
+                ) !default;
+
 $color-primary: (
                     &: $primary,
                     dark: #c08e27,
