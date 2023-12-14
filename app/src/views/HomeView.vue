@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import {ref}     from 'vue'
-import IconWrite from 'components/icons/IconWrite.vue'
+import IconWrite  from 'components/icons/IconWrite.vue'
+import TestParent from 'components/TestParent.vue'
 
-const title = ref(import.meta.env.VITE_APP_TITLE)
+const title = import.meta.env.VITE_APP_TITLE
 </script>
 
 <template>
@@ -11,4 +11,5 @@ const title = ref(import.meta.env.VITE_APP_TITLE)
         <icon-write color="red"/>
         HTML, CSS, SCSS, JavaScript Framework
     </p>
+    <test-parent></test-parent>
 </template>

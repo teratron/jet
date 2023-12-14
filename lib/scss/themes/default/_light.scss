@@ -25,7 +25,7 @@ $color-schemes: (
 
 $scheme-states: (
                     dominant: (
-                        hover: [$dominant, black, null],
+                        hover: [$dominant, black, inherit],
                         active: [$dominant, black, null],
                         visited: [$dominant, black, null],
                         target: [$dominant, black, null],
