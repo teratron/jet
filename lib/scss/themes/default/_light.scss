@@ -107,12 +107,12 @@ $scheme-states: (
                     )
                 ) !default;
 
-$color-primary: (
-                    &: $primary,
-                    dark: #c08e27,
-                    light: #ffd78a,
-                    ink: #1c1c1c,
-                ) !default;
+//$color-primary: (
+//                    &: $primary,
+//                    dark: #c08e27,
+//                    light: #ffd78a,
+//                    ink: #1c1c1c,
+//                ) !default;
 
 :root,
 [data-theme="light"] {
