@@ -99,6 +99,13 @@ body {
 //    }
 //}
 
+
+// Color Schemes
+//----------------------------------------------------------
+// .%scheme-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]
+// .%scheme-border-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]
+// .%scheme-state-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]
+//**********************************************************
 @mixin color-scheme($bg, $ink) {
     background-color: $bg;
     color:            $ink;
