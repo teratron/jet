@@ -7,12 +7,14 @@ const {container = false} = defineProps<{ container?: boolean }>()
 
 <template>
     <main class="app-main" role="main">
-        <app-container v-if="container">
-            <slot/>
-        </app-container>
-        <slot v-else>
-            <icon-spinner-circle height="48" width="48"/>
-        </slot>
+        <suspense>
+            <app-container v-if="container">
+                <slot/>
+            </app-container>
+            <slot v-else>
+                <icon-spinner-circle height="48" width="48"/>
+            </slot>
+        </suspense>
     </main>
 </template>
 
