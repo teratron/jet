@@ -85,7 +85,7 @@ export default defineConfig(({command, mode, isSsrBuild, isPreview}) => {
                     entryFileNames: 'js/[name].[hash].js',
                     chunkFileNames: 'js/[name].[hash].js',
                     assetFileNames: (assetInfo => {
-                        const info = assetInfo.name.split('.')
+                        const info = assetInfo.name!.split('.')
                         let ext: string = info[info.length - 1]
                         if (/png|jpe?g|svg|gif|tiff|bmp|ico|webp|webm|mp3|wav/i.test(ext)) {
                             ext = 'media'
