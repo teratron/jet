@@ -112,11 +112,6 @@ body {
 }
 
 @each $key, $value in $color-schemes {
-    //:root {
-    //    --jx-scheme-#{$key}-bg:  #{list.nth($value, 1)};
-    //    --jx-scheme-#{$key}-ink: #{list.nth($value, 2)};
-    //}
-
     #{JX(scheme-#{$key}, ".%")} {
         @include color-scheme(list.nth($value, 1), list.nth($value, 2));
 
@@ -133,15 +128,22 @@ body {
             border-color: list.nth($value, 3);
         }
     }
+}
 
-    @each $state in $list_states {
-        #{JX(scheme-state-#{$key}, ".%")} {
+@each $key, $value in $color-scheme-states {
+    #{JX(scheme-state-#{$key}, ".%")} {
+        @each $state, $scheme in $value {
             &:#{$state} {
-
+                @include color-scheme(list.nth($scheme, 1), list.nth($scheme, 2));
             }
         }
     }
 }
+
+//:root {
+//    --jx-scheme-#{$key}-bg:  #{list.nth($value, 1)};
+//    --jx-scheme-#{$key}-ink: #{list.nth($value, 2)};
+//}
 
 .app-main {
     @extend %jx-scheme-border-error;
