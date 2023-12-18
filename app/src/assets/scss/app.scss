@@ -5,15 +5,10 @@
 @viewport {
     min-width: 640px;
     max-width: 800px;
-}
-
-@viewport {
-    zoom:     0.75;
-    min-zoom: 0.5;
-    max-zoom: 0.9;
-}
-
-@viewport {
+    zoom:      1;
+    min-zoom:  1;
+    max-zoom:  1;
+    user-zoom: fixed;
     orientation: landscape;
 }
 
@@ -119,33 +114,20 @@ body {
 /// ## Color Schemes
 //----------------------------------------------------------
 // .%scheme-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]
-// .%scheme-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]-dark
-// .%scheme-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]-light
+// .%scheme-[dominant, ..., error]-dark
+// .%scheme-[dominant, ..., error]-light
+//
 // .%scheme-border-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]
+// .%scheme-border-[dominant, ..., error]-dark
+// .%scheme-border-[dominant, ..., error]-light
+//
 // .%scheme-state-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]
+// .%scheme-state-[dominant, ..., error]:[hover, active, visited, target, focus, focus-visible, focus-within]
 //----------------------------------------------------------
-/// ### Examples:
 ///
-/// #### Base Scheme:
+/// ### Examples with dominant color
 ///
-/// ```scss
-/// .scheme-dominant {
-///     background-color: $dominant;
-///     color:            black;
-///
-///     &-dark {
-///         background-color: color.scale($dominant, $lightness: -10%);  // darken
-///         color:            black;
-///     }
-///
-///     &-light {
-///         background-color: color.scale($dominant, $lightness: 10%);  // lighten
-///         color:            black;
-///     }
-/// }
-/// ```
-///
-/// Compiles to:
+/// #### Base schemes:
 ///
 /// ```css
 /// .scheme-dominant {
@@ -164,18 +146,7 @@ body {
 /// }
 /// ```
 ///
-/// #### Border Scheme:
-///
-/// ```scss
-/// .scheme-border-dominant {
-///     @extend %scheme-dominant;
-///     // and/or:
-///     // @extend .scheme-dominant;
-///     border-color: orange;
-/// }
-/// ```
-///
-/// Compiles to:
+/// #### Border schemes:
 ///
 /// ```css
 /// .scheme-border-dominant {
@@ -183,32 +154,85 @@ body {
 ///     color:            black;
 ///     border-color:     orange;
 /// }
-/// ```
 ///
-/// #### States Scheme:
+/// .scheme-border-dominant-dark {
+///     background-color: #dffddd;
+///     color:            black;
+///     border-color:     orange;
+/// }
 ///
-/// ```scss
-/// .scheme-state-dominant {
-///     @extend %scheme-dominant;
-///     // and/or:
-///     // @extend .scheme-dominant;
-///     border-color: orange;
+/// .scheme-border-dominant-light {
+///     background-color: #dffddd;
+///     color:            black;
+///     border-color:     orange;
 /// }
 /// ```
 ///
-/// Compiles to:
+/// #### State schemes:
 ///
 /// ```css
-/// .scheme-border-dominant {
+/// .scheme-state-dominant {
+///     background-color: #dffddd;
+///     color:            black;
+///     border-color:     orange;
+/// }
+///
+/// .scheme-state-dominant:hover {
+///     background-color: #dffddd;
+///     color:            black;
+///     border-color:     orange;
+/// }
+///
+/// .scheme-state-dominant:active {
+///     background-color: #dffddd;
+///     color:            black;
+///     border-color:     orange;
+/// }
+///
+/// .scheme-state-dominant:visited {
+///     background-color: #dffddd;
+///     color:            black;
+///     border-color:     orange;
+/// }
+///
+/// .scheme-state-dominant:target {
+///     background-color: #dffddd;
+///     color:            black;
+///     border-color:     orange;
+/// }
+///
+/// .scheme-state-dominant:focus {
+///     background-color: #dffddd;
+///     color:            black;
+///     border-color:     orange;
+/// }
+///
+/// .scheme-state-dominant:focus-visible {
+///     background-color: #dffddd;
+///     color:            black;
+///     border-color:     orange;
+/// }
+///
+/// .scheme-state-dominant:focus-within {
 ///     background-color: #dffddd;
 ///     color:            black;
 ///     border-color:     orange;
 /// }
 /// ```
 //**********************************************************
-@mixin color-scheme($bg, $ink) {
-    background-color: $bg;
+@mixin color-scheme($background, $ink, $border: null) {
+    background-color: $background;
     color:            $ink;
+
+    @if $border {
+        border-color: $border;
+    }
+}
+
+@mixin color-scheme-state($state, $background, $ink, $border: null) {
+    &:#{$state} {
+        @include color-scheme($background, $ink, $border);
+    }
 }
 
 @each $key, $value in $color-schemes {
@@ -219,7 +243,7 @@ body {
             $sign: if($theme == dark, -1, 1);
             &-#{$theme} {
                 @include color-scheme(
-                        color.scale(list.nth($value, 1), $lightness: 10% * $sign),
+                        color.scale(list.nth($value, 1), $lightness: 20% * $sign),
                         list.nth($value, 2)
                 );
             }
@@ -234,7 +258,7 @@ body {
     }
 }
 
-//
+// State Schemes
 @each $key, $value in $color-scheme-states {
     #{JX(scheme-state-#{$key}, ".%")} {
         @extend #{JX(scheme-#{$key}, ".%")};
@@ -259,5 +283,4 @@ body {
 .app-main {
     @extend %jx-scheme-border-error;
     @extend %jx-scheme-state-dominant;
-    pointer-events: auto;
 }
