@@ -147,7 +147,7 @@ $list_sides:                 top, bottom, left, right;
 $list_cursors:               default, pointer, help, not-allowed;
 $list_displays:              none, block, inline-block, table, flex, grid, inline-grid, list-item;
 $list_positions:             static, relative, absolute, fixed, sticky;
-$list_states: hover, active, visited, target, focus, focus-visible, focus-within;
+$list_states:                hover, active, visited, target, focus, focus-visible, focus-within;
 
 // Fonts
 $font_family_serif:          () !default;

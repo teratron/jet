@@ -1,5 +1,5 @@
 <script setup>
-import TestChildren from 'components/TestChildren.vue'
+import ChildrenComponent from 'components/ChildrenComponent.vue'
 import {provide, ref} from 'vue'
 
 // provide static value
@@ -11,8 +11,8 @@ provide('count', count)
 </script>
 
 <template>
-    <test-children>
+    <children-component>
         <button @click="count++">+</button>
-    </test-children>
+    </children-component>
 </template>
 

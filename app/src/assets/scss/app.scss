@@ -1,14 +1,15 @@
 @use "sass:meta";
 @use "sass:list";
 @use "sass:color";
+@use "sass:selector";
 
 @viewport {
-    min-width: 640px;
-    max-width: 800px;
-    zoom:      1;
-    min-zoom:  1;
-    max-zoom:  1;
-    user-zoom: fixed;
+    min-width:   640px;
+    max-width:   800px;
+    zoom:        1;
+    min-zoom:    1;
+    max-zoom:    1;
+    user-zoom:   fixed;
     orientation: landscape;
 }
 
@@ -28,11 +29,11 @@ body {
 // Application
 #app {
     @extend %jx-app;
-    background-color: #cccccc;
-    align-content:   stretch;
-    align-items:     start;
-    justify-content: space-between;
-    justify-items:   center;
+    background-color: #ccc;
+    align-content:    stretch;
+    align-items:      start;
+    justify-content:  space-between;
+    justify-items:    center;
 
     //@include %scheme-dominant;
     //@extend %scheme-dominant;
@@ -50,7 +51,7 @@ body {
     background-color: white;
 
     > .app-container {
-        display: grid;
+        display:       grid;
         align-content: start;
         min-height:    $main_height;
     }
@@ -81,7 +82,7 @@ body {
 
 // Debug
 .outline > * {
-    outline: 1px solid #dddddd;
+    outline: 1px solid #ddd;
 }
 
 .row-test {
@@ -110,37 +111,40 @@ body {
 //    }
 //}
 
-
 /// ## Color Schemes
 //----------------------------------------------------------
 // .%scheme-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]
 // .%scheme-[dominant, ..., error]-dark
 // .%scheme-[dominant, ..., error]-light
 //
-// .%scheme-border-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]
-// .%scheme-border-[dominant, ..., error]-dark
-// .%scheme-border-[dominant, ..., error]-light
+// .%scheme-[dominant, ..., error]-border
+// .%scheme-[dominant, ..., error]-border-dark
+// .%scheme-[dominant, ..., error]-border-light
 //
-// .%scheme-state-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]
-// .%scheme-state-[dominant, ..., error]:[hover, active, visited, target, focus, focus-visible, focus-within]
+// .%scheme-[dominant, ..., error]-state
+// .%scheme-[dominant, ..., error]-state:[hover, active, visited, target, focus, focus-visible, focus-within]
 //----------------------------------------------------------
-///
+//
 /// ### Examples with dominant color
 ///
 /// #### Base schemes:
 ///
 /// ```css
-/// .scheme-dominant {
+/// .scheme-dominant,
+/// .scheme-dominant-border,
+/// .scheme-dominant-state {
 ///     background-color: #dffddd;
 ///     color:            black;
 /// }
 ///
-/// .scheme-dominant-dark {
+/// .scheme-dominant-dark,
+/// .scheme-dominant-border-dark {
 ///     background-color: #dffddd;
 ///     color:            black;
 /// }
 ///
-/// .scheme-dominant-light {
+/// .scheme-dominant-light,
+/// .scheme-dominant-border-light {
 ///     background-color: #dffddd;
 ///     color:            black;
 /// }
@@ -149,127 +153,130 @@ body {
 /// #### Border schemes:
 ///
 /// ```css
-/// .scheme-border-dominant {
-///     background-color: #dffddd;
-///     color:            black;
-///     border-color:     orange;
+/// .scheme-dominant-border,
+/// .scheme-dominant-state {
+///     border-color: orange;
 /// }
 ///
-/// .scheme-border-dominant-dark {
-///     background-color: #dffddd;
-///     color:            black;
-///     border-color:     orange;
+/// .scheme-dominant-border-dark {
+///     border-color: orange;
 /// }
 ///
-/// .scheme-border-dominant-light {
-///     background-color: #dffddd;
-///     color:            black;
-///     border-color:     orange;
+/// .scheme-dominant-border-light {
+///     border-color: orange;
 /// }
 /// ```
 ///
 /// #### State schemes:
 ///
 /// ```css
-/// .scheme-state-dominant {
+/// .scheme-dominant-state:hover {
 ///     background-color: #dffddd;
 ///     color:            black;
 ///     border-color:     orange;
 /// }
 ///
-/// .scheme-state-dominant:hover {
+/// .scheme-dominant-state:active {
 ///     background-color: #dffddd;
 ///     color:            black;
 ///     border-color:     orange;
 /// }
 ///
-/// .scheme-state-dominant:active {
+/// .scheme-dominant-state:visited {
 ///     background-color: #dffddd;
 ///     color:            black;
 ///     border-color:     orange;
 /// }
 ///
-/// .scheme-state-dominant:visited {
+/// .scheme-dominant-state:target {
 ///     background-color: #dffddd;
 ///     color:            black;
 ///     border-color:     orange;
 /// }
 ///
-/// .scheme-state-dominant:target {
+/// .scheme-dominant-state:focus {
 ///     background-color: #dffddd;
 ///     color:            black;
 ///     border-color:     orange;
 /// }
 ///
-/// .scheme-state-dominant:focus {
+/// .scheme-dominant-state:focus-visible {
 ///     background-color: #dffddd;
 ///     color:            black;
 ///     border-color:     orange;
 /// }
 ///
-/// .scheme-state-dominant:focus-visible {
-///     background-color: #dffddd;
-///     color:            black;
-///     border-color:     orange;
-/// }
-///
-/// .scheme-state-dominant:focus-within {
+/// .scheme-dominant-state:focus-within {
 ///     background-color: #dffddd;
 ///     color:            black;
 ///     border-color:     orange;
 /// }
 /// ```
 //**********************************************************
-@mixin color-scheme($background, $ink, $border: null) {
-    background-color: $background;
-    color:            $ink;
-
-    @if $border {
-        border-color: $border;
-    }
-}
-
-@mixin color-scheme-state($state, $background, $ink, $border: null) {
-    &:#{$state} {
-        @include color-scheme($background, $ink, $border);
-    }
-}
+$color-mount: 20%;
 
 @each $key, $value in $color-schemes {
+    $background: list.nth($value, 1);
+    $ink:        list.nth($value, 2);
+
     #{JX(scheme-#{$key}, ".%")} {
-        @include color-scheme(list.nth($value, 1), list.nth($value, 2));
+        background-color: $background;
+        color:            $ink;
 
         @each $theme in (dark, light) {
-            $sign: if($theme == dark, -1, 1);
+            $mount: if($theme == dark, -$color-mount, $color-mount);
+
             &-#{$theme} {
-                @include color-scheme(
-                        color.scale(list.nth($value, 1), $lightness: 20% * $sign),
-                        list.nth($value, 2)
-                );
+                background-color: color.scale($background, $lightness: $mount);
+                color:            color.scale($ink, $lightness: $mount)
             }
         }
     }
 
     @if length($value) == 3 and list.nth($value, 3) != null {
-        #{JX(scheme-border-#{$key}, ".%")} {
+        $border: list.nth($value, 3);
+
+        #{JX(scheme-#{$key}-border, ".%")} {
             @extend #{JX(scheme-#{$key}, ".%")};
-            border-color: list.nth($value, 3);
+            border-color: $border;
+
+            @each $theme in (dark, light) {
+                $mount: if($theme == dark, -$color-mount, $color-mount);
+
+                &-#{$theme} {
+                    @extend #{JX(scheme-#{$key}-#{$theme}, ".%")};
+                    border-color: color.scale($border, $lightness: $mount);
+                }
+            }
         }
     }
 }
 
-// State Schemes
 @each $key, $value in $color-scheme-states {
-    #{JX(scheme-state-#{$key}, ".%")} {
+    #{JX(scheme-#{$key}-state, ".%")} {
         @extend #{JX(scheme-#{$key}, ".%")};
 
-        //@if meta{
-        @extend #{JX(scheme-border-#{$key}, ".%")};
-        //}
+        @if #{JX(scheme-border-#{$key}, "%")} {
+            @extend #{JX(scheme-#{$key}-border, ".%")};
+        }
 
         @each $state, $scheme in $value {
-            &:#{$state} {
-                @include color-scheme(list.nth($scheme, 1), list.nth($scheme, 2));
+            $length: length($scheme);
+
+            @if $length > 0 {
+                &:#{$state} {
+                    @if list.nth($scheme, 1) != null {
+                        background-color: list.nth($scheme, 1);
+
+                        @if $length > 1 and list.nth($scheme, 2) != null {
+                            color: list.nth($scheme, 2);
+
+                            @if #{JX(scheme-border-#{$key}, "%")} and $length > 2 and list.nth($scheme, 3) != null {
+                                border-color: list.nth($scheme, 3);
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -280,7 +287,7 @@ body {
 //    --jx-scheme-#{$key}-ink: #{list.nth($value, 2)};
 //}
 
-.app-main {
-    @extend %jx-scheme-border-error;
-    @extend %jx-scheme-state-dominant;
-}
+//.app-main {
+//    @extend %jx-scheme-border-error;
+//    @extend %jx-scheme-state-dominant;
+//}
