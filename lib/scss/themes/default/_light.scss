@@ -14,98 +14,98 @@ $warning:             #ffd582 !default;
 $error:               #ff6464 !default;
 
 $color-schemes:       (
-                          dominant:  [$dominant,  black, null],
-                          primary:   [$primary,   black, null],
-                          secondary: [$secondary, black, null],
-                          tertiary:  [$tertiary,  black, null],
-                          accent:    [$accent,    black, null],
-                          info:      [$info,      white, null],
-                          success:   [$success,   white, null],
-                          warning:   [$warning,   black, null],
-                          error:     [$error,     white, blue]
+                          dominant: ($dominant, black, null),
+                          primary: ($primary, black, null),
+                          secondary: ($secondary, black, null),
+                          tertiary: ($tertiary, black, null),
+                          accent: ($accent, black, null),
+                          info: ($info, white, null),
+                          success: ($success, white, null),
+                          warning: ($warning, black, null),
+                          error: ($error, white, blue)
                       ) !default;
 
 $color-scheme-states: (
                           dominant: (
-                              hover:         [$dominant, black, inherit],
-                              active:        [$dominant, black, null],
-                              visited:       [$dominant, black, null],
-                              target:        [$dominant, black, null],
-                              focus:         [$dominant, black, null],
-                              focus-visible: [],
-                              focus-within:  []
+                              hover: ($dominant, black, inheri),
+                              active: ($dominant, black, red),
+                              visited: ($dominant, black, red),
+                              target: ($dominant, black, red),
+                              focus: ($dominant, black, red),
+                              focus-visible: ($dominant, black, red),
+                              focus-within: ($dominant, black, red)
                           ),
                           primary: (
-                              hover: [$primary, black, null],
-                              active: [$primary, black, null],
-                              visited: [$primary, black, null],
-                              target: [$primary, black, null],
-                              focus: [$primary, black, null],
-                              focus-visible: [$primary, black, null],
-                              focus-within: [$primary, black, null]
+                              hover: ($primary, black, red),
+                              active: ($primary, black, red),
+                              visited: ($primary, black, red),
+                              target: ($primary, black, red),
+                              focus: ($primary, black, red),
+                              focus-visible: ($primary, black, red),
+                              focus-within: ($primary, black, red)
                           ),
                           secondary: (
-                              hover: [$secondary, black, null],
-                              active: [$secondary, black, null],
-                              visited: [$secondary, black, null],
-                              target: [$secondary, black, null],
-                              focus: [$secondary, black, null],
-                              focus-visible: [$secondary, black, null],
-                              focus-within: [$secondary, black, null]
+                              hover: ($secondary, black, red),
+                              active: ($secondary, black, red),
+                              visited: ($secondary, black, red),
+                              target: ($secondary, black, red),
+                              focus: ($secondary, black, red),
+                              focus-visible: ($secondary, black, null),
+                              focus-within: ($secondary, black, null)
                           ),
                           tertiary: (
-                              hover: [$tertiary, black, null],
-                              active: [$tertiary, black, null],
-                              visited: [$tertiary, black, null],
-                              target: [$tertiary, black, null],
-                              focus: [$tertiary, black, null],
-                              focus-visible: [$tertiary, black, null],
-                              focus-within: [$tertiary, black, null]
+                              hover: ($tertiary, black, null),
+                              active: ($tertiary, black, null),
+                              visited: ($tertiary, black, null),
+                              target: ($tertiary, black, null),
+                              focus: ($tertiary, black, null),
+                              focus-visible: ($tertiary, black, null),
+                              focus-within: ($tertiary, black, null)
                           ),
                           accent: (
-                              hover: [$accent, black, null],
-                              active: [$accent, black, null],
-                              visited: [$accent, black, null],
-                              target: [$accent, black, null],
-                              focus: [$accent, black, null],
-                              focus-visible: [$accent, black, null],
-                              focus-within: [$accent, black, null]
+                              hover: ($accent, black, null),
+                              active: ($accent, black, null),
+                              visited: ($accent, black, null),
+                              target: ($accent, black, null),
+                              focus: ($accent, black, null),
+                              focus-visible: ($accent, black, null),
+                              focus-within: ($accent, black, null)
                           ),
                           info: (
-                              hover: [$info, black, null],
-                              active: [$info, black, null],
-                              visited: [$info, black, null],
-                              target: [$info, black, null],
-                              focus: [$info, black, null],
-                              focus-visible: [$info, black, null],
-                              focus-within: [$info, black, null]
+                              hover: ($info, black, null),
+                              active: ($info, black, null),
+                              visited: ($info, black, null),
+                              target: ($info, black, null),
+                              focus: ($info, black, null),
+                              focus-visible: ($info, black, null),
+                              focus-within: ($info, black, null)
                           ),
                           success: (
-                              hover: [$success, black, null],
-                              active: [$success, black, null],
-                              visited: [$success, black, null],
-                              target: [$success, black, null],
-                              focus: [$success, black, null],
-                              focus-visible: [$success, black, null],
-                              focus-within: [$success, black, null]
+                              hover: ($success, black, null),
+                              active: ($success, black, null),
+                              visited: ($success, black, null),
+                              target: ($success, black, null),
+                              focus: ($success, black, null),
+                              focus-visible: ($success, black, null),
+                              focus-within: ($success, black, null)
                           ),
                           warning: (
-                              hover: [$warning, black, null],
-                              active: [$warning, black, null],
-                              visited: [$warning, black, null],
-                              target: [$warning, black, null],
-                              focus: [$warning, black, null],
-                              focus-visible: [$warning, black, null],
-                              focus-within: [$warning, black, null]
+                              hover: ($warning, black, null),
+                              active: ($warning, black, null),
+                              visited: ($warning, black, null),
+                              target: ($warning, black, null),
+                              focus: ($warning, black, null),
+                              focus-visible: ($warning, black, null),
+                              focus-within: ($warning, black, null)
                           ),
                           error: (
-                              hover: [$error, black, null],
-                              active: [$error, black, null],
-                              visited: [$error, black, null],
-                              target: [$error, black, null],
-                              focus: [$error, black, null],
-                              focus-visible: [$error, black, null],
-                              focus-within: [$error, black, null]
+                              hover: ($error, black, null),
+                              active: ($error, black, null),
+                              visited: ($error, black, null),
+                              target: ($error, black, null),
+                              focus: ($error, black, null),
+                              focus-visible: ($error, black, null),
+                              focus-within: ($error, black, null)
                           )
                       ) !default;
 

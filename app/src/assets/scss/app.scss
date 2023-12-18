@@ -1,5 +1,21 @@
 @use "sass:meta";
 @use "sass:list";
+@use "sass:color";
+
+@viewport {
+    min-width: 640px;
+    max-width: 800px;
+}
+
+@viewport {
+    zoom:     0.75;
+    min-zoom: 0.5;
+    max-zoom: 0.9;
+}
+
+@viewport {
+    orientation: landscape;
+}
 
 // Configuration
 @import "themes/default/light";
@@ -100,11 +116,95 @@ body {
 //}
 
 
-// Color Schemes
+/// ## Color Schemes
 //----------------------------------------------------------
 // .%scheme-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]
+// .%scheme-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]-dark
+// .%scheme-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]-light
 // .%scheme-border-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]
 // .%scheme-state-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]
+//----------------------------------------------------------
+/// ### Examples:
+///
+/// #### Base Scheme:
+///
+/// ```scss
+/// .scheme-dominant {
+///     background-color: $dominant;
+///     color:            black;
+///
+///     &-dark {
+///         background-color: color.scale($dominant, $lightness: -10%);  // darken
+///         color:            black;
+///     }
+///
+///     &-light {
+///         background-color: color.scale($dominant, $lightness: 10%);  // lighten
+///         color:            black;
+///     }
+/// }
+/// ```
+///
+/// Compiles to:
+///
+/// ```css
+/// .scheme-dominant {
+///     background-color: #dffddd;
+///     color:            black;
+/// }
+///
+/// .scheme-dominant-dark {
+///     background-color: #dffddd;
+///     color:            black;
+/// }
+///
+/// .scheme-dominant-light {
+///     background-color: #dffddd;
+///     color:            black;
+/// }
+/// ```
+///
+/// #### Border Scheme:
+///
+/// ```scss
+/// .scheme-border-dominant {
+///     @extend %scheme-dominant;
+///     // and/or:
+///     // @extend .scheme-dominant;
+///     border-color: orange;
+/// }
+/// ```
+///
+/// Compiles to:
+///
+/// ```css
+/// .scheme-border-dominant {
+///     background-color: #dffddd;
+///     color:            black;
+///     border-color:     orange;
+/// }
+/// ```
+///
+/// #### States Scheme:
+///
+/// ```scss
+/// .scheme-state-dominant {
+///     @extend %scheme-dominant;
+///     // and/or:
+///     // @extend .scheme-dominant;
+///     border-color: orange;
+/// }
+/// ```
+///
+/// Compiles to:
+///
+/// ```css
+/// .scheme-border-dominant {
+///     background-color: #dffddd;
+///     color:            black;
+///     border-color:     orange;
+/// }
+/// ```
 //**********************************************************
 @mixin color-scheme($bg, $ink) {
     background-color: $bg;
@@ -116,13 +216,17 @@ body {
         @include color-scheme(list.nth($value, 1), list.nth($value, 2));
 
         @each $theme in (dark, light) {
+            $sign: if($theme == dark, -1, 1);
             &-#{$theme} {
-                @include color-scheme(list.nth($value, 1), list.nth($value, 2));
+                @include color-scheme(
+                        color.scale(list.nth($value, 1), $lightness: 10% * $sign),
+                        list.nth($value, 2)
+                );
             }
         }
     }
 
-    @if length($value) == 3 {
+    @if length($value) == 3 and list.nth($value, 3) != null {
         #{JX(scheme-border-#{$key}, ".%")} {
             @extend #{JX(scheme-#{$key}, ".%")};
             border-color: list.nth($value, 3);
@@ -130,8 +234,15 @@ body {
     }
 }
 
+//
 @each $key, $value in $color-scheme-states {
     #{JX(scheme-state-#{$key}, ".%")} {
+        @extend #{JX(scheme-#{$key}, ".%")};
+
+        //@if meta{
+        @extend #{JX(scheme-border-#{$key}, ".%")};
+        //}
+
         @each $state, $scheme in $value {
             &:#{$state} {
                 @include color-scheme(list.nth($scheme, 1), list.nth($scheme, 2));
@@ -147,4 +258,6 @@ body {
 
 .app-main {
     @extend %jx-scheme-border-error;
+    @extend %jx-scheme-state-dominant;
+    pointer-events: auto;
 }
