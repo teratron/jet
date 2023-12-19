@@ -171,6 +171,7 @@ env/.env
 !.env.vault
 !env/.env.development
 !env/.env.production
+.stuff
 
 # Next.js
 .next

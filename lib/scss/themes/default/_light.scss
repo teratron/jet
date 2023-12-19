@@ -14,15 +14,15 @@ $warning:             #ffd582 !default;
 $error:               #ff6464 !default;
 
 $color-schemes:       (
-                          dominant: ($dominant, $primary, null),
+                          dominant: ($dominant, $secondary, $tertiary),
                           primary: ($primary, $tertiary, orange),
                           secondary: ($secondary, black green),
                           tertiary: ($tertiary, black, red),
                           accent: ($accent, black, red),
-                          info: ($info, white, red),
-                          success: ($success, white, red),
-                          warning: ($warning, black, red),
-                          error: ($error, white, blue)
+                          info: ($info, white, null),
+                          success: ($success, white, null),
+                          warning: ($warning, black, null),
+                          error: ($error, white, null)
                       ) !default;
 
 $color-scheme-states: (
