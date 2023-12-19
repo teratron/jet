@@ -1,9 +1,9 @@
-<script setup>
+<script lang="ts" setup>
 import {inject} from 'vue'
 
-const path = inject('path')
-const count = inject('count')
-const bar = inject('path', '/default-path')
+const path = inject<string>('path')
+const count = inject<number>('count')
+const bar = inject<string>('path', '/default-path')
 </script>
 
 <template>

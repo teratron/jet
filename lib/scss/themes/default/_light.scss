@@ -1,27 +1,27 @@
 /// ## Light Theme
 
-$list_colors: dominant, primary, secondary, tertiary, accent, info, success, warning, error;
+$list_colors:         dominant, primary, secondary, tertiary, accent, info, success, warning, error;
 
 // Theme color variables
-$dominant:            #ffffff !default; // 60%
-$primary:             #f8bb44 !default; // 10%
-$secondary:           #ebebeb !default; // 30%
-$tertiary:            #ebebeb !default;
-$accent:              #ebebeb !default;
+$dominant:            #eff1f3 !default; // 60%
+$primary:             #223843 !default; // 10%
+$secondary:           #d77a61 !default; // 30%
+$tertiary:            #dbd3d8 !default;
+$accent:              #d8b4a0 !default;
 $info:                #20a1ff !default;
 $success:             #198754 !default;
 $warning:             #ffd582 !default;
 $error:               #ff6464 !default;
 
 $color-schemes:       (
-                          dominant: ($dominant, black, null),
-                          primary: ($primary, black, null),
-                          secondary: ($secondary, black, null),
-                          tertiary: ($tertiary, black, null),
-                          accent: ($accent, black, null),
-                          info: ($info, white, null),
-                          success: ($success, white, null),
-                          warning: ($warning, black, null),
+                          dominant: ($dominant, $primary, null),
+                          primary: ($primary, $secondary, orange),
+                          secondary: ($secondary, black green),
+                          tertiary: ($tertiary, black, red),
+                          accent: ($accent, black, red),
+                          info: ($info, white, red),
+                          success: ($success, white, red),
+                          warning: ($warning, black, red),
                           error: ($error, white, blue)
                       ) !default;
 
@@ -36,9 +36,9 @@ $color-scheme-states: (
                               focus-within: ($dominant, black, red)
                           ),
                           primary: (
-                              hover: ($primary, black, red),
-                              active: ($primary, black, red),
-                              visited: ($primary, black, red),
+                              hover: (red, green, blue),
+                              active: (green, black, red),
+                              visited: (blue, black, red),
                               target: ($primary, black, red),
                               focus: ($primary, black, red),
                               focus-visible: ($primary, black, red),

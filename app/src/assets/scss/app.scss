@@ -29,7 +29,7 @@ body {
 // Application
 #app {
     @extend %jx-app;
-    background-color: #ccc;
+    background-color: #cccccc;
     align-content:    stretch;
     align-items:      start;
     justify-content:  space-between;
@@ -82,7 +82,7 @@ body {
 
 // Debug
 .outline > * {
-    outline: 1px solid #ddd;
+    outline: 1px solid #dddddd;
 }
 
 .row-test {
@@ -216,8 +216,10 @@ body {
 $color-mount: 20%;
 
 @each $key, $value in $color-schemes {
+    $length: list.length($value);
     $background: list.nth($value, 1);
-    $ink:        list.nth($value, 2);
+    $ink:    if($length >= 2 and meta.type-of(list.nth($value, 2)) == color, list.nth($value, 2), color.invert($background));
+    $border: if($length == 3 and meta.type-of(list.nth($value, 3)) == color, list.nth($value, 3), $background);
 
     #{JX(scheme-#{$key}, ".%")} {
         background-color: $background;
@@ -233,20 +235,16 @@ $color-mount: 20%;
         }
     }
 
-    @if length($value) == 3 and list.nth($value, 3) != null {
-        $border: list.nth($value, 3);
+    #{JX(scheme-#{$key}-border, ".%")} {
+        @extend #{JX(scheme-#{$key}, ".%")};
+        border-color: $border;
 
-        #{JX(scheme-#{$key}-border, ".%")} {
-            @extend #{JX(scheme-#{$key}, ".%")};
-            border-color: $border;
+        @each $theme in (dark, light) {
+            $mount: if($theme == dark, $color-mount, -$color-mount);
 
-            @each $theme in (dark, light) {
-                $mount: if($theme == dark, -$color-mount, $color-mount);
-
-                &-#{$theme} {
-                    @extend #{JX(scheme-#{$key}-#{$theme}, ".%")};
-                    border-color: color.scale($border, $lightness: $mount);
-                }
+            &-#{$theme} {
+                @extend #{JX(scheme-#{$key}-#{$theme}, ".%")};
+                border-color: color.scale($border, $lightness: $mount);
             }
         }
     }
@@ -255,23 +253,20 @@ $color-mount: 20%;
 @each $key, $value in $color-scheme-states {
     #{JX(scheme-#{$key}-state, ".%")} {
         @extend #{JX(scheme-#{$key}, ".%")};
-
-        @if #{JX(scheme-border-#{$key}, "%")} {
-            @extend #{JX(scheme-#{$key}-border, ".%")};
-        }
+        @extend #{JX(scheme-#{$key}-border, ".%")};
 
         @each $state, $scheme in $value {
-            $length: length($scheme);
+            $length: list.length($scheme);
 
             @if $length > 0 {
                 &:#{$state} {
-                    @if list.nth($scheme, 1) != null {
+                    @if meta.type-of(list.nth($scheme, 1)) == color {
                         background-color: list.nth($scheme, 1);
 
-                        @if $length > 1 and list.nth($scheme, 2) != null {
+                        @if $length > 1 and meta.type-of(list.nth($scheme, 2)) == color {
                             color: list.nth($scheme, 2);
 
-                            @if #{JX(scheme-border-#{$key}, "%")} and $length > 2 and list.nth($scheme, 3) != null {
+                            @if $length > 2 and meta.type-of(list.nth($scheme, 3)) == color {
                                 border-color: list.nth($scheme, 3);
                             }
                         }
