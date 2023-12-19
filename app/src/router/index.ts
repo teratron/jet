@@ -8,16 +8,17 @@ import GridView    from 'views/GridView.vue'
 import ResetView   from 'views/ResetView.vue'
 import FormView    from 'views/FormView.vue'
 import ElementView from 'views/ElementView.vue'
+import ColorView   from 'views/ColorView.vue'
 
 // Layouts
-import GridLayout from 'layouts/GridLayout.vue'
+//import GridLayout from 'layouts/GridLayout.vue'
 
 export const routes = [
     {
         path: '/',
         name: 'home',
-        component: HomeView,
-        layout: GridLayout // TODO:
+        component: HomeView
+        //layout: GridLayout // TODO:
     }, {
         path: '/about',
         name: 'about',
@@ -53,6 +54,10 @@ export const routes = [
         path: '/element',
         name: 'element',
         component: ElementView
+    }, {
+        path: '/color',
+        name: 'color',
+        component: ColorView
     }, {
         path: '/:pathMatch(.*)*',
         name: 'NotFound',

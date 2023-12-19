@@ -4,8 +4,8 @@ $list_colors:         dominant, primary, secondary, tertiary, accent, info, succ
 
 // Theme color variables
 $dominant:            #eff1f3 !default; // 60%
-$primary:             #223843 !default; // 10%
-$secondary:           #d77a61 !default; // 30%
+$primary:             #d77a61 !default; // 10%
+$secondary:           #223843 !default; // 30%
 $tertiary:            #dbd3d8 !default;
 $accent:              #d8b4a0 !default;
 $info:                #20a1ff !default;
@@ -15,7 +15,7 @@ $error:               #ff6464 !default;
 
 $color-schemes:       (
                           dominant: ($dominant, $primary, null),
-                          primary: ($primary, $secondary, orange),
+                          primary: ($primary, $tertiary, orange),
                           secondary: ($secondary, black green),
                           tertiary: ($tertiary, black, red),
                           accent: ($accent, black, red),

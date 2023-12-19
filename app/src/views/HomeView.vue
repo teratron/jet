@@ -12,11 +12,7 @@ const title = import.meta.env.VITE_APP_TITLE
         HTML, CSS, SCSS, JavaScript Framework
     </p>
     <parent-component/>
-    <div class="jx-scheme-primary">jx-scheme-primary</div>
-    <div class="jx-scheme-primary-dark">jx-scheme-primary-dark</div>
-    <div class="jx-scheme-primary-light">jx-scheme-primary-dark</div>
-    <div class="jx-scheme-primary-border">jx-scheme-primary-border</div>
-    <div class="jx-scheme-primary-border-dark">jx-scheme-primary-border-dark</div>
-    <div class="jx-scheme-primary-border-light">jx-scheme-primary-border-dark</div>
-    <div class="jx-scheme-primary-state">jx-scheme-primary-state</div>
 </template>
+
+<style scoped>
+</style>

@@ -51,7 +51,7 @@ body {
     background-color: white;
 
     > .app-container {
-        display:       grid;
+        //display:       grid;
         align-content: start;
         min-height:    $main_height;
     }
@@ -240,7 +240,7 @@ $color-mount: 20%;
         border-color: $border;
 
         @each $theme in (dark, light) {
-            $mount: if($theme == dark, $color-mount, -$color-mount);
+            $mount: if($theme == dark, -$color-mount, $color-mount);
 
             &-#{$theme} {
                 @extend #{JX(scheme-#{$key}-#{$theme}, ".%")};
@@ -280,9 +280,4 @@ $color-mount: 20%;
 //:root {
 //    --jx-scheme-#{$key}-bg:  #{list.nth($value, 1)};
 //    --jx-scheme-#{$key}-ink: #{list.nth($value, 2)};
-//}
-
-//.app-main {
-//    @extend %jx-scheme-border-error;
-//    @extend %jx-scheme-state-dominant;
 //}
