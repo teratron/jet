@@ -117,7 +117,7 @@ body {
 // .%ink-[dominant, ..., error]
 // .%border-[dominant, ..., error]
 //
-// Color Schemes:
+// Color Schemes
 //----------------------------------------------------------
 // .%scheme-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]
 // .%scheme-[dominant, ..., error]-dark
@@ -131,7 +131,29 @@ body {
 // .%scheme-[dominant, ..., error]-state:[hover, active, visited, target, focus, focus-visible, focus-within]
 //----------------------------------------------------------
 //
-/// ### Examples with dominant color
+/// ### Examples with dominant color:
+///
+/// ```css
+/// .bg-dominant,
+/// .scheme-dominant,
+/// .scheme-dominant-border,
+/// .scheme-dominant-state {
+///     background-color: #dffddd;
+/// }
+///
+/// .ink-dominant,
+/// .scheme-dominant,
+/// .scheme-dominant-border,
+/// .scheme-dominant-state {
+///     color: black;
+/// }
+///
+/// .border-dominant,
+/// .scheme-dominant-border,
+/// .scheme-dominant-state {
+///     border-color: orange;
+/// }
+/// ```
 ///
 /// #### Base schemes:
 ///
@@ -220,6 +242,19 @@ body {
 /// ```
 //**********************************************************
 $color-mount: 20%;
+
+:root {
+    @each $key, $value in $color-schemes {
+        $color:          list.nth($value, 1);
+        --color-#{$key}: #{$color};
+
+        @each $theme in (dark, light) {
+            --color-#{$key}-#{$theme}: #{
+                color.scale($color, $lightness: if($theme == dark, - $color-mount, $color-mount))
+            };
+        }
+    }
+}
 
 @each $key, $value in $color-schemes {
     $length: list.length($value);
