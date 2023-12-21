@@ -22,7 +22,8 @@ $color-schemes:       (
                           info: ($info, white, null),
                           success: ($success, white, null),
                           warning: ($warning, black, null),
-                          error: ($error, white, null)
+                          error: ($error, white, null),
+                          blank: (transparent, black, transparent),
                       ) !default;
 
 $color-scheme-states: (

@@ -1,19 +1,230 @@
-@mixin mxColor($background, $ink, $border: null) {
-    background-color: $background;
-    color:            $ink;
+@use "sass:meta";
+@use "sass:list";
+@use "sass:color";
 
-    @if $border {
+/// ## Colors
+//----------------------------------------------------------
+// .%bg-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]
+// .%ink-[dominant, ..., error]
+// .%border-[dominant, ..., error]
+//
+// Color Schemes
+//----------------------------------------------------------
+// .%scheme-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]
+// .%scheme-[dominant, ..., error]-dark
+// .%scheme-[dominant, ..., error]-light
+//
+// .%scheme-[dominant, ..., error]-border
+// .%scheme-[dominant, ..., error]-border-dark
+// .%scheme-[dominant, ..., error]-border-light
+//
+// .%scheme-[dominant, ..., error]-state
+// .%scheme-[dominant, ..., error]-state:[hover, active, visited, target, focus, focus-visible, focus-within]
+//----------------------------------------------------------
+//
+/// ### Examples with dominant color:
+///
+/// ```css
+/// .bg-dominant,
+/// .scheme-dominant,
+/// .scheme-dominant-border,
+/// .scheme-dominant-state {
+///     background-color: #dffddd;
+/// }
+///
+/// .ink-dominant,
+/// .scheme-dominant,
+/// .scheme-dominant-border,
+/// .scheme-dominant-state {
+///     color: black;
+/// }
+///
+/// .border-dominant,
+/// .scheme-dominant-border,
+/// .scheme-dominant-state {
+///     border-color: orange;
+/// }
+/// ```
+///
+/// #### Base schemes:
+///
+/// ```css
+/// .scheme-dominant,
+/// .scheme-dominant-border,
+/// .scheme-dominant-state {
+///     background-color: #dffddd;
+///     color:            black;
+/// }
+///
+/// .scheme-dominant-dark,
+/// .scheme-dominant-border-dark {
+///     background-color: #dffddd;
+///     color:            black;
+/// }
+///
+/// .scheme-dominant-light,
+/// .scheme-dominant-border-light {
+///     background-color: #dffddd;
+///     color:            black;
+/// }
+/// ```
+///
+/// #### Border schemes:
+///
+/// ```css
+/// .scheme-dominant-border,
+/// .scheme-dominant-state {
+///     border-color: orange;
+/// }
+///
+/// .scheme-dominant-border-dark {
+///     border-color: orange;
+/// }
+///
+/// .scheme-dominant-border-light {
+///     border-color: orange;
+/// }
+/// ```
+///
+/// #### State schemes:
+///
+/// ```css
+/// .scheme-dominant-state:hover {
+///     background-color: #dffddd;
+///     color:            black;
+///     border-color:     orange;
+/// }
+///
+/// .scheme-dominant-state:active {
+///     background-color: #dffddd;
+///     color:            black;
+///     border-color:     orange;
+/// }
+///
+/// .scheme-dominant-state:visited {
+///     background-color: #dffddd;
+///     color:            black;
+///     border-color:     orange;
+/// }
+///
+/// .scheme-dominant-state:target {
+///     background-color: #dffddd;
+///     color:            black;
+///     border-color:     orange;
+/// }
+///
+/// .scheme-dominant-state:focus {
+///     background-color: #dffddd;
+///     color:            black;
+///     border-color:     orange;
+/// }
+///
+/// .scheme-dominant-state:focus-visible {
+///     background-color: #dffddd;
+///     color:            black;
+///     border-color:     orange;
+/// }
+///
+/// .scheme-dominant-state:focus-within {
+///     background-color: #dffddd;
+///     color:            black;
+///     border-color:     orange;
+/// }
+/// ```
+//**********************************************************
+$color-mount: 20%;
+
+:root {
+    @each $key, $value in $color-schemes {
+        $color:          list.nth($value, 1);
+        --color-#{$key}: #{$color};
+
+        @each $theme in (dark, light) {
+            --color-#{$key}-#{$theme}: #{
+                color.scale($color, $lightness: if($theme == dark, - $color-mount, $color-mount))
+            };
+        }
+    }
+}
+
+@each $key, $value in $color-schemes {
+    $length:     list.length($value);
+    $background: list.nth($value, 1);
+    $ink:        if($length >= 2 and meta.type-of(list.nth($value, 2)) == color, list.nth($value, 2), color.invert($background));
+    $border:     if($length == 3 and meta.type-of(list.nth($value, 3)) == color, list.nth($value, 3), $background);
+
+    #{JX(scheme-#{$key}, ".%")} {
+        background-color: $background;
+        color:            $ink;
+
+        @each $theme in (dark, light) {
+            $mount: if($theme == dark, -$color-mount, $color-mount);
+
+            &-#{$theme} {
+                background-color: color.scale($background, $lightness: $mount);
+                color:            color.scale($ink, $lightness: $mount)
+            }
+        }
+    }
+
+    #{JX(scheme-#{$key}-border, ".%")} {
+        @extend #{JX(scheme-#{$key}, ".%")};
         border-color: $border;
+
+        @each $theme in (dark, light) {
+            $mount: if($theme == dark, -$color-mount, $color-mount);
+
+            &-#{$theme} {
+                @extend #{JX(scheme-#{$key}-#{$theme}, ".%")};
+                border-color: color.scale($border, $lightness: $mount);
+            }
+        }
     }
 }
 
-@mixin mxColorState($state, $background, $ink, $border: null) {
-    &:#{$state} {
-        @include mxColor($background, $ink, $border);
+@each $key, $value in $color-scheme-states {
+    #{JX(scheme-#{$key}-state, ".%")} {
+        @extend #{JX(scheme-#{$key}, ".%")};
+        @extend #{JX(scheme-#{$key}-border, ".%")};
+
+        @each $state, $scheme in $value {
+            $length: list.length($scheme);
+
+            @if $length > 0 {
+                &:#{$state} {
+                    @if meta.type-of(list.nth($scheme, 1)) == color {
+                        background-color: list.nth($scheme, 1);
+
+                        @if $length > 1 and meta.type-of(list.nth($scheme, 2)) == color {
+                            color: list.nth($scheme, 2);
+
+                            @if $length > 2 and meta.type-of(list.nth($scheme, 3)) == color {
+                                border-color: list.nth($scheme, 3);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
-@mixin color-scheme($color) {
-    background-color: $dominant;
-    color:            black;
-}
+//@mixin mxColor($background, $ink, $border: null) {
+//    background-color: $background;
+//    color:            $ink;
+//
+//    @if $border {
+//        border-color: $border;
+//    }
+//}
+//
+//@mixin mxColorState($state, $background, $ink, $border: null) {
+//    &:#{$state} {
+//        @include mxColor($background, $ink, $border);
+//    }
+//}
+//
+//@mixin color-scheme($color) {
+//    background-color: $dominant;
+//    color:            black;
+//}

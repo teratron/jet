@@ -6,13 +6,13 @@
 
     <h2>Dominant</h2>
     <div class="jx-grid-3 jx-gap-half">
-        <div class="jx-scheme-dominant">primary</div>
-        <div class="jx-scheme-dominant-dark">primary dark</div>
-        <div class="jx-scheme-dominant-light">primary light</div>
-        <div class="jx-scheme-dominant-border">primary border</div>
-        <div class="jx-scheme-dominant-border-dark">primary border dark</div>
-        <div class="jx-scheme-dominant-border-light">primary border light</div>
-        <div class="jx-scheme-dominant-state">primary state</div>
+        <div class="jx-scheme-dominant">dominant</div>
+        <div class="jx-scheme-dominant-dark">dominant dark</div>
+        <div class="jx-scheme-dominant-light">dominant light</div>
+        <div class="jx-scheme-dominant-border">dominant border</div>
+        <div class="jx-scheme-dominant-border-dark">dominant border dark</div>
+        <div class="jx-scheme-dominant-border-light">dominant border light</div>
+        <div class="jx-scheme-dominant-state">dominant state</div>
     </div>
 
     <h2>Primary</h2>

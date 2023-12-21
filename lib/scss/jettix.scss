@@ -11,11 +11,11 @@
 @import "commons";
 @import "reset";
 @import "debug";
-//@import "color";
 
 // Theme
 @import "themes/default/light";
 @import "themes/default/dark";
+@import "color";
 
 // Layout
 @import "grid";
