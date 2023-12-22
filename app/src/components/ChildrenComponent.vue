@@ -12,6 +12,6 @@ const bar = inject<string>('path', '/default-path')
         {{ count }}
         {{ bar }}
         <slot/>
-        <button @click="count++">+</button>
+        <button @click="count!++">+</button>
     </div>
 </template>
