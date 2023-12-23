@@ -1,24 +1,26 @@
 /// ## Light Theme
 
-$list_colors:         dominant, primary, secondary, tertiary, accent, info, success, warning, error;
-
 // Theme color variables
-$dominant:            #eff1f3 !default; // 60%
 $primary:             #d77a61 !default; // 10%
 $secondary:           #223843 !default; // 30%
-$tertiary:            #dbd3d8 !default;
-$accent:              #d8b4a0 !default;
+$tertiary:            #dbd3d8 !default; // 60%
+$accent:              #d77a61 !default; // 10%
+$neutral:             #223843 !default; // 30%
+$dominant:            #eff1f3 !default; // 60%
+
+// Misc color  variables
 $info:                #20a1ff !default;
 $success:             #198754 !default;
 $warning:             #ffd582 !default;
 $error:               #ff6464 !default;
 
 $color-schemes:       (
-                          dominant: ($dominant, $secondary, $tertiary),
                           primary: ($primary, $tertiary, orange),
                           secondary: ($secondary, black green),
                           tertiary: ($tertiary, black, red),
                           accent: ($accent, black, red),
+                          neutral: ($accent, black, red),
+                          dominant: ($dominant, $secondary, $tertiary),
                           info: ($info, white, null),
                           success: ($success, white, null),
                           warning: ($warning, black, null),
@@ -27,15 +29,6 @@ $color-schemes:       (
                       ) !default;
 
 $color-scheme-states: (
-                          dominant: (
-                              hover: ($dominant, black, inherit),
-                              active: ($dominant, black, red),
-                              visited: ($dominant, black, red),
-                              target: ($dominant, black, red),
-                              focus: ($dominant, black, red),
-                              focus-visible: ($dominant, black, red),
-                              focus-within: ($dominant, black, red)
-                          ),
                           primary: (
                               hover: (red, green, blue),
                               active: (green, black, red),
@@ -72,6 +65,24 @@ $color-scheme-states: (
                               focus-visible: ($accent, black, null),
                               focus-within: ($accent, black, null)
                           ),
+                          neutral: (
+                              hover: ($accent, black, null),
+                              active: ($accent, black, null),
+                              visited: ($accent, black, null),
+                              target: ($accent, black, null),
+                              focus: ($accent, black, null),
+                              focus-visible: ($accent, black, null),
+                              focus-within: ($accent, black, null)
+                          ),
+                          dominant: (
+                              hover: ($dominant, black, inherit),
+                              active: ($dominant, black, red),
+                              visited: ($dominant, black, red),
+                              target: ($dominant, black, red),
+                              focus: ($dominant, black, red),
+                              focus-visible: ($dominant, black, red),
+                              focus-within: ($dominant, black, red)
+                          ),
                           info: (
                               hover: ($info, black, null),
                               active: ($info, black, null),
@@ -107,6 +118,15 @@ $color-scheme-states: (
                               focus: ($error, black, null),
                               focus-visible: ($error, black, null),
                               focus-within: ($error, black, null)
+                          ),
+                          blank: (
+                              hover: (transparent, red, transparent),
+                              active: ($error, black, null),
+                              visited: ($error, black, null),
+                              target: ($error, black, null),
+                              focus: ($error, black, null),
+                              focus-visible: ($error, black, null),
+                              focus-within: ($error, black, null)
                           )
                       ) !default;
 
@@ -118,48 +138,6 @@ $color-scheme-states: (
     --app-footer-bg-color: white;
     --app-main-bg-color:   #f9f9f9;
 }
-
-//@mixin theme {
-//    // Colors
-//    --color-primary:          #f8bb44;
-//    --color-primary-dark:     #f8bb44;
-//    --color-primary-light:    #f8bb44;
-//    --color-primary-font:     white;
-//
-//    --color-secondary:        #ebebeb;
-//    --color-secondary-dark:   #668630;
-//    --color-secondary-light:  #96cb4b;
-//    --color-secondary-font:   white;
-//
-//    --color-accent:           #725ac1;
-//    --color-accent-dark:      #3e3167;
-//    --color-accent-light:     #9374f8;
-//    --color-accent-font:      white;
-//
-//    --color-info:             #20a1ff;
-//    --color-info-dark:        #3e3167;
-//    --color-info-light:       #9374f8;
-//    --color-info-font:        white;
-//
-//    --color-success:          #198754;
-//    --color-success-dark:     #167c24;
-//    --color-success-light:    #5cd06d;
-//    --color-success-font:     white;
-//
-//    --color-warning:          #ffd582;
-//    --color-warning-dark:     #deaa1f;
-//    --color-warning-light:    #ffd562;
-//    --color-warning-font:     black;
-//
-//    --color-error:            #ff6464;
-//    --color-error-dark:       #c4465e;
-//    --color-error-light:      #ff6381;
-//    --color-error-font:       white;
-//
-//    --color-grey:             #aaa;
-//    --color-dark:             #222;
-//    --color-light:            #eee;
-//}
 
 // Reset
 hr {

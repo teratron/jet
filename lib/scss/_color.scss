@@ -2,6 +2,8 @@
 @use "sass:list";
 @use "sass:color";
 
+$list_colors: primary, secondary, tertiary, accent, neutral, dominant, info, success, warning, error, blank;
+
 /// ## Colors
 //----------------------------------------------------------
 // .%bg-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]
@@ -136,13 +138,15 @@ $color-mount: 20%;
 
 :root {
     @each $key, $value in $color-schemes {
-        $color:          list.nth($value, 1);
-        --color-#{$key}: #{$color};
+        $color:                     list.nth($value, 1);
+        #{JX(color-#{$key}, "--")}: #{$color};
 
-        @each $theme in (dark, light) {
-            --color-#{$key}-#{$theme}: #{
-                color.scale($color, $lightness: if($theme == dark, - $color-mount, $color-mount))
-            };
+        @if $key != blank {
+            @each $theme in (dark, light) {
+                #{JX(color-#{$key}-#{$theme}, "--")}: #{
+                    color.scale($color, $lightness: if($theme == dark, - $color-mount, $color-mount))
+                };
+            }
         }
     }
 }
