@@ -2,48 +2,49 @@
 @use "sass:list";
 @use "sass:color";
 
-$list_colors: primary, secondary, tertiary, accent, neutral, dominant, info, success, warning, error, blank;
+$lightness-mount: 20%;
+$list_colors:     primary, secondary, tertiary, quaternary, quinary, info, success, warning, error;
 
 /// ## Colors
 //----------------------------------------------------------
-// .%bg-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]
-// .%ink-[dominant, ..., error]
-// .%border-[dominant, ..., error]
+// .%bg-[primary, secondary, tertiary, quaternary, quinary, info, success, warning, error]
+// .%ink-[primary, ..., error]
+// .%border-[primary, ..., error]
 //
 // Color Schemes
 //----------------------------------------------------------
-// .%scheme-[dominant, primary, secondary, tertiary, accent, info, success, warning, error]
-// .%scheme-[dominant, ..., error]-dark
-// .%scheme-[dominant, ..., error]-light
+// .%scheme-[primary, secondary, tertiary, quaternary, quinary, info, success, warning, error]
+// .%scheme-[primary, ..., error]-dark
+// .%scheme-[primary, ..., error]-light
 //
-// .%scheme-[dominant, ..., error]-border
-// .%scheme-[dominant, ..., error]-border-dark
-// .%scheme-[dominant, ..., error]-border-light
+// .%scheme-[primary, ..., error]-border
+// .%scheme-[primary, ..., error]-border-dark
+// .%scheme-[primary, ..., error]-border-light
 //
-// .%scheme-[dominant, ..., error]-state
-// .%scheme-[dominant, ..., error]-state:[hover, active, visited, target, focus, focus-visible, focus-within]
+// .%scheme-[primary, ..., error]-state
+// .%scheme-[primary, ..., error]-state:[hover, active, visited, target, focus, focus-visible, focus-within]
 //----------------------------------------------------------
 //
-/// ### Examples with dominant color:
+/// ### Examples with primary color:
 ///
 /// ```css
-/// .bg-dominant,
-/// .scheme-dominant,
-/// .scheme-dominant-border,
-/// .scheme-dominant-state {
+/// .bg-primary,
+/// .scheme-primary,
+/// .scheme-primary-border,
+/// .scheme-primary-state {
 ///     background-color: #dffddd;
 /// }
 ///
-/// .ink-dominant,
-/// .scheme-dominant,
-/// .scheme-dominant-border,
-/// .scheme-dominant-state {
+/// .ink-primary,
+/// .scheme-primary,
+/// .scheme-primary-border,
+/// .scheme-primary-state {
 ///     color: black;
 /// }
 ///
-/// .border-dominant,
-/// .scheme-dominant-border,
-/// .scheme-dominant-state {
+/// .border-primary,
+/// .scheme-primary-border,
+/// .scheme-primary-state {
 ///     border-color: orange;
 /// }
 /// ```
@@ -51,21 +52,21 @@ $list_colors: primary, secondary, tertiary, accent, neutral, dominant, info, suc
 /// #### Base schemes:
 ///
 /// ```css
-/// .scheme-dominant,
-/// .scheme-dominant-border,
-/// .scheme-dominant-state {
+/// .scheme-primary,
+/// .scheme-primary-border,
+/// .scheme-primary-state {
 ///     background-color: #dffddd;
 ///     color:            black;
 /// }
 ///
-/// .scheme-dominant-dark,
-/// .scheme-dominant-border-dark {
+/// .scheme-primary-dark,
+/// .scheme-primary-border-dark {
 ///     background-color: #dffddd;
 ///     color:            black;
 /// }
 ///
-/// .scheme-dominant-light,
-/// .scheme-dominant-border-light {
+/// .scheme-primary-light,
+/// .scheme-primary-border-light {
 ///     background-color: #dffddd;
 ///     color:            black;
 /// }
@@ -74,16 +75,16 @@ $list_colors: primary, secondary, tertiary, accent, neutral, dominant, info, suc
 /// #### Border schemes:
 ///
 /// ```css
-/// .scheme-dominant-border,
-/// .scheme-dominant-state {
+/// .scheme-primary-border,
+/// .scheme-primary-state {
 ///     border-color: orange;
 /// }
 ///
-/// .scheme-dominant-border-dark {
+/// .scheme-primary-border-dark {
 ///     border-color: orange;
 /// }
 ///
-/// .scheme-dominant-border-light {
+/// .scheme-primary-border-light {
 ///     border-color: orange;
 /// }
 /// ```
@@ -91,50 +92,49 @@ $list_colors: primary, secondary, tertiary, accent, neutral, dominant, info, suc
 /// #### State schemes:
 ///
 /// ```css
-/// .scheme-dominant-state:hover {
+/// .scheme-primary-state:hover {
 ///     background-color: #dffddd;
 ///     color:            black;
 ///     border-color:     orange;
 /// }
 ///
-/// .scheme-dominant-state:active {
+/// .scheme-primary-state:active {
 ///     background-color: #dffddd;
 ///     color:            black;
 ///     border-color:     orange;
 /// }
 ///
-/// .scheme-dominant-state:visited {
+/// .scheme-primary-state:visited {
 ///     background-color: #dffddd;
 ///     color:            black;
 ///     border-color:     orange;
 /// }
 ///
-/// .scheme-dominant-state:target {
+/// .scheme-primary-state:target {
 ///     background-color: #dffddd;
 ///     color:            black;
 ///     border-color:     orange;
 /// }
 ///
-/// .scheme-dominant-state:focus {
+/// .scheme-primary-state:focus {
 ///     background-color: #dffddd;
 ///     color:            black;
 ///     border-color:     orange;
 /// }
 ///
-/// .scheme-dominant-state:focus-visible {
+/// .scheme-primary-state:focus-visible {
 ///     background-color: #dffddd;
 ///     color:            black;
 ///     border-color:     orange;
 /// }
 ///
-/// .scheme-dominant-state:focus-within {
+/// .scheme-primary-state:focus-within {
 ///     background-color: #dffddd;
 ///     color:            black;
 ///     border-color:     orange;
 /// }
 /// ```
 //**********************************************************
-$color-mount: 20%;
 
 :root {
     @each $key, $value in $color-schemes {
@@ -144,7 +144,7 @@ $color-mount: 20%;
         @if $key != blank {
             @each $theme in (dark, light) {
                 #{JX(color-#{$key}-#{$theme}, "--")}: #{
-                    color.scale($color, $lightness: if($theme == dark, - $color-mount, $color-mount))
+                    color.scale($color, $lightness: if($theme == dark, - $lightness-mount, $lightness-mount))
                 };
             }
         }
@@ -162,7 +162,7 @@ $color-mount: 20%;
         color:            $ink;
 
         @each $theme in (dark, light) {
-            $mount: if($theme == dark, -$color-mount, $color-mount);
+            $mount: if($theme == dark, -$lightness-mount, $lightness-mount);
 
             &-#{$theme} {
                 background-color: color.scale($background, $lightness: $mount);
@@ -176,7 +176,7 @@ $color-mount: 20%;
         border-color: $border;
 
         @each $theme in (dark, light) {
-            $mount: if($theme == dark, -$color-mount, $color-mount);
+            $mount: if($theme == dark, -$lightness-mount, $lightness-mount);
 
             &-#{$theme} {
                 @extend #{JX(scheme-#{$key}-#{$theme}, ".%")};

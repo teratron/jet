@@ -4,9 +4,8 @@
 $primary:             #d77a61 !default; // 10%
 $secondary:           #223843 !default; // 30%
 $tertiary:            #dbd3d8 !default; // 60%
-$accent:              #d77a61 !default; // 10%
-$neutral:             #223843 !default; // 30%
-$dominant:            #eff1f3 !default; // 60%
+$quaternary:          #d77a61 !default;
+$quinary:             #223843 !default;
 
 // Misc color variables
 $info:                #20a1ff !default;
@@ -18,9 +17,8 @@ $color-schemes:       (
                           primary: ($primary, $tertiary, orange),
                           secondary: ($secondary, black green),
                           tertiary: ($tertiary, black, red),
-                          accent: ($accent, black, red),
-                          neutral: ($accent, black, red),
-                          dominant: ($dominant, $secondary, $tertiary),
+                          quaternary: ($quaternary, black, red),
+                          quinary: ($quinary, black, red),
                           info: ($info, white, null),
                           success: ($success, white, null),
                           warning: ($warning, black, null),
@@ -56,32 +54,23 @@ $color-scheme-states: (
                               focus-visible: ($tertiary, black, null),
                               focus-within: ($tertiary, black, null)
                           ),
-                          accent: (
-                              hover: ($accent, black, null),
-                              active: ($accent, black, null),
-                              visited: ($accent, black, null),
-                              target: ($accent, black, null),
-                              focus: ($accent, black, null),
-                              focus-visible: ($accent, black, null),
-                              focus-within: ($accent, black, null)
+                          quaternary: (
+                              hover: ($quaternary, black, null),
+                              active: ($quaternary, black, null),
+                              visited: ($quaternary, black, null),
+                              target: ($quaternary, black, null),
+                              focus: ($quaternary, black, null),
+                              focus-visible: ($quaternary, black, null),
+                              focus-within: ($quaternary, black, null)
                           ),
-                          neutral: (
-                              hover: ($accent, black, null),
-                              active: ($accent, black, null),
-                              visited: ($accent, black, null),
-                              target: ($accent, black, null),
-                              focus: ($accent, black, null),
-                              focus-visible: ($accent, black, null),
-                              focus-within: ($accent, black, null)
-                          ),
-                          dominant: (
-                              hover: ($dominant, black, inherit),
-                              active: ($dominant, black, red),
-                              visited: ($dominant, black, red),
-                              target: ($dominant, black, red),
-                              focus: ($dominant, black, red),
-                              focus-visible: ($dominant, black, red),
-                              focus-within: ($dominant, black, red)
+                          quinary: (
+                              hover: ($quinary, black, null),
+                              active: ($quinary, black, null),
+                              visited: ($quinary, black, null),
+                              target: ($quinary, black, null),
+                              focus: ($quinary, black, null),
+                              focus-visible: ($quinary, black, null),
+                              focus-within: ($quinary, black, null)
                           ),
                           info: (
                               hover: ($info, black, null),
@@ -121,12 +110,12 @@ $color-scheme-states: (
                           ),
                           blank: (
                               hover: (transparent, red, transparent),
-                              active: ($error, black, null),
-                              visited: ($error, black, null),
-                              target: ($error, black, null),
-                              focus: ($error, black, null),
-                              focus-visible: ($error, black, null),
-                              focus-within: ($error, black, null)
+                              active: (transparent, black, null),
+                              visited: (transparent, black, null),
+                              target: (transparent, black, null),
+                              focus: (transparent, black, null),
+                              focus-visible: (transparent, black, null),
+                              focus-within: (transparent, black, null)
                           )
                       ) !default;
 
