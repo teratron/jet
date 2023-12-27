@@ -4,17 +4,6 @@
 <template>
     <h1>Colors</h1>
 
-    <h2>Dominant</h2>
-    <div class="jx-grid-3 jx-gap-half">
-        <div class="jx-scheme-dominant">dominant</div>
-        <div class="jx-scheme-dominant-dark">dominant dark</div>
-        <div class="jx-scheme-dominant-light">dominant light</div>
-        <div class="jx-scheme-dominant-border">dominant border</div>
-        <div class="jx-scheme-dominant-border-dark">dominant border dark</div>
-        <div class="jx-scheme-dominant-border-light">dominant border light</div>
-        <div class="jx-scheme-dominant-state">dominant state</div>
-    </div>
-
     <h2>Primary</h2>
     <div class="jx-grid-3 jx-gap-half">
         <div class="jx-scheme-primary">primary</div>
@@ -48,15 +37,26 @@
         <div class="jx-scheme-tertiary-state">tertiary state</div>
     </div>
 
-    <h2>Accent</h2>
+    <h2>Quaternary</h2>
     <div class="jx-grid-3 jx-gap-half">
-        <div class="jx-scheme-accent">accent</div>
-        <div class="jx-scheme-accent-dark">accent dark</div>
-        <div class="jx-scheme-accent-light">accent light</div>
-        <div class="jx-scheme-accent-border">accent border</div>
-        <div class="jx-scheme-accent-border-dark">accent border dark</div>
-        <div class="jx-scheme-accent-border-light">accent border light</div>
-        <div class="jx-scheme-accent-state">accent state</div>
+        <div class="jx-scheme-quaternary">quaternary</div>
+        <div class="jx-scheme-quaternary-dark">quaternary dark</div>
+        <div class="jx-scheme-quaternary-light">quaternary light</div>
+        <div class="jx-scheme-quaternary-border">quaternary border</div>
+        <div class="jx-scheme-quaternary-border-dark">quaternary border dark</div>
+        <div class="jx-scheme-quaternary-border-light">quaternary border light</div>
+        <div class="jx-scheme-quaternary-state">quaternary state</div>
+    </div>
+
+    <h2>Quinary</h2>
+    <div class="jx-grid-3 jx-gap-half">
+        <div class="jx-scheme-quinary">quinary</div>
+        <div class="jx-scheme-quinary-dark">quinary dark</div>
+        <div class="jx-scheme-quinary-light">quinary light</div>
+        <div class="jx-scheme-quinary-border">quinary border</div>
+        <div class="jx-scheme-quinary-border-dark">quinary border dark</div>
+        <div class="jx-scheme-quinary-border-light">quinary border light</div>
+        <div class="jx-scheme-quinary-state">quinary state</div>
     </div>
 
     <h2>Info</h2>
