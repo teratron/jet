@@ -1,5 +1,18 @@
 /// ## Dark Theme
 
+// Theme color variables
+$primary:    #d77a61 !default; // 10%
+$secondary:  #eff1f3 !default; // 30%
+$tertiary:   #223843 !default; // 60%
+$quaternary: #d8b4a0 !default;
+$quinary:    #dbd3d8 !default;
+
+// Misc color variables
+$info:       #20a1ff !default;
+$success:    #198754 !default;
+$warning:    #ffd582 !default;
+$error:      #ff6464 !default;
+
 [data-theme="dark"] {
     color-scheme:          dark;
     filter: invert(100%);

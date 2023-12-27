@@ -12,7 +12,7 @@ provide<Ref<number>>('count', count)
 
 <template>
     <children-component>
-        <!--        <button @click="count++">+</button>-->
+        <!--<button @click="count++">+</button>-->
     </children-component>
 </template>
 
