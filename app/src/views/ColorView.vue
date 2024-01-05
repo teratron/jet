@@ -105,8 +105,8 @@
 </template>
 
 <style lang="scss" scoped>
-[class*="grid"] {
-}
+//[class*="grid"] {
+//}
 
 [class*="-border"] {
     border-width: 2px;

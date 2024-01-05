@@ -49,16 +49,16 @@
     "@rushstack/eslint-patch": "^1.6.1",
     "@tsconfig/node18": "^18.2.2",
     "@types/node": "^20.10.6",
-    "@typescript-eslint/eslint-plugin": "^6.16.0",
-    "@typescript-eslint/parser": "^6.16.0",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/parser": "^6.17.0",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.56.0",
-    "postcss": "^8.4.32",
+    "postcss": "^8.4.33",
     "prettier": "^3.1.1",
     "rollup-plugin-copy": "^3.5.0",
-    "sass": "^1.69.6",
+    "sass": "^1.69.7",
     "typescript": "^5.3.3",
-    "vite": "^5.0.10"
+    "vite": "^5.0.11"
   },
   "workspaces": [
     "app"
