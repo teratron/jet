@@ -21,21 +21,6 @@
     @include mxGridBasis;
 }
 
-// Grid
-//----------------------------------------------------------
-// .%grid
-// .%grid-[1...n]
-// .%grid-b[1...n]-[1...n]
-//**********************************************************
-#{JX(grid)}, [class*=#{JX(grid-, "")}] {
-    @extend #{JX(basis, "%")};
-    grid-auto-flow: row;
-
-    @if $grid_gap > 0 {
-        @extend #{JX(gap, "%")};
-    }
-}
-
 #{JX(grid-auto-flow, "%")} {
     @each $flow in (row, column, dense) {
         &-#{$flow} {
@@ -47,6 +32,22 @@
 #{JX(grid-child-fit, "%")} {
     margin: 0;
     @extend #{JX(reset-width, "%")};
+}
+
+// Grid
+//----------------------------------------------------------
+// .%grid
+// .%grid-[1...n]
+// .%grid-b[1...n]-[1...n]
+//**********************************************************
+#{JX(grid)}, [class*=#{JX(grid-, "")}] {
+    @extend #{JX(basis, "%")};
+    grid-auto-flow: row;
+    //@extend #{JX(grid-auto-flow-row, "%")};// TODO:
+
+    @if $grid_gap > 0 {
+        @extend #{JX(gap, "%")};
+    }
 }
 
 // Row
